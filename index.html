@@ -462,15 +462,23 @@
         }
 
         .goal-img-box {
-            width: 70px;
-            height: 70px;
+            width: 85px;
+            height: 110px;
             background: #252525;
-            border-radius: 12px;
+            border-radius: 16px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .goal-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
         }
 
         .goal-info {
@@ -534,7 +542,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.5;
+            opacity: 0.8;
+            overflow: hidden;
+        }
+
+        .horizontal-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
         }
 
         /* SLIDER STYLE (ETAPA 6) */
