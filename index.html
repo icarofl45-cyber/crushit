@@ -1362,10 +1362,9 @@
 
         .pushup-hex-wrap {
             width: 105px;
-            height: 105px; /* Deixando quadrado para o hexágono ser regular */
+            height: 105px;
             clip-path: url(#hex-clip-smooth);
             background: #111;
-            border: 1px solid #333;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1374,26 +1373,30 @@
             color: var(--cta-green);
             margin-bottom: 15px;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
-        .pushup-hex-wrap::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            clip-path: url(#hex-clip-smooth);
-            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-            pointer-events: none;
-        }
-
-        /* Simulação de borda neon */
+        /* Borda Roxa Tonalidade do Site */
         .pushup-hex-wrap::after {
             content: '';
             position: absolute;
             inset: 0;
-            clip-path: url(#hex-clip-rounded);
-            border: 2px solid var(--cta-green);
-            opacity: 0.3;
+            clip-path: url(#hex-clip-smooth);
+            border: 2px solid rgba(138, 43, 226, 0.4); /* Roxo do site com transparência */
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(138, 43, 226, 0.2);
+        }
+
+        .pushup-hex-card:hover .pushup-hex-wrap::after {
+            border-color: var(--brand-purple, #8A2BE2);
+            opacity: 1;
+            box-shadow: inset 0 0 15px rgba(138, 43, 226, 0.5), 0 0 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .pushup-hex-card:hover .pushup-hex-wrap {
+            transform: translateY(-5px);
+            background: #181818;
         }
 
         .pushup-hex-card:hover .pushup-hex-wrap::after {
