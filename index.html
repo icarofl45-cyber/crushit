@@ -3700,7 +3700,26 @@
             let wMetric = (quizData.bioUnit === 'imperial') ? (w / 2.20462) : w;
 
             const imc = wMetric / ((hMetric / 100) ** 2);
-            imcDisplay.innerText = imc.toFixed(1);
+            
+            let category = '';
+            let color = '#fff';
+
+            if (imc < 18.5) {
+                category = 'Bajo peso';
+                color = '#00D1FF'; // Azul
+            } else if (imc < 25) {
+                category = 'Normal';
+                color = '#00FF88'; // Verde
+            } else if (imc < 30) {
+                category = 'Sobrepeso';
+                color = '#FFD600'; // Amarelo
+            } else {
+                category = 'Obesidad';
+                color = '#FF3D00'; // Vermelho
+            }
+
+            imcDisplay.style.color = color;
+            imcDisplay.innerText = `${imc.toFixed(1)} — ${category}`;
             
             quizData.altura = hMetric.toFixed(0);
             quizData.peso = wMetric.toFixed(1);
@@ -3812,8 +3831,8 @@
             display.innerText = val;
             display.classList.remove('weak-val');
 
-            // Mostrar mensagem suave após 2 dígitos
-            if (val.length >= 2) {
+            // Mostrar mensagem suave apenas após 2 dígitos REAIS digitados
+            if (val && val.length >= 2) {
                 feedbackT.classList.add('show');
             } else {
                 feedbackT.classList.remove('show');
