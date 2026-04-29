@@ -1636,6 +1636,33 @@
             color: var(--cta-green);
         }
 
+        /* FEEDBACK DINÂMICO */
+        .dynamic-feedback {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--cta-green);
+            margin-top: 10px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: all 0.4s ease;
+            max-height: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .dynamic-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 50px;
+            margin-top: 12px;
+        }
+
+        .input-error {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2) !important;
+        }
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
@@ -3155,6 +3182,7 @@
                     <input type="number" id="input-weight" class="bio-value-input" value="" placeholder="80" oninput="calcIMC()">
                     <span class="bio-unit" id="label-weight">kilogramos</span>
                 </div>
+                <div id="feedback-weight" class="dynamic-feedback">¡Excelente! Paso 1 para tu transformación.</div>
             </div>
         </div>
 
@@ -3183,6 +3211,7 @@
                 <input type="number" id="input-target-weight" class="weight-input-hidden" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
                 <span id="target-weight-val" class="weak-val" onclick="document.getElementById('input-target-weight').focus()">70</span>
             </div>
+            <div id="feedback-target" class="dynamic-feedback" style="margin-bottom: 20px;">Tu cuerpo está listo para este cambio.</div>
             <div class="validation-card" id="val-card" style="display: none;">
                 <div class="validation-icon" id="val-icon">🏆</div>
                 <div class="validation-content">
@@ -3645,99 +3674,103 @@
             }, interval);
         }
 
-        let currentBioSystem = 'metric';
-        function toggleBioUnits(system) {
-            currentBioSystem = system;
-            document.getElementById('bio-unit-metric').classList.toggle('active', system === 'metric');
-            document.getElementById('bio-unit-imperial').classList.toggle('active', system === 'imperial');
+        function calcIMC() {
+            const hInput = document.getElementById('input-height');
+            const wInput = document.getElementById('input-weight');
+            const feedbackW = document.getElementById('feedback-weight');
+            const imcDisplay = document.getElementById('imc-display');
             
+            let h = parseFloat(hInput.value);
+            let w = parseFloat(wInput.value);
+
+            // Mostrar mensagem suave após 2 dígitos no peso
+            if (wInput.value.length >= 2) {
+                feedbackW.classList.add('show');
+            } else {
+                feedbackW.classList.remove('show');
+            }
+
+            if (!h || !w) {
+                imcDisplay.innerText = '--';
+                return;
+            }
+
+            // Converter para métrico se estiver em imperial para o cálculo do IMC
+            let hMetric = (quizData.bioUnit === 'imperial') ? (h * 30.48) : h;
+            let wMetric = (quizData.bioUnit === 'imperial') ? (w / 2.20462) : w;
+
+            const imc = wMetric / ((hMetric / 100) ** 2);
+            imcDisplay.innerText = imc.toFixed(1);
+            
+            quizData.altura = hMetric.toFixed(0);
+            quizData.peso = wMetric.toFixed(1);
+            quizData.imc = imc.toFixed(1);
+        }
+
+        function toggleBioUnits(unit) {
+            quizData.bioUnit = unit;
             const hInput = document.getElementById('input-height');
             const wInput = document.getElementById('input-weight');
             const hLabel = document.getElementById('label-height');
             const wLabel = document.getElementById('label-weight');
+            const btnMetric = document.getElementById('bio-unit-metric');
+            const btnImperial = document.getElementById('bio-unit-imperial');
 
-            if (system === 'metric') {
+            if (unit === 'metric') {
+                btnMetric.classList.add('active');
+                btnImperial.classList.remove('active');
                 hLabel.innerText = 'centímetros';
                 wLabel.innerText = 'kilogramos';
                 hInput.placeholder = '175';
                 wInput.placeholder = '80';
+                if(hInput.value) hInput.value = (parseFloat(hInput.value) * 30.48).toFixed(0);
+                if(wInput.value) wInput.value = (parseFloat(wInput.value) / 2.20462).toFixed(1);
             } else {
-                hLabel.innerText = 'pies-pulgadas';
+                btnImperial.classList.add('active');
+                btnMetric.classList.remove('active');
+                hLabel.innerText = 'pies (dec.)';
                 wLabel.innerText = 'libras';
-                hInput.placeholder = "5'10";
-                wInput.placeholder = '175';
+                hInput.placeholder = '5.7';
+                wInput.placeholder = '176';
+                if(hInput.value) hInput.value = (parseFloat(hInput.value) / 30.48).toFixed(1);
+                if(wInput.value) wInput.value = (parseFloat(wInput.value) * 2.20462).toFixed(1);
             }
             calcIMC();
         }
 
-        function calcIMC() {
-            let h = document.getElementById('input-height').value;
-            let w = parseFloat(document.getElementById('input-weight').value);
-            const display = document.getElementById('imc-display');
-
-            if (!h || !w) {
-                display.classList.remove('filled');
-                display.innerText = '';
-                return;
-            }
-
-            let heightInMeters = 0;
-            let weightInKg = 0;
-
-            if (currentBioSystem === 'metric') {
-                heightInMeters = parseFloat(h) / 100;
-                weightInKg = w;
-            } else {
-                // Imperial: ft'in (ex: 5'10 ou 5.10)
-                if (h.includes("'")) {
-                    const parts = h.split("'");
-                    const ft = parseFloat(parts[0]);
-                    const inch = parseFloat(parts[1] || 0);
-                    heightInMeters = (ft * 12 + inch) * 0.0254;
-                } else {
-                    heightInMeters = parseFloat(h) * 0.3048; // Assume pés decimais se não tiver aspas
-                }
-                weightInKg = w * 0.453592;
-            }
-
-            if (!heightInMeters || heightInMeters < 0.5) {
-                display.innerText = 'ALTURA INVÁLIDA';
-                return;
-            }
-
-            const imc = weightInKg / (heightInMeters ** 2);
-            let category = '';
-            let color = '#fff';
-
-            if (imc < 18.5) {
-                category = 'Bajo peso';
-                color = '#00D1FF'; // Azul Vibrante
-            } else if (imc < 25) {
-                category = 'Peso normal';
-                color = '#00FF88'; // Verde Elétrico
-            } else if (imc < 30) {
-                category = 'Sobrepeso';
-                color = '#FFD600'; // Amarelo Intenso
-            } else {
-                category = 'Obesidad';
-                color = '#FF3D00'; // Vermelho Neon
-            }
-
-            display.classList.add('filled');
-            display.style.color = color;
-            display.innerText = `${imc.toFixed(1)} — ${category}`;
-        }
-
         function submitBiometrics() {
-            const h = document.getElementById('input-height').value;
-            const w = document.getElementById('input-weight').value;
-            
+            const hInput = document.getElementById('input-height');
+            const wInput = document.getElementById('input-weight');
+            let h = parseFloat(hInput.value);
+            let w = parseFloat(wInput.value);
+
             if (!h || !w) return;
 
-            quizData.altura = h;
-            quizData.peso = w;
-            quizData.unitSystem = currentBioSystem;
-            goToStep('targetweight', `${h}cm / ${w}kg`);
+            // Validar limites (convertendo para métrico para checagem padrão)
+            let hCheck = (quizData.bioUnit === 'imperial') ? (h * 30.48) : h;
+            let wCheck = (quizData.bioUnit === 'imperial') ? (w / 2.20462) : w;
+
+            let error = false;
+            if (hCheck < 140 || hCheck > 220) {
+                hInput.parentElement.classList.add('input-error');
+                error = true;
+            } else {
+                hInput.parentElement.classList.remove('input-error');
+            }
+
+            if (wCheck < 40 || wCheck > 140) {
+                wInput.parentElement.classList.add('input-error');
+                error = true;
+            } else {
+                wInput.parentElement.classList.remove('input-error');
+            }
+
+            if (error) {
+                alert("Por favor, ingresa valores realistas (Altura: 140-220cm, Peso: 40-140kg)");
+                return;
+            }
+
+            goToStep('targetweight');
         }
 
         function setWeightUnit(unit) {
@@ -3761,14 +3794,16 @@
 
         function updateTargetWeightDisplay(val) {
             const display = document.getElementById('target-weight-val');
+            const feedbackT = document.getElementById('feedback-target');
             const vTitle = document.getElementById('val-title');
             const vText = document.getElementById('val-text');
             const vIcon = document.getElementById('val-icon');
             const vCard = document.getElementById('val-card');
             
             if (!val) {
-                display.innerText = '70';
+                display.innerText = weightUnit === 'kg' ? '70' : '154';
                 display.classList.add('weak-val');
+                feedbackT.classList.remove('show');
                 if (vCard) vCard.style.display = 'none';
                 return;
             }
@@ -3776,6 +3811,13 @@
             if (vCard) vCard.style.display = 'block';
             display.innerText = val;
             display.classList.remove('weak-val');
+
+            // Mostrar mensagem suave após 2 dígitos
+            if (val.length >= 2) {
+                feedbackT.classList.add('show');
+            } else {
+                feedbackT.classList.remove('show');
+            }
 
             // Cálculo da porcentagem em relação ao peso inicial
             let currentW = parseFloat(quizData.peso);
