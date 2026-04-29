@@ -1,0 +1,4145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crush It - Tu protocolo militar de 21 días para transformar tu cuerpo con precisión táctica.">
+    <meta name="keywords" content="fitness, militar, transformacion, 21 dias, entrenamiento, quiz">
+    <meta name="author" content="Crush It Team">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Crush It - Protocolo de 21 Días">
+    <meta property="og:description" content="Transforma tu cuerpo con el protocolo más riguroso y efectivo.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0F0F0F;
+            --card-bg: #181818;
+            --brand-purple: #7B2FF7;
+            --brand-purple-dark: #4C1D95;
+            --cta-green: #22C55E;
+            --text-white: #FFFFFF;
+            --text-gray: #A1A1AA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 16px 40px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* SISTEMA DE TELAS */
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 550px;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* LOGO STYLE */
+        /* HEADER REESTRUTURADO */
+        /* HEADER ULTRA COMPACTO */
+        .main-header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            position: relative; /* Remove o sticky globalmente */
+            background: var(--bg-color);
+            z-index: 100;
+            padding: 0;
+        }
+
+        .logo-container {
+            margin-bottom: 2px;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .logo-img {
+            max-width: 120px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 0 8px rgba(123, 47, 247, 0.3));
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 20px;
+            margin-bottom: 5px;
+            min-height: 24px;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .back-btn svg { width: 14px; height: 14px; }
+
+        .step-counter {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--text-gray);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: none;
+        }
+
+        .top-nav {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 8px; /* Aumentado para 8px */
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* AJUSTES PARA A TELA DE OFERTA */
+        .main-header.offer-mode {
+            position: relative; /* Remove o sticky */
+            align-items: center;
+            padding-top: 30px;
+            margin-bottom: 0;
+        }
+
+        .main-header.offer-mode .logo-container {
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .main-header.offer-mode .logo-img {
+            max-width: 180px; /* Logo um pouco maior na oferta */
+        }
+
+        .main-header.offer-mode .nav-controls,
+        .main-header.offer-mode .top-nav {
+            display: none !important;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            position: relative;
+            overflow: visible; /* Garante que as faíscas apareçam */
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: 
+                linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, transparent 50%),
+                linear-gradient(90deg, var(--brand-purple), var(--cta-green));
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), 0 0 40px rgba(123, 47, 247, 0.4);
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 80px;
+            background-image: 
+                radial-gradient(circle, #fff 1px, transparent 1px),
+                radial-gradient(circle, var(--cta-green) 1.5px, transparent 1.5px);
+            background-size: 15px 15px, 25px 25px;
+            animation: gamifiedSparks 0.8s infinite linear;
+            mask-image: linear-gradient(to left, white, transparent);
+            z-index: 1;
+        }
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            clip-path: polygon(20% 0%, 100% 50%, 20% 100%, 0% 50%);
+            box-shadow: 0 0 10px #fff;
+            filter: drop-shadow(0 0 8px var(--cta-green));
+            z-index: 3;
+        }
+
+        @keyframes gamifiedSparks {
+            0% { background-position: 0 0; opacity: 1; }
+            100% { background-position: -80px 0; opacity: 0.2; }
+        }
+
+        /* STEP COUNTER */
+        .step-counter {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--brand-purple);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            display: none;
+            text-align: center;
+        }
+
+        /* HEADLINE */
+        .headline {
+            font-size: 38px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            color: var(--brand-purple);
+        }
+
+        .subheadline {
+            font-size: 18px;
+            color: var(--text-white);
+            margin-bottom: 40px;
+            font-weight: 400;
+            opacity: 0.85;
+            text-align: center;
+        }
+
+        /* GRID CARDS (ETAPA 1) */
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        .age-card {
+            background-color: var(--card-bg);
+            border-radius: 28px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 18px;
+            position: relative;
+            border: 1px solid #222;
+        }
+
+        .age-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background-color: #222;
+            border-color: var(--brand-purple);
+        }
+
+        .age-card img {
+            width: 100%;
+            height: 240px;
+            display: block;
+            margin-bottom: -18px; 
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .age-button {
+            background-color: var(--cta-green);
+            color: #000;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 12px 0;
+            width: 90%;
+            text-align: center;
+            border-radius: 50px;
+            z-index: 2;
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+            position: relative;
+        }
+
+        .gender-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .gender-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid #222;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .gender-card:hover, .gender-card:active {
+            border-color: var(--brand-purple);
+            background-color: #222;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(123, 47, 247, 0.3);
+        }
+
+        .gender-img-wrap {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gender-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .gender-label {
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-white);
+            padding: 12px 8px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .gender-img-placeholder {
+            width: 80px;
+            height: 100px;
+            background: #333;
+            border-radius: 12px;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 400px) {
+            .gender-img-wrap {
+                height: 160px;
+            }
+            .gender-label {
+                font-size: 14px;
+                padding: 10px 6px;
+            }
+        }
+
+        /* HEXAGON CARDS (ETAPA 3) */
+        .hex-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .hex-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hex-image-wrap {
+            width: 100%;
+            max-width: 160px;
+            aspect-ratio: 3 / 4;
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 12px;
+            border: 2px solid #2a2a2a;
+            transition: all 0.3s;
+        }
+
+        .hex-card:hover .hex-image-wrap {
+            transform: scale(1.05);
+            border-color: var(--brand-purple);
+            box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+        }
+
+        .hex-card.selected .hex-image-wrap {
+            border-color: var(--brand-purple);
+            box-shadow: 0 0 20px var(--brand-purple);
+        }
+
+        .hex-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .hex-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            text-transform: uppercase;
+            background: #222;
+            padding: 6px 20px;
+            border-radius: 50px;
+            color: var(--text-white);
+            border: 1px solid #333;
+            transition: all 0.2s;
+        }
+
+        .hex-card:hover .hex-label {
+            background-color: var(--brand-purple);
+            border-color: var(--brand-purple);
+            color: #fff;
+        }
+
+        /* GOAL CARDS (ETAPA 4) */
+        .goal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .goal-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            border: 1px solid #222;
+            transition: all 0.2s;
+        }
+
+        .goal-card:hover {
+            border-color: var(--brand-purple);
+            background-color: #1e1e1e;
+            transform: scale(1.02);
+        }
+
+        .goal-img-box {
+            width: 70px;
+            height: 70px;
+            background: #252525;
+            border-radius: 12px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .goal-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .goal-title {
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-white);
+            line-height: 1;
+        }
+
+        .goal-subtitle {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        /* HORIZONTAL CARDS (ETAPA 5) */
+        .horizontal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .horizontal-card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            border: 1px solid #222;
+            transition: all 0.2s;
+            min-height: 140px;
+            overflow: hidden;
+        }
+
+        .horizontal-card:hover {
+            border-color: var(--brand-purple);
+            background-color: #1e1e1e;
+        }
+
+        .horizontal-label {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .horizontal-img-box {
+            width: 120px;
+            height: 140px;
+            background: #252525;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.5;
+        }
+
+        /* SLIDER STYLE (ETAPA 6) */
+        .fat-slider-container {
+            width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .fat-image-display {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 20px;
+            background: radial-gradient(circle, rgba(58, 81, 105, 0.3) 0%, rgba(15, 15, 15, 0) 70%);
+        }
+
+        .fat-img {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            transition: opacity 0.2s ease;
+        }
+
+        /* Estilização do Input Range */
+        .slider-wrap {
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #333;
+            border-radius: 10px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: var(--cta-green);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -9px;
+            box-shadow: 0 0 15px var(--cta-green);
+        }
+
+        /* REMOVER SETAS DE INPUT NUMBER */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 700;
+        }
+
+        .fat-value-bubble {
+            position: absolute;
+            top: -25px;
+            background: #333;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 14px;
+            transform: translateX(-50%);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .fat-value-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #333;
+        }
+
+        .btn-continue {
+            margin-top: 30px;
+            width: 100%;
+            background-color: var(--cta-green);
+            color: #000;
+            border: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-continue:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        /* ÁREAS PROBLEMÁTICAS (ETAPA 7) */
+        .areas-screen {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .areas-headline {
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            text-transform: uppercase;
+            color: var(--text-white);
+            margin-bottom: 24px;
+            line-height: 1.1;
+            width: 100%;
+        }
+
+        .areas-headline span {
+            color: var(--cta-green);
+        }
+
+        .areas-body {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            width: 100%;
+        }
+
+        /* Avatar placeholder à esquerda */
+        .areas-avatar {
+            flex-shrink: 0;
+            width: 130px;
+            background: linear-gradient(180deg, rgba(34,197,94,0.07) 0%, rgba(123,47,247,0.07) 100%);
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .areas-avatar-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .areas-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* Lista de opções à direita */
+        .areas-options {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .area-option {
+            background: #181818;
+            border: 1.5px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .area-option:hover {
+            border-color: var(--cta-green);
+            background: #1f1f1f;
+        }
+
+        .area-option.selected {
+            border-color: var(--cta-green);
+            background: rgba(34, 197, 94, 0.08);
+        }
+
+        /* Ícone hexagonal */
+        .area-hex-icon {
+            width: 46px;
+            height: 46px;
+            flex-shrink: 0;
+            clip-path: url(#hex-clip-rounded);
+            background: #252525;
+            border: 2px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .area-option.selected .area-hex-icon {
+            background: rgba(34, 197, 94, 0.15);
+        }
+
+        .area-hex-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--text-gray);
+            fill: none;
+            transition: all 0.2s;
+        }
+
+        .area-option.selected .area-hex-icon svg {
+            stroke: var(--cta-green);
+        }
+
+        .area-option-label {
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-white);
+            transition: color 0.2s;
+        }
+
+        .area-option.selected .area-option-label {
+            color: var(--cta-green);
+        }
+
+        /* Botão continuar fixo no rodapé da tela */
+        .areas-footer {
+            margin-top: 24px;
+            width: 100%;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        .btn-areas-continue {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            padding: 14px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-areas-continue.active-btn {
+            background: var(--cta-green);
+            color: #000;
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-areas-continue.active-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 480px) {
+            .headline { font-size: 32px; }
+            .age-button { font-size: 15px; }
+            .gender-label { font-size: 14px; }
+            .hex-label { font-size: 14px; padding: 4px 12px; }
+            .hex-grid { gap: 10px; }
+            .goal-title { font-size: 18px; }
+            .goal-subtitle { font-size: 13px; }
+            .horizontal-label { font-size: 18px; }
+            .horizontal-card { padding: 0 15px; min-height: 100px; }
+            .fat-image-display { height: 280px; }
+            .areas-avatar { width: 110px; }
+            .area-option { padding: 10px 12px; gap: 10px; }
+            .area-option-label { font-size: 13px; }
+            .areas-headline { font-size: 26px; }
+        }
+
+        /* TELA DE ANÁLISE / LOADING (ETAPA 8) */
+        .analysis-screen {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .analysis-icon {
+            margin-bottom: 28px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(123,47,247,0.15), transparent 70%);
+        }
+
+        .analysis-icon svg {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 12px var(--brand-purple));
+        }
+
+        .analysis-percent {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--brand-purple);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .analysis-claim {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text-white);
+            line-height: 1.2;
+            margin-bottom: 28px;
+        }
+
+        .analysis-box {
+            background: #181818;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            padding: 24px;
+            text-align: left;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .analysis-box p {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        .analysis-note {
+            font-size: 13px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            max-width: 380px;
+        }
+
+        /* Barra de loading (Etapa 8) */
+        .loading-bar-wrap {
+            width: 100%;
+            margin-top: 36px;
+        }
+
+        .loading-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .loading-track {
+            width: 100%;
+            height: 24px; /* Aumentado para 24px para máximo impacto */
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            overflow: visible;
+            position: relative;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .loading-fill {
+            height: 100%;
+            width: 0%;
+            background: 
+                linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, transparent 50%),
+                linear-gradient(90deg, var(--brand-purple), var(--cta-green));
+            border-radius: 4px;
+            position: relative;
+            transition: width 0.1s linear;
+            box-shadow: 
+                0 0 20px rgba(34, 197, 94, 0.5),
+                inset 0 1px 1px rgba(255,255,255,0.3);
+        }
+
+        .loading-fill::after {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            clip-path: polygon(20% 0%, 100% 50%, 20% 100%, 0% 50%);
+            box-shadow: 0 0 20px #fff;
+            filter: drop-shadow(0 0 12px var(--cta-green));
+            z-index: 3;
+            animation: arrowPulse 1.5s infinite ease-in-out;
+        }
+
+        .loading-fill::before {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 150px;
+            background-image: 
+                radial-gradient(circle, #fff 1px, transparent 1px),
+                radial-gradient(circle, var(--cta-green) 2px, transparent 2px),
+                radial-gradient(circle, var(--brand-purple) 2px, transparent 2px);
+            background-size: 20px 20px, 35px 35px, 50px 50px;
+            background-repeat: repeat-x;
+            animation: gamifiedSparks 1s infinite linear;
+            mask-image: linear-gradient(to left, white, transparent);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateY(-50%) scale(1); filter: drop-shadow(0 0 12px var(--cta-green)); }
+            50% { transform: translateY(-50%) scale(1.1); filter: drop-shadow(0 0 20px var(--cta-green)) brightness(1.2); }
+        }
+
+        /* ALTURA E PESO (ETAPA 9) */
+        .biometrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .bio-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bio-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--cta-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bio-input-wrap {
+            background: #181818;
+            border: 1.5px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 20px 16px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .bio-input-wrap:focus-within {
+            border-color: var(--cta-green);
+        }
+
+        .bio-value-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--text-white);
+            width: 100%;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bio-value-input::placeholder {
+            color: rgba(255, 255, 255, 0.15);
+            font-weight: 900;
+        }
+
+        .bio-unit {
+            font-size: 13px;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        .imc-box {
+            background: #181818;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .imc-box-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .imc-divider {
+            width: 30px;
+            height: 2px;
+            background: #333;
+            margin: 0 auto 12px;
+        }
+
+        .imc-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--text-white);
+            text-transform: uppercase;
+        }
+
+        .imc-value.filled {
+            color: var(--cta-green);
+        }
+
+        /* PESO DESEJADO (ETAPA 10) */
+        .target-weight-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .unit-toggle {
+            display: flex;
+            background: #181818;
+            border: 1.5px solid #2a2a2a;
+            border-radius: 50px;
+            padding: 4px;
+            margin-bottom: 40px;
+            width: fit-content;
+        }
+
+        .unit-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            color: var(--text-gray);
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .unit-btn.active {
+            background: #252525;
+            color: var(--text-white);
+            border: 1px solid #ff6b00; /* Borda laranja como no print */
+        }
+
+        .large-weight-display {
+            font-size: 100px;
+            font-weight: 900;
+            color: var(--text-white);
+            line-height: 1;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weight-input-hidden {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        .large-weight-display span.weak-val {
+            opacity: 0.15;
+        }
+
+        .validation-card {
+            background: rgba(13, 25, 48, 0.8); /* Azul escuro do print */
+            border: 1px solid #1e3a8a;
+            border-radius: 20px;
+            padding: 24px;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .validation-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .validation-content h4 {
+            color: #4da6ff; /* Azul claro do título no print */
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .validation-content p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* GRÁFICO DE PROGRESSO (ETAPA 11) */
+        .prediction-screen {
+            width: 100%;
+            text-align: center;
+        }
+
+        .prediction-headline {
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .prediction-sub {
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .prediction-date {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--text-white);
+            border-bottom: 3px solid var(--cta-green);
+            display: inline-block;
+            margin-bottom: 40px;
+            padding-bottom: 5px;
+        }
+
+        .graph-container {
+            width: 100%;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 30px 20px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .graph-legend {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .line-green { width: 30px; height: 3px; background: #86efac; border-radius: 2px; }
+        .line-orange { width: 30px; height: 3px; background: #f97316; border-radius: 2px; }
+
+        .graph-svg-wrap {
+            width: 100%;
+            height: 200px;
+            position: relative;
+        }
+
+        .graph-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-gray);
+            text-transform: uppercase;
+        }
+
+        .label-last { color: var(--cta-green); }
+
+        .graph-note {
+            font-size: 11px;
+            color: #444;
+            margin-top: 15px;
+        }
+
+        /* PUSHUPS GRID (ETAPA 12) */
+        .pushups-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .pushup-hex-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .pushup-hex-wrap {
+            width: 100%;
+            aspect-ratio: 1/1.1;
+            clip-path: url(#hex-clip-rounded);
+            background: #0F0F0F;
+            border: 2px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--cta-green);
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        /* Simulação de borda neon */
+        .pushup-hex-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            clip-path: url(#hex-clip-rounded);
+            border: 2px solid var(--cta-green);
+            opacity: 0.3;
+        }
+
+        .pushup-hex-card:hover .pushup-hex-wrap::after {
+            opacity: 1;
+            box-shadow: inset 0 0 15px var(--cta-green);
+        }
+
+        .pushup-label {
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text-white);
+            letter-spacing: 1px;
+        }
+
+        /* Tag dinâmica no gráfico */
+        .graph-tag {
+            position: absolute;
+            top: 60px;
+            left: 30px;
+            background: #ea580c;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* TRAINING CARDS (ETAPA 13) */
+        .training-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .training-card {
+            background: var(--card-bg);
+            border: 1.5px solid #222;
+            border-radius: 20px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .training-card:hover {
+            border-color: var(--cta-green);
+            background: #1e1e1e;
+        }
+
+        .training-dots {
+            display: flex;
+            gap: 4px;
+            opacity: 0.3;
+        }
+
+        .training-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--cta-green);
+            border-radius: 50%;
+        }
+
+        /* Intensidades das bolinhas */
+        .intensity-1 .training-dot:nth-child(1) { opacity: 1; }
+        .intensity-2 .training-dot:nth-child(-n+2) { opacity: 1; }
+        .intensity-3 .training-dot:nth-child(-n+3) { opacity: 1; }
+        .intensity-4 .training-dot:nth-child(-n+4) { opacity: 1; }
+        .intensity-5 .training-dot:nth-child(-n+5) { opacity: 1; }
+
+        .training-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .training-title {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text-white);
+            line-height: 1.1;
+        }
+
+        .training-sub {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        /* START DATE CARDS (ETAPA 14) */
+        .start-card {
+            background: var(--card-bg);
+            border: 1.5px solid #222;
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+
+        .start-card:hover {
+            border-color: var(--cta-green);
+            background: #1e1e1e;
+        }
+
+        .start-icon {
+            width: 50px;
+            height: 50px;
+            background: #252525;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .start-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .start-title {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text-white);
+        }
+
+        .start-sub {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        /* HORMONAL GRAPH (ETAPA 15) */
+        .line-white { width: 30px; height: 3px; background: #fff; border-radius: 2px; }
+        
+        .graph-tag-muscle {
+            position: absolute;
+            top: 45px;
+            right: 15px;
+            font-size: 20px;
+            filter: drop-shadow(0 0 10px rgba(34,197,94,0.5));
+        }
+
+        /* FINAL NAME CAPTURE (ETAPA 16) */
+        .name-field {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 30px;
+        }
+
+        .name-input-wrap {
+            background: #181818;
+            border: 1.5px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .name-input-wrap:focus-within {
+            border-color: var(--cta-green);
+        }
+
+        .name-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-white);
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .privacy-note {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* CHECKLIST LOADING (ETAPA 17) */
+        .checklist-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .checklist-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            opacity: 0.5;
+        }
+
+        .checklist-item.active {
+            opacity: 1;
+            border-color: var(--cta-green);
+            background: rgba(34, 197, 94, 0.05);
+        }
+
+        .checklist-item.completed {
+            opacity: 1;
+            border-color: var(--cta-green);
+        }
+
+        .check-circle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .checklist-item.active .check-circle {
+            border-color: var(--cta-green);
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        .checklist-item.completed .check-circle {
+            background: var(--cta-green);
+            border-color: var(--cta-green);
+        }
+
+        .check-circle svg {
+            display: none;
+            width: 14px;
+            height: 14px;
+            stroke: #000;
+            stroke-width: 4;
+        }
+
+        .checklist-item.completed .check-circle svg {
+            display: block;
+        }
+
+        .checklist-text {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-gray);
+        }
+
+        .checklist-item.active .checklist-text,
+        .checklist-item.completed .checklist-text {
+            color: var(--cta-green);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* SUMMARY SCREEN (ETAPA 18) */
+        .summary-box {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 24px;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            font-weight: 900;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .summary-info h5 {
+            font-size: 15px;
+            font-weight: 900;
+            color: var(--text-white);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .summary-info p {
+            font-size: 13px;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        .diagnostic-card {
+            background: rgba(34, 197, 94, 0.03);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .diagnostic-card h6 {
+            font-size: 11px;
+            font-weight: 900;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .diagnostic-card h4 {
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .diagnostic-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* OFFER SCREEN (ETAPA 19) */
+        .offer-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 100px; /* Espaço para o botão fixo se houver */
+        }
+
+        .offer-header-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1.5px solid var(--cta-green);
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .offer-header-box h2 {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .offer-header-box span {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-gray);
+            text-transform: uppercase;
+        }
+
+        .status-box {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 24px;
+        }
+
+        .status-tag {
+            background: #181818;
+            border: 1px solid #333;
+            border-radius: 50px;
+            padding: 4px 12px;
+            font-size: 10px;
+            font-weight: 900;
+            color: var(--cta-green);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .status-title {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .stat-item { text-align: center; }
+        .stat-val { font-size: 18px; font-weight: 900; color: var(--text-white); display: block; }
+        .stat-lbl { font-size: 10px; font-weight: 700; color: #555; text-transform: uppercase; margin-top: 4px; display: block; }
+        .stat-arrow { font-size: 14px; color: #333; }
+
+        .protocol-box {
+            background: #111;
+            border-radius: 16px;
+            padding: 15px;
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--text-gray);
+        }
+
+        /* Gráfico Animado */
+        .graph-svg-wrap svg path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            transition: stroke-dashoffset 4s ease-in-out;
+        }
+        .graph-svg-wrap.active svg path {
+            stroke-dashoffset: 0;
+        }
+        .graph-grid line {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 0.5;
+        }
+        .graph-svg-wrap.active #area-fat,
+        .graph-svg-wrap.active #area-muscle,
+        .graph-svg-wrap.active #area-cortisol,
+        .graph-svg-wrap.active #area-testo {
+            opacity: 1 !important;
+        }
+
+        /* Antes e Depois */
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .comp-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .comp-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 12px;
+        }
+
+        .comp-card h6 {
+            font-size: 12px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .comp-imc-val { font-size: 20px; font-weight: 900; color: #ff6b00; display: block; }
+        .comp-imc-lbl { font-size: 10px; font-weight: 700; color: #555; text-transform: uppercase; }
+
+        .muscle-bars {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .m-bar { width: 12px; height: 4px; background: #222; border-radius: 2px; }
+        .m-bar.active { background: #ff6b00; }
+
+        /* Gauges */
+        .gauge-section {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 24px;
+        }
+
+        /* ANIMAÇÕES DE ENTRADA */
+        .screen .anim-left, .screen .anim-right, .screen .anim-down, .screen .anim-fade {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .screen .anim-left { transform: translateX(-40px); }
+        .screen .anim-right { transform: translateX(40px); }
+        .screen .anim-down { transform: translateY(-30px); }
+        .screen .anim-fade { transform: scale(0.95); }
+
+        .screen.active .anim-left, 
+        .screen.active .anim-right, 
+        .screen.active .anim-down, 
+        .screen.active .anim-fade {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        .delay-1 { transition-delay: 0.1s !important; }
+        .delay-2 { transition-delay: 0.2s !important; }
+        .delay-3 { transition-delay: 0.3s !important; }
+        .delay-4 { transition-delay: 0.4s !important; }
+        .delay-5 { transition-delay: 0.5s !important; }
+        .delay-6 { transition-delay: 0.6s !important; }
+
+        .gauge-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .gauge-title { font-size: 14px; font-weight: 800; color: var(--text-gray); text-transform: uppercase; }
+        .gauge-val { font-size: 24px; font-weight: 900; color: var(--text-white); }
+
+        .gauge-track {
+            height: 8px;
+            background: #222;
+            border-radius: 10px;
+            position: relative;
+            margin: 20px 0;
+            background: linear-gradient(to right, #4da6ff, #22c55e, #ff6b00, #ef4444);
+        }
+
+        .gauge-pin {
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .gauge-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            font-weight: 700;
+            color: #444;
+            text-transform: uppercase;
+        }
+
+        .kcal-gauge { background: linear-gradient(to right, #222, #f97316, #222); }
+        .recommended-tag {
+            background: #ff6b00;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Água */
+        .water-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .water-icon { font-size: 20px; opacity: 0.2; }
+        .water-icon.active { opacity: 1; }
+
+        /* Lo que obtienes */
+        .benefit-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            width: 45px;
+            height: 45px;
+            background: #181818;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            color: var(--cta-green);
+        }
+
+        .benefit-info h5 { font-size: 16px; font-weight: 900; color: var(--text-white); text-transform: uppercase; margin-bottom: 5px; }
+        .benefit-info p { font-size: 13px; color: var(--text-gray); line-height: 1.4; }
+
+        /* Calendar Image */
+        .calendar-preview {
+            width: 100%;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-preview img { width: 100%; border-radius: 16px; }
+
+        .gift-box {
+            background: #181818;
+            border: 1.5px dashed #444;
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .gift-icon { font-size: 40px; margin-bottom: 15px; display: block; }
+
+        /* BONUSES UPDATED */
+        .bonus-badge {
+            background: rgba(234, 88, 12, 0.1);
+            border: 1px solid #ea580c;
+            border-radius: 50px;
+            padding: 6px 15px;
+            font-size: 11px;
+            font-weight: 900;
+            color: #ea580c;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .bonus-item {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .bonus-icon-box {
+            width: 50px;
+            height: 50px;
+            background: #181818;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .bonus-icon { font-size: 26px; }
+        .bonus-info h6 { font-size: 15px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; color: var(--text-white); line-height: 1.2; }
+        .bonus-info p { font-size: 13px; color: var(--text-gray); line-height: 1.4; margin-bottom: 12px; }
+        
+        .bonus-price-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .old-bonus-price { font-size: 12px; text-decoration: line-through; color: #444; font-weight: 700; }
+        .gratis-tag { background: #182a1b; border: 1px solid var(--cta-green); color: var(--cta-green); font-size: 11px; font-weight: 900; padding: 2px 10px; border-radius: 50px; text-transform: uppercase; }
+
+        .total-value-box {
+            background: rgba(34, 197, 94, 0.03);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            margin: 20px 0 40px;
+        }
+
+        .total-value-box p { 
+            font-size: 13px; 
+            color: var(--text-gray); 
+            text-transform: uppercase; 
+            font-weight: 800; 
+            letter-spacing: 2px;
+            margin-bottom: 8px; 
+        }
+
+        .total-value-box h4 { 
+            font-size: 18px; 
+            font-weight: 900; 
+            color: var(--text-white); 
+        }
+
+        .total-value-price-strikethrough {
+            text-decoration: line-through;
+            color: var(--cta-green);
+            opacity: 0.8;
+            margin-right: 8px;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+
+        .testimonial-card {
+            min-width: 280px;
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 24px;
+        }
+
+        .test-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .test-avatar { width: 40px; height: 40px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff; }
+        .test-name { font-size: 14px; font-weight: 900; }
+        .test-stars { color: #ffb400; font-size: 12px; }
+
+        /* FAQ */
+        .faq-item {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-question { 
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: var(--cta-green);
+        }
+        
+        .faq-item.active .faq-answer { padding: 20px; max-height: 300px; }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); color: var(--cta-green); }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+
+        /* ROULETTE MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* GUARANTEE SECTION */
+        .guarantee-section {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 30px;
+            margin: 40px 0;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guarantee-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--cta-green);
+        }
+
+        .guarantee-content {
+            flex: 1;
+        }
+
+        .guarantee-headline {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--text-white);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .guarantee-description {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .guarantee-seal-placeholder {
+            width: 130px;
+            height: 130px;
+            border: 2px dashed #333;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.02);
+            flex-shrink: 0;
+        }
+
+        .guarantee-seal-icon {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .guarantee-seal-text {
+            font-size: 9px;
+            font-weight: 900;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .guarantee-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .guarantee-section::before {
+                width: 100%;
+                height: 5px;
+            }
+            .guarantee-seal-placeholder {
+                order: -1;
+            }
+        }
+
+        /* SOCIAL PROOF SECTION */
+        .social-proof-section {
+            width: 100%;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .laurels-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .laurel-svg {
+            width: 70px;
+            height: auto;
+            fill: var(--cta-green);
+            opacity: 0.15;
+        }
+
+        .laurel-right {
+            transform: scaleX(-1);
+        }
+
+        .proof-main h2 {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--text-white);
+            margin-bottom: 5px;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .proof-main p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
+        .proof-stars {
+            color: #f97316;
+            font-size: 22px;
+            margin: 20px 0 10px;
+            letter-spacing: 4px;
+        }
+
+        .proof-badge {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 6px 18px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 900;
+            color: var(--text-white);
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .proof-footer {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-white);
+            max-width: 350px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* clip-path removido - usar border-radius */
+        .area-hex-icon { clip-path: url(#hex-clip); }
+
+        /* CHECKLIST ANIMATION */
+        .checklist-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .chk-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 15px;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+            opacity: 0.4;
+        }
+
+        .chk-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .chk-item.active {
+            opacity: 1;
+            color: var(--text-white);
+            transform: translateX(10px);
+        }
+
+        .chk-item.active .chk-circle {
+            border-color: var(--brand-purple);
+            box-shadow: 0 0 10px var(--brand-purple);
+        }
+
+        .chk-item.completed {
+            opacity: 1;
+            color: var(--text-white);
+        }
+
+        .chk-item.completed .chk-circle {
+            border-color: var(--cta-green);
+            background: rgba(34, 197, 94, 0.1);
+        }
+        
+        .chk-item.completed .chk-circle::after {
+            content: '✓';
+            color: var(--cta-green);
+            font-weight: 900;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <clipPath id="hex-clip" clipPathUnits="objectBoundingBox">
+                <path d="M0.5,0 L0.933,0.25 L0.933,0.75 L0.5,1 L0.067,0.75 L0.067,0.25 Z" />
+            </clipPath>
+            <clipPath id="hex-clip-rounded" clipPathUnits="objectBoundingBox">
+                <path d="M0.5,0.02 C0.52,0.02,0.54,0.03,0.56,0.04 L0.91,0.24 C0.94,0.26,0.96,0.29,0.96,0.33 L0.96,0.67 C0.96,0.71,0.94,0.74,0.91,0.76 L0.56,0.96 C0.54,0.97,0.52,0.98,0.5,0.98 C0.48,0.98,0.46,0.97,0.44,0.96 L0.09,0.76 C0.06,0.74,0.04,0.71,0.04,0.67 L0.04,0.33 C0.04,0.29,0.06,0.26,0.09,0.24 L0.44,0.04 C0.46,0.03,0.48,0.02,0.5,0.02 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="imagens_webp_crush_it/logo.png" alt="Crush It Logo" class="logo-img">
+        </div>
+
+        <div class="nav-controls">
+            <button id="back-btn" class="back-btn" onclick="goBack()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div id="step-display" class="step-counter"></div>
+        </div>
+
+        <div class="top-nav">
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ETAPA 17: CHECKLIST / ANALIZANDO PERFIL -->
+    <div id="screen-checklist" class="screen">
+        <div class="checklist-screen">
+            <h1 class="headline" style="font-size:24px;">ANALIZANDO TU <span style="color:var(--cta-green)">PERFIL</span></h1>
+            <p class="subheadline" style="font-size:14px;">Estamos cruzando tus datos con nuestra base de 1.3M de usuarios.</p>
+
+            <div class="loading-bar-wrap" style="margin: 30px 0;">
+                <div class="loading-label" style="display:flex; justify-content:space-between;">
+                    <span>Procesando...</span>
+                    <span id="checklist-perc">0%</span>
+                </div>
+                <div class="loading-track">
+                    <div id="checklist-loading-fill" class="loading-fill"></div>
+                </div>
+            </div>
+
+            <div class="checklist-items">
+                <div class="chk-item" id="chk-1">
+                    <div class="chk-circle"></div>
+                    <span>Verificando nivel de grasa corporal</span>
+                </div>
+                <div class="chk-item" id="chk-2">
+                    <div class="chk-circle"></div>
+                    <span>Calculando déficit calórico exacto</span>
+                </div>
+                <div class="chk-item" id="chk-3">
+                    <div class="chk-circle"></div>
+                    <span>Ajustando intensidad de micro-entrenamientos</span>
+                </div>
+                <div class="chk-item" id="chk-4">
+                    <div class="chk-circle"></div>
+                    <span>Finalizando protocolo personalizado</span>
+                </div>
+            </div>
+
+            <div class="guarantee-badges anim-fade delay-1" style="display:flex; justify-content:center; gap:30px; margin-top:40px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 16px; border: 1px solid #222;">
+                <div style="text-align:center;">
+                    <div style="font-size:24px; margin-bottom:5px;">♾️</div>
+                    <div style="font-size:11px; font-weight:800; color:var(--cta-green);">ACCESO VITALICIO</div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:24px; margin-bottom:5px;">🛡️</div>
+                    <div style="font-size:11px; font-weight:800; color:var(--cta-green);">GARANTÍA DE 30 DÍAS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 18: RESUMO / DIAGNÓSTICO -->
+    <div id="screen-summary" class="screen">
+        <div class="summary-screen">
+            <div class="summary-badge">RECLUTA SELECCIONADO</div>
+            <h1 class="headline" style="font-size:28px; margin-top:20px;">¡BUENAS NOTICIAS!</h1>
+            <p class="subheadline">Encontramos el protocolo exacto para <strong id="summary-name" style="color:var(--cta-green)">[Nome]</strong>.</p>
+
+            <div class="diagnostic-card" style="margin-top:30px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <span style="font-size:12px; font-weight:800; color:#444;">ID DE PROTOCOLO: #E285</span>
+                    <span style="font-size:10px; color:var(--cta-green); font-weight:900;">VÁLIDO POR 15 MIN</span>
+                </div>
+                
+                <div style="display:flex; gap:15px; margin-bottom:20px; align-items:center;">
+                    <div style="width:50px; height:50px; background:#111; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px;">📋</div>
+                    <div style="flex:1;">
+                        <h4 style="font-size:14px; font-weight:900; margin-bottom:4px;">PROGRAMA DE 21 DÍAS</h4>
+                        <p style="font-size:11px; color:#555;">Basado en tu nivel de flexões y objetivo.</p>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:15px; margin-bottom:20px; align-items:center;">
+                    <div style="width:50px; height:50px; background:#111; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px;">📹</div>
+                    <div style="flex:1;">
+                        <h4 style="font-size:14px; font-weight:900; margin-bottom:4px;">BIBLIOTECA DE VIDEOS</h4>
+                        <p style="font-size:11px; color:#555;">Ejecución perfecta de cada micro-movimiento.</p>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:15px; align-items:center;">
+                    <div style="width:50px; height:50px; background:#111; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px;">🛡️</div>
+                    <div style="flex:1;">
+                        <h4 style="font-size:14px; font-weight:900; margin-bottom:4px;">GARANTÍA TOTAL</h4>
+                        <p style="font-size:11px; color:#555;">Sin riesgo. Resultados o devolución.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:30px;">
+                <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid var(--cta-green); color: var(--cta-green); padding: 10px 20px; border-radius: 50px; display: inline-block; font-weight: 900; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);">
+                    ✅ ACCESO DISPONIBILIZADO
+                </div>
+            </div>
+
+            <div class="guarantee-badges" style="display:flex; justify-content:center; gap:30px; margin-top:10px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 16px; border: 1px solid #222;">
+                <div style="text-align:center;">
+                    <div style="font-size:24px; margin-bottom:5px;">♾️</div>
+                    <div style="font-size:11px; font-weight:800; color:var(--cta-green);">ACCESO VITALICIO</div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:24px; margin-bottom:5px;">🛡️</div>
+                    <div style="font-size:11px; font-weight:800; color:var(--cta-green);">GARANTÍA DE 30 DÍAS</div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:30px;">
+                <p style="font-size:14px; color:var(--text-gray);">Redirigiendo a tu protocolo en <span id="summary-timer" style="color:var(--cta-green); font-weight:900;">4s</span>...</p>
+                <div class="spinner" style="margin: 20px auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 1: IDADE -->
+    <div id="screen-age" class="screen active">
+        <h1 class="headline">CREA TU CUERPO PERFECTO</h1>
+        <p class="subheadline">Según tu idade e IMC</p>
+
+        <div class="quiz-grid">
+            <div class="age-card anim-down delay-1" onclick="goToStep('gender', '18-29')">
+                <img src="imagens_webp_crush_it/Edad-18-29.webp" alt="Edad 18-29">
+                <div class="age-button">Edad: 18-29</div>
+            </div>
+            <div class="age-card anim-down delay-2" onclick="goToStep('gender', '30-39')">
+                <img src="imagens_webp_crush_it/Edad-30-39.webp" alt="Edad 30-39">
+                <div class="age-button">Edad: 30-39</div>
+            </div>
+            <div class="age-card anim-down delay-3" onclick="goToStep('gender', '40-49')">
+                <img src="imagens_webp_crush_it/Edad-40-49.webp" alt="Edad 40-49">
+                <div class="age-button">Edad: 40-49</div>
+            </div>
+            <div class="age-card anim-down delay-4" onclick="goToStep('gender', '50+')">
+                <img src="imagens_webp_crush_it/Edad-más-de-50.webp" alt="Edad mais de 50">
+                <div class="age-button">Edad: mais de 50</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 19: TELA DE OFERTA -->
+    <div id="screen-offer" class="screen">
+        <div class="offer-container">
+            
+            <div class="offer-header-box anim-down delay-1">
+                <span id="offer-sub-name">TU ANÁLISIS PERSONALIZADO</span>
+                <h2 id="offer-name">ICARO</h2>
+                <span id="offer-imc-level">IMC: 21.6 - Nivel: Máximo</span>
+            </div>
+
+            <div class="status-box anim-fade delay-2">
+                <div class="status-tag">PESO NORMAL</div>
+                <div class="status-title">TU CUERPO ESTÁ LISTO PARA DEFINICIÓN</div>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-val" id="off-weight-now">70 kg</span>
+                        <span class="stat-lbl">PESO ACTUAL</span>
+                    </div>
+                    <div class="stat-arrow">→</div>
+                    <div class="stat-item">
+                        <span class="stat-val" id="off-weight-goal">70 kg</span>
+                        <span class="stat-lbl">OBJETIVO</span>
+                    </div>
+                    <div class="stat-arrow">→</div>
+                    <div class="stat-item">
+                        <span class="stat-val" id="off-date-goal">17 may</span>
+                        <span class="stat-lbl">META ESTIMADA</span>
+                    </div>
+                </div>
+
+                <div class="protocol-box">
+                    💕 <strong>Tu protocolo:</strong> Definición de abdominales con circuitos de alta intensidad - 4-5 dias/semana. Máxima quema de grasa.
+                </div>
+            </div>
+
+            <div class="comparison-row anim-fade delay-3">
+                <div class="comp-card">
+                    <h6>AHORA</h6>
+                    <img src="imagens_webp_crush_it/oferta-1.webp" alt="Agora">
+                    <span class="comp-imc-val" id="comp-imc-now">21.6</span>
+                    <span class="comp-imc-lbl">IMC ACTUAL</span>
+                    <div class="muscle-bars">
+                        <div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar"></div><div class="m-bar"></div><div class="m-bar"></div>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <h6>TU OBJETIVO</h6>
+                    <img src="imagens_webp_crush_it/oferta-2.webp" alt="Objetivo">
+                    <span class="comp-imc-val" id="comp-imc-goal">18.5</span>
+                    <span class="comp-imc-lbl">IMC OBJETIVO</span>
+                    <div class="muscle-bars">
+                        <div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar active"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">RESUMEN PERSONAL</h2>
+            <p style="color:var(--text-gray); font-size:14px; font-weight:700; text-transform:uppercase; margin-top:-15px;">Basado en tus respuestas</p>
+
+            <div class="gauge-section anim-fade delay-4">
+                <div class="gauge-header">
+                    <span class="gauge-title">IMC ACTUAL</span>
+                    <span class="gauge-val" id="g-imc-val">21.60</span>
+                </div>
+                <div class="gauge-track">
+                    <div class="gauge-pin" id="g-imc-pin" style="left: 40%;"></div>
+                </div>
+                <div class="gauge-labels">
+                    <span>BAJO PESO</span>
+                    <span style="color:var(--cta-green)">NORMAL</span>
+                    <span>OBESO</span>
+                </div>
+            </div>
+
+            <div class="gauge-section anim-fade delay-5">
+                <div class="gauge-header">
+                    <span class="gauge-title">Ingesta diaria de calorias</span>
+                    <span class="recommended-tag">RECOMENDADO</span>
+                </div>
+                <div class="gauge-val" id="g-kcal-val">2365 kcal</div>
+                <div class="gauge-track kcal-gauge">
+                    <div class="gauge-pin" style="left: 50%;"></div>
+                </div>
+                <div class="gauge-labels">
+                    <span>1600 kcal</span>
+                    <span>3200 kcal</span>
+                </div>
+            </div>
+
+            <div class="gauge-section anim-fade delay-6">
+                <div class="gauge-header">
+                    <span class="gauge-title">Ingesta diaria de agua</span>
+                    <span class="recommended-tag">RECOMENDADO</span>
+                </div>
+                <div class="gauge-val" id="g-water-val">2.5 litros</div>
+                <div class="water-icons">
+                    <div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div>
+                </div>
+            </div>
+
+            <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">LO QUE <span style="color:var(--cta-green)">OBTIENES</span></h2>
+
+            <div class="benefit-item anim-fade delay-7">
+                <div class="benefit-icon">📅</div>
+                <div class="benefit-info">
+                    <h5>PROGRESIÓN REAL. DÍA 1 AL DÍA 21.</h5>
+                    <p>No saltos que te rompan, sin lentitud que te aburra. Cada dia contribuye sobre el anterior.</p>
+                </div>
+            </div>
+
+            <div class="benefit-item anim-fade delay-8">
+                <div class="benefit-icon">⏱️</div>
+                <div class="benefit-info">
+                    <h5>15 A 30 MINUTOS AL DÍA. NO MÁS.</h5>
+                    <p>Diseñado para no tener excusas de "no tengo tiempo". El mismo tiempo que el celular. Menos tiempo para esto.</p>
+                </div>
+            </div>
+
+            <div class="benefit-item anim-fade delay-9">
+                <div class="benefit-icon">⚡</div>
+                <div class="benefit-info">
+                    <h5>DUERMES MEJOR DESDE LA PRIMERA SEMANA.</h5>
+                    <p>No es promesa, es lo que reportan 9 de cada 10 usuarios que completan los primeros 7 dias.</p>
+                </div>
+            </div>
+
+            <div class="calendar-preview anim-fade delay-10">
+                <img src="imagens_webp_crush_it/oferta-2.webp" style="opacity:0.3; filter:grayscale(1);">
+                <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;">
+                    <span style="font-size:24px; font-weight:900; color:var(--cta-green);">CALENDÁRIO MILITAR</span>
+                    <p style="font-size:12px; color:var(--text-white);">Tu cronograma detallado de 21 dias está listo.</p>
+                </div>
+            </div>
+
+            <div class="gift-box anim-fade delay-11">
+                <span class="gift-icon">🎁</span>
+                <p style="font-size:12px; color:var(--text-gray); margin-bottom:10px;">Obtienes un regalo imperdible además del programa principal</p>
+                <h4 style="font-size:20px; font-weight:900;">Plan imprimible para 2026</h4>
+            </div>
+
+            <div class="areas-footer" style="margin-top:20px;">
+                <button class="btn-areas-continue active-btn" style="font-size:18px; padding:20px;" onclick="scrollToPrice()">
+                    OBTENER MI PLAN PERSONALIZADO AHORA
+                </button>
+            </div>
+
+            <div style="margin-top:30px; display:flex; flex-direction:column; gap:15px;">
+                <div style="display:flex; align-items:center; gap:12px; font-size:14px; font-weight:700;"><span style="color:var(--cta-green)">✓</span> Reducir el estrés</div>
+                <div style="display:flex; align-items:center; gap:12px; font-size:14px; font-weight:700;"><span style="color:var(--cta-green)">✓</span> Sentirte más saludable</div>
+                <div style="display:flex; align-items:center; gap:12px; font-size:14px; font-weight:700;"><span style="color:var(--cta-green)">✓</span> Desarrollar autodisciplina</div>
+            </div>
+
+            <div class="gift-box" style="margin-top:40px; text-align:left;">
+                <h4 style="font-size:22px; font-weight:900; margin-bottom:20px;">Plan de entrenamiento completo</h4>
+                <div style="display:flex; gap:12px; margin-bottom:15px; font-size:13px;"><span style="color:var(--cta-green)">✔</span> Desarrolla un hábito y establece técnicas de ejercicio adecuadas</div>
+                <div style="display:flex; gap:12px; margin-bottom:15px; font-size:13px;"><span style="color:var(--cta-green)">✔</span> Pierde el exceso de grasa corporal y mejora la intensidad</div>
+                <div style="display:flex; gap:12px; margin-bottom:15px; font-size:13px;"><span style="color:var(--cta-green)">✔</span> Alcanza tu objetivo y cambia tu vida para siempre</div>
+                
+                <button class="btn-areas-continue active-btn" style="background:#ea580c; border-color:#c2410c; margin-top:10px;" onclick="scrollToPrice()">OBTENER MI PLAN →</button>
+            </div>
+
+            <div id="price-section" class="price-display">
+                <p style="font-size:12px; font-weight:900; color:var(--text-gray); text-transform:uppercase; margin-bottom:10px;">TU PROTOCOLO PERSONALIZADO</p>
+                <div id="price-box-main">
+                    <span class="new-price">$39.99 USD</span>
+                </div>
+                <p style="font-size:11px; color:#555; margin-top:10px;">Acceso inmediato • PDF descargable • Pago único</p>
+                <button class="btn-areas-continue active-btn" style="margin-top:20px; font-size:20px;" onclick="window.location.href='#'">⚡ QUIERO MI PROTOCOLO AHORA</button>
+            </div>
+
+            <h2 class="headline" style="font-size:22px; text-align:center; margin-top:40px;">SIN COSTO ADICIONAL:<br><span style="color:var(--cta-green)">4 BONOS EXCLUSIVOS</span></h2>
+            
+            <div class="bonus-item">
+                <div class="bonus-icon-box">
+                    <span class="bonus-icon">💪</span>
+                </div>
+                <div class="bonus-info">
+                    <h6>GUÍA DE RECUPERACIÓN TÁCTICA</h6>
+                    <p>Porque el mayor error no es entrenar mal. Es parar por un dolor que se podía evitar. Esta guía te mantiene en movimiento cuando el cuerpo empieza a quejarse.</p>
+                    <div class="bonus-price-row">
+                        <span class="old-bonus-price">$19.90 USD</span>
+                        <span class="gratis-tag">GRATIS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bonus-item">
+                <div class="bonus-icon-box">
+                    <span class="bonus-icon">🔥</span>
+                </div>
+                <div class="bonus-info">
+                    <h6>PROTOCOLO NEXT-LEVEL AVANZADO</h6>
+                    <p>Para el día 22. Cuando termines los 21 días y tu cuerpo pida más. Que no te pase lo de siempre: llegar al final y no saber qué hacer después.</p>
+                    <div class="bonus-price-row">
+                        <span class="old-bonus-price">$58.00 USD</span>
+                        <span class="gratis-tag">GRATIS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bonus-item">
+                <div class="bonus-icon-box">
+                    <span class="bonus-icon">🗺️</span>
+                </div>
+                <div class="bonus-info">
+                    <h6>MAPA DE PROGRESO TÁCTICO</h6>
+                    <p>El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.</p>
+                    <div class="bonus-price-row">
+                        <span class="old-bonus-price">$19.90 USD</span>
+                        <span class="gratis-tag">GRATIS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bonus-item">
+                <div class="bonus-icon-box">
+                    <span class="bonus-icon">🧠</span>
+                </div>
+                <div class="bonus-info">
+                    <h6>MENTALIDAD DE ÉLITE</h6>
+                    <p>La mayoría no abandona por falta de tiempo. Abandona cuando el cerebro empieza a negociar. Este bono corta esa voz antes de que gane.</p>
+                    <div class="bonus-price-row">
+                        <span class="old-bonus-price">$39.90 USD</span>
+                        <span class="gratis-tag">GRATIS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-value-box">
+                <p>VALOR TOTAL DE LOS BONOS</p>
+                <h4><span class="total-value-price-strikethrough">$137.70 USD</span> — tuyo hoy sin costo</h4>
+            </div>
+
+            <div class="guarantee-section">
+                <div class="guarantee-content">
+                    <h3 class="guarantee-headline">GARANTÍA DE 30 DÍAS.<br>CERO RIESGO.</h3>
+                    <p class="guarantee-description">
+                        Prueba el protocolo. Si en 30 días no sientes que tu cuerpo está cambiando o simplemente no es lo que esperabas, escríbenos. Te devolvemos el 100% de tu inversión. Sin preguntas incómodas, sin burocracia.
+                    </p>
+                </div>
+                <div class="guarantee-seal-placeholder">
+                    <span class="guarantee-seal-icon">🛡️</span>
+                    <span class="guarantee-seal-text">SELLO DE GARANTÍA<br>(IMAGEN AQUÍ)</span>
+                </div>
+            </div>
+
+            <div class="social-proof-section">
+                <div class="laurels-wrap">
+                    <img src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel-svg" style="opacity:0.6;">
+                    
+                    <div class="proof-main">
+                        <h2>+1.5 millones</h2>
+                        <p>iniciaron su recorrido<br>por el fitness con nosotros</p>
+                        <div class="proof-stars">★★★★★</div>
+                        <div class="proof-badge">4.7 de 5</div>
+                    </div>
+
+                    <img src="imagens_webp_crush_it/ramo-direito.webp" class="laurel-svg laurel-right" style="opacity:0.6;">
+                </div>
+                <div class="proof-footer">
+                    Más de 200.000 valoraciones de 5 estrellas de usuarios satisfechos
+                </div>
+            </div>
+
+            <h2 class="headline" style="font-size:22px; text-align:center; margin-top:40px;">Hemos ayudado a más de<br><span style="color:var(--cta-green)">85000+ personas</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="test-header">
+                        <div class="test-avatar">C</div>
+                        <div>
+                            <div class="test-name">Carlos M.</div>
+                            <div class="test-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p style="font-size:13px; line-height:1.4;">Perdí 6 kg en los primeros 21 dias. Sin gimnasio, sin dieta estricta. Increíble.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="test-header">
+                        <div class="test-avatar">R</div>
+                        <div>
+                            <div class="test-name">Roberto V.</div>
+                            <div class="test-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p style="font-size:13px; line-height:1.4;">Llevo 3 meses, bajé 11 kg y por primera vez no abandoné.</p>
+                </div>
+            </div>
+
+            <h2 class="headline" style="font-size:22px; text-align:center; margin-top:40px;">PREGUNTAS FRECUENTES</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">¿NECESITO EQUIPO O GIMNASIO? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">No. Solo tu cuerpo y un espacio del tamaño de una cama. Puedes hacerlo en casa, en el parque, en un hotel. El protocolo fue diseñado para no necesitar nada externo.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">¿ES ADECUADO PARA PRINCIPIANTES? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Sí. Y no te estamos mintiendo para que compres. El sistema empieza donde tú estás, no donde deberías estar. Si nunca has entrenado, arrancas en el nivel base. Si ya entrenas, el protocolo te lleva más lejos.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">¿CUÁNTO TIEMPO DURA CADA ENTRENAMIENTO? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Entre 20 y 40 minutos. Diseñado para que no haya excusa válida de "no tengo tiempo". Si tienes tiempo para scrollear 30 minutos, tienes tiempo para esto.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">¿TIENE GARANTÍA DE REEMBOLSO? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">30 días. Sin preguntas. Si sigues el protocolo y no ves resultados, te devolvemos cada centavo. No porque tengamos que decirlo. Porque estamos seguros de lo que pasa cuando alguien realmente lo hace.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL ROLETA -->
+    <div id="roulette-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div style="background:rgba(34,197,94,0.1); border:1px solid var(--cta-green); border-radius:50px; padding:4px 12px; font-size:10px; font-weight:900; color:var(--cta-green); display:inline-block; margin-bottom:15px;">🎁 OFERTA EXCLUSIVA</div>
+            <h2 style="font-size:24px; font-weight:900; line-height:1.2; margin-bottom:10px;">Gira y gana un <span style="color:var(--cta-green)">descuento exclusivo</span> ahora</h2>
+            <p style="font-size:12px; color:var(--text-gray);">Solo una oportunidad — no te la pierdas</p>
+            
+            <div class="roulette-wrap">
+                <img src="https://cdn-icons-png.flaticon.com/512/8101/8101821.png" id="roulette-img" class="roulette-img" alt="Roulette">
+                <div class="roulette-arrow">▼</div>
+            </div>
+
+            <div id="roulette-win" class="roulette-win-box">
+                <div style="font-size:30px; margin-bottom:10px;">🎉</div>
+                <h3 style="font-size:18px; font-weight:900;">¡Felicidades! Ganaste -75%</h3>
+                <p style="font-size:12px; color:var(--text-gray); margin-bottom:15px;">El mayor descuento disponible — solo por hoy</p>
+                <button class="btn-areas-continue active-btn" onclick="applyDiscount()">QUIERO MI DESCUENTO</button>
+            </div>
+
+            <button id="btn-spin" class="btn-areas-continue active-btn" onclick="spinRoulette()">GIRAR AHORA</button>
+        </div>
+    </div>
+
+    <!-- ETAPA 2: GÊNERO -->
+    <div id="screen-gender" class="screen">
+        <h1 class="headline">Selecciona tu género</h1>
+        <p class="subheadline">Personalizaremos tu plan según tu biologia</p>
+
+        <div class="gender-list">
+            <div class="gender-card anim-left delay-1" onclick="handleGender('Masculino')">
+                <div class="gender-img-wrap">
+                    <img src="imagens_webp_crush_it/genero-h.webp" alt="Masculino">
+                </div>
+                <span class="gender-label">Masculino</span>
+            </div>
+            <div class="gender-card anim-right delay-2" onclick="handleGender('Femenino')">
+                <div class="gender-img-wrap">
+                    <img src="imagens_webp_crush_it/genero-m.webp" alt="Femenino">
+                </div>
+                <span class="gender-label">Femenino</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 3: TIPO DE CORPO (MASCULINO) -->
+    <div id="screen-bodytype" class="screen">
+        <h1 class="headline">ELIGE EL CUERPO QUE TIENES <span style="color:var(--cta-green)">HOY</span></h1>
+        <p class="subheadline">El sistema necesita la verdade para darte el plan correcto</p>
+
+        <div class="hex-grid">
+            <div class="hex-card anim-down delay-1" onclick="goToStep('goal', 'Delgado')">
+                <div class="hex-image-wrap">
+                    <img src="imagens_webp_crush_it/delgado.webp" id="img-delgado" alt="Delgado" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Delgado'">
+                </div>
+                <div class="hex-label">Delgado</div>
+            </div>
+            <div class="hex-card anim-down delay-2" onclick="goToStep('goal', 'Promedio')">
+                <div class="hex-image-wrap">
+                    <img src="imagens_webp_crush_it/promedio.webp" id="img-promedio" alt="Promedio" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Promedio'">
+                </div>
+                <div class="hex-label">Promedio</div>
+            </div>
+            <div class="hex-card anim-down delay-3" onclick="goToStep('goal', 'Grande')">
+                <div class="hex-image-wrap">
+                    <img src="imagens_webp_crush_it/grande.webp" id="img-grande" alt="Grande" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Grande'">
+                </div>
+                <div class="hex-label">Grande</div>
+            </div>
+            <div class="hex-card anim-down delay-4" onclick="goToStep('goal', 'Pesado')">
+                <div class="hex-image-wrap">
+                    <img src="imagens_webp_crush_it/pesado.webp" id="img-pesado" alt="Pesado" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Pesado'">
+                </div>
+                <div class="hex-label">Pesado</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 4: META (MASCULINO) -->
+    <div id="screen-goal" class="screen">
+        <h1 class="headline">ELIGE TU <span style="color:var(--cta-green)">META</span></h1>
+        <p class="subheadline">Personalizaremos tu rutina para este objetivo</p>
+
+        <div class="goal-list">
+            <div class="goal-card anim-fade delay-1" onclick="handleGoal('Perder Peso')">
+                <div class="goal-img-box">
+                    <img src="imagens_webp_crush_it/perder-peso.webp" id="img-perder" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="goal-info">
+                    <div class="goal-title">PERDER PESO</div>
+                    <div class="goal-subtitle">Ya no quiero verme assim no espelho</div>
+                </div>
+            </div>
+            <div class="goal-card anim-fade delay-2" onclick="handleGoal('Ganar Músculo')">
+                <div class="goal-img-box">
+                    <img src="imagens_webp_crush_it/Ganar-músculo.webp" id="img-ganar" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="goal-info">
+                    <div class="goal-title">GANAR MÚSCULO</div>
+                    <div class="goal-subtitle">Quiero que se note que entreno</div>
+                </div>
+            </div>
+            <div class="goal-card anim-fade delay-3" onclick="handleGoal('Definir tu Cuerpo')">
+                <div class="goal-img-box">
+                    <img src="imagens_webp_crush_it/Definir-tu-cuerpo.webp" id="img-definir" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="goal-info">
+                    <div class="goal-title">DEFINIR TU CUERPO</div>
+                    <div class="goal-subtitle">Tengo el músculo, me falta la definição</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 5-A: CORPO DESEJADO (PERDER PESO) -->
+    <div id="screen-desired-perder" class="screen">
+        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <p class="subheadline">Configuraremos tus macros para este resultado</p>
+
+        <div class="horizontal-list">
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado')">
+                <span class="horizontal-label">Delgado</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/delgado.webp" id="img-desired-delgado" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado y Tonificado')">
+                <span class="horizontal-label" style="font-size:18px;">Delgado y Tonificado</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4.webp" id="img-delgado-ton" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 5-B: CORPO DESEJADO (GANAR MÚSCULO) -->
+    <div id="screen-desired-ganar" class="screen">
+        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <p class="subheadline">Configuraremos tus macros para este resultado</p>
+
+        <div class="horizontal-list">
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Atleta')">
+                <span class="horizontal-label">Atleta</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/Atleta-pergunta-4.webp" id="img-atleta" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Héroe')">
+                <span class="horizontal-label">Héroe</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/heroe-pergunta-4.webp" id="img-heroe" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Culturista')">
+                <span class="horizontal-label">Culturista</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/culturista-pergunta-4.webp" id="img-culturista" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 5-C: CORPO DESEJADO (DEFINIR CUERPO) -->
+    <div id="screen-desired-definir" class="screen">
+        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <p class="subheadline">Configuraremos tus macros para este resultado</p>
+
+        <div class="horizontal-list">
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Playa')">
+                <span class="horizontal-label">De Playa</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/De-playa-pergunta-4.webp" id="img-de-playa" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Ejercitado')">
+                <span class="horizontal-label">Ejercitado</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/Ejercitado-pergunta-4.webp" id="img-ejercitado" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('focusarea', 'De Crossfit')">
+                <span class="horizontal-label">De Crossfit</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/De-crossfit-pergunta-4.webp" id="img-de-crossfit" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 6: NIVEL DE GRASA (SLIDER) -->
+    <div id="screen-bodyfat" class="screen">
+        <h1 class="headline">Elige tu nivel de grasa corporal</h1>
+        <p class="subheadline">Desliza para encontrar el cuerpo que tienes hoy</p>
+
+        <div class="fat-image-display">
+            <!-- As imagens serão trocadas via JS -->
+            <img src="imagens_webp_crush_it/15-19%.webp" id="fat-body-img" class="fat-img" onerror="this.src='https://via.placeholder.com/300x400/111/22C55E?text=Imagen+Corporal'">
+        </div>
+
+        <div class="fat-slider-container">
+            <div class="slider-wrap">
+                <div id="bubble" class="fat-value-bubble">15-19%</div>
+                <input type="range" id="fat-slider" min="1" max="8" step="1" value="3" oninput="updateFatSlider(this.value)">
+            </div>
+            <div class="slider-labels">
+                <span>5-9%</span>
+                <span>>40%</span>
+            </div>
+        </div>
+
+        <button class="btn-continue" onclick="goToStep('focusarea', document.getElementById('bubble').innerText)">CONTINUAR</button>
+    </div>
+
+    <!-- ETAPA 7: ÁREAS PROBLEMÁTICAS -->
+    <div id="screen-focusarea" class="screen">
+        <div class="areas-screen">
+            <h1 class="areas-headline">ELIGE <span>ÁREAS PROBLEMÁTICAS</span></h1>
+
+            <div class="areas-body">
+                <!-- Avatar placeholder esquerdo -->
+                <div class="areas-avatar">
+                    <div class="areas-avatar-inner">
+                        <img src="imagens_webp_crush_it/avatar-pergunta-6.webp" id="img-avatar-focus" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                </div>
+
+                <!-- Opções à direita -->
+                <div class="areas-options">
+                    <div class="area-option" onclick="toggleArea('pecho', this)">
+                        <div class="area-hex-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/></svg>
+                        </div>
+                        <span class="area-option-label">Pecho</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('brazos', this)">
+                        <div class="area-hex-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M6 9l6-6 6 6M6 15l6 6 6-6"/></svg>
+                        </div>
+                        <span class="area-option-label">Brazos</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('abdomen', this)">
+                        <div class="area-hex-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="4" y="8" width="16" height="10" rx="2"/><path d="M8 8V6a4 4 0 018 0v2"/></svg>
+                        </div>
+                        <span class="area-option-label">Abdomen</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('piernas', this)">
+                        <div class="area-hex-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M8 3v10l-2 8M16 3v10l2 8M8 13h8"/></svg>
+                        </div>
+                        <span class="area-option-label">Piernas</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('todo', this)">
+                        <div class="area-hex-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="5" r="2"/><path d="M12 7v7m0 0l-3 5m3-5l3 5M9 10h6"/></svg>
+                        </div>
+                        <span class="area-option-label">Todo el Cuerpo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="areas-footer">
+                <button id="btn-areas-continue" class="btn-areas-continue" onclick="submitAreas()">
+                    CONTINUAR →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 8: TELA DE ANÁLISE / LOADING -->
+    <div id="screen-analysis" class="screen">
+        <div class="analysis-screen">
+            <div class="analysis-icon">
+                <!-- Ícone de raio: precisão e energia -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="var(--brand-purple)" stroke="var(--cta-green)" stroke-width="1" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <div class="analysis-percent">78%</div>
+            <div class="analysis-claim" id="analysis-claim">DE LOS HOMBRES QUE ELIGEN<br>ABDOMEN COMO ÁREA PROBLEMÁTICA</div>
+
+            <div class="analysis-box">
+                <p>llevan más de 2 años con ese problema. <strong>No es falta de voluntad. Es falta del protocolo correcto.</strong> Tu plan atacará esa zona con precisión táctica.</p>
+            </div>
+
+            <p class="analysis-note">No es falta de voluntad. Es falta del protocolo correcto.<br>Tu plan atacará esa zona con precisión táctica, no con ejercicios genéricos de YouTube.</p>
+
+            <div class="loading-bar-wrap">
+                <div class="loading-label">Analizando tu perfil...</div>
+                <div class="loading-track">
+                    <div id="loading-fill" class="loading-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 9: ALTURA E PESO -->
+    <div id="screen-biometrics" class="screen">
+        <h1 class="headline" style="font-size:32px">TU <span style="color:var(--cta-green)">ALTURA Y PESO</span></h1>
+        <p class="subheadline" style="font-size:15px">Usamos estos datos para calcular tu <strong style="color:var(--cta-green)">IMC</strong> y ajustar la intensidad del protocolo.</p>
+
+        <div class="unit-toggle" style="margin-bottom: 20px;">
+            <button class="unit-btn active" id="bio-unit-metric" onclick="toggleBioUnits('metric')">CM / KG</button>
+            <button class="unit-btn" id="bio-unit-imperial" onclick="toggleBioUnits('imperial')">FT / LB</button>
+        </div>
+
+        <div class="biometrics-grid">
+            <div class="bio-field">
+                <span class="bio-label">Altura</span>
+                <div class="bio-input-wrap">
+                    <input type="text" id="input-height" class="bio-value-input" value="" placeholder="175" oninput="calcIMC()">
+                    <span class="bio-unit" id="label-height">centímetros</span>
+                </div>
+            </div>
+            <div class="bio-field">
+                <span class="bio-label">Peso</span>
+                <div class="bio-input-wrap">
+                    <input type="number" id="input-weight" class="bio-value-input" value="" placeholder="80" oninput="calcIMC()">
+                    <span class="bio-unit" id="label-weight">kilogramos</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="imc-box">
+            <div class="imc-box-label">IMC Calculado</div>
+            <div class="imc-divider"></div>
+            <div class="imc-value" id="imc-display"></div>
+        </div>
+
+        <div class="areas-footer">
+            <button class="btn-areas-continue active-btn" onclick="submitBiometrics()">CONTINUAR →</button>
+        </div>
+    </div>
+
+    <!-- ETAPA 10: PESO DESEJADO -->
+    <div id="screen-targetweight" class="screen">
+        <div class="target-weight-container">
+            <h1 class="headline" style="font-size:32px">¿CUÁL ES TU <span style="color:var(--cta-green)">PESO OBJETIVO</span>?</h1>
+            
+            <div class="unit-toggle">
+                <button class="unit-btn active" id="unit-kg" onclick="setWeightUnit('kg')">KG</button>
+                <button class="unit-btn" id="unit-lb" onclick="setWeightUnit('lb')">LB</button>
+            </div>
+
+            <div class="large-weight-display">
+                <input type="number" id="input-target-weight" class="weight-input-hidden" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
+                <span id="target-weight-val" class="weak-val" onclick="document.getElementById('input-target-weight').focus()">70</span>
+            </div>
+            <div class="validation-card" id="val-card" style="display: none;">
+                <div class="validation-icon" id="val-icon">🏆</div>
+                <div class="validation-content">
+                    <h4 id="val-title">OBJETIVO VIABLE. BIEN CALCULADO.</h4>
+                    <p id="val-text">Hombres con tu perfil que siguen el protocolo completo mantienen su peso en un promedio de 19 días. No en meses. En días.</p>
+                </div>
+            </div>
+
+            <div class="areas-footer">
+                <button class="btn-areas-continue active-btn" onclick="submitTargetWeight()">CONTINUAR →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 11: GRÁFICO PREDIÇÃO -->
+    <div id="screen-prediction" class="screen">
+        <div class="prediction-screen">
+            <h1 class="prediction-headline">
+                El último plan que necesitarás para<br>
+                <span style="color:var(--cta-green)">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
+            </h1>
+            
+            <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong id="pred-weight-display">70 kg</strong> para el</p>
+            
+            <div class="prediction-date" id="pred-date-display">17 may 2026</div>
+
+            <div class="graph-container">
+                <div class="graph-legend">
+                    <div class="legend-item"><div class="line-green"></div> MASA MUSCULAR</div>
+                    <div class="legend-item"><div class="line-orange"></div> % GRASA</div>
+                </div>
+
+                <div class="graph-svg-wrap" id="graph-anim-box">
+                    <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="none" class="graph-grid">
+                        <defs>
+                            <linearGradient id="grad-fat" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.25" />
+                                <stop offset="100%" style="stop-color:#f97316;stop-opacity:0" />
+                            </linearGradient>
+                            <linearGradient id="grad-muscle" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.25" />
+                                <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Horizontal Grid Lines (Dashed) -->
+                        <line x1="0" y1="40" x2="400" y2="40" stroke-dasharray="2" />
+                        <line x1="0" y1="80" x2="400" y2="80" stroke-dasharray="2" />
+                        <line x1="0" y1="120" x2="400" y2="120" stroke-dasharray="2" />
+                        <line x1="0" y1="160" x2="400" y2="160" stroke-dasharray="2" />
+
+                        <!-- Vertical Grid Lines (Dashed) -->
+                        <line x1="80" y1="0" x2="80" y2="200" stroke-dasharray="2"/>
+                        <line x1="160" y1="0" x2="160" y2="200" stroke-dasharray="2"/>
+                        <line x1="240" y1="0" x2="240" y2="200" stroke-dasharray="2"/>
+                        <line x1="320" y1="0" x2="320" y2="200" stroke-dasharray="2"/>
+                        
+                        <!-- Area Fills (Glow) -->
+                        <path id="area-fat" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-fat)" style="opacity:0; transition: opacity 2s ease 1s;" />
+                        <path id="area-muscle" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-muscle)" style="opacity:0; transition: opacity 2s ease 1s;" />
+
+                        <!-- Fat Line (Orange) -->
+                        <path id="path-fat" d="M 0,40 C 100,50 250,160 400,185" stroke="#f97316" stroke-width="4" fill="none" />
+                        <circle cx="400" cy="185" r="5" fill="#f97316" />
+                        
+                        <!-- Muscle Line (Green) -->
+                        <path id="path-muscle" d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
+                        <circle cx="400" cy="35" r="5" fill="#86efac" />
+                    </svg>
+                </div>
+
+                <div class="graph-labels">
+                    <span>AHORA</span>
+                    <span id="lbl-step1">DÍA 7</span>
+                    <span id="lbl-step2">DÍA 14</span>
+                    <span id="lbl-step3" class="label-last">DÍA 21</span>
+                </div>
+            </div>
+            <p class="graph-note">Este gráfico es solo para fines ilustrativos</p>
+            
+            <div class="loading-bar-wrap" style="margin-top: 20px;">
+                <div class="loading-track">
+                    <div id="pred-loading-fill" class="loading-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 12: FLEXÕES -->
+    <div id="screen-pushups" class="screen">
+        <h1 class="headline">¿CUÁNTAS <span style="color:var(--cta-green)">FLEXIONES</span> PUEDES HACER?</h1>
+        <p class="subheadline">Sin descanso, en un solo intento. Sé honesto — tu protocolo depende de esto.</p>
+
+        <div class="pushups-grid">
+            <div class="pushup-hex-card" onclick="goToStep('training', '0')">
+                <div class="pushup-hex-wrap">0</div>
+                <div class="pushup-label">NINGUNA</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '1-5')">
+                <div class="pushup-hex-wrap">1-5</div>
+                <div class="pushup-label">PRINCIPIANTE</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '6-15')">
+                <div class="pushup-hex-wrap">6-15</div>
+                <div class="pushup-label">BÁSICO</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '16-30')">
+                <div class="pushup-hex-wrap">16-30</div>
+                <div class="pushup-label">INTERMEDIO</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '31-50')">
+                <div class="pushup-hex-wrap">31-50</div>
+                <div class="pushup-label">AVANZADO</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '50+')">
+                <div class="pushup-hex-wrap">50+</div>
+                <div class="pushup-label">ÉLITE</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 13: FREQUÊNCIA DE TREINO -->
+    <div id="screen-training" class="screen">
+        <h1 class="headline">TU ENTRENAMIENTO EN LOS <span style="color:var(--cta-green)">ÚLTIMOS 3 MESES</span></h1>
+        
+        <div class="training-list">
+            <div class="training-card anim-left delay-1" onclick="goToStep('startdate', 'Nada o casi nada')">
+                <div class="training-dots intensity-1">
+                    <div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div>
+                </div>
+                <div class="training-info">
+                    <div class="training-title">NADA O CASI NADA</div>
+                    <div class="training-sub">0-1 días por semana</div>
+                </div>
+            </div>
+
+            <div class="training-card anim-right delay-2" onclick="goToStep('startdate', 'Poco frecuente')">
+                <div class="training-dots intensity-2">
+                    <div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div>
+                </div>
+                <div class="training-info">
+                    <div class="training-title">POCO FRECUENTE</div>
+                    <div class="training-sub">1-2 días por semana</div>
+                </div>
+            </div>
+
+            <div class="training-card anim-left delay-3" onclick="goToStep('startdate', 'Moderado')">
+                <div class="training-dots intensity-3">
+                    <div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div>
+                </div>
+                <div class="training-info">
+                    <div class="training-title">MODERADO</div>
+                    <div class="training-sub">3 días por semana</div>
+                </div>
+            </div>
+
+            <div class="training-card anim-right delay-4" onclick="goToStep('startdate', 'Frecuente')">
+                <div class="training-dots intensity-4">
+                    <div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div>
+                </div>
+                <div class="training-info">
+                    <div class="training-title">FRECUENTE</div>
+                    <div class="training-sub">4-5 días por semana</div>
+                </div>
+            </div>
+
+            <div class="training-card anim-left delay-5" onclick="goToStep('startdate', 'Muy frecuente')">
+                <div class="training-dots intensity-5">
+                    <div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div><div class="training-dot"></div>
+                </div>
+                <div class="training-info">
+                    <div class="training-title">MUY FRECUENTE</div>
+                    <div class="training-sub">6-7 días por semana</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 14: DATA DE INÍCIO -->
+    <div id="screen-startdate" class="screen">
+        <h1 class="headline">UNA PREGUNTA HONESTA:<br><span style="color:var(--cta-green)">¿CUÁNDO VAS A EMPEZAR DE VERDAD?</span></h1>
+        
+        <div class="start-list" style="width:100%; margin-top:20px;">
+            <div class="start-card anim-left delay-1" onclick="goToStep('hormones', 'Hoy')">
+                <div class="start-icon">⚡</div>
+                <div class="start-info">
+                    <div class="start-title">EMPIEZO HOY</div>
+                    <div class="start-sub">En las próximas horas. El sistema activa tu protocolo ahora.</div>
+                </div>
+            </div>
+
+            <div class="start-card anim-right delay-2" onclick="goToStep('hormones', 'Mañana')">
+                <div class="start-icon">📅</div>
+                <div class="start-info">
+                    <div class="start-title">MAÑANA</div>
+                    <div class="start-sub">Bien. Pero recuerda: mañana siempre llega como hoy.</div>
+                </div>
+            </div>
+
+            <div class="start-card anim-left delay-3" onclick="goToStep('hormones', 'No estoy listo')">
+                <div class="start-icon">⏳</div>
+                <div class="start-info">
+                    <div class="start-title">NO ESTOY LISTO</div>
+                    <div class="start-sub">Llevas tiempo diciéndote eso.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 15: GRÁFICO HORMONAL -->
+    <div id="screen-hormones" class="screen">
+        <div class="prediction-screen">
+            <h1 class="prediction-headline" style="color:var(--text-white)">
+                ¡No tienes que exigirte<br>
+                <span style="color:var(--cta-green)">más de lo que puedes!</span>
+            </h1>
+
+            <div class="graph-container">
+                <div class="graph-legend">
+                    <div class="legend-item"><div class="line-white"></div> CORTISOL</div>
+                    <div class="legend-item"><div class="line-green"></div> TESTOSTERONA</div>
+                </div>
+
+                <div class="graph-svg-wrap" id="hormones-anim-box">
+                    <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="none" class="graph-grid">
+                        <defs>
+                            <linearGradient id="grad-cortisol" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#fff;stop-opacity:0.2" />
+                                <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
+                            </linearGradient>
+                            <linearGradient id="grad-testo" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.25" />
+                                <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Horizontal Grid Lines -->
+                        <line x1="0" y1="40" x2="400" y2="40" stroke-dasharray="2" />
+                        <line x1="0" y1="80" x2="400" y2="80" stroke-dasharray="2" />
+                        <line x1="0" y1="120" x2="400" y2="120" stroke-dasharray="2" />
+                        <line x1="0" y1="160" x2="400" y2="160" stroke-dasharray="2" />
+
+                        <!-- Vertical Grid Lines -->
+                        <line x1="133" y1="0" x2="133" y2="200" stroke-dasharray="2" />
+                        <line x1="266" y1="0" x2="266" y2="200" stroke-dasharray="2" />
+
+                        <!-- Area Fills -->
+                        <path id="area-cortisol" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-cortisol)" style="opacity:0; transition: opacity 2s ease 1s;" />
+                        <path id="area-testo" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-testo)" style="opacity:0; transition: opacity 2s ease 1s;" />
+
+                        <!-- Cortisol Line (White) -->
+                        <path d="M 0,40 C 100,50 250,160 400,185" stroke="#fff" stroke-width="4" fill="none" />
+                        <circle cx="400" cy="185" r="5" fill="#fff" />
+                        
+                        <!-- Testo Line (Green) -->
+                        <path d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
+                        <circle cx="400" cy="35" r="5" fill="#86efac" />
+                    </svg>
+                </div>
+
+                <div class="graph-labels">
+                    <span>AHORA</span>
+                    <span id="lbl-h-step1">DÍA 7</span>
+                    <span id="lbl-h-step2">DÍA 14</span>
+                    <span id="lbl-h-step3" class="label-last">DÍA 21</span>
+                </div>
+            </div>
+
+            <div class="analysis-box" style="margin-top:20px;">
+                <p style="text-align:center; font-weight:400; font-size:15px;">
+                    Un entrenamiento demasiado intenso puede aumentar tus niveles de cortisol y dificultar la definición corporal. El <strong>Protocolo Militar 21D</strong> adapta la intensidad para que alcances tus objetivos sin excederte.
+                </p>
+            </div>
+            
+            <p class="graph-note" style="margin-top:5px;">*Basado en datos de más de 1.3 millones de entrenamientos</p>
+
+            <div class="loading-bar-wrap" style="margin-top: 20px;">
+                <div class="loading-track">
+                    <div id="hormones-loading-fill" class="loading-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 16: CAPTURA DE NOME -->
+    <div id="screen-final" class="screen">
+        <h1 class="headline">TU PLAN ESTÁ <span style="color:var(--cta-green)">LISTO</span></h1>
+        <p class="subheadline">Ingresa tus datos para recibir tu <strong>protocolo personalizado</strong> con IMC, nivel de intensidad y plan de 21 días.</p>
+
+        <div class="name-field">
+            <span class="bio-label">Nombre</span>
+            <div class="name-input-wrap">
+                <input type="text" id="input-name" class="name-input" placeholder="Tu nombre" oninput="validateName(this.value)">
+            </div>
+            <p class="privacy-note">🔒 Solo necesitamos tu nombre para personalizar tu plan.</p>
+        </div>
+
+        <div class="areas-footer" style="margin-top:40px;">
+            <button id="btn-final-continue" class="btn-areas-continue active-btn" onclick="finishQuiz()">
+                VER MI PLAN →
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = {};
+        const selectedAreas = new Set();
+        const stepsOrder = ['age', 'gender', 'bodytype', 'goal', 'desiredbody', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final'];
+        const totalSteps = 16;
+        let weightUnit = 'kg';
+
+        // Mapeamento de valores do slider para imagens e textos
+        const fatLevels = {
+            1: { label: '5-9%', img: '5-9%' },
+            2: { label: '10-14%', img: '10-14%' },
+            3: { label: '15-19%', img: '15-19%' },
+            4: { label: '20-24%', img: '20-24%' },
+            5: { label: '25-29%', img: '25-29%' },
+            6: { label: '30-34%', img: '30-34%' },
+            7: { label: '35-39%', img: '35-39%' },
+            8: { label: '>40%', img: '40+%' }
+        };
+
+        function updateFatSlider(val) {
+            const bubble = document.getElementById('bubble');
+            const img = document.getElementById('fat-body-img');
+            const slider = document.getElementById('fat-slider');
+            
+            // Atualiza texto da bolha
+            bubble.innerText = fatLevels[val].label;
+            
+            // Atualiza imagem considerando o gênero
+            const suffix = (quizData.gender === 'Femenino') ? '-w.webp' : '.webp';
+            img.src = 'imagens_webp_crush_it/' + fatLevels[val].img + suffix;
+            
+            // Move a bolha acompanhando o thumb
+            const percent = ((val - slider.min) / (slider.max - slider.min)) * 100;
+            bubble.style.left = `calc(${percent}% + (${12 - percent * 0.24}px))`;
+        }
+
+        function handleGender(gender) {
+            quizData.gender = gender;
+            const s = gender === 'Femenino' ? '-w.webp' : '.webp';
+            
+            // Hex-grid body types
+            document.getElementById('img-delgado').src = `imagens_webp_crush_it/delgado${s}`;
+            document.getElementById('img-promedio').src = `imagens_webp_crush_it/promedio${s}`;
+            document.getElementById('img-grande').src = `imagens_webp_crush_it/grande${s}`;
+            document.getElementById('img-pesado').src = `imagens_webp_crush_it/pesado${s}`;
+
+            // Goals
+            document.getElementById('img-perder').src = `imagens_webp_crush_it/perder-peso${s}`;
+            document.getElementById('img-ganar').src = `imagens_webp_crush_it/Ganar-músculo${s}`;
+            document.getElementById('img-definir').src = `imagens_webp_crush_it/Definir-tu-cuerpo${s}`;
+
+            // Desired body
+            document.getElementById('img-desired-delgado').src = `imagens_webp_crush_it/delgado${s}`;
+            document.getElementById('img-delgado-ton').src = `imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4${s}`;
+            document.getElementById('img-atleta').src = `imagens_webp_crush_it/Atleta-pergunta-4${s}`;
+            document.getElementById('img-heroe').src = `imagens_webp_crush_it/heroe-pergunta-4${s}`;
+            document.getElementById('img-culturista').src = `imagens_webp_crush_it/culturista-pergunta-4${s}`;
+            document.getElementById('img-de-playa').src = `imagens_webp_crush_it/De-playa-pergunta-4${s}`;
+            document.getElementById('img-ejercitado').src = `imagens_webp_crush_it/Ejercitado-pergunta-4${s}`;
+            document.getElementById('img-de-crossfit').src = `imagens_webp_crush_it/De-crossfit-pergunta-4${s}`;
+
+            // Avatar Focus Area
+            document.getElementById('img-avatar-focus').src = `imagens_webp_crush_it/avatar-pergunta-6${s}`;
+            
+            // Initial Fat Slider image setup for the correct gender
+            const slider = document.getElementById('fat-slider');
+            updateFatSlider(slider.value);
+
+            goToStep('bodytype', gender);
+        }
+
+        function handleGoal(goal) {
+            quizData.goal = goal;
+            if (goal === 'Perder Peso') {
+                goToStep('desired-perder', goal);
+            } else if (goal === 'Ganar Músculo') {
+                goToStep('desired-ganar', goal);
+            } else {
+                goToStep('desired-definir', goal);
+            }
+        }
+
+        function toggleArea(area, el) {
+            // Se "Todo el Cuerpo" for clicado, limpa os outros e seleciona só ele
+            if (area === 'todo') {
+                selectedAreas.clear();
+                document.querySelectorAll('.area-option').forEach(o => o.classList.remove('selected'));
+                selectedAreas.add('todo');
+                el.classList.add('selected');
+            } else {
+                // Remove "Todo el Cuerpo" se existir
+                selectedAreas.delete('todo');
+                const todoEl = document.querySelector('.area-option:last-child');
+                if (todoEl) todoEl.classList.remove('selected');
+
+                if (selectedAreas.has(area)) {
+                    selectedAreas.delete(area);
+                    el.classList.remove('selected');
+                } else {
+                    selectedAreas.add(area);
+                    el.classList.add('selected');
+                }
+            }
+
+            // Ativa/desativa botão
+            const btn = document.getElementById('btn-areas-continue');
+            if (selectedAreas.size > 0) {
+                btn.classList.add('active-btn');
+            } else {
+                btn.classList.remove('active-btn');
+            }
+        }
+
+        function submitAreas() {
+            if (selectedAreas.size === 0) return;
+            const areasValue = Array.from(selectedAreas).join(', ');
+
+            // Monta copy dinâmica baseada na área escolhida
+            const areaCopies = {
+                pecho:   { label: 'PECHO COMO ÁREA PROBLEMÁTICA',   percent: '71%' },
+                brazos:  { label: 'BRAZOS COMO ÁREA PROBLEMÁTICA',  percent: '65%' },
+                abdomen: { label: 'ABDOMEN COMO ÁREA PROBLEMÁTICA', percent: '78%' },
+                piernas: { label: 'PIERNAS COMO ÁREA PROBLEMÁTICA', percent: '60%' },
+                todo:    { label: 'SU CUERPO COMPLETO',             percent: '83%' }
+            };
+            const firstArea = Array.from(selectedAreas)[0];
+            const copy = areaCopies[firstArea] || areaCopies['abdomen'];
+
+            document.getElementById('analysis-claim').innerHTML =
+                `DE LOS HOMBRES QUE ELIGEN<br>${copy.label}`;
+            document.querySelector('.analysis-percent').innerText = copy.percent;
+
+            goToStep('analysis', areasValue);
+        }
+
+        function startAnalysisLoading() {
+            const fill = document.getElementById('loading-fill');
+            if (!fill) return;
+            fill.style.width = '0%';
+            let progress = 0;
+            const duration = 5000; // 5 segundos
+            const interval = 50;   // atualiza a cada 50ms
+            const step = (interval / duration) * 100;
+
+            const timer = setInterval(() => {
+                progress += step;
+                if (progress >= 100) {
+                    progress = 100;
+                    fill.style.width = '100%';
+                    clearInterval(timer);
+                    // Avança para altura/peso após pequena pausa
+                    setTimeout(() => goToStep('biometrics', 'analyzed'), 400);
+                } else {
+                    fill.style.width = progress + '%';
+                }
+            }, interval);
+        }
+
+        let currentBioSystem = 'metric';
+        function toggleBioUnits(system) {
+            currentBioSystem = system;
+            document.getElementById('bio-unit-metric').classList.toggle('active', system === 'metric');
+            document.getElementById('bio-unit-imperial').classList.toggle('active', system === 'imperial');
+            
+            const hInput = document.getElementById('input-height');
+            const wInput = document.getElementById('input-weight');
+            const hLabel = document.getElementById('label-height');
+            const wLabel = document.getElementById('label-weight');
+
+            if (system === 'metric') {
+                hLabel.innerText = 'centímetros';
+                wLabel.innerText = 'kilogramos';
+                hInput.placeholder = '175';
+                wInput.placeholder = '80';
+            } else {
+                hLabel.innerText = 'pies-pulgadas';
+                wLabel.innerText = 'libras';
+                hInput.placeholder = "5'10";
+                wInput.placeholder = '175';
+            }
+            calcIMC();
+        }
+
+        function calcIMC() {
+            let h = document.getElementById('input-height').value;
+            let w = parseFloat(document.getElementById('input-weight').value);
+            const display = document.getElementById('imc-display');
+
+            if (!h || !w) {
+                display.classList.remove('filled');
+                display.innerText = '';
+                return;
+            }
+
+            let heightInMeters = 0;
+            let weightInKg = 0;
+
+            if (currentBioSystem === 'metric') {
+                heightInMeters = parseFloat(h) / 100;
+                weightInKg = w;
+            } else {
+                // Imperial: ft'in (ex: 5'10 ou 5.10)
+                if (h.includes("'")) {
+                    const parts = h.split("'");
+                    const ft = parseFloat(parts[0]);
+                    const inch = parseFloat(parts[1] || 0);
+                    heightInMeters = (ft * 12 + inch) * 0.0254;
+                } else {
+                    heightInMeters = parseFloat(h) * 0.3048; // Assume pés decimais se não tiver aspas
+                }
+                weightInKg = w * 0.453592;
+            }
+
+            if (!heightInMeters || heightInMeters < 0.5) {
+                display.innerText = 'ALTURA INVÁLIDA';
+                return;
+            }
+
+            const imc = weightInKg / (heightInMeters ** 2);
+            let category = '';
+            let color = '#fff';
+
+            if (imc < 18.5) {
+                category = 'Bajo peso';
+                color = '#00D1FF'; // Azul Vibrante
+            } else if (imc < 25) {
+                category = 'Peso normal';
+                color = '#00FF88'; // Verde Elétrico
+            } else if (imc < 30) {
+                category = 'Sobrepeso';
+                color = '#FFD600'; // Amarelo Intenso
+            } else {
+                category = 'Obesidad';
+                color = '#FF3D00'; // Vermelho Neon
+            }
+
+            display.classList.add('filled');
+            display.style.color = color;
+            display.innerText = `${imc.toFixed(1)} — ${category}`;
+        }
+
+        function submitBiometrics() {
+            const h = document.getElementById('input-height').value;
+            const w = document.getElementById('input-weight').value;
+            
+            if (!h || !w) return;
+
+            quizData.altura = h;
+            quizData.peso = w;
+            quizData.unitSystem = currentBioSystem;
+            goToStep('targetweight', `${h}cm / ${w}kg`);
+        }
+
+        function setWeightUnit(unit) {
+            weightUnit = unit;
+            document.querySelectorAll('.unit-toggle .unit-btn').forEach(btn => btn.classList.remove('active'));
+            const targetBtn = document.getElementById('unit-' + unit);
+            if (targetBtn) targetBtn.classList.add('active');
+            
+            const input = document.getElementById('input-target-weight');
+            const currentVal = parseFloat(input.value);
+            
+            if (currentVal) {
+                if (unit === 'lb') {
+                    input.value = Math.round(currentVal * 2.20462);
+                } else {
+                    input.value = Math.round(currentVal / 2.20462);
+                }
+            }
+            updateTargetWeightDisplay(input.value);
+        }
+
+        function updateTargetWeightDisplay(val) {
+            const display = document.getElementById('target-weight-val');
+            const vTitle = document.getElementById('val-title');
+            const vText = document.getElementById('val-text');
+            const vIcon = document.getElementById('val-icon');
+            const vCard = document.getElementById('val-card');
+            
+            if (!val) {
+                display.innerText = '70';
+                display.classList.add('weak-val');
+                if (vCard) vCard.style.display = 'none';
+                return;
+            }
+
+            if (vCard) vCard.style.display = 'block';
+            display.innerText = val;
+            display.classList.remove('weak-val');
+
+            // Cálculo da porcentagem em relação ao peso inicial
+            let currentW = parseFloat(quizData.peso);
+            let targetW = parseFloat(val);
+
+            if (currentW && targetW && vTitle && vText) {
+                const diff = targetW - currentW;
+                const perc = Math.abs((diff / currentW) * 100);
+                const action = diff < 0 ? 'perder' : 'ganar';
+                
+                let title = "OBJETIVO VIABLE";
+                let icon = "🏆";
+                let bgColor = "rgba(13, 25, 48, 0.8)"; // Azul padrão
+                let borderColor = "#1e3a8a";
+                
+                if (perc < 5) {
+                    title = "OBJETIVO SENCILLO";
+                    icon = "✅";
+                    bgColor = "rgba(22, 163, 74, 0.15)"; // Verde
+                    borderColor = "#22c55e";
+                } else if (perc < 12) {
+                    title = "OBJETIVO INTERMEDIO";
+                    icon = "🔥";
+                    bgColor = "rgba(13, 25, 48, 0.8)"; // Azul
+                    borderColor = "#1e3a8a";
+                } else {
+                    title = "OBJETIVO INCREÍBLE";
+                    icon = "🚀";
+                    bgColor = "rgba(154, 52, 18, 0.2)"; // Laranja/Vermelho
+                    borderColor = "#f97316";
+                }
+
+                vTitle.innerText = title;
+                vIcon.innerText = icon;
+                const vCard = document.getElementById('val-card');
+                if (vCard) {
+                    vCard.style.backgroundColor = bgColor;
+                    vCard.style.borderColor = borderColor;
+                }
+                
+                if (diff === 0) {
+                    vText.innerText = 'Mantendrás tu peso actual. Ideal para mantenimiento metabólico.';
+                } else {
+                    vText.innerHTML = `¡Maravilla! Quieres ${action} el <span style="color:var(--cta-green)">${perc.toFixed(1)}%</span> de tu peso atual. Los hombres con tu perfil logran esto en tiempo récord con el protocolo.`;
+                }
+            }
+        }
+
+        function submitTargetWeight() {
+            quizData.targetWeight = document.getElementById('input-target-weight').value;
+            quizData.weightUnit = weightUnit;
+            goToStep('prediction', quizData.targetWeight + weightUnit);
+        }
+
+        function startHormonesLoading() {
+            // Lógica de dias dinâmica baseada no objetivo (igual ao anterior)
+            const currentW = parseFloat(quizData.peso);
+            const targetW = parseFloat(quizData.targetWeight);
+            const diff = Math.abs(targetW - currentW);
+            const percVal = (diff / currentW) * 100;
+
+            let days = 21;
+            if (percVal < 5) days = 7;
+            else if (percVal < 10) days = 14;
+            else if (percVal < 18) days = 21;
+            else days = 28;
+
+            // Atualiza os rótulos do gráfico hormonal
+            document.getElementById('lbl-h-step1').innerText = `DÍA ${Math.round(days * 0.33)}`;
+            document.getElementById('lbl-h-step2').innerText = `DÍA ${Math.round(days * 0.66)}`;
+            document.getElementById('lbl-h-step3').innerText = `DÍA ${days}`;
+
+            // Inicia animação do gráfico hormonal
+            const graphBox = document.getElementById('hormones-anim-box');
+            if (graphBox) {
+                graphBox.classList.remove('active');
+                setTimeout(() => graphBox.classList.add('active'), 100);
+            }
+
+            const fill = document.getElementById('hormones-loading-fill');
+            fill.style.width = '0%';
+            let progress = 0;
+            const timer = setInterval(() => {
+                progress += 1;
+                fill.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(timer);
+                    setTimeout(() => goToStep('final', 'hormones-done'), 500);
+                }
+            }, 50); // 5 segundos totais
+        }
+
+        function validateName(val) {
+            const btn = document.getElementById('btn-final-continue');
+            if (val.trim().length > 2) {
+                btn.classList.add('active-btn');
+            } else {
+                btn.classList.remove('active-btn');
+            }
+        }
+
+        function finishQuiz() {
+            const name = document.getElementById('input-name').value;
+            if (name.trim().length < 2) return;
+            
+            quizData.name = name;
+            goToStep('checklist', 'name-captured');
+        }
+
+        function startChecklistAnimation() {
+            const fill = document.getElementById('checklist-loading-fill');
+            const perc = document.getElementById('checklist-perc');
+            let progress = 0;
+            
+            const totalDuration = 6000; // 6 segundos totais
+            const interval = 50;
+            const step = (interval / totalDuration) * 100;
+
+            const timer = setInterval(() => {
+                progress += step;
+                if (progress >= 100) {
+                    progress = 100;
+                    fill.style.width = '100%';
+                    perc.innerText = '100%';
+                    clearInterval(timer);
+                    setTimeout(() => goToStep('summary', 'processed'), 500);
+                } else {
+                    fill.style.width = progress + '%';
+                    perc.innerText = Math.round(progress) + '%';
+                    
+                    // Lógica das bolinhas do checklist
+                    if (progress > 20) { document.getElementById('chk-1').classList.add('completed'); document.getElementById('chk-1').classList.remove('active'); }
+                    else if (progress > 5) { document.getElementById('chk-1').classList.add('active'); }
+
+                    if (progress > 45) { document.getElementById('chk-2').classList.add('completed'); document.getElementById('chk-2').classList.remove('active'); }
+                    else if (progress > 25) { document.getElementById('chk-2').classList.add('active'); }
+
+                    if (progress > 70) { document.getElementById('chk-3').classList.add('completed'); document.getElementById('chk-3').classList.remove('active'); }
+                    else if (progress > 50) { document.getElementById('chk-3').classList.add('active'); }
+
+                    if (progress > 95) { document.getElementById('chk-4').classList.add('completed'); document.getElementById('chk-4').classList.remove('active'); }
+                    else if (progress > 75) { document.getElementById('chk-4').classList.add('active'); }
+                }
+            }, interval);
+        }
+
+        function startSummaryTimer() {
+            document.getElementById('summary-name').innerText = quizData.name || 'tu cuerpo';
+            let timeLeft = 4;
+            const timerEl = document.getElementById('summary-timer');
+            
+            const interval = setInterval(() => {
+                timeLeft--;
+                timerEl.innerText = timeLeft + 's';
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    renderOfferData();
+                    goToStep('offer', 'redirecting');
+                }
+            }, 1000);
+        }
+
+        function renderOfferData() {
+            // Nome e IMC Superior
+            document.getElementById('offer-name').innerText = quizData.name || 'INVITADO';
+            const imc = parseFloat(quizData.imc || 21.6);
+            document.getElementById('offer-imc-level').innerText = `IMC: ${imc.toFixed(1)} - Nivel: Máximo`;
+            
+            // Pesos e Datas
+            document.getElementById('off-weight-now').innerText = `${quizData.peso} kg`;
+            document.getElementById('off-weight-goal').innerText = `${quizData.targetWeight} kg`;
+            
+            const date = new Date();
+            date.setDate(date.getDate() + 21);
+            const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+            document.getElementById('off-date-goal').innerText = `${date.getDate()} ${months[date.getMonth()]}`;
+
+            // Comparativo
+            document.getElementById('comp-imc-now').innerText = imc.toFixed(1);
+            document.getElementById('comp-imc-goal').innerText = (imc - 3).toFixed(1); // Estimativa de perda
+
+            // Gauge IMC
+            document.getElementById('g-imc-val').innerText = imc.toFixed(2);
+            // Mapeamento simples: 15 (0%) a 35 (100%)
+            let imcPerc = ((imc - 15) / 20) * 100;
+            if (imcPerc < 0) imcPerc = 5;
+            if (imcPerc > 95) imcPerc = 95;
+            document.getElementById('g-imc-pin').style.left = imcPerc + '%';
+
+            // Calorias (Taxa Metabólica Basal Estimada)
+            const kcal = Math.round(parseFloat(quizData.peso) * 31);
+            document.getElementById('g-kcal-val').innerText = `${kcal} kcal`;
+
+            // Água
+            const water = (parseFloat(quizData.peso) * 0.035).toFixed(1);
+            document.getElementById('g-water-val').innerText = `${water} litros`;
+        }
+
+        function toggleFaq(el) {
+            el.parentElement.classList.toggle('active');
+        }
+
+        function scrollToPrice() {
+            document.getElementById('price-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function spinRoulette() {
+            const btn = document.getElementById('btn-spin');
+            const wheel = document.getElementById('wheel');
+            btn.style.display = 'none';
+            
+            // 247.5 graus é onde está o -75% (slice s6)
+            // Somamos 1800 para dar 5 voltas completas
+            const targetRotation = 1800 + 247.5; 
+            wheel.style.transform = `rotate(${targetRotation}deg)`;
+            
+            setTimeout(() => {
+                document.getElementById('roulette-win').style.display = 'block';
+            }, 4100);
+        }
+
+        function applyDiscount() {
+            quizData.discountApplied = true;
+            document.getElementById('roulette-modal').style.display = 'none';
+            
+            const priceBox = document.getElementById('price-box-main');
+            priceBox.innerHTML = `
+                <span class="old-price">$39.99 USD</span>
+                <span class="new-price" style="color:var(--cta-green)">$9.99 USD</span>
+            `;
+            
+            // Scroll suave para o novo preço
+            scrollToPrice();
+        }
+
+        function startPredictionLoading() {
+            // Atualiza peso no texto
+            document.getElementById('pred-weight-display').innerText = `${quizData.targetWeight} ${quizData.weightUnit}`;
+            
+            // Lógica de dias dinâmica baseada no objetivo
+            const currentW = parseFloat(quizData.peso);
+            const targetW = parseFloat(quizData.targetWeight);
+            const diff = Math.abs(targetW - currentW);
+            const percVal = (diff / currentW) * 100;
+
+            let days = 21;
+            if (percVal < 5) days = 7;
+            else if (percVal < 10) days = 14;
+            else if (percVal < 18) days = 21;
+            else days = 28;
+
+            // Atualiza os rótulos do gráfico
+            document.getElementById('lbl-step1').innerText = `DÍA ${Math.round(days * 0.33)}`;
+            document.getElementById('lbl-step2').innerText = `DÍA ${Math.round(days * 0.66)}`;
+            document.getElementById('lbl-step3').innerText = `DÍA ${days}`;
+
+            // Calcula data dinâmica
+            const date = new Date();
+            date.setDate(date.getDate() + days);
+            const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+            const formattedDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+            document.getElementById('pred-date-display').innerText = formattedDate;
+
+            const fill = document.getElementById('pred-loading-fill');
+            fill.style.width = '0%';
+            
+            // Inicia animação do gráfico
+            const graphBox = document.getElementById('graph-anim-box');
+            if (graphBox) {
+                graphBox.classList.remove('active');
+                setTimeout(() => graphBox.classList.add('active'), 100);
+            }
+
+            let progress = 0;
+            const timer = setInterval(() => {
+                progress += 1;
+                fill.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(timer);
+                    setTimeout(() => goToStep('pushups', 'prediction-done'), 500);
+                }
+            }, 50); // 5 segundos totais
+        }
+
+        function updateProgress(stepId) {
+            const progressBar = document.getElementById('progress-bar');
+            const backBtn = document.getElementById('back-btn');
+            const stepDisplay = document.getElementById('step-display');
+            
+            // Lista de passos que são perguntas reais (manuais)
+            const questionSteps = ['age', 'gender', 'bodytype', 'goal', 'desiredbody', 'bodyfat', 'focusarea', 'biometrics', 'targetweight', 'pushups', 'training', 'startdate', 'final'];
+            
+            let displayId = stepId;
+            if (stepId.startsWith('desired-')) displayId = 'desiredbody';
+
+            const currentIndex = stepsOrder.indexOf(displayId);
+            const totalStepsInOrder = stepsOrder.length;
+            const progress = ((currentIndex + 1) / totalStepsInOrder) * 100;
+            progressBar.style.width = progress + '%';
+
+            // Lógica de numeração apenas para perguntas (agora em porcentagem)
+            if (questionSteps.includes(displayId)) {
+                const questionNum = questionSteps.indexOf(displayId) + 1;
+                const percentage = Math.round((questionNum / questionSteps.length) * 100);
+                stepDisplay.style.display = 'inline-block';
+                stepDisplay.innerText = `${percentage}%`;
+            } else {
+                stepDisplay.style.display = 'none';
+            }
+
+            if (currentIndex > 0) {
+                backBtn.style.display = 'flex';
+            } else {
+                backBtn.style.display = 'none';
+            }
+        }
+
+        // Histórico interno — independente da API do browser
+        const navHistory = [];
+
+        function activateStep(stepId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            const screen = document.getElementById('screen-' + stepId);
+            if (!screen) return false;
+
+            screen.classList.add('active');
+            updateProgress(stepId);
+
+            const header = document.querySelector('.main-header');
+            if (stepId === 'offer') {
+                header.classList.add('offer-mode');
+            } else {
+                header.classList.remove('offer-mode');
+            }
+
+            try {
+                const newURL = window.location.protocol + "//" + window.location.host + window.location.pathname + "?step=" + stepId;
+                if (window.location.search !== ("?step=" + stepId)) {
+                    window.history.pushState({ stepId }, '', newURL);
+                }
+            } catch(e) { /* Ignorado em ambientes iframe/preview */ }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (stepId === 'bodyfat') updateFatSlider(document.getElementById('fat-slider').value);
+            if (stepId === 'analysis') startAnalysisLoading();
+            if (stepId === 'prediction') startPredictionLoading();
+            if (stepId === 'hormones') startHormonesLoading();
+            if (stepId === 'checklist') startChecklistAnimation();
+            if (stepId === 'summary') startSummaryTimer();
+
+            return true;
+        }
+
+        function goToStep(nextStepId, value) {
+            const activeScreen = document.querySelector('.screen.active');
+            if (activeScreen) {
+                const currentStep = activeScreen.id.replace('screen-', '');
+                quizData[currentStep] = value;
+                // Empilha o passo atual antes de avançar
+                navHistory.push(currentStep);
+            }
+
+            if (!activateStep(nextStepId)) {
+                if (nextStepId === 'offer') {
+                    alert("Redirecionando para a Oferta Final...");
+                } else {
+                    alert("Próxima etapa '" + nextStepId + "' ainda não implementada. Valor selecionado: " + value);
+                }
+            }
+        }
+
+        function goBack() {
+            if (navHistory.length === 0) return;
+            const prevStep = navHistory.pop();
+            activateStep(prevStep);
+        }
+
+        window.onpopstate = function(event) {
+            if (event.state && event.state.stepId) {
+                activateStep(event.state.stepId);
+            }
+        };
+
+        // Otimização Final: Ao carregar, verifica se o usuário já estava em um passo específico
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialStep = urlParams.get('step') || 'age';
+            
+            // Força a tela correta na inicialização
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            const screen = document.getElementById('screen-' + initialStep);
+            if (screen) {
+                screen.classList.add('active');
+                updateProgress(initialStep);
+                
+                // Inicializações específicas por tela se necessário
+                if (initialStep === 'bodyfat') updateFatSlider(document.getElementById('fat-slider').value);
+            } else {
+                document.getElementById('screen-age').classList.add('active');
+                updateProgress('age');
+            }
+        });
+    </script>
+</body>
+</html>
