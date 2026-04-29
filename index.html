@@ -3752,8 +3752,10 @@
                 feedbackW.classList.remove('show');
             }
 
-            if (!h || !w) {
+            // Só calcula e mostra o IMC se houver Altura E Peso com pelo menos 2 dígitos
+            if (!h || !w || wInput.value.length < 2) {
                 imcDisplay.innerText = '--';
+                imcDisplay.style.color = '#fff';
                 return;
             }
 
