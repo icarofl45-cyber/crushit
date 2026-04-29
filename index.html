@@ -3898,7 +3898,14 @@
                 return;
             }
 
-            if (vCard) vCard.style.display = 'block';
+            // Ocultar card e feedback se tiver menos de 2 dígitos
+            if (val.length < 2) {
+                if (vCard) vCard.style.display = 'none';
+                feedbackT.classList.remove('show');
+            } else {
+                if (vCard) vCard.style.display = 'block';
+            }
+
             display.innerText = val;
             display.classList.remove('weak-val');
 
