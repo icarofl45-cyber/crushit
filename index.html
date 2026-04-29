@@ -1663,6 +1663,60 @@
             box-shadow: 0 0 15px rgba(239, 68, 68, 0.2) !important;
         }
 
+        /* AVISO DE ERRO CUSTOMIZADO */
+        .error-message {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            color: #f97316; /* Laranja */
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+            animation: shake 0.4s ease;
+        }
+
+        .error-message svg {
+            width: 16px;
+            height: 16px;
+            fill: #f97316;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .input-error {
+            border: 2px solid #f97316 !important;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.2) !important;
+        }
+
+        /* AVISO DE ERRO CUSTOMIZADO */
+        .error-message {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            color: #f97316; /* Laranja */
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 8px;
+            animation: shake 0.4s ease;
+        }
+
+        .error-message svg {
+            width: 16px;
+            height: 16px;
+            fill: #f97316;
+            flex-shrink: 0;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
@@ -3175,6 +3229,10 @@
                     <input type="text" id="input-height" class="bio-value-input" value="" placeholder="175" oninput="calcIMC()">
                     <span class="bio-unit" id="label-height">centímetros</span>
                 </div>
+                <div id="error-height" class="error-message">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                    <span>Mínimo 140cm / Máximo 220cm</span>
+                </div>
             </div>
             <div class="bio-field">
                 <span class="bio-label">Peso</span>
@@ -3183,6 +3241,10 @@
                     <span class="bio-unit" id="label-weight">kilogramos</span>
                 </div>
                 <div id="feedback-weight" class="dynamic-feedback">¡Excelente! Paso 1 para tu transformación.</div>
+                <div id="error-weight" class="error-message">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                    <span>Mínimo 40kg / Máximo 140kg</span>
+                </div>
             </div>
         </div>
 
@@ -3760,6 +3822,9 @@
         function submitBiometrics() {
             const hInput = document.getElementById('input-height');
             const wInput = document.getElementById('input-weight');
+            const errH = document.getElementById('error-height');
+            const errW = document.getElementById('error-weight');
+            
             let h = parseFloat(hInput.value);
             let w = parseFloat(wInput.value);
 
@@ -3769,25 +3834,29 @@
             let hCheck = (quizData.bioUnit === 'imperial') ? (h * 30.48) : h;
             let wCheck = (quizData.bioUnit === 'imperial') ? (w / 2.20462) : w;
 
-            let error = false;
+            let hasError = false;
+
+            // Validação de Altura
             if (hCheck < 140 || hCheck > 220) {
                 hInput.parentElement.classList.add('input-error');
-                error = true;
+                errH.style.display = 'flex';
+                hasError = true;
             } else {
                 hInput.parentElement.classList.remove('input-error');
+                errH.style.display = 'none';
             }
 
+            // Validação de Peso
             if (wCheck < 40 || wCheck > 140) {
                 wInput.parentElement.classList.add('input-error');
-                error = true;
+                errW.style.display = 'flex';
+                hasError = true;
             } else {
                 wInput.parentElement.classList.remove('input-error');
+                errW.style.display = 'none';
             }
 
-            if (error) {
-                alert("Por favor, ingresa valores realistas (Altura: 140-220cm, Peso: 40-140kg)");
-                return;
-            }
+            if (hasError) return;
 
             goToStep('targetweight');
         }
