@@ -577,13 +577,13 @@
         }
 
         .fat-img {
-            height: 140%;
+            height: 135%;
             width: auto;
             object-fit: contain;
             object-position: top;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
             transition: opacity 0.2s ease;
-            margin-top: -10%;
+            margin-top: -2%;
         }
 
         /* Estilização do Input Range */
@@ -601,21 +601,40 @@
 
         input[type=range]::-webkit-slider-runnable-track {
             width: 100%;
-            height: 6px;
+            height: 12px;
             cursor: pointer;
-            background: #333;
+            background: #222;
             border-radius: 10px;
+            border: 1px solid #333;
         }
 
         input[type=range]::-webkit-slider-thumb {
-            height: 24px;
-            width: 24px;
+            height: 38px;
+            width: 38px;
             border-radius: 50%;
             background: var(--cta-green);
             cursor: pointer;
             -webkit-appearance: none;
-            margin-top: -9px;
-            box-shadow: 0 0 15px var(--cta-green);
+            margin-top: -14px;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+            border: 2px solid #fff;
+        }
+
+        /* Firefox */
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 12px;
+            cursor: pointer;
+            background: #222;
+            border-radius: 10px;
+        }
+        input[type=range]::-moz-range-thumb {
+            height: 38px;
+            width: 38px;
+            border-radius: 50%;
+            background: var(--cta-green);
+            cursor: pointer;
+            border: 2px solid #fff;
         }
 
         /* REMOVER SETAS DE INPUT NUMBER */
