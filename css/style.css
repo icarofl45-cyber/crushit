@@ -2741,3 +2741,39 @@ body #screen-targetweight .large-weight-display .weak-val.active {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.6) !important;
 }
+
+/* NEW PURPLE BRANDING FOR FOCUS AREAS */
+:root {
+    --purple-brand: #7B2FF7;
+    --purple-dark: #3D108C;
+    --purple-glow: rgba(123, 47, 247, 0.4);
+}
+
+.area-option.selected {
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple-brand)) !important;
+    border-color: var(--purple-brand) !important;
+    box-shadow: 0 0 15px var(--purple-glow) !important;
+}
+
+.area-option.selected .area-option-label {
+    color: #fff !important;
+}
+
+/* AVATAR HIGHLIGHTS - HIGH TECH PURPLE SCAN */
+.body-highlight {
+    background: radial-gradient(circle, var(--purple-brand) 0%, transparent 70%) !important;
+    mix-blend-mode: screen !important;
+    box-shadow: 0 0 20px var(--purple-brand) !important;
+    opacity: 0.6;
+    transition: all 0.5s ease;
+}
+
+.body-highlight.active {
+    opacity: 0.8 !important;
+    filter: brightness(1.2);
+}
+
+/* Especial para o botão de Todo el Cuerpo quando selecionado */
+.area-option.selected[onclick*="todo"] {
+    background: linear-gradient(135deg, #4c1d95, #7c3aed) !important;
+}
