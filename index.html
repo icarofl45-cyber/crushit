@@ -1280,6 +1280,15 @@
                     document.querySelectorAll('.body-highlight').forEach(h => h.classList.remove('active'));
                 }
             }
+
+            // Ativa/Desativa botão de continuar
+            const btn = document.getElementById('btn-areas-continue');
+            const hasSelection = document.querySelectorAll('.area-option.selected').length > 0;
+            if (hasSelection) {
+                btn.classList.add('active-btn');
+            } else {
+                btn.classList.remove('active-btn');
+            }
         }
 
         const navigationHistory = [];
@@ -1325,11 +1334,12 @@
         }
 
         function submitAreas() {
-            if (document.querySelectorAll('.area-option.selected').length > 0) {
-                goToStep('analysis');
-            } else {
-                alert('Selecciona al menos una área.');
-            }
+            const selected = document.querySelectorAll('.area-option.selected');
+            if (selected.length === 0) return;
+            
+            const areas = Array.from(selected).map(el => el.querySelector('.area-option-label').innerText);
+            userProfile.focusAreas = areas;
+            goToStep('analysis');
         }
 
         // Mutation Observer for scroll animations (fixing what was broken)
