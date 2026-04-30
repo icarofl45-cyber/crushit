@@ -1829,7 +1829,36 @@
             to { transform: rotate(360deg); }
         }
 
-        /* SUMMARY SCREEN (ETAPA 18) */
+        /* START DATE WARNING (92%) */
+        .start-warning-box {
+            background: rgba(234, 88, 12, 0.1);
+            border: 1.5px solid #ea580c;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: left;
+            display: flex;
+            gap: 12px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .start-warning-box p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #fb923c;
+            font-weight: 600;
+        }
+
+        .start-warning-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .summary-box {
             background: #111;
             border: 1px solid #222;
@@ -3630,13 +3659,18 @@
                 </div>
             </div>
 
-            <div class="start-card anim-left delay-3" onclick="goToStep('hormones', 'No estoy listo')">
-                <div class="start-icon">⏳</div>
+            <div class="start-card anim-left delay-3" style="border-color: #ea580c;" onclick="goToStep('hormones', 'No estoy listo')">
+                <div class="start-icon">⌛</div>
                 <div class="start-info">
                     <div class="start-title">NO ESTOY LISTO</div>
                     <div class="start-sub">Llevas tiempo diciéndote eso.</div>
                 </div>
             </div>
+        </div>
+
+        <div class="start-warning-box anim-up delay-4">
+            <div class="start-warning-icon">⚠️</div>
+            <p>La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.</p>
         </div>
     </div>
 
