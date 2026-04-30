@@ -2340,3 +2340,18 @@ input[type=number] {
     color: var(--cta-green);
     text-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
 }
+
+/* IMC CATEGORIES */
+.imc-category {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    display: none;
+}
+
+.imc-blue { color: #3b82f6; }
+.imc-green { color: #22c55e; }
+.imc-orange { color: #f97316; }
+.imc-red { color: #ef4444; }

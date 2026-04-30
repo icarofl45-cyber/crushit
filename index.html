@@ -793,7 +793,7 @@
                     <input type="number" id="input-weight" class="bio-value-input" value="" placeholder="80" oninput="calcIMC()">
                     <span class="bio-unit" id="label-weight">kilogramos</span>
                 </div>
-                <div id="feedback-weight" class="dynamic-feedback">¡Excelente! Paso 1 para tu transformación.</div>
+
                 <div id="error-weight" class="error-message">
                     <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
                     <span>Mínimo 40kg / Máximo 140kg</span>
@@ -804,7 +804,8 @@
         <div class="imc-box">
             <div class="imc-box-label">IMC Calculado</div>
             <div class="imc-divider"></div>
-            <div class="imc-value" id="imc-display"></div>
+            <div class="imc-value" id="imc-display">--</div>
+            <div id="imc-category" class="imc-category"></div>
         </div>
 
         <div class="areas-footer">
@@ -1356,6 +1357,8 @@
         function calcIMC() {
             const hInput = document.getElementById('input-height');
             const wInput = document.getElementById('input-weight');
+            const imcDisplay = document.getElementById('imc-display');
+            const imcCat = document.getElementById('imc-category');
             const h = parseFloat(hInput.value);
             const w = parseFloat(wInput.value);
             
@@ -1366,25 +1369,40 @@
                 document.getElementById('error-height').classList.remove('active');
             }
 
-            // Weight Validation & Feedback
-            if (wInput.value) {
-                if (w < 40 || w > 140) {
-                    document.getElementById('error-weight').classList.add('active');
-                    document.getElementById('feedback-weight').classList.remove('active');
-                } else {
-                    document.getElementById('error-weight').classList.remove('active');
-                    document.getElementById('feedback-weight').classList.add('active');
-                }
+            // Weight Validation
+            if (wInput.value && (w < 40 || w > 140)) {
+                document.getElementById('error-weight').classList.add('active');
             } else {
                 document.getElementById('error-weight').classList.remove('active');
-                document.getElementById('feedback-weight').classList.remove('active');
             }
 
             if (h >= 140 && h <= 220 && w >= 40 && w <= 140) {
-                const imc = (w / ((h/100)**2)).toFixed(1);
-                document.getElementById('imc-display').innerText = imc;
+                const imc = parseFloat((w / ((h/100)**2)).toFixed(1));
+                imcDisplay.innerText = imc;
+                
+                let category = "";
+                let colorClass = "";
+                
+                if (imc < 18.5) {
+                    category = "Bajo peso";
+                    colorClass = "imc-blue";
+                } else if (imc < 25) {
+                    category = "Peso normal";
+                    colorClass = "imc-green";
+                } else if (imc < 30) {
+                    category = "Sobrepeso";
+                    colorClass = "imc-orange";
+                } else {
+                    category = "Obeso";
+                    colorClass = "imc-red";
+                }
+                
+                imcCat.innerText = category;
+                imcCat.className = "imc-category " + colorClass;
+                imcCat.style.display = "block";
             } else {
-                document.getElementById('imc-display').innerText = '--';
+                imcDisplay.innerText = '--';
+                imcCat.style.display = "none";
             }
         }
 
