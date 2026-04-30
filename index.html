@@ -2313,30 +2313,27 @@
             padding: 24px;
         }
 
-        /* ANIMAÇÕES DE OFERTA PERSONALIZADAS */
-        .anim-left-smooth { animation: fadeInLeft 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-        .anim-right-smooth { animation: fadeInRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-        .anim-bottom-smooth { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ANIMAÇÕES DE REVELAÇÃO NO SCROLL */
+        .reveal {
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .delay-1 { transition-delay: 0.1s !important; animation-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s !important; animation-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s !important; animation-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s !important; animation-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s !important; animation-delay: 0.5s; }
-        .delay-6 { transition-delay: 0.6s !important; animation-delay: 0.6s; }
+        .reveal-left { transform: translateX(-30px); }
+        .reveal-right { transform: translateX(30px); }
+        .reveal-bottom { transform: translateY(30px); }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s !important; }
+        .delay-2 { transition-delay: 0.2s !important; }
+        .delay-3 { transition-delay: 0.3s !important; }
+        .delay-4 { transition-delay: 0.4s !important; }
+        .delay-5 { transition-delay: 0.5s !important; }
+        .delay-6 { transition-delay: 0.6s !important; }
 
         .gauge-header {
             display: flex;
@@ -2997,13 +2994,13 @@
     <div id="screen-offer" class="screen">
         <div class="offer-container">
             
-            <div class="offer-header-box anim-bottom-smooth delay-1">
+            <div class="offer-header-box reveal reveal-bottom delay-1">
                 <span id="offer-sub-name">TU ANÁLISIS PERSONALIZADO</span>
                 <h2 id="offer-name">ICARO</h2>
                 <span id="offer-imc-level">IMC: 21.6 - Nivel: Máximo</span>
             </div>
 
-            <div class="status-box anim-left-smooth delay-2">
+            <div class="status-box reveal reveal-left delay-2">
                 <div class="status-tag">PESO NORMAL</div>
                 <div class="status-title">TU CUERPO ESTÁ LISTO PARA DEFINICIÓN</div>
                 
@@ -3025,11 +3022,11 @@
                 </div>
 
                 <div class="protocol-box">
-                    💕 <strong>Tu protocolo:</strong> Definición de abdominales con circuitos de alta intensidade - 4-5 dias/semana. Máxima quema de grasa.
+                    💕 <strong>Tu protocolo:</strong> Definición de abdominales com circuitos de alta intensidade - 4-5 dias/semana. Máxima quema de grasa.
                 </div>
             </div>
 
-            <div class="comparison-row anim-right-smooth delay-3">
+            <div class="comparison-row reveal reveal-right delay-3">
                 <div class="comp-card">
                     <h6>AHORA</h6>
                     <div class="img-wrapper">
@@ -4926,6 +4923,38 @@
                 }
             });
         });
+
+        // ========== SCROLL OBSERVER SYSTEM ==========
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Opcional: parar de observar após animar uma vez
+                    // scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15, // Dispara quando 15% do elemento está visível
+            rootMargin: "0px 0px -50px 0px" // Margem para disparar um pouco antes de entrar totalmente
+        });
+
+        function initScrollAnimations() {
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                el.classList.remove('active'); // Reset inicial
+                scrollObserver.observe(el);
+            });
+        }
+
+        // Re-inicializa o observador quando a tela de oferta é ativada
+        const originalActivateStep = activateStep;
+        activateStep = function(stepId) {
+            const result = originalActivateStep(stepId);
+            if (stepId === 'offer') {
+                setTimeout(initScrollAnimations, 100);
+            }
+            return result;
+        };
 
         document.querySelectorAll('.screen').forEach(screen => {
             observer.observe(screen, { attributes: true });
