@@ -3016,7 +3016,7 @@
             <div class="comparison-row anim-fade delay-3">
                 <div class="comp-card">
                     <h6>AHORA</h6>
-                    <img src="imagens_webp_crush_it/oferta-1.webp" alt="Agora">
+                    <img id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Ahora">
                     <span class="comp-imc-val" id="comp-imc-now">21.6</span>
                     <span class="comp-imc-lbl">IMC ACTUAL</span>
                     <div class="muscle-bars">
@@ -3025,7 +3025,7 @@
                 </div>
                 <div class="comp-card">
                     <h6>TU OBJETIVO</h6>
-                    <img src="imagens_webp_crush_it/oferta-2.webp" alt="Objetivo">
+                    <img id="off-img-goal" src="imagens_webp_crush_it/Atleta-pergunta-4.webp" alt="Objetivo">
                     <span class="comp-imc-val" id="comp-imc-goal">18.5</span>
                     <span class="comp-imc-lbl">IMC OBJETIVO</span>
                     <div class="muscle-bars">
@@ -3104,16 +3104,12 @@
                 </div>
             </div>
 
-            <div class="calendar-preview anim-fade delay-10">
-                <img src="imagens_webp_crush_it/oferta-2.webp" style="opacity:0.3; filter:grayscale(1);">
-                <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;">
-                    <span style="font-size:24px; font-weight:900; color:var(--cta-green);">CALENDÁRIO MILITAR</span>
-                    <p style="font-size:12px; color:var(--text-white);">Tu cronograma detallado de 21 dias está listo.</p>
-                </div>
+            <div class="calendar-preview anim-fade delay-10" style="background: #111; overflow: hidden; border-radius: 16px; border: 1px solid #333;">
+                <img src="imagens_webp_crush_it/oferta-2.webp" style="width: 100%; height: auto; display: block; filter: none; opacity: 1;">
             </div>
 
-            <div class="gift-box anim-fade delay-11">
-                <span class="gift-icon">🎁</span>
+            <div class="gift-box anim-fade delay-11" style="text-align: center;">
+                <img src="imagens_webp_crush_it/oferta-1.webp" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
                 <p style="font-size:12px; color:var(--text-gray); margin-bottom:10px;">Obtienes un regalo imperdible además del programa principal</p>
                 <h4 style="font-size:20px; font-weight:900;">Plan imprimible para 2026</h4>
             </div>
@@ -4668,6 +4664,38 @@
 
             if (stepId === 'offer') {
                 header.classList.add('offer-mode');
+                
+                // --- Lógica de Personalização de Imagens na Oferta ---
+                const s = (quizData.gender === 'Femenino') ? 'w' : '';
+                const imgNow = document.getElementById('off-img-now');
+                const imgGoal = document.getElementById('off-img-goal');
+
+                // Mapeamento Corpo Atual (Etapa 3)
+                const nowMap = {
+                    'Delgado': 'delgado',
+                    'Promedio': 'promedio',
+                    'Grande': 'grande',
+                    'Pesado': 'pesado'
+                };
+                const nowVal = quizData.bodytype || 'Delgado';
+                if (imgNow) imgNow.src = `imagens_webp_crush_it/${nowMap[nowVal] || 'delgado'}${s}.webp`;
+
+                // Mapeamento Corpo Desejado (Etapa 5)
+                const goalMap = {
+                    'Delgado': 'delgado',
+                    'Delgado y Tonificado': 'Delgado-y-tonificado-pergunta-4',
+                    'Atleta': 'Atleta-pergunta-4',
+                    'Héroe': 'heroe-pergunta-4',
+                    'Culturista': 'culturista-pergunta-4',
+                    'De Playa': 'De-playa-pergunta-4',
+                    'Ejercitado': 'Ejercitado-pergunta-4',
+                    'De Crossfit': 'De-crossfit-pergunta-4'
+                };
+                // O valor do corpo desejado pode estar em 'desiredbody' ou 'bodyfat' dependendo da rota
+                const goalVal = quizData.bodyfat || quizData.desiredbody || 'Atleta';
+                if (imgGoal) imgGoal.src = `imagens_webp_crush_it/${goalMap[goalVal] || 'Atleta-pergunta-4'}${s}.webp`;
+                // ---------------------------------------------------
+
             } else {
                 header.classList.remove('offer-mode');
             }
