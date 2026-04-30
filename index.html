@@ -2266,14 +2266,22 @@
 
         .comp-card img {
             width: 100%;
-            height: 240px;
+            height: 100%;
             object-fit: cover;
-            object-position: center 10%; /* Foca na parte de cima/rosto */
-            margin-bottom: 15px;
-            border-radius: 12px;
+            object-position: center 15%;
+            display: block;
             /* Máscara para suavizar o corte em baixo */
-            -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: #000;
         }
 
         .comp-card h6 {
@@ -3024,7 +3032,9 @@
             <div class="comparison-row anim-fade delay-3">
                 <div class="comp-card">
                     <h6>AHORA</h6>
-                    <img id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Ahora">
+                    <div class="img-wrapper">
+                        <img id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Ahora">
+                    </div>
                     <span class="comp-imc-val" id="comp-imc-now">21.6</span>
                     <span class="comp-imc-lbl">IMC ACTUAL</span>
                     <div class="muscle-bars">
@@ -3033,7 +3043,9 @@
                 </div>
                 <div class="comp-card">
                     <h6>TU OBJETIVO</h6>
-                    <img id="off-img-goal" src="imagens_webp_crush_it/Atleta-pergunta-4.webp" alt="Objetivo">
+                    <div class="img-wrapper">
+                        <img id="off-img-goal" src="imagens_webp_crush_it/Atleta-pergunta-4.webp" alt="Objetivo">
+                    </div>
                     <span class="comp-imc-val" id="comp-imc-goal">18.5</span>
                     <span class="comp-imc-lbl">IMC OBJETIVO</span>
                     <div class="muscle-bars">
