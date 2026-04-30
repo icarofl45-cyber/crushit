@@ -2577,3 +2577,15 @@ body #screen-targetweight .large-weight-display .weak-val {
     color: rgba(255,255,255,0.1) !important; /* Ficando quase invisível quando apagado, para o contraste ser gigante */
     transition: all 0.3s ease-in-out;
 }
+
+/* ADJUSTING BRIGHTNESS: -35% */
+body #screen-targetweight .large-weight-display .weak-val.active {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 7px #fff,
+        0 0 15px rgba(0, 255, 102, 0.7),
+        0 0 30px rgba(0, 255, 102, 0.4) !important;
+    opacity: 1 !important;
+    transform: scale(1.05) !important;
+    filter: none !important;
+}
