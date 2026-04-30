@@ -1354,11 +1354,37 @@
         }
 
         function calcIMC() {
-            const h = parseFloat(document.getElementById('input-height').value);
-            const w = parseFloat(document.getElementById('input-weight').value);
-            if (h > 100 && w > 30) {
+            const hInput = document.getElementById('input-height');
+            const wInput = document.getElementById('input-weight');
+            const h = parseFloat(hInput.value);
+            const w = parseFloat(wInput.value);
+            
+            // Height Validation
+            if (hInput.value && (h < 140 || h > 220)) {
+                document.getElementById('error-height').classList.add('active');
+            } else {
+                document.getElementById('error-height').classList.remove('active');
+            }
+
+            // Weight Validation & Feedback
+            if (wInput.value) {
+                if (w < 40 || w > 140) {
+                    document.getElementById('error-weight').classList.add('active');
+                    document.getElementById('feedback-weight').classList.remove('active');
+                } else {
+                    document.getElementById('error-weight').classList.remove('active');
+                    document.getElementById('feedback-weight').classList.add('active');
+                }
+            } else {
+                document.getElementById('error-weight').classList.remove('active');
+                document.getElementById('feedback-weight').classList.remove('active');
+            }
+
+            if (h >= 140 && h <= 220 && w >= 40 && w <= 140) {
                 const imc = (w / ((h/100)**2)).toFixed(1);
                 document.getElementById('imc-display').innerText = imc;
+            } else {
+                document.getElementById('imc-display').innerText = '--';
             }
         }
 
@@ -1374,7 +1400,13 @@
         }
 
         function updateTargetWeightDisplay(val) {
-            document.getElementById('target-weight-val').innerText = val;
+            const display = document.getElementById('target-weight-val');
+            display.innerText = val || '70';
+            if (val) {
+                display.classList.add('active');
+            } else {
+                display.classList.remove('active');
+            }
             document.getElementById('val-card').style.display = val ? 'flex' : 'none';
         }
 
