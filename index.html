@@ -1288,6 +1288,29 @@
         document.querySelectorAll('.screen').forEach(screen => {
             observer.observe(screen, { attributes: true });
         });
+
+        // ROULETTE FUNCTIONS
+        function spinRoulette() {
+            const img = document.getElementById('roulette-img');
+            const btn = document.getElementById('btn-spin');
+            const winBox = document.getElementById('roulette-win');
+            
+            if (!img || !btn || !winBox) return;
+
+            btn.style.display = 'none';
+            const randomDeg = 1800 + Math.floor(Math.random() * 360);
+            img.style.transform = `rotate(${randomDeg}deg)`;
+            
+            setTimeout(() => {
+                winBox.classList.add('show');
+            }, 4000);
+        }
+
+        function applyDiscount() {
+            const modal = document.getElementById('roulette-modal');
+            if (modal) modal.classList.remove('active');
+            // Additional logic for discount can be added here
+        }
     </script>
 </body>
 </html>
