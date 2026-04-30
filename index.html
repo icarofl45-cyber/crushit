@@ -1941,8 +1941,136 @@
 
         .main-header.final-mode {
             padding: 15px 20px;
-            border: none; /* Remove a linha escura */
+            border: none;
         }
+
+        /* ========== SOCIAL PROOF POPUP ========== */
+        .social-proof-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid rgba(123, 47, 247, 0.3);
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 360px;
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(123, 47, 247, 0.15);
+            transform: translateX(-120%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .social-proof-popup.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .social-proof-popup .sp-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-purple), var(--cta-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .social-proof-popup .sp-content {
+            flex: 1;
+        }
+
+        .social-proof-popup .sp-name {
+            font-size: 13px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .social-proof-popup .sp-action {
+            font-size: 11px;
+            color: var(--cta-green);
+            font-weight: 600;
+        }
+
+        .social-proof-popup .sp-time {
+            font-size: 10px;
+            color: var(--text-gray);
+            margin-top: 2px;
+        }
+
+        .social-proof-popup .sp-close {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 2px;
+        }
+
+        /* ========== CARD ENTRANCE ANIMATIONS ========== */
+        .card-pop {
+            animation: cardPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        @keyframes cardPop {
+            from { opacity: 0; transform: scale(0.9) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Staggered delays for option cards */
+        .card-pop:nth-child(1) { animation-delay: 0.05s; }
+        .card-pop:nth-child(2) { animation-delay: 0.1s; }
+        .card-pop:nth-child(3) { animation-delay: 0.15s; }
+        .card-pop:nth-child(4) { animation-delay: 0.2s; }
+        .card-pop:nth-child(5) { animation-delay: 0.25s; }
+        .card-pop:nth-child(6) { animation-delay: 0.3s; }
+
+        /* ========== RESPONSIVE OPTIMIZATIONS ========== */
+        @media (max-width: 380px) {
+            .social-proof-popup {
+                left: 10px;
+                right: 10px;
+                max-width: none;
+                bottom: 10px;
+            }
+
+            .pushups-grid {
+                gap: 12px 6px !important;
+            }
+
+            .pushup-hex-wrap {
+                width: 85px !important;
+                height: 85px !important;
+                font-size: 26px !important;
+            }
+
+            .headline {
+                font-size: 22px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .premium-loading-box {
+                padding: 20px 15px;
+            }
+
+            .training-card {
+                padding: 15px 18px;
+            }
+        }
+
         .summary-box {
             background: #111;
             border: 1px solid #222;
@@ -4620,6 +4748,125 @@
                 updateProgress('age');
             }
         });
+
+        // ========== SOCIAL PROOF POPUP SYSTEM ==========
+        (function() {
+            const latamNames = [
+                { name: 'Carlos M.', gender: 'M', country: 'México' },
+                { name: 'Valentina R.', gender: 'F', country: 'Colombia' },
+                { name: 'Diego L.', gender: 'M', country: 'Argentina' },
+                { name: 'María José S.', gender: 'F', country: 'Chile' },
+                { name: 'Andrés P.', gender: 'M', country: 'Perú' },
+                { name: 'Camila F.', gender: 'F', country: 'Ecuador' },
+                { name: 'Santiago B.', gender: 'M', country: 'Uruguay' },
+                { name: 'Lucía G.', gender: 'F', country: 'México' },
+                { name: 'Mateo H.', gender: 'M', country: 'Colombia' },
+                { name: 'Isabella C.', gender: 'F', country: 'Venezuela' },
+                { name: 'Sebastián D.', gender: 'M', country: 'Costa Rica' },
+                { name: 'Sofía V.', gender: 'F', country: 'Argentina' },
+                { name: 'Emiliano T.', gender: 'M', country: 'México' },
+                { name: 'Fernanda A.', gender: 'F', country: 'Brasil' },
+                { name: 'Nicolás R.', gender: 'M', country: 'Chile' },
+                { name: 'Paula M.', gender: 'F', country: 'Perú' },
+                { name: 'Tomás J.', gender: 'M', country: 'Paraguay' },
+                { name: 'Andrea L.', gender: 'F', country: 'Honduras' },
+                { name: 'Martín Q.', gender: 'M', country: 'Bolivia' },
+                { name: 'Daniela O.', gender: 'F', country: 'Guatemala' },
+                { name: 'Alejandro W.', gender: 'M', country: 'Rep. Dominicana' },
+                { name: 'Catalina E.', gender: 'F', country: 'Colombia' },
+                { name: 'Gabriel N.', gender: 'M', country: 'El Salvador' },
+                { name: 'Renata K.', gender: 'F', country: 'México' },
+                { name: 'Joaquín P.', gender: 'M', country: 'Argentina' },
+                { name: 'Mariana S.', gender: 'F', country: 'Panamá' },
+                { name: 'Ricardo F.', gender: 'M', country: 'Venezuela' },
+                { name: 'Valeria T.', gender: 'F', country: 'Chile' },
+                { name: 'Felipe C.', gender: 'M', country: 'Ecuador' },
+                { name: 'Natalia B.', gender: 'F', country: 'Uruguay' }
+            ];
+
+            const timeAgo = ['hace 2 min', 'hace 5 min', 'hace 8 min', 'hace 12 min', 'hace 15 min', 'hace 23 min', 'hace 30 min', 'hace 45 min', 'hace 1 hora'];
+
+            // Telas de carregamento onde NÃO mostrar popups
+            const loadingSteps = ['analysis', 'prediction', 'hormones', 'checklist'];
+
+            // Criar o elemento do popup
+            const popup = document.createElement('div');
+            popup.className = 'social-proof-popup';
+            popup.innerHTML = `
+                <button class="sp-close" onclick="this.parentElement.classList.remove('show')">&times;</button>
+                <div class="sp-avatar"></div>
+                <div class="sp-content">
+                    <div class="sp-name"></div>
+                    <div class="sp-action">Adquirió Crush It — Acceso Vitalicio</div>
+                    <div class="sp-time"></div>
+                </div>
+            `;
+            document.body.appendChild(popup);
+
+            let nameIndex = 0;
+            // Embaralhar a lista para parecer aleatório
+            for (let i = latamNames.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [latamNames[i], latamNames[j]] = [latamNames[j], latamNames[i]];
+            }
+
+            function showSocialProof() {
+                // Verificar se estamos em uma tela de carregamento
+                const activeScreen = document.querySelector('.screen.active');
+                if (activeScreen) {
+                    const currentStep = activeScreen.id.replace('screen-', '');
+                    if (loadingSteps.includes(currentStep)) {
+                        return; // Não mostra popup em telas de carregamento
+                    }
+                }
+
+                const person = latamNames[nameIndex % latamNames.length];
+                const time = timeAgo[Math.floor(Math.random() * timeAgo.length)];
+                const avatar = person.gender === 'M' ? '👤' : '👩';
+
+                popup.querySelector('.sp-avatar').textContent = avatar;
+                popup.querySelector('.sp-name').textContent = `${person.name} — ${person.country}`;
+                popup.querySelector('.sp-time').textContent = time;
+
+                popup.classList.add('show');
+
+                // Esconder após 4 segundos
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 4000);
+
+                nameIndex++;
+            }
+
+            // Primeiro popup após 6 segundos, depois a cada 9
+            setTimeout(() => {
+                showSocialProof();
+                setInterval(showSocialProof, 9000);
+            }, 6000);
+        })();
+
+        // ========== CARD ENTRANCE ANIMATION ==========
+        // Adiciona animação de entrada nos cards das telas de opção
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    if (target.classList.contains('active')) {
+                        const cards = target.querySelectorAll('.age-card, .gender-card, .goal-card, .body-card, .training-card, .start-card, .pushup-hex-card');
+                        cards.forEach((card, i) => {
+                            card.classList.remove('card-pop');
+                            void card.offsetWidth; // force reflow
+                            card.classList.add('card-pop');
+                        });
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.screen').forEach(screen => {
+            observer.observe(screen, { attributes: true });
+        });
+
     </script>
 </body>
 </html>
