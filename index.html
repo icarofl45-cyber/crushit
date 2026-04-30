@@ -1115,7 +1115,7 @@
         <h1 class="headline">UNA PREGUNTA HONESTA:<br><span style="color:var(--cta-green)">¿CUÁNDO VAS A EMPEZAR DE VERDAD?</span></h1>
         
         <div class="start-list" style="width:100%; margin-top:20px;">
-            <div class="start-card anim-left delay-1" onclick="goToStep('hormones', 'Hoy')">
+            <div class="start-card anim-left delay-1" onclick="handleStartDate('Hoy')">
                 <div class="start-icon">⚡</div>
                 <div class="start-info">
                     <div class="start-title">EMPIEZO HOY</div>
@@ -1123,7 +1123,7 @@
                 </div>
             </div>
 
-            <div class="start-card anim-right delay-2" onclick="goToStep('hormones', 'Mañana')">
+            <div class="start-card anim-right delay-2" onclick="handleStartDate('Mañana')">
                 <div class="start-icon">📅</div>
                 <div class="start-info">
                     <div class="start-title">MAÑANA</div>
@@ -1131,7 +1131,7 @@
                 </div>
             </div>
 
-            <div class="start-card anim-left delay-3" style="border-color: #ea580c;" onclick="goToStep('hormones', 'No estoy listo')">
+            <div class="start-card anim-left delay-3" style="border-color: #ea580c;" onclick="handleStartDate('No estoy listo')">
                 <div class="start-icon">⌛</div>
                 <div class="start-info">
                     <div class="start-title">NO ESTOY LISTO</div>
@@ -1140,7 +1140,7 @@
             </div>
         </div>
 
-        <div class="start-warning-box anim-up delay-4">
+        <div id="start-warning" class="start-warning-box" style="display: none; margin-top: 20px;">
             <div class="start-warning-icon">⚠️</div>
             <p>La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.</p>
         </div>
@@ -1628,6 +1628,20 @@
 
         function scrollToPrice() {
             document.getElementById('price-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleStartDate(choice) {
+            userProfile.startDate = choice;
+            const warning = document.getElementById('start-warning');
+            
+            if (choice === 'No estoy listo') {
+                if (warning) warning.style.display = 'flex';
+                setTimeout(() => {
+                    goToStep('hormones');
+                }, 4000);
+            } else {
+                goToStep('hormones');
+            }
         }
 
         function goBack() {
