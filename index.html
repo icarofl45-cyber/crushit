@@ -1485,12 +1485,16 @@
         function updateTargetWeightDisplay(val) {
             const display = document.getElementById('target-weight-val');
             display.innerText = val || '70';
-            if (val) {
+            
+            if (val && val.length > 0) {
                 display.classList.add('active');
             } else {
                 display.classList.remove('active');
             }
+            
             document.getElementById('val-card').style.display = val ? 'flex' : 'none';
+            
+
 
             // Update Comparison Gauge
             const h = parseFloat(userProfile.height);
