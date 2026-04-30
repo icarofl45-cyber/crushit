@@ -746,7 +746,7 @@ input[type=number] {
 }
 
 /* Specific Positions for Male Avatar */
-.highlight-pecho { width: 70%; height: 22%; top: 14%; left: 15%; border-radius: 30%; background: radial-gradient(ellipse at 50% 65%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 50%, transparent 70%), radial-gradient(circle at 15% 25%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 60%), radial-gradient(circle at 85% 25%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 60%); }
+.highlight-pecho { width: 66%; height: 18%; top: 16%; left: 17%; border-radius: 30%; background: radial-gradient(ellipse at 50% 65%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 55%), radial-gradient(circle at 20% 30%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 30%, transparent 45%), radial-gradient(circle at 80% 30%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 30%, transparent 45%); }
 .highlight-brazo-l { width: 15%; height: 25%; top: 25%; left: 10%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 1) 0%, rgba(255, 85, 0, 0.65) 60%, transparent 100%); }
 .highlight-brazo-r { width: 15%; height: 25%; top: 25%; right: 10%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 1) 0%, rgba(255, 85, 0, 0.65) 60%, transparent 100%); }
 .highlight-abdomen { width: 40%; height: 20%; top: 28%; left: 30%; border-radius: 50%; }
@@ -782,7 +782,6 @@ input[type=number] {
 .area-option.selected {
     border-color: #ff5500;
     background: #ff5500;
-    justify-content: center;
 }
 
 .area-hex-icon {
@@ -808,7 +807,12 @@ input[type=number] {
 }
 
 .area-option.selected .area-hex-icon {
-    display: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.area-option.selected .area-hex-icon svg {
+    stroke: #ffffff;
 }
 
 .area-option-label {
