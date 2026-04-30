@@ -2634,36 +2634,38 @@
             <h1 class="headline" style="font-size:24px;">ANALIZANDO TU <span style="color:var(--cta-green)">PERFIL</span></h1>
             <p class="subheadline" style="font-size:14px;">Estamos cruzando tus datos con nuestra base de 1.3M de usuarios.</p>
 
-            <div class="loading-bar-wrap" style="margin: 30px 0;">
-                <div class="loading-label" style="display:flex; justify-content:space-between;">
-                    <span>Procesando...</span>
-                    <span id="checklist-perc">0%</span>
+            <div class="premium-loading-box">
+                <div class="loading-bar-wrap">
+                    <div class="loading-label" style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                        <span style="font-size:12px; font-weight:900; letter-spacing:1px; opacity:0.7;">PROCESANDO...</span>
+                        <span id="checklist-perc" style="color:var(--cta-green); font-weight:900;">0%</span>
+                    </div>
+                    <div class="loading-track" style="height:12px;">
+                        <div id="checklist-loading-fill" class="loading-fill" style="box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);"></div>
+                    </div>
                 </div>
-                <div class="loading-track">
-                    <div id="checklist-loading-fill" class="loading-fill"></div>
+
+                <div class="checklist-items">
+                    <div class="chk-item" id="chk-1">
+                        <div class="chk-circle"></div>
+                        <span>Verificando nivel de grasa corporal</span>
+                    </div>
+                    <div class="chk-item" id="chk-2">
+                        <div class="chk-circle"></div>
+                        <span>Calculando déficit calórico exacto</span>
+                    </div>
+                    <div class="chk-item" id="chk-3">
+                        <div class="chk-circle"></div>
+                        <span>Ajustando intensidad de micro-entrenamientos</span>
+                    </div>
+                    <div class="chk-item" id="chk-4">
+                        <div class="chk-circle"></div>
+                        <span>Finalizando protocolo personalizado</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="checklist-items">
-                <div class="chk-item" id="chk-1">
-                    <div class="chk-circle"></div>
-                    <span>Verificando nivel de grasa corporal</span>
-                </div>
-                <div class="chk-item" id="chk-2">
-                    <div class="chk-circle"></div>
-                    <span>Calculando déficit calórico exacto</span>
-                </div>
-                <div class="chk-item" id="chk-3">
-                    <div class="chk-circle"></div>
-                    <span>Ajustando intensidad de micro-entrenamientos</span>
-                </div>
-                <div class="chk-item" id="chk-4">
-                    <div class="chk-circle"></div>
-                    <span>Finalizando protocolo personalizado</span>
-                </div>
-            </div>
-
-            <div class="guarantee-badges anim-fade delay-1" style="display:flex; justify-content:center; gap:30px; margin-top:40px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 16px; border: 1px solid #222;">
+            <div class="guarantee-badges anim-fade delay-1" style="display:flex; justify-content:center; gap:30px; margin-top:20px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 20px; border: 1px solid #222; width: 100%;">
                 <div style="text-align:center;">
                     <div style="font-size:24px; margin-bottom:5px;">♾️</div>
                     <div style="font-size:11px; font-weight:800; color:var(--cta-green);">ACCESO VITALICIO</div>
