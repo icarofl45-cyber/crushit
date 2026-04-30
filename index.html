@@ -4545,7 +4545,15 @@
         function goBack() {
             if (navHistory.length === 0) return;
             const prevStep = navHistory.pop();
-            activateStep(prevStep);
+            
+            // Telas de carregamento automático que devem ser puladas ao voltar
+            const autoSteps = ['analysis', 'prediction', 'hormones', 'checklist'];
+            
+            if (autoSteps.includes(prevStep)) {
+                goBack(); // Continua voltando se for uma tela automática
+            } else {
+                activateStep(prevStep);
+            }
         }
 
         window.onpopstate = function(event) {
