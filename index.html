@@ -1921,6 +1921,23 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* HEADER FINAL MODE (Centering Logo, Hiding Progress) */
+        .main-header.final-mode .progress-container,
+        .main-header.final-mode .nav-controls {
+            display: none !important;
+        }
+
+        .main-header.final-mode .logo-container {
+            width: 100%;
+            justify-content: center;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .main-header.final-mode {
+            padding: 15px 20px;
+        }
         .summary-box {
             background: #111;
             border: 1px solid #222;
@@ -4499,6 +4516,14 @@
             updateProgress(stepId);
 
             const header = document.querySelector('.main-header');
+            const finalSteps = ['final', 'checklist', 'summary', 'offer'];
+            
+            if (finalSteps.includes(stepId)) {
+                header.classList.add('final-mode');
+            } else {
+                header.classList.remove('final-mode');
+            }
+
             if (stepId === 'offer') {
                 header.classList.add('offer-mode');
             } else {
