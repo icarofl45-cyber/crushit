@@ -1461,40 +1461,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
-            width: 45px;
+            gap: 5px;
+            width: 50px;
             flex-shrink: 0;
-            margin-right: 15px;
+            margin-right: 20px;
         }
 
         .dots-row-top {
             display: flex;
-            gap: 4px;
+            gap: 6px;
         }
 
         .dots-row-bottom {
             display: flex;
-            gap: 4px;
+            gap: 6px;
         }
 
         .training-dot {
-            width: 7px;
-            height: 7px;
-            background: #222; /* Apagado por padrão */
-            border-radius: 50%;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 10px;
+            height: 11px;
+            background: #222;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0.4;
         }
 
-        /* Só acende quando o card é focado/hover */
         .training-card:hover .training-dot.active {
             background: var(--cta-green);
-            box-shadow: 0 0 12px var(--cta-green), 0 0 20px rgba(0, 255, 136, 0.3);
-            transform: scale(1.2);
+            box-shadow: 0 0 15px var(--cta-green);
+            transform: scale(1.2) rotate(360deg);
+            opacity: 1;
         }
 
         .training-card:hover {
             border-color: var(--cta-green);
-            background: rgba(0, 255, 136, 0.05);
+            background: rgba(0, 255, 136, 0.03);
+            transform: translateX(5px);
         }
 
         .motivational-box {
