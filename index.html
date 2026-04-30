@@ -137,25 +137,26 @@
         }
 
         /* AJUSTES PARA A TELA DE OFERTA */
-        .main-header.offer-mode {
-            position: relative; /* Remove o sticky */
-            align-items: center;
-            padding-top: 30px;
-            margin-bottom: 0;
-        }
-
-        .main-header.offer-mode .logo-container {
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .main-header.offer-mode .logo-img {
-            max-width: 180px; /* Logo um pouco maior na oferta */
-        }
-
         .main-header.offer-mode .nav-controls,
-        .main-header.offer-mode .top-nav {
+        .main-header.offer-mode .top-nav,
+        .main-header.final-mode .nav-controls,
+        .main-header.final-mode .top-nav {
             display: none !important;
+        }
+
+        .main-header.offer-mode .logo-container,
+        .main-header.logo-centered .logo-container {
+            width: 100%;
+            justify-content: center;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .main-header.offer-mode {
+            position: relative;
+            padding-top: 20px;
+            margin-bottom: 0;
+            border: none !important;
         }
 
         .progress-container {
@@ -2312,31 +2313,30 @@
             padding: 24px;
         }
 
-        /* ANIMAÇÕES DE ENTRADA */
-        .screen .anim-left, .screen .anim-right, .screen .anim-down, .screen .anim-fade {
-            opacity: 0;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        /* ANIMAÇÕES DE OFERTA PERSONALIZADAS */
+        .anim-left-smooth { animation: fadeInLeft 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        .anim-right-smooth { animation: fadeInRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        .anim-bottom-smooth { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .screen .anim-left { transform: translateX(-40px); }
-        .screen .anim-right { transform: translateX(40px); }
-        .screen .anim-down { transform: translateY(-30px); }
-        .screen .anim-fade { transform: scale(0.95); }
-
-        .screen.active .anim-left, 
-        .screen.active .anim-right, 
-        .screen.active .anim-down, 
-        .screen.active .anim-fade {
-            opacity: 1;
-            transform: translate(0) scale(1);
-        }
-
-        .delay-1 { transition-delay: 0.1s !important; }
-        .delay-2 { transition-delay: 0.2s !important; }
-        .delay-3 { transition-delay: 0.3s !important; }
-        .delay-4 { transition-delay: 0.4s !important; }
-        .delay-5 { transition-delay: 0.5s !important; }
-        .delay-6 { transition-delay: 0.6s !important; }
+        .delay-1 { transition-delay: 0.1s !important; animation-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s !important; animation-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s !important; animation-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s !important; animation-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s !important; animation-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s !important; animation-delay: 0.6s; }
 
         .gauge-header {
             display: flex;
@@ -2997,13 +2997,13 @@
     <div id="screen-offer" class="screen">
         <div class="offer-container">
             
-            <div class="offer-header-box anim-down delay-1">
+            <div class="offer-header-box anim-bottom-smooth delay-1">
                 <span id="offer-sub-name">TU ANÁLISIS PERSONALIZADO</span>
                 <h2 id="offer-name">ICARO</h2>
                 <span id="offer-imc-level">IMC: 21.6 - Nivel: Máximo</span>
             </div>
 
-            <div class="status-box anim-fade delay-2">
+            <div class="status-box anim-left-smooth delay-2">
                 <div class="status-tag">PESO NORMAL</div>
                 <div class="status-title">TU CUERPO ESTÁ LISTO PARA DEFINICIÓN</div>
                 
@@ -3025,11 +3025,11 @@
                 </div>
 
                 <div class="protocol-box">
-                    💕 <strong>Tu protocolo:</strong> Definición de abdominales con circuitos de alta intensidad - 4-5 dias/semana. Máxima quema de grasa.
+                    💕 <strong>Tu protocolo:</strong> Definición de abdominales con circuitos de alta intensidade - 4-5 dias/semana. Máxima quema de grasa.
                 </div>
             </div>
 
-            <div class="comparison-row anim-fade delay-3">
+            <div class="comparison-row anim-right-smooth delay-3">
                 <div class="comp-card">
                     <h6>AHORA</h6>
                     <div class="img-wrapper">
