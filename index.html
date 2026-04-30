@@ -924,6 +924,9 @@
                                 <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.25" />
                                 <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
                             </linearGradient>
+                            <clipPath id="graph-reveal">
+                                <rect id="reveal-rect" x="0" y="0" width="0" height="200" />
+                            </clipPath>
                         </defs>
 
                         <!-- Horizontal Grid Lines (Dashed) -->
@@ -938,17 +941,20 @@
                         <line x1="240" y1="0" x2="240" y2="200" stroke-dasharray="2"/>
                         <line x1="320" y1="0" x2="320" y2="200" stroke-dasharray="2"/>
                         
-                        <!-- Area Fills (Glow) -->
-                        <path id="area-fat" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-fat)" style="opacity:0; transition: opacity 2s ease 1s;" />
-                        <path id="area-muscle" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-muscle)" style="opacity:0; transition: opacity 2s ease 1s;" />
+                        <!-- Grouped Elements for Reveal -->
+                        <g clip-path="url(#graph-reveal)">
+                            <!-- Area Fills (Glow) -->
+                            <path id="area-fat" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-fat)" />
+                            <path id="area-muscle" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-muscle)" />
 
-                        <!-- Fat Line (Orange) -->
-                        <path id="path-fat" d="M 0,40 C 100,50 250,160 400,185" stroke="#f97316" stroke-width="4" fill="none" />
-                        <circle cx="400" cy="185" r="5" fill="#f97316" />
-                        
-                        <!-- Muscle Line (Green) -->
-                        <path id="path-muscle" d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
-                        <circle cx="400" cy="35" r="5" fill="#86efac" />
+                            <!-- Fat Line (Orange) -->
+                            <path id="path-fat" d="M 0,40 C 100,50 250,160 400,185" stroke="#f97316" stroke-width="4" fill="none" />
+                            <circle cx="400" cy="185" r="5" fill="#f97316" />
+                            
+                            <!-- Muscle Line (Green) -->
+                            <path id="path-muscle" d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
+                            <circle cx="400" cy="35" r="5" fill="#86efac" />
+                        </g>
                     </svg>
                 </div>
 
@@ -1544,9 +1550,12 @@
 
         function startPredictionTimer() {
             const fill = document.getElementById('pred-loading-fill');
-            if (!fill) return;
+            const revealRect = document.getElementById('reveal-rect');
+            if (!fill || !revealRect) return;
             
             fill.style.width = '0%';
+            revealRect.setAttribute('width', '0');
+
             let progress = 0;
             const duration = 5000; 
             const intervalTime = 50;
@@ -1562,6 +1571,7 @@
                     }, 500);
                 }
                 fill.style.width = progress + '%';
+                revealRect.setAttribute('width', (progress / 100) * 400);
             }, intervalTime);
         }
 
