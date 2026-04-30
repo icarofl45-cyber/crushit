@@ -802,10 +802,29 @@
         </div>
 
         <div id="imc-box" class="imc-box">
-            <div class="imc-box-label">IMC Calculado</div>
-            <div class="imc-divider"></div>
-            <div class="imc-value" id="imc-display">--</div>
+            <div class="imc-box-header">
+                <div class="imc-box-label">IMC Calculado</div>
+                <div class="imc-value" id="imc-display">--</div>
+            </div>
+            
+            <div class="imc-gauge-container">
+                <div class="imc-gauge-track">
+                    <div id="imc-gauge-pin" class="imc-gauge-pin" style="left: 50%;"></div>
+                </div>
+                <div class="imc-gauge-labels">
+                    <span>BAJO</span>
+                    <span>NORMAL</span>
+                    <span>SOBREPESO</span>
+                    <span>OBESO</span>
+                </div>
+            </div>
+            
             <div id="imc-category" class="imc-category"></div>
+        </div>
+
+        <div class="security-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            Tus datos están seguros y encriptados
         </div>
 
         <div class="areas-footer">
@@ -1404,10 +1423,18 @@
                 
                 // Update Box
                 imcBox.className = "imc-box " + colorClass;
+
+                // Update Gauge Pin
+                // Range: 15 (Bajo) to 35 (Obeso)
+                let perc = ((imc - 15) / (35 - 15)) * 100;
+                if (perc < 5) perc = 5;
+                if (perc > 95) perc = 95;
+                document.getElementById('imc-gauge-pin').style.left = perc + '%';
             } else {
                 imcDisplay.innerText = '--';
                 imcCat.style.display = "none";
                 imcBox.className = "imc-box";
+                document.getElementById('imc-gauge-pin').style.left = '50%';
             }
         }
 
