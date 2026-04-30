@@ -666,7 +666,7 @@ input[type=number] {
     box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4);
 }
 
-/* ÁREAS PROBLEMÁTICAS (ETAPA 7) */
+/* ÃREAS PROBLEMÃTICAS (ETAPA 7) */
 .areas-screen {
     width: 100%;
     display: flex;
@@ -700,9 +700,9 @@ input[type=number] {
 .areas-avatar {
     flex-shrink: 0;
     width: 130px;
-    background: linear-gradient(180deg, rgba(34,197,94,0.07) 0%, rgba(123,47,247,0.07) 100%);
-    border-radius: 20px;
-    border: 1px solid #2a2a2a;
+    background: transparent;
+    border-radius: 0;
+    border: none;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -883,7 +883,7 @@ input[type=number] {
     .areas-headline { font-size: 26px; }
 }
 
-/* TELA DE ANÁLISE / LOADING (ETAPA 8) */
+/* TELA DE ANÃLISE / LOADING (ETAPA 8) */
 .analysis-screen {
     width: 100%;
     display: flex;
@@ -1666,7 +1666,7 @@ input[type=number] {
 }
 
 .chk-item.completed .chk-circle::after {
-    content: '✓';
+    content: 'âœ“';
     color: var(--cta-green);
     font-weight: 900;
     font-size: 14px;
@@ -2574,7 +2574,7 @@ body #screen-targetweight .large-weight-display .weak-val.active {
 }
 
 body #screen-targetweight .large-weight-display .weak-val {
-    color: rgba(255,255,255,0.1) !important; /* Ficando quase invis�vel quando apagado, para o contraste ser gigante */
+    color: rgba(255,255,255,0.1) !important; /* Ficando quase invisível quando apagado, para o contraste ser gigante */
     transition: all 0.3s ease-in-out;
 }
 
@@ -2592,14 +2592,14 @@ body #screen-targetweight .large-weight-display .weak-val.active {
 
 /* ELONGATING THE COMPARISON BOX: +30% */
 .imc-comparison-box {
-    max-width: 500px; /* Aumentando a largura m�xima */
+    max-width: 500px; /* Aumentando a largura máxima */
     width: 95%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .comparison-values {
-    gap: 60px !important; /* Aumentando o espa�o entre os valores para acompanhar o alongamento */
+    gap: 60px !important; /* Aumentando o espaço entre os valores para acompanhar o alongamento */
 }
 
 /* GLOBAL BACK BUTTON STYLES */
@@ -2608,7 +2608,7 @@ body #screen-targetweight .large-weight-display .weak-val.active {
     top: 90px; /* Ajustado para ficar abaixo da logo */
     left: 20px;
     z-index: 100;
-    display: none; /* Escondido por padr�o */
+    display: none; /* Escondido por padrão */
 }
 
 .btn-back {
@@ -2718,7 +2718,7 @@ body #screen-targetweight .large-weight-display .weak-val.active {
 
 /* DYNAMIC CONTINUE BUTTON */
 .btn-areas-continue {
-    background: #222 !important; /* Desativado por padr�o */
+    background: #222 !important; /* Desativado por padrão */
     color: #555 !important;
     border: 1px solid #333 !important;
     cursor: not-allowed;
@@ -2759,40 +2759,3 @@ body #screen-targetweight .large-weight-display .weak-val.active {
     color: #fff !important;
 }
 
-/* AVATAR HIGHLIGHTS - HIGH TECH PURPLE SCAN */
-.body-highlight {
-    background: radial-gradient(circle, var(--purple-brand) 0%, transparent 70%) !important;
-    mix-blend-mode: screen !important;
-    box-shadow: 0 0 20px var(--purple-brand) !important;
-    opacity: 0.6;
-    transition: all 0.5s ease;
-}
-
-.body-highlight.active {
-    opacity: 0.8 !important;
-    filter: brightness(1.2);
-}
-
-/* Especial para o bot�o de Todo el Cuerpo quando selecionado */
-.area-option.selected[onclick*="todo"] {
-    background: linear-gradient(135deg, #4c1d95, #7c3aed) !important;
-}
-
-/* REVERTING AVATAR HIGHLIGHTS TO ORANGE */
-.body-highlight {
-    background: radial-gradient(circle, #ea580c 0%, transparent 70%) !important;
-    mix-blend-mode: color-dodge !important;
-    box-shadow: 0 0 25px rgba(234, 88, 12, 0.6) !important;
-    opacity: 0 !important; /* Come�a invis�vel */
-}
-
-.body-highlight.active {
-    opacity: 0.9 !important;
-    animation: pulse-orange 2s infinite;
-}
-
-@keyframes pulse-orange {
-    0% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.1); opacity: 0.9; }
-    100% { transform: scale(1); opacity: 0.7; }
-}
