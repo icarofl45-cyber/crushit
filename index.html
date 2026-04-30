@@ -1922,21 +1922,26 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HEADER FINAL MODE (Centering Logo, Hiding Progress) */
-        .main-header.final-mode .progress-container,
+        /* HEADER FINAL MODE */
+        .main-header.final-mode .top-nav,
         .main-header.final-mode .nav-controls {
             display: none !important;
         }
 
-        .main-header.final-mode .logo-container {
+        .main-header.logo-centered .logo-container {
             width: 100%;
             justify-content: center;
             margin: 0;
             padding: 10px 0;
         }
 
+        .main-header.logo-centered .nav-controls {
+            display: none !important;
+        }
+
         .main-header.final-mode {
             padding: 15px 20px;
+            border: none; /* Remove a linha escura */
         }
         .summary-box {
             background: #111;
@@ -4516,9 +4521,18 @@
             updateProgress(stepId);
 
             const header = document.querySelector('.main-header');
-            const finalSteps = ['final', 'checklist', 'summary', 'offer'];
             
-            if (finalSteps.includes(stepId)) {
+            // Centraliza o logo nas etapas finais
+            const centeredLogoSteps = ['final', 'checklist', 'summary', 'offer'];
+            if (centeredLogoSteps.includes(stepId)) {
+                header.classList.add('logo-centered');
+            } else {
+                header.classList.remove('logo-centered');
+            }
+
+            // Esconde a barra de progresso TOTALMENTE após a tela de nome
+            const hideProgressSteps = ['checklist', 'summary', 'offer'];
+            if (hideProgressSteps.includes(stepId)) {
                 header.classList.add('final-mode');
             } else {
                 header.classList.remove('final-mode');
