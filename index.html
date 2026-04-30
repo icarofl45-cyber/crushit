@@ -846,6 +846,39 @@
                 <input type="number" id="input-target-weight" class="weight-input-hidden" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
                 <span id="target-weight-val" class="weak-val" onclick="document.getElementById('input-target-weight').focus()">70</span>
             </div>
+
+            <!-- COMPARISON GAUGE -->
+            <div class="imc-comparison-box">
+                <div class="comparison-header">
+                    <span>TU PROGRESO ESTIMADO</span>
+                    <div class="comparison-values">
+                        <div class="comp-val-item">
+                            <span class="comp-label">ACTUAL</span>
+                            <span id="comp-imc-current" class="comp-number">--</span>
+                        </div>
+                        <div class="comp-val-arrow">→</div>
+                        <div class="comp-val-item">
+                            <span class="comp-label">OBJETIVO</span>
+                            <span id="comp-imc-target" class="comp-number">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imc-gauge-container">
+                    <div class="imc-gauge-track">
+                        <!-- Current Pin -->
+                        <div id="target-gauge-pin-current" class="imc-gauge-pin current-pin" style="left: 50%;"></div>
+                        <!-- Target Pin -->
+                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin" style="left: 50%;"></div>
+                    </div>
+                    <div class="imc-gauge-labels">
+                        <span>BAJO</span>
+                        <span>NORMAL</span>
+                        <span>SOBREPESO</span>
+                        <span>OBESO</span>
+                    </div>
+                </div>
+            </div>
             <div id="feedback-target" class="dynamic-feedback" style="margin-bottom: 20px;">Tu cuerpo está listo para este cambio.</div>
             <div class="validation-card" id="val-card" style="display: none;">
                 <div class="validation-icon" id="val-icon">🏆</div>
@@ -1458,6 +1491,35 @@
                 display.classList.remove('active');
             }
             document.getElementById('val-card').style.display = val ? 'flex' : 'none';
+
+            // Update Comparison Gauge
+            const h = parseFloat(userProfile.height);
+            const currentW = parseFloat(userProfile.weight);
+            const targetW = parseFloat(val);
+
+            if (h > 0 && currentW > 0) {
+                const currentImc = parseFloat((currentW / ((h/100)**2)).toFixed(1));
+                document.getElementById('comp-imc-current').innerText = currentImc;
+                
+                // Position current pin
+                let curPerc = ((currentImc - 15) / (35 - 15)) * 100;
+                if (curPerc < 5) curPerc = 5; if (curPerc > 95) curPerc = 95;
+                document.getElementById('target-gauge-pin-current').style.left = curPerc + '%';
+
+                if (targetW > 0) {
+                    const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
+                    document.getElementById('comp-imc-target').innerText = targetImc;
+                    
+                    // Position target pin
+                    let tarPerc = ((targetImc - 15) / (35 - 15)) * 100;
+                    if (tarPerc < 5) tarPerc = 5; if (tarPerc > 95) tarPerc = 95;
+                    document.getElementById('target-gauge-pin-target').style.left = tarPerc + '%';
+                    document.getElementById('target-gauge-pin-target').style.opacity = '1';
+                } else {
+                    document.getElementById('comp-imc-target').innerText = '--';
+                    document.getElementById('target-gauge-pin-target').style.opacity = '0';
+                }
+            }
         }
 
         function submitTargetWeight() {
