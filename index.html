@@ -501,29 +501,6 @@
         </div>
     </div>
 
-    <!-- MODAL ROLETA -->
-    <div id="roulette-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div style="background:rgba(34,197,94,0.1); border:1px solid var(--cta-green); border-radius:50px; padding:4px 12px; font-size:10px; font-weight:900; color:var(--cta-green); display:inline-block; margin-bottom:15px;">🎁 OFERTA EXCLUSIVA</div>
-            <h2 style="font-size:24px; font-weight:900; line-height:1.2; margin-bottom:10px;">Gira y gana un <span style="color:var(--cta-green)">descuento exclusivo</span> ahora</h2>
-            <p style="font-size:12px; color:var(--text-gray);">Solo una oportunidad — no te la pierdas</p>
-            
-            <div class="roulette-wrap">
-                <img src="https://cdn-icons-png.flaticon.com/512/8101/8101821.png" id="roulette-img" class="roulette-img" alt="Roulette">
-                <div class="roulette-arrow">▼</div>
-            </div>
-
-            <div id="roulette-win" class="roulette-win-box">
-                <div style="font-size:30px; margin-bottom:10px;">🎉</div>
-                <h3 style="font-size:18px; font-weight:900;">¡Felicidades! Ganaste -75%</h3>
-                <p style="font-size:12px; color:var(--text-gray); margin-bottom:15px;">El mayor descuento disponible — solo por hoy</p>
-                <button class="btn-areas-continue active-btn" onclick="applyDiscount()">QUIERO MI DESCUENTO</button>
-            </div>
-
-            <button id="btn-spin" class="btn-areas-continue active-btn" onclick="spinRoulette()">GIRAR AHORA</button>
-        </div>
-    </div>
-
     <!-- ETAPA 2: GÊNERO -->
     <div id="screen-gender" class="screen">
         <h1 class="headline">Selecciona tu género</h1>
@@ -1244,6 +1221,16 @@
             const next = document.getElementById('screen-' + stepId);
             if (next) next.classList.add('active');
             window.scrollTo(0,0);
+            
+            // Progress Bar Update
+            const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final'];
+            const currentIdx = steps.indexOf(stepId);
+            if (currentIdx !== -1) {
+                const perc = ((currentIdx + 1) / steps.length) * 100;
+                const pb = document.getElementById('progress-bar');
+                if (pb) pb.style.width = perc + '%';
+            }
+
             if (stepId === 'analysis') startAnalysis();
         }
 
@@ -1289,27 +1276,189 @@
             observer.observe(screen, { attributes: true });
         });
 
-        // ROULETTE FUNCTIONS
-        function spinRoulette() {
-            const img = document.getElementById('roulette-img');
-            const btn = document.getElementById('btn-spin');
-            const winBox = document.getElementById('roulette-win');
-            
-            if (!img || !btn || !winBox) return;
+        // CORE QUIZ LOGIC
+        let userProfile = {
+            age: '',
+            gender: 'Masculino',
+            bodyType: '',
+            goal: '',
+            bodyFat: '',
+            areas: [],
+            height: '',
+            weight: '',
+            targetWeight: '',
+            pushups: '',
+            training: '',
+            startDate: '',
+            name: ''
+        };
 
-            btn.style.display = 'none';
-            const randomDeg = 1800 + Math.floor(Math.random() * 360);
-            img.style.transform = `rotate(${randomDeg}deg)`;
+        const history = ['age'];
+
+        function handleGender(gender) {
+            userProfile.gender = gender;
             
-            setTimeout(() => {
-                winBox.classList.add('show');
-            }, 4000);
+            // Update images for female if selected
+            if (gender === 'Femenino') {
+                document.getElementById('img-delgado').src = 'imagens_webp_crush_it/delgado-w.webp';
+                document.getElementById('img-promedio').src = 'imagens_webp_crush_it/promedio-w.webp';
+                document.getElementById('img-grande').src = 'imagens_webp_crush_it/grande-w.webp';
+                document.getElementById('img-pesado').src = 'imagens_webp_crush_it/pesado-w.webp';
+                document.getElementById('img-avatar-focus').src = 'imagens_webp_crush_it/avatar-pergunta-6-w.webp';
+                
+                // Also update goal images
+                document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso-w.webp';
+                document.getElementById('img-ganar').src = 'imagens_webp_crush_it/Ganar-musculo-w.webp';
+                document.getElementById('img-definir').src = 'imagens_webp_crush_it/Definir-tu-cuerpo-w.webp';
+            } else {
+                document.getElementById('img-delgado').src = 'imagens_webp_crush_it/delgado.webp';
+                document.getElementById('img-promedio').src = 'imagens_webp_crush_it/promedio.webp';
+                document.getElementById('img-grande').src = 'imagens_webp_crush_it/grande.webp';
+                document.getElementById('img-pesado').src = 'imagens_webp_crush_it/pesado.webp';
+                document.getElementById('img-avatar-focus').src = 'imagens_webp_crush_it/avatar-pergunta-6.webp';
+                
+                document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso.webp';
+                document.getElementById('img-ganar').src = 'imagens_webp_crush_it/Ganar-musculo.webp';
+                document.getElementById('img-definir').src = 'imagens_webp_crush_it/Definir-tu-cuerpo.webp';
+            }
+            
+            goToStep('bodytype');
         }
 
-        function applyDiscount() {
-            const modal = document.getElementById('roulette-modal');
-            if (modal) modal.classList.remove('active');
-            // Additional logic for discount can be added here
+        function handleGoal(goal) {
+            userProfile.goal = goal;
+            if (goal === 'Perder Peso') goToStep('desired-perder');
+            else if (goal === 'Ganar Músculo') goToStep('desired-ganar');
+            else goToStep('desired-definir');
+        }
+
+        function updateFatSlider(val) {
+            const bubble = document.getElementById('bubble');
+            const img = document.getElementById('fat-body-img');
+            const ranges = ['5-9%', '10-14%', '15-19%', '20-24%', '25-29%', '30-34%', '35-39%', '>40%'];
+            const files = ['5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-plus'];
+            
+            bubble.innerText = ranges[val-1];
+            bubble.style.left = ((val-1) * 14.28) + '%';
+            
+            const suffix = userProfile.gender === 'Femenino' ? '-w' : '';
+            img.src = `imagens_webp_crush_it/${files[val-1]}${suffix}.webp`;
+        }
+
+        function toggleBioUnits(unit) {
+            const isMetric = unit === 'metric';
+            document.getElementById('bio-unit-metric').classList.toggle('active', isMetric);
+            document.getElementById('bio-unit-imperial').classList.toggle('active', !isMetric);
+            document.getElementById('label-height').innerText = isMetric ? 'centímetros' : 'pies/pulgadas';
+            document.getElementById('label-weight').innerText = isMetric ? 'kilogramos' : 'libras';
+        }
+
+        function calcIMC() {
+            const h = parseFloat(document.getElementById('input-height').value);
+            const w = parseFloat(document.getElementById('input-weight').value);
+            if (h > 100 && w > 30) {
+                const imc = (w / ((h/100)**2)).toFixed(1);
+                document.getElementById('imc-display').innerText = imc;
+            }
+        }
+
+        function submitBiometrics() {
+            userProfile.height = document.getElementById('input-height').value;
+            userProfile.weight = document.getElementById('input-weight').value;
+            goToStep('targetweight');
+        }
+
+        function setWeightUnit(unit) {
+            document.getElementById('unit-kg').classList.toggle('active', unit === 'kg');
+            document.getElementById('unit-lb').classList.toggle('active', unit === 'lb');
+        }
+
+        function updateTargetWeightDisplay(val) {
+            document.getElementById('target-weight-val').innerText = val;
+            document.getElementById('val-card').style.display = val ? 'flex' : 'none';
+        }
+
+        function submitTargetWeight() {
+            userProfile.targetWeight = document.getElementById('input-target-weight').value;
+            goToStep('prediction');
+            setTimeout(() => {
+                const fill = document.getElementById('pred-loading-fill');
+                if (fill) fill.style.width = '100%';
+                setTimeout(() => goToStep('pushups'), 2000);
+            }, 500);
+        }
+
+        function validateName(val) {
+            document.getElementById('btn-final-continue').disabled = val.length < 2;
+        }
+
+        function finishQuiz() {
+            userProfile.name = document.getElementById('input-name').value;
+            goToStep('checklist');
+            startChecklist();
+        }
+
+        function startChecklist() {
+            const fill = document.getElementById('checklist-loading-fill');
+            let perc = 0;
+            const interval = setInterval(() => {
+                perc += 1;
+                fill.style.width = perc + '%';
+                document.getElementById('checklist-perc').innerText = perc + '%';
+                
+                if (perc === 25) document.getElementById('chk-1').classList.add('active');
+                if (perc === 50) document.getElementById('chk-2').classList.add('active');
+                if (perc === 75) document.getElementById('chk-3').classList.add('active');
+                if (perc === 95) document.getElementById('chk-4').classList.add('active');
+
+                if (perc >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('summary-name').innerText = userProfile.name;
+                        goToStep('summary');
+                        startSummaryTimer();
+                    }, 500);
+                }
+            }, 50);
+        }
+
+        function startSummaryTimer() {
+            let time = 4;
+            const interval = setInterval(() => {
+                time--;
+                document.getElementById('summary-timer').innerText = time + 's';
+                if (time <= 0) {
+                    clearInterval(interval);
+                    goToStep('offer');
+                }
+            }, 1000);
+        }
+
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            item.classList.toggle('active');
+        }
+
+        function scrollToPrice() {
+            document.getElementById('price-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function goBack() {
+            // Simple back logic
+            alert('Funcionalidad de volver en desarrollo');
+        }
+
+        function initScrollAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observerOptions = { threshold: 0.1 };
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+            reveals.forEach(r => revealObserver.observe(r));
         }
     </script>
 </body>
