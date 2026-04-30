@@ -1539,11 +1539,30 @@
         function submitTargetWeight() {
             userProfile.targetWeight = document.getElementById('input-target-weight').value;
             goToStep('prediction');
-            setTimeout(() => {
-                const fill = document.getElementById('pred-loading-fill');
-                if (fill) fill.style.width = '100%';
-                setTimeout(() => goToStep('pushups'), 2000);
-            }, 500);
+            startPredictionTimer();
+        }
+
+        function startPredictionTimer() {
+            const fill = document.getElementById('pred-loading-fill');
+            if (!fill) return;
+            
+            fill.style.width = '0%';
+            let progress = 0;
+            const duration = 5000; 
+            const intervalTime = 50;
+            const step = 100 / (duration / intervalTime);
+
+            const interval = setInterval(() => {
+                progress += step;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        goToStep('pushups');
+                    }, 500);
+                }
+                fill.style.width = progress + '%';
+            }, intervalTime);
         }
 
         function validateName(val) {
