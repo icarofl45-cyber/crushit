@@ -2589,3 +2589,15 @@ body #screen-targetweight .large-weight-display .weak-val.active {
     transform: scale(1.05) !important;
     filter: none !important;
 }
+
+/* ELONGATING THE COMPARISON BOX: +30% */
+.imc-comparison-box {
+    max-width: 500px; /* Aumentando a largura máxima */
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comparison-values {
+    gap: 60px !important; /* Aumentando o espaço entre os valores para acompanhar o alongamento */
+}
