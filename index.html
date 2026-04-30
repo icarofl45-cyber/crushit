@@ -1459,22 +1459,42 @@
 
         .training-dots {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 4px;
-            width: 50px;
+            width: 45px;
             flex-shrink: 0;
+            margin-right: 15px;
+        }
+
+        .dots-row-top {
+            display: flex;
+            gap: 4px;
+        }
+
+        .dots-row-bottom {
+            display: flex;
+            gap: 4px;
         }
 
         .training-dot {
-            width: 6px;
-            height: 6px;
-            background: #333;
+            width: 7px;
+            height: 7px;
+            background: #222; /* Apagado por padrão */
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .training-dot.active {
+        /* Só acende quando o card é focado/hover */
+        .training-card:hover .training-dot.active {
             background: var(--cta-green);
-            box-shadow: 0 0 8px var(--cta-green);
+            box-shadow: 0 0 12px var(--cta-green), 0 0 20px rgba(0, 255, 136, 0.3);
+            transform: scale(1.2);
+        }
+
+        .training-card:hover {
+            border-color: var(--cta-green);
+            background: rgba(0, 255, 136, 0.05);
         }
 
         .motivational-box {
@@ -3487,11 +3507,15 @@
         <div class="training-list">
             <div class="training-card anim-left delay-1" onclick="goToStep('startdate', 'Nada o casi nada')">
                 <div class="training-dots">
-                    <div class="training-dot active"></div>
-                    <div class="training-dot"></div>
-                    <div class="training-dot"></div>
-                    <div class="training-dot"></div>
-                    <div class="training-dot"></div>
+                    <div class="dots-row-top">
+                        <div class="training-dot active"></div>
+                        <div class="training-dot"></div>
+                        <div class="training-dot"></div>
+                    </div>
+                    <div class="dots-row-bottom">
+                        <div class="training-dot"></div>
+                        <div class="training-dot"></div>
+                    </div>
                 </div>
                 <div class="training-info">
                     <div class="training-title">NADA O CASI NADA</div>
@@ -3501,11 +3525,15 @@
 
             <div class="training-card anim-right delay-2" onclick="goToStep('startdate', 'Poco frecuente')">
                 <div class="training-dots">
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot"></div>
-                    <div class="training-dot"></div>
-                    <div class="training-dot"></div>
+                    <div class="dots-row-top">
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                        <div class="training-dot"></div>
+                    </div>
+                    <div class="dots-row-bottom">
+                        <div class="training-dot"></div>
+                        <div class="training-dot"></div>
+                    </div>
                 </div>
                 <div class="training-info">
                     <div class="training-title">POCO FRECUENTE</div>
@@ -3515,11 +3543,15 @@
 
             <div class="training-card anim-left delay-3" onclick="goToStep('startdate', 'Moderado')">
                 <div class="training-dots">
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot"></div>
-                    <div class="training-dot"></div>
+                    <div class="dots-row-top">
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                    </div>
+                    <div class="dots-row-bottom">
+                        <div class="training-dot"></div>
+                        <div class="training-dot"></div>
+                    </div>
                 </div>
                 <div class="training-info">
                     <div class="training-title">MODERADO</div>
@@ -3529,11 +3561,15 @@
 
             <div class="training-card anim-right delay-4" onclick="goToStep('startdate', 'Frecuente')">
                 <div class="training-dots">
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot"></div>
+                    <div class="dots-row-top">
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                    </div>
+                    <div class="dots-row-bottom">
+                        <div class="training-dot active"></div>
+                        <div class="training-dot"></div>
+                    </div>
                 </div>
                 <div class="training-info">
                     <div class="training-title">FRECUENTE</div>
@@ -3543,11 +3579,15 @@
 
             <div class="training-card anim-left delay-5" onclick="goToStep('startdate', 'Muy frecuente')">
                 <div class="training-dots">
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
-                    <div class="training-dot active"></div>
+                    <div class="dots-row-top">
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                    </div>
+                    <div class="dots-row-bottom">
+                        <div class="training-dot active"></div>
+                        <div class="training-dot active"></div>
+                    </div>
                 </div>
                 <div class="training-info">
                     <div class="training-title">MUY FRECUENTE</div>
