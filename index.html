@@ -4685,6 +4685,22 @@
             if (stepId === 'offer') {
                 header.classList.add('offer-mode');
                 
+                // Força o sumiço manual para garantir que não haja falhas de CSS/Cache
+                const topNav = header.querySelector('.top-nav');
+                const navControls = header.querySelector('.nav-controls');
+                const logoContainer = header.querySelector('.logo-container');
+                
+                if (topNav) topNav.style.display = 'none';
+                if (navControls) navControls.style.display = 'none';
+                if (logoContainer) {
+                    logoContainer.style.width = '100%';
+                    logoContainer.style.justifyContent = 'center';
+                    logoContainer.style.margin = '0';
+                    logoContainer.style.padding = '20px 0';
+                }
+                header.style.border = 'none';
+                header.style.background = 'transparent';
+
                 // --- Lógica de Personalização de Imagens na Oferta ---
                 const s = (quizData.gender === 'Femenino') ? 'w' : '';
                 const imgNow = document.getElementById('off-img-now');
