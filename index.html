@@ -801,7 +801,7 @@
             </div>
         </div>
 
-        <div class="imc-box">
+        <div id="imc-box" class="imc-box">
             <div class="imc-box-label">IMC Calculado</div>
             <div class="imc-divider"></div>
             <div class="imc-value" id="imc-display">--</div>
@@ -1359,6 +1359,7 @@
             const wInput = document.getElementById('input-weight');
             const imcDisplay = document.getElementById('imc-display');
             const imcCat = document.getElementById('imc-category');
+            const imcBox = document.getElementById('imc-box');
             const h = parseFloat(hInput.value);
             const w = parseFloat(wInput.value);
             
@@ -1400,9 +1401,13 @@
                 imcCat.innerText = category;
                 imcCat.className = "imc-category " + colorClass;
                 imcCat.style.display = "block";
+                
+                // Update Box
+                imcBox.className = "imc-box " + colorClass;
             } else {
                 imcDisplay.innerText = '--';
                 imcCat.style.display = "none";
+                imcBox.className = "imc-box";
             }
         }
 
