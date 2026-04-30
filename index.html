@@ -38,12 +38,13 @@
     <header class="main-header">
         <div class="logo-container">
             <img src="imagens_webp_crush_it/logo.png" alt="Crush It Logo" class="logo-img">
+            <button id="global-back-btn" class="btn-back-global" onclick="goBack()" style="display: none;">
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>VOLTAR</span>
+            </button>
         </div>
 
         <div class="nav-controls">
-            <button id="back-btn" class="back-btn" onclick="goBack()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            </button>
             <div id="step-display" class="step-counter"></div>
         </div>
 
@@ -1269,11 +1270,20 @@
             }
         }
 
+        const navigationHistory = [];
+
         function goToStep(stepId, value) {
+            const currentActive = document.querySelector('.screen.active');
+            if (currentActive && currentActive.id !== 'screen-' + stepId) {
+                navigationHistory.push(currentActive.id);
+            }
+
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             const next = document.getElementById('screen-' + stepId);
             if (next) next.classList.add('active');
             window.scrollTo(0,0);
+
+            updateBackBtnVisibility();
             
             // Progress Bar Update
             const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final'];
@@ -1592,8 +1602,25 @@
         }
 
         function goBack() {
-            // Simple back logic
-            alert('Funcionalidad de volver en desarrollo');
+            if (navigationHistory.length > 0) {
+                const lastStep = navigationHistory.pop();
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                const prev = document.getElementById(lastStep);
+                if (prev) prev.classList.add('active');
+                window.scrollTo(0,0);
+                updateBackBtnVisibility();
+            }
+        }
+
+        function updateBackBtnVisibility() {
+            const current = document.querySelector('.screen.active');
+            const btn = document.getElementById('global-back-btn');
+            if (current && current.id === 'screen-welcome') {
+                btn.style.display = 'none';
+                navigationHistory.length = 0;
+            } else {
+                btn.style.display = 'flex';
+            }
         }
 
         function initScrollAnimations() {
