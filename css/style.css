@@ -746,10 +746,10 @@ input[type=number] {
 }
 
 /* Specific Positions for Male Avatar */
-.highlight-pecho { width: 50%; height: 15%; top: 22%; left: 25%; border-radius: 50%; }
-.highlight-brazo-l { width: 15%; height: 25%; top: 25%; left: 10%; border-radius: 50%; }
-.highlight-brazo-r { width: 15%; height: 25%; top: 25%; right: 10%; border-radius: 50%; }
-.highlight-abdomen { width: 40%; height: 20%; top: 35%; left: 30%; border-radius: 50%; }
+.highlight-pecho { width: 62%; height: 18%; top: 17%; left: 19%; border-radius: 50%; }
+.highlight-brazo-l { width: 15%; height: 25%; top: 25%; left: 10%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 1) 0%, rgba(255, 85, 0, 0.65) 60%, transparent 100%); }
+.highlight-brazo-r { width: 15%; height: 25%; top: 25%; right: 10%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 1) 0%, rgba(255, 85, 0, 0.65) 60%, transparent 100%); }
+.highlight-abdomen { width: 40%; height: 20%; top: 28%; left: 30%; border-radius: 50%; }
 .highlight-pierna-l { width: 25%; height: 35%; top: 58%; left: 20%; border-radius: 50%; }
 .highlight-pierna-r { width: 25%; height: 35%; top: 58%; right: 20%; border-radius: 50%; }
 
