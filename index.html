@@ -918,9 +918,14 @@
                 <button class="unit-btn" id="unit-lb" onclick="setWeightUnit('lb')">LB</button>
             </div>
 
-            <div class="large-weight-display">
-                <input type="number" id="input-target-weight" class="weight-input-hidden" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
-                <span id="target-weight-val" class="weak-val" onclick="document.getElementById('input-target-weight').focus()">70</span>
+            <div class="biometrics-grid" style="margin-top: 30px;">
+                <div class="bio-field" style="width: 100%; max-width: 320px; margin: 0 auto;">
+                    <label for="input-target-weight" class="bio-label">Peso Objetivo</label>
+                    <div class="bio-input-wrap">
+                        <input type="number" id="input-target-weight" class="bio-value-input" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)" aria-describedby="label-target-weight">
+                        <span class="bio-unit" id="label-target-weight">kilogramos</span>
+                    </div>
+                </div>
             </div>
 
             <!-- COMPARISON GAUGE -->

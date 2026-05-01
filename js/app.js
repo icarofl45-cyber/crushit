@@ -1,4 +1,4 @@
-﻿// JS LOGIC FOR FOCUS AREAS
+// JS LOGIC FOR FOCUS AREAS
         function toggleArea(area, element) {
             element.classList.toggle('selected');
             const isSelected = element.classList.contains('selected');
@@ -311,19 +311,15 @@
         function setWeightUnit(unit) {
             document.getElementById('unit-kg').classList.toggle('active', unit === 'kg');
             document.getElementById('unit-lb').classList.toggle('active', unit === 'lb');
+            
+            const label = document.getElementById('label-target-weight');
+            if (label) {
+                label.innerText = unit === 'kg' ? 'kilogramos' : 'libras';
+            }
         }
 
         function updateTargetWeightDisplay(val) {
-            const display = document.getElementById('target-weight-val');
-            display.innerText = val || '70';
-            
-            if (val && val.length > 0) {
-                display.classList.add('active');
-            } else {
-                display.classList.remove('active');
-            }
-            
-            document.getElementById('val-card').style.display = val ? 'flex' : 'none';
+            // A lógica de exibição agora é automática pelo campo de input e estilo bio-field
             
 
 
