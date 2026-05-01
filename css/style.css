@@ -849,7 +849,8 @@ input[type=number] {
     .goal-subtitle { font-size: 13px; }
     .horizontal-label { font-size: 18px; }
     .horizontal-card { padding: 0 15px; min-height: 100px; }
-    .fat-image-display { height: 280px; }
+    .fat-image-display { height: 300px; }
+    .slider-labels { font-size: 8px; }
     .areas-avatar { width: 110px; }
     .area-option { padding: 10px 12px; gap: 10px; }
     .area-option-label { font-size: 13px; }
@@ -2819,6 +2820,8 @@ body #screen-targetweight .large-weight-display .weak-val.active {
         margin-bottom: 10px;
     }
 }
+
+
 
 
 

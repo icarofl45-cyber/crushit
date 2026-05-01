@@ -659,8 +659,7 @@
         <p class="subheadline">Desliza para encontrar el cuerpo que tienes hoy</p>
 
         <div class="fat-image-display">
-            <!-- As imagens serão trocadas via JS -->
-            <img src="imagens_webp_crush_it/15-19.webp" id="fat-body-img" class="fat-img" onerror="this.src='https://via.placeholder.com/300x400/111/22C55E?text=Imagen+Corporal'">
+            <img src="imagens_webp_crush_it/15-19.webp" id="fat-body-img" class="fat-img" loading="eager" decoding="async" fetchpriority="high">
         </div>
 
         <div class="fat-slider-container">
@@ -670,7 +669,13 @@
             </div>
             <div class="slider-labels">
                 <span>5-9%</span>
-                <span>>40%</span>
+                <span>10-14%</span>
+                <span>15-19%</span>
+                <span>20-24%</span>
+                <span>25-29%</span>
+                <span>30-34%</span>
+                <span>35-39%</span>
+                <span>&gt;40%</span>
             </div>
         </div>
 
@@ -1448,6 +1453,18 @@
             else goToStep('desired-definir');
         }
 
+        // Preload de todas as imagens de gordura corporal
+        (function preloadFatImages() {
+            const files = ['5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-plus'];
+            const suffixes = ['', '-w'];
+            files.forEach(f => {
+                suffixes.forEach(s => {
+                    const img = new Image();
+                    img.src = `imagens_webp_crush_it/${f}${s}.webp`;
+                });
+            });
+        })();
+
         function updateFatSlider(val) {
             const bubble = document.getElementById('bubble');
             const img = document.getElementById('fat-body-img');
@@ -1455,7 +1472,7 @@
             const files = ['5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-plus'];
             
             bubble.innerText = ranges[val-1];
-            bubble.style.left = ((val-1) * 14.28) + '%';
+            bubble.style.left = ((val-1) / 7 * 100) + '%';
             
             const suffix = userProfile.gender === 'Femenino' ? '-w' : '';
             img.src = `imagens_webp_crush_it/${files[val-1]}${suffix}.webp`;
