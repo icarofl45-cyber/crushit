@@ -62,8 +62,8 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
     
     <!-- Main CSS - NON-BLOCKING -->
-    <link rel="preload" href="css/style.css?v=1.4" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/style.css?v=1.4"></noscript>
+    <link rel="preload" href="css/style.css?v=1.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css?v=1.5"></noscript>
 </head>
 <body>
 
@@ -235,6 +235,27 @@
             <div class="age-card delay-4" onclick="goToStep('gender', '50+')">
                 <img src="imagens_webp_crush_it/Edad-mas-de-50.webp" alt="Edad mais de 50">
                 <div class="age-button">Edad: mais de 50</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 2: GÊNERO -->
+    <div id="screen-gender" class="screen">
+        <h1 class="headline anim-fade">Selecciona tu género</h1>
+        <p class="subheadline anim-fade delay-1">Personalizaremos tu plan según tu biologia</p>
+
+        <div class="gender-list">
+            <div class="gender-card anim-left delay-2" onclick="handleGender('Masculino')">
+                <div class="gender-img-wrap">
+                    <img loading="lazy" src="imagens_webp_crush_it/genero-h.webp" alt="Masculino">
+                </div>
+                <span class="gender-label">Masculino</span>
+            </div>
+            <div class="gender-card anim-right delay-3" onclick="handleGender('Femenino')">
+                <div class="gender-img-wrap">
+                    <img loading="lazy" src="imagens_webp_crush_it/genero-m.webp" alt="Femenino">
+                </div>
+                <span class="gender-label">Femenino</span>
             </div>
         </div>
     </div>
@@ -637,26 +658,7 @@
         </div>
     </div>
 
-    <!-- ETAPA 2: GÊNERO -->
-    <div id="screen-gender" class="screen">
-        <h1 class="headline">Selecciona tu género</h1>
-        <p class="subheadline">Personalizaremos tu plan según tu biologia</p>
 
-        <div class="gender-list">
-            <div class="gender-card" onclick="handleGender('Masculino')">
-                <div class="gender-img-wrap">
-                    <img loading="lazy" src="imagens_webp_crush_it/genero-h.webp" alt="Masculino">
-                </div>
-                <span class="gender-label">Masculino</span>
-            </div>
-            <div class="gender-card" onclick="handleGender('Femenino')">
-                <div class="gender-img-wrap">
-                    <img loading="lazy" src="imagens_webp_crush_it/genero-m.webp" alt="Femenino">
-                </div>
-                <span class="gender-label">Femenino</span>
-            </div>
-        </div>
-    </div>
 
     <!-- ETAPA 3: TIPO DE CORPO (MASCULINO) -->
     <div id="screen-bodytype" class="screen">
