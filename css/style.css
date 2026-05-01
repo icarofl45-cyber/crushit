@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --bg-color: #0F0F0F;
     --card-bg: #181818;
     --brand-purple: #7B2FF7;
@@ -52,16 +52,16 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: flex-start;
+    margin-bottom: 10px;
     position: relative;
     background: var(--bg-color);
     z-index: 100;
-    padding: 15px 0;
+    padding: 0;
 }
 
 .logo-container {
-    margin-bottom: 0;
+    margin-bottom: 2px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -69,10 +69,10 @@ body {
 }
 
 .logo-img {
-    max-width: 160px;
+    max-width: 120px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 0 12px rgba(123, 47, 247, 0.4));
+    filter: drop-shadow(0 0 8px rgba(123, 47, 247, 0.3));
 }
 
 .nav-controls, .top-nav {
@@ -2814,3 +2814,4 @@ body #screen-targetweight .large-weight-display .weak-val.active {
         margin-bottom: 10px;
     }
 }
+

@@ -1650,6 +1650,11 @@
 
         function finishQuiz() {
             userProfile.name = document.getElementById('input-name').value;
+            
+            // Ativa o modo limpo no header (centraliza logo e remove nav)
+            const header = document.querySelector('.main-header');
+            if (header) header.classList.add('clean-header');
+            
             goToStep('checklist');
             startChecklist();
         }
