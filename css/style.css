@@ -26,6 +26,31 @@ animation: fadeIn 0.4s ease-out;}
 .screen.active{display: flex;}
 @keyframes fadeIn{from{opacity: 0; transform: translateY(10px);}
 to{opacity: 1; transform: translateY(0);}}
+
+/* Animations System */
+.anim-fade { opacity: 0; animation: animFade 0.6s ease forwards; }
+.anim-left { opacity: 0; animation: animLeft 0.6s ease forwards; }
+.anim-right { opacity: 0; animation: animRight 0.6s ease forwards; }
+.anim-up { opacity: 0; animation: animUp 0.6s ease forwards; }
+.anim-down { opacity: 0; animation: animDown 0.6s ease forwards; }
+
+@keyframes animFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes animLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes animRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes animUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes animDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+
+.delay-1 { animation-delay: 0.1s !important; }
+.delay-2 { animation-delay: 0.2s !important; }
+.delay-3 { animation-delay: 0.3s !important; }
+.delay-4 { animation-delay: 0.4s !important; }
+.delay-5 { animation-delay: 0.5s !important; }
+.delay-6 { animation-delay: 0.6s !important; }
+.delay-7 { animation-delay: 0.7s !important; }
+.delay-8 { animation-delay: 0.8s !important; }
+.delay-9 { animation-delay: 0.9s !important; }
+.delay-10 { animation-delay: 1.0s !important; }
+.delay-11 { animation-delay: 1.1s !important; }
 .main-header{width: 100%;
 display: flex;
 flex-direction: column;
