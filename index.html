@@ -1336,6 +1336,13 @@
             const next = document.getElementById('screen-' + stepId);
             if (next) next.classList.add('active');
             window.scrollTo(0,0);
+            
+            // Salva a etapa atual na URL sem recarregar a página
+            if (history.replaceState) {
+                history.replaceState(null, null, '#' + stepId);
+            } else {
+                window.location.hash = stepId;
+            }
 
             updateBackBtnVisibility();
             
@@ -1901,6 +1908,15 @@
                 const prev = document.getElementById(lastStep);
                 if (prev) prev.classList.add('active');
                 window.scrollTo(0,0);
+                
+                // Atualiza a URL ao voltar
+                const prevStepId = lastStep.replace('screen-', '');
+                if (history.replaceState) {
+                    history.replaceState(null, null, '#' + prevStepId);
+                } else {
+                    window.location.hash = prevStepId;
+                }
+                
                 updateBackBtnVisibility();
             }
         }
@@ -1928,6 +1944,32 @@
             }, observerOptions);
             reveals.forEach(r => revealObserver.observe(r));
         }
+
+        // Recupera a etapa da URL ao carregar a página
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById('screen-' + hash)) {
+                // Navega direto para a etapa salva no hash
+                // Mas não salva histórico do welcome
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                document.getElementById('screen-' + hash).classList.add('active');
+                updateBackBtnVisibility();
+                
+                // Se for a tela de oferta, esconde o header
+                if (hash === 'offer') {
+                    document.getElementById('main-header').classList.add('clean-header');
+                    document.getElementById('global-back-btn').style.display = 'none';
+                    initScrollAnimations();
+                }
+                
+                // Se for a tela de focusarea, atualiza a imagem
+                if (hash === 'focusarea') {
+                    const suffix = userProfile.gender === 'Femenino' ? '-w' : '';
+                    const avatar = document.getElementById('img-avatar-focus');
+                    if (avatar) avatar.src = `imagens_webp_crush_it/avatar-pergunta-6${suffix}.webp`;
+                }
+            }
+        });
     </script>
 </body>
 </html>
