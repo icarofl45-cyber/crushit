@@ -278,7 +278,7 @@
                 </div>
                 <div class="gauge-val" id="g-kcal-val">2365 kcal</div>
                 <div class="gauge-track kcal-gauge">
-                    <div class="gauge-pin" style="left: 50%;"></div>
+                    <div class="gauge-pin" id="g-kcal-pin" style="left: 50%;"></div>
                 </div>
                 <div class="gauge-labels">
                     <span>1600 kcal</span>
@@ -1733,6 +1733,58 @@
             const compImcGoal = document.getElementById('comp-imc-goal');
             if (compImcNow) compImcNow.innerText = currentImc;
             if (compImcGoal) compImcGoal.innerText = targetImc;
+
+            // ======= IMC GAUGE =======
+            const gImcVal = document.getElementById('g-imc-val');
+            if (gImcVal) gImcVal.innerText = currentImc;
+            const gImcPin = document.getElementById('g-imc-pin');
+            if (gImcPin) {
+                let imcPerc = ((currentImc - 15) / (35 - 15)) * 100;
+                if (imcPerc < 5) imcPerc = 5; if (imcPerc > 95) imcPerc = 95;
+                gImcPin.style.left = imcPerc + '%';
+            }
+
+            // ======= CALORIAS (inverso ao IMC) =======
+            // IMC alto = menos kcal (déficit), IMC baixo = mais kcal
+            let kcal;
+            if (currentImc >= 30) kcal = 1650;
+            else if (currentImc >= 27) kcal = 1800;
+            else if (currentImc >= 25) kcal = 2000;
+            else if (currentImc >= 22) kcal = 2200;
+            else if (currentImc >= 20) kcal = 2400;
+            else if (currentImc >= 18.5) kcal = 2600;
+            else kcal = 2800;
+
+            const gKcalVal = document.getElementById('g-kcal-val');
+            if (gKcalVal) gKcalVal.innerText = kcal + ' kcal';
+            const gKcalPin = document.getElementById('g-kcal-pin');
+            if (gKcalPin) {
+                let kcalPerc = ((kcal - 1600) / (3200 - 1600)) * 100;
+                if (kcalPerc < 5) kcalPerc = 5; if (kcalPerc > 95) kcalPerc = 95;
+                gKcalPin.style.left = kcalPerc + '%';
+            }
+
+            // ======= ÁGUA (proporcional ao IMC) =======
+            // IMC alto = mais água para acelerar metabolismo
+            let litros;
+            if (currentImc >= 30) litros = 3.5;
+            else if (currentImc >= 27) litros = 3.2;
+            else if (currentImc >= 25) litros = 3.0;
+            else if (currentImc >= 22) litros = 2.5;
+            else if (currentImc >= 20) litros = 2.2;
+            else if (currentImc >= 18.5) litros = 2.0;
+            else litros = 1.8;
+
+            const gWaterVal = document.getElementById('g-water-val');
+            if (gWaterVal) gWaterVal.innerText = litros + ' litros';
+
+            // Atualizar ícones de água (8 copos no total)
+            const waterIcons = document.querySelectorAll('.water-icon');
+            const activeGlasses = Math.round((litros / 4) * 8); // 4 litros = 8 copos cheios
+            waterIcons.forEach((icon, i) => {
+                if (i < activeGlasses) icon.classList.add('active');
+                else icon.classList.remove('active');
+            });
         }
 
         function toggleFaq(el) {
