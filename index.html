@@ -33,7 +33,7 @@
         :root{--bg-color:#0F0F0F;--card-bg:#181818;--brand-purple:#7B2FF7;--brand-purple-dark:#4C1D95;--cta-green:#22C55E;--text-white:#FFF;--text-gray:#A1A1AA}
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Inter',system-ui,-apple-system,sans-serif;background-color:#0F0F0F;color:#fff;display:flex;flex-direction:column;align-items:center;padding:0 16px 40px;min-height:100vh;overflow-x:hidden}
-        .screen{display:none;width:100%;max-width:550px;flex-direction:column;align-items:center;animation:fadeIn .4s ease-out;contain:layout style}
+        .screen{display:none;width:100%;max-width:550px;flex-direction:column;align-items:center;contain:layout style}
         .screen.active{display:flex}
         @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         .main-header{width:100%;display:flex;flex-direction:column;margin-bottom:10px;background:#0F0F0F;position:relative;z-index:100}
@@ -62,8 +62,9 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
     
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Main CSS - NON-BLOCKING -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 </head>
 <body>
 
