@@ -918,8 +918,8 @@
                 <button class="unit-btn" id="unit-lb" onclick="setWeightUnit('lb')">LB</button>
             </div>
 
-            <div class="biometrics-grid" style="margin-top: 30px;">
-                <div class="bio-field" style="width: 100%; max-width: 320px; margin: 0 auto;">
+            <div class="biometrics-grid" style="margin-top: 30px; grid-template-columns: 1fr; display: flex; justify-content: center;">
+                <div class="bio-field" style="width: 100%; max-width: 320px;">
                     <label for="input-target-weight" class="bio-label">Peso Objetivo</label>
                     <div class="bio-input-wrap">
                         <input type="number" id="input-target-weight" class="bio-value-input" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)" aria-describedby="label-target-weight">
