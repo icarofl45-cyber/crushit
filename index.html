@@ -1320,12 +1320,40 @@
 
         function startAnalysis() {
             const fill = document.getElementById('loading-fill');
+            const percEl = document.querySelector('.analysis-percent');
+            const claimEl = document.getElementById('analysis-claim');
+
+            let areas = userProfile.focusAreas && userProfile.focusAreas.length > 0 ? userProfile.focusAreas : ['Abdomen'];
+            let areasText = areas.map(a => a.toUpperCase()).join(', ');
+            if (areas.length > 1) {
+                const lastComma = areasText.lastIndexOf(', ');
+                areasText = areasText.substring(0, lastComma) + ' Y ' + areasText.substring(lastComma + 2);
+            }
+
+            let percentage = 85;
+            if (areas.length === 1) {
+                const map = {
+                    'Pecho': 86,
+                    'Brazos': 82,
+                    'Abdomen': 85,
+                    'Piernas': 78,
+                    'Todo el Cuerpo': 93
+                };
+                percentage = map[areas[0]] || 85;
+            } else {
+                percentage = 88 + (areas.length % 5);
+            }
+
+            if (percEl) percEl.innerText = percentage + '%';
+            if (claimEl) {
+                const areaWord = areas.length > 1 ? 'ÁREAS PROBLEMÁTICAS' : 'ÁREA PROBLEMÁTICA';
+                claimEl.innerHTML = `DE LOS HOMBRES QUE ELIGEN<br><span style="color:var(--cta-green);">${areasText}</span> COMO ${areaWord}`;
+            }
+
             let perc = 0;
             const interval = setInterval(() => {
                 perc += 1;
                 if (fill) fill.style.width = perc + '%';
-                const percEl = document.querySelector('.analysis-percent');
-                if (percEl) percEl.innerText = perc + '%';
                 if (perc >= 100) {
                     clearInterval(interval);
                     setTimeout(() => goToStep('biometrics'), 500);
