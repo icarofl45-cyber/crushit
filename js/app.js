@@ -235,33 +235,64 @@
             document.getElementById('bio-unit-imperial').classList.toggle('active', !isMetric);
             document.getElementById('label-height').innerText = isMetric ? 'centímetros' : 'pies/pulgadas';
             document.getElementById('label-weight').innerText = isMetric ? 'kilogramos' : 'libras';
+            
+            // Atualiza mensagens de erro
+            document.querySelector('#error-height span').innerText = isMetric ? 'Mínimo 140cm / Máximo 220cm' : 'Mínimo 4\'7\" / Máximo 7\'2\"';
+            document.querySelector('#error-weight span').innerText = isMetric ? 'Mínimo 40kg / Máximo 140kg' : 'Mínimo 88lb / Máximo 308lb';
+            
+            // Atualiza placeholders
+            document.getElementById('input-height').placeholder = isMetric ? '175' : '5.9';
+            document.getElementById('input-weight').placeholder = isMetric ? '80' : '175';
+            
+            calcIMC();
         }
 
         function calcIMC() {
             const hInput = document.getElementById('input-height');
             const wInput = document.getElementById('input-weight');
+            const isMetric = document.getElementById('bio-unit-metric').classList.contains('active');
+            
             const imcDisplay = document.getElementById('imc-display');
             const imcCat = document.getElementById('imc-category');
             const imcBox = document.getElementById('imc-box');
-            const h = parseFloat(hInput.value);
-            const w = parseFloat(wInput.value);
+            
+            let h = parseFloat(hInput.value.replace(',', '.'));
+            let w = parseFloat(wInput.value.replace(',', '.'));
+            
+            if (isNaN(h) || isNaN(w)) {
+                imcDisplay.innerText = '--';
+                return;
+            }
+
+            // Normalização para Metric para cálculo de IMC e Validação
+            let hMetric = h;
+            let wMetric = w;
+
+            if (!isMetric) {
+                hMetric = h * 30.48; // ft para cm
+                wMetric = w * 0.453592; // lb para kg
+            }
             
             // Height Validation
-            if (hInput.value && (h < 140 || h > 220)) {
+            const hMin = isMetric ? 140 : 4.6;
+            const hMax = isMetric ? 220 : 7.2;
+            if (hInput.value && (h < hMin || h > hMax)) {
                 document.getElementById('error-height').classList.add('active');
             } else {
                 document.getElementById('error-height').classList.remove('active');
             }
 
             // Weight Validation
-            if (wInput.value && (w < 40 || w > 140)) {
+            const wMin = isMetric ? 40 : 88;
+            const wMax = isMetric ? 140 : 308;
+            if (wInput.value && (w < wMin || w > wMax)) {
                 document.getElementById('error-weight').classList.add('active');
             } else {
                 document.getElementById('error-weight').classList.remove('active');
             }
 
-            if (h >= 140 && h <= 220 && w >= 40 && w <= 140) {
-                const imc = parseFloat((w / ((h/100)**2)).toFixed(1));
+            if (hMetric >= 140 && hMetric <= 220 && wMetric >= 40 && wMetric <= 140) {
+                const imc = parseFloat((wMetric / ((hMetric/100)**2)).toFixed(1));
                 imcDisplay.innerText = imc;
                 
                 let category = "";
