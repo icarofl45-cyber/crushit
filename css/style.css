@@ -48,58 +48,70 @@ body {
 
 
 /* LOGO STYLE */
+/* --- HEADER REESCRITO E LIMPO --- */
 .main-header {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     margin-bottom: 10px;
-    position: relative;
     background: var(--bg-color);
+    position: relative;
     z-index: 100;
-    padding: 0;
 }
 
 .logo-container {
-    margin-bottom: 2px;
-    display: flex;
-    justify-content: center;
     width: 100%;
-    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 20px;
 }
 
 .logo-img {
     max-width: 120px;
-    height: auto;
-    display: block;
     filter: drop-shadow(0 0 8px rgba(123, 47, 247, 0.3));
 }
 
-.nav-controls, .top-nav {
-    display: none !important;
+.nav-controls {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    min-height: 30px;
 }
 
-/* AJUSTES PARA A TELA DE OFERTA */
-.main-header.offer-mode .nav-controls,
-.main-header.offer-mode .top-nav,
-.main-header.final-mode .nav-controls,
-.main-header.final-mode .top-nav {
-    display: none !important;
+.btn-back-global {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #888;
+    padding: 6px 12px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }
 
-.main-header.offer-mode .logo-container,
-.main-header.logo-centered .logo-container {
+.top-nav {
     width: 100%;
-    justify-content: center;
-    margin: 0;
-    padding: 10px 0;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.main-header.offer-mode {
-    position: relative;
-    padding-top: 20px;
-    margin-bottom: 0;
-    border: none !important;
+/* MODO LIMPO - ATIVADO APÓS O NOME */
+.main-header.clean-header .logo-container {
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.main-header.clean-header .logo-img {
+    max-width: 160px;
+    filter: drop-shadow(0 0 12px rgba(123, 47, 247, 0.4));
+}
+
+.main-header.clean-header .nav-controls,
+.main-header.clean-header .top-nav {
+    display: none !important;
 }
 
 .progress-container {
@@ -2814,5 +2826,6 @@ body #screen-targetweight .large-weight-display .weak-val.active {
         margin-bottom: 10px;
     }
 }
+
 
 
