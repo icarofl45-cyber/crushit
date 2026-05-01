@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --bg-color: #0F0F0F;
     --card-bg: #181818;
     --brand-purple: #7B2FF7;
@@ -52,70 +52,31 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 10px;
+    align-items: center;
+    margin-bottom: 20px;
     position: relative;
     background: var(--bg-color);
     z-index: 100;
-    padding: 0;
+    padding: 15px 0;
 }
 
 .logo-container {
-    margin-bottom: 2px;
+    margin-bottom: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .logo-img {
-    max-width: 120px;
+    max-width: 160px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 0 8px rgba(123, 47, 247, 0.3));
+    filter: drop-shadow(0 0 12px rgba(123, 47, 247, 0.4));
 }
 
-.nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0 20px;
-    margin-bottom: 5px;
-    min-height: 24px;
-}
-
-.back-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-white);
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    transition: all 0.2s;
-}
-
-.back-btn svg { width: 14px; height: 14px; }
-
-.step-counter {
-    font-size: 10px;
-    font-weight: 800;
-    color: var(--text-gray);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: none;
-}
-
-.top-nav {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.nav-controls, .top-nav {
+    display: none !important;
 }
 
 /* AJUSTES PARA A TELA DE OFERTA */
