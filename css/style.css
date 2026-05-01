@@ -2827,3 +2827,139 @@ body #screen-targetweight .large-weight-display .weak-val.active {
 
 
 
+
+/* =============================================
+   OTIMIZAÇÃO RESPONSIVA COMPLETA - MOBILE FIRST
+   ============================================= */
+
+/* Smartphones pequenos (320px - 375px) */
+@media (max-width: 375px) {
+    body { padding: 0 10px; }
+    .headline { font-size: 26px !important; }
+    .subheadline { font-size: 13px; }
+    .age-card { min-height: 140px; }
+    .age-button { font-size: 13px; padding: 8px 16px; }
+    .quiz-grid { gap: 10px; }
+    .gender-card { min-height: 160px; }
+    .fat-image-display { height: 260px; }
+    .fat-value-bubble { font-size: 14px; padding: 6px 14px; }
+    .btn-continue { font-size: 14px; padding: 14px; }
+    .offer-container { padding: 0 5px; }
+    .status-box { padding: 18px; border-radius: 20px; }
+    .status-title { font-size: 18px !important; }
+    .stat-val { font-size: 16px !important; }
+    .stat-lbl { font-size: 8px !important; }
+    .comparison-row { gap: 8px; }
+    .comp-card { padding: 12px 8px; border-radius: 18px; }
+    .comp-imc-val { font-size: 18px; }
+    .gauge-section { padding: 12px; }
+    .gauge-val { font-size: 24px; }
+    .gauge-title { font-size: 10px; }
+    .areas-headline { font-size: 22px !important; }
+    .area-option-label { font-size: 12px; }
+    .areas-avatar { width: 90px; }
+    .logo-img { max-width: 100px; }
+    .main-header.clean-header .logo-img { max-width: 130px; }
+    .slider-track-dots { padding: 0 5px; }
+    .track-dot { width: 6px; height: 6px; }
+    .slider-labels { font-size: 11px; }
+}
+
+/* Smartphones médios (376px - 480px) */
+@media (min-width: 376px) and (max-width: 480px) {
+    body { padding: 0 12px; }
+    .headline { font-size: 30px; }
+    .fat-image-display { height: 300px; }
+    .status-title { font-size: 20px !important; }
+    .offer-container { padding: 0 8px; }
+    .slider-labels { font-size: 12px; }
+}
+
+/* Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    body { max-width: 600px; margin: 0 auto; }
+    .quiz-grid { gap: 15px; }
+    .comparison-row { gap: 18px; }
+    .fat-image-display { height: 400px; }
+}
+
+/* Tablets grandes e desktops (769px+) */
+@media (min-width: 769px) {
+    body { max-width: 680px; margin: 0 auto; }
+    .quiz-grid { gap: 20px; }
+    .fat-image-display { height: 450px; }
+    .btn-continue { max-width: 500px; margin-left: auto; margin-right: auto; }
+}
+
+/* Otimizações de touch e interação mobile */
+@media (hover: none) and (pointer: coarse) {
+    .btn-continue,
+    .age-card,
+    .gender-card,
+    .horizontal-card,
+    .area-option,
+    .btn-areas-continue,
+    .btn-back-global {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+    
+    input[type=range] {
+        touch-action: none;
+    }
+    
+    input[type=range]::-webkit-slider-thumb {
+        height: 48px;
+        width: 48px;
+        margin-top: -18px;
+    }
+}
+
+/* Reduzir animações para quem prefere */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Modo paisagem em celulares */
+@media (max-height: 500px) and (orientation: landscape) {
+    .fat-image-display { height: 200px; }
+    .headline { font-size: 24px; }
+    .subheadline { font-size: 12px; }
+}
+
+/* =============================================
+   OTIMIZAÇÕES GERAIS DE PERFORMANCE
+   ============================================= */
+
+/* GPU acceleration para animações */
+.screen, .fat-img, .progress-bar, .loading-fill {
+    will-change: transform, opacity;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent horizontal overflow */
+body {
+    overflow-x: hidden;
+}
+
+/* Optimize image rendering */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Better font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}

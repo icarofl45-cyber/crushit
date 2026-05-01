@@ -1,21 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- Sistema automático de deploy ativado - Claude AI -->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Crush It - Tu protocolo militar de 21 días para transformar tu cuerpo con precisión táctica.">
     <meta name="keywords" content="fitness, militar, transformacion, 21 dias, entrenamiento, quiz">
     <meta name="author" content="Crush It Team">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Crush It - Protocolo de 21 Días">
     <meta property="og:description" content="Transforma tu cuerpo con el protocolo más riguroso y efectivo.">
     <meta property="og:type" content="website">
     
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="imagens_webp_crush_it/logo.png" as="image">
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts with display swap -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -326,11 +341,11 @@
             </div>
 
             <div class="calendar-preview anim-fade delay-10" style="background: #111; overflow: hidden; border-radius: 16px; border: 1px solid #333;">
-                <img src="imagens_webp_crush_it/oferta-2.webp" style="width: 100%; height: auto; display: block; filter: none; opacity: 1;">
+                <img loading="lazy" src="imagens_webp_crush_it/oferta-2.webp" style="width: 100%; height: auto; display: block; filter: none; opacity: 1;">
             </div>
 
             <div class="gift-box anim-fade delay-11" style="text-align: center;">
-                <img src="imagens_webp_crush_it/oferta-1.webp" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+                <img loading="lazy" src="imagens_webp_crush_it/oferta-1.webp" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
                 <p style="font-size:12px; color:var(--text-gray); margin-bottom:10px;">Obtienes un regalo imperdible además del programa principal</p>
                 <h4 style="font-size:20px; font-weight:900;">Plan imprimible para 2026</h4>
             </div>
@@ -443,7 +458,7 @@
 
             <div class="social-proof-section">
                 <div class="laurels-wrap">
-                    <img src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel-svg" style="opacity:0.6;">
+                    <img loading="lazy" src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel-svg" style="opacity:0.6;">
                     
                     <div class="proof-main">
                         <h2>+1.5 millones</h2>
@@ -452,7 +467,7 @@
                         <div class="proof-badge">4.7 de 5</div>
                     </div>
 
-                    <img src="imagens_webp_crush_it/ramo-direito.webp" class="laurel-svg laurel-right" style="opacity:0.6;">
+                    <img loading="lazy" src="imagens_webp_crush_it/ramo-direito.webp" class="laurel-svg laurel-right" style="opacity:0.6;">
                 </div>
                 <div class="proof-footer">
                     Más de 200.000 valoraciones de 5 estrellas de usuarios satisfechos
@@ -512,13 +527,13 @@
         <div class="gender-list">
             <div class="gender-card anim-left delay-1" onclick="handleGender('Masculino')">
                 <div class="gender-img-wrap">
-                    <img src="imagens_webp_crush_it/genero-h.webp" alt="Masculino">
+                    <img loading="lazy" src="imagens_webp_crush_it/genero-h.webp" alt="Masculino">
                 </div>
                 <span class="gender-label">Masculino</span>
             </div>
             <div class="gender-card anim-right delay-2" onclick="handleGender('Femenino')">
                 <div class="gender-img-wrap">
-                    <img src="imagens_webp_crush_it/genero-m.webp" alt="Femenino">
+                    <img loading="lazy" src="imagens_webp_crush_it/genero-m.webp" alt="Femenino">
                 </div>
                 <span class="gender-label">Femenino</span>
             </div>
@@ -539,19 +554,19 @@
             </div>
             <div class="hex-card anim-down delay-2" onclick="goToStep('goal', 'Promedio')">
                 <div class="hex-image-wrap">
-                    <img src="imagens_webp_crush_it/promedio.webp" id="img-promedio" alt="Promedio" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Promedio'">
+                    <img loading="lazy" src="imagens_webp_crush_it/promedio.webp" id="img-promedio" alt="Promedio" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Promedio'">
                 </div>
                 <div class="hex-label">Promedio</div>
             </div>
             <div class="hex-card anim-down delay-3" onclick="goToStep('goal', 'Grande')">
                 <div class="hex-image-wrap">
-                    <img src="imagens_webp_crush_it/grande.webp" id="img-grande" alt="Grande" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Grande'">
+                    <img loading="lazy" src="imagens_webp_crush_it/grande.webp" id="img-grande" alt="Grande" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Grande'">
                 </div>
                 <div class="hex-label">Grande</div>
             </div>
             <div class="hex-card anim-down delay-4" onclick="goToStep('goal', 'Pesado')">
                 <div class="hex-image-wrap">
-                    <img src="imagens_webp_crush_it/pesado.webp" id="img-pesado" alt="Pesado" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Pesado'">
+                    <img loading="lazy" src="imagens_webp_crush_it/pesado.webp" id="img-pesado" alt="Pesado" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Pesado'">
                 </div>
                 <div class="hex-label">Pesado</div>
             </div>
@@ -566,7 +581,7 @@
         <div class="goal-list">
             <div class="goal-card anim-fade delay-1" onclick="handleGoal('Perder Peso')">
                 <div class="goal-img-box">
-                    <img src="imagens_webp_crush_it/perder-peso.webp" id="img-perder" style="width:100%; height:100%; object-fit:cover;">
+                    <img loading="lazy" src="imagens_webp_crush_it/perder-peso.webp" id="img-perder" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="goal-info">
                     <div class="goal-title">PERDER PESO</div>
@@ -575,7 +590,7 @@
             </div>
             <div class="goal-card anim-fade delay-2" onclick="handleGoal('Ganar Músculo')">
                 <div class="goal-img-box">
-                    <img src="imagens_webp_crush_it/Ganar-musculo.webp" id="img-ganar" style="width:100%; height:100%; object-fit:cover;">
+                    <img loading="lazy" src="imagens_webp_crush_it/Ganar-musculo.webp" id="img-ganar" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="goal-info">
                     <div class="goal-title">GANAR MÚSCULO</div>
@@ -584,7 +599,7 @@
             </div>
             <div class="goal-card anim-fade delay-3" onclick="handleGoal('Definir tu Cuerpo')">
                 <div class="goal-img-box">
-                    <img src="imagens_webp_crush_it/Definir-tu-cuerpo.webp" id="img-definir" style="width:100%; height:100%; object-fit:cover;">
+                    <img loading="lazy" src="imagens_webp_crush_it/Definir-tu-cuerpo.webp" id="img-definir" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="goal-info">
                     <div class="goal-title">DEFINIR TU CUERPO</div>
@@ -606,7 +621,7 @@
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado y Tonificado')">
                 <span class="horizontal-label" style="font-size:18px;">Delgado y Tonificado</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4.webp" id="img-delgado-ton" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4.webp" id="img-delgado-ton" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
         </div>
     </div>
@@ -619,15 +634,15 @@
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Atleta')">
                 <span class="horizontal-label">Atleta</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/Atleta-pergunta-4.webp" id="img-atleta" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/Atleta-pergunta-4.webp" id="img-atleta" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Héroe')">
                 <span class="horizontal-label">Héroe</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/heroe-pergunta-4.webp" id="img-heroe" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/heroe-pergunta-4.webp" id="img-heroe" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Culturista')">
                 <span class="horizontal-label">Culturista</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/culturista-pergunta-4.webp" id="img-culturista" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/culturista-pergunta-4.webp" id="img-culturista" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
         </div>
     </div>
@@ -640,15 +655,15 @@
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Playa')">
                 <span class="horizontal-label">De Playa</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/De-playa-pergunta-4.webp" id="img-de-playa" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/De-playa-pergunta-4.webp" id="img-de-playa" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Ejercitado')">
                 <span class="horizontal-label">Ejercitado</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/Ejercitado-pergunta-4.webp" id="img-ejercitado" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/Ejercitado-pergunta-4.webp" id="img-ejercitado" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
             <div class="horizontal-card" onclick="goToStep('focusarea', 'De Crossfit')">
                 <span class="horizontal-label">De Crossfit</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/De-crossfit-pergunta-4.webp" id="img-de-crossfit" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/De-crossfit-pergunta-4.webp" id="img-de-crossfit" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
         </div>
     </div>
@@ -695,7 +710,7 @@
                 <!-- Avatar placeholder esquerdo -->
                 <div class="areas-avatar">
                     <div class="areas-avatar-inner">
-                        <img src="imagens_webp_crush_it/avatar-pergunta-6.webp" id="img-avatar-focus" style="width:100%; height:100%; object-fit:cover;">
+                        <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6.webp" id="img-avatar-focus" style="width:100%; height:100%; object-fit:cover;">
                         <!-- Body Part Highlights -->
                         <div class="body-highlight highlight-pecho" id="highlight-pecho"></div>
                         <div class="body-highlight highlight-brazo-l" id="highlight-brazo-l"></div>
@@ -710,31 +725,31 @@
                 <div class="areas-options">
                     <div class="area-option" onclick="toggleArea('pecho', this)">
                         <div class="area-hex-icon">
-                            <img src="imagens_webp_crush_it/pectoral.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img loading="lazy" src="imagens_webp_crush_it/pectoral.webp" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <span class="area-option-label">Pecho</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('brazos', this)">
                         <div class="area-hex-icon">
-                            <img src="imagens_webp_crush_it/area-brazos.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img loading="lazy" src="imagens_webp_crush_it/area-brazos.webp" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <span class="area-option-label">Brazos</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('abdomen', this)">
                         <div class="area-hex-icon">
-                            <img src="imagens_webp_crush_it/area-abs.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img loading="lazy" src="imagens_webp_crush_it/area-abs.webp" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <span class="area-option-label">Abdomen</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('piernas', this)">
                         <div class="area-hex-icon">
-                            <img src="imagens_webp_crush_it/area-piernas.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <span class="area-option-label">Piernas</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('todo', this)">
                         <div class="area-hex-icon">
-                            <img src="imagens_webp_crush_it/cuerpo.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <span class="area-option-label">Todo el Cuerpo</span>
                     </div>
@@ -1909,3 +1924,4 @@
     </script>
 </body>
 </html>
+
