@@ -1316,6 +1316,7 @@
             }
 
             if (stepId === 'analysis') startAnalysis();
+            if (stepId === 'offer') populateOfferScreen();
         }
 
         function startAnalysis() {
@@ -1588,6 +1589,19 @@
 
         function submitTargetWeight() {
             userProfile.targetWeight = document.getElementById('input-target-weight').value;
+            
+            // Atualizar a prediction screen com dados dinâmicos
+            const tw = parseFloat(userProfile.targetWeight) || 70;
+            const unit = document.getElementById('unit-kg').classList.contains('active') ? 'kg' : 'lb';
+            document.getElementById('pred-weight-display').innerText = tw + ' ' + unit;
+            
+            // Data dinâmica: hoje + 21 dias
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 21);
+            const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+            const dateStr = targetDate.getDate() + ' ' + months[targetDate.getMonth()] + ' ' + targetDate.getFullYear();
+            document.getElementById('pred-date-display').innerText = dateStr;
+            
             goToStep('prediction');
             startPredictionTimer();
         }
@@ -1668,6 +1682,57 @@
                     goToStep('offer');
                 }
             }, 1000);
+        }
+
+        function populateOfferScreen() {
+            // Nome
+            const name = userProfile.name || 'GUERRERO';
+            const nameEl = document.getElementById('offer-name');
+            if (nameEl) nameEl.innerText = name.toUpperCase();
+
+            // Altura e peso
+            const h = parseFloat(userProfile.height) || 170;
+            const w = parseFloat(userProfile.weight) || 70;
+            const tw = parseFloat(userProfile.targetWeight) || w;
+            const unit = document.getElementById('unit-kg') && document.getElementById('unit-kg').classList.contains('active') ? 'kg' : 'lb';
+
+            // Peso atual e objetivo
+            const weightNowEl = document.getElementById('off-weight-now');
+            const weightGoalEl = document.getElementById('off-weight-goal');
+            if (weightNowEl) weightNowEl.innerText = w + ' ' + unit;
+            if (weightGoalEl) weightGoalEl.innerText = tw + ' ' + unit;
+
+            // Data estimada: hoje + 21 dias
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 21);
+            const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+            const dateStr = targetDate.getDate() + ' ' + months[targetDate.getMonth()];
+            const dateGoalEl = document.getElementById('off-date-goal');
+            if (dateGoalEl) dateGoalEl.innerText = dateStr;
+
+            // IMC
+            const currentImc = (w / ((h / 100) ** 2)).toFixed(1);
+            const targetImc = (tw / ((h / 100) ** 2)).toFixed(1);
+
+            // IMC Level text
+            let imcCategory = 'Normal';
+            if (currentImc < 18.5) imcCategory = 'Bajo';
+            else if (currentImc < 25) imcCategory = 'Normal';
+            else if (currentImc < 30) imcCategory = 'Sobrepeso';
+            else imcCategory = 'Obeso';
+
+            const imcLevelEl = document.getElementById('offer-imc-level');
+            if (imcLevelEl) imcLevelEl.innerText = 'IMC: ' + currentImc + ' - Nivel: ' + imcCategory;
+
+            // Status tag
+            const statusTag = document.querySelector('.status-tag');
+            if (statusTag) statusTag.innerText = 'PESO ' + imcCategory.toUpperCase();
+
+            // Comparison IMCs
+            const compImcNow = document.getElementById('comp-imc-now');
+            const compImcGoal = document.getElementById('comp-imc-goal');
+            if (compImcNow) compImcNow.innerText = currentImc;
+            if (compImcGoal) compImcGoal.innerText = targetImc;
         }
 
         function toggleFaq(el) {
