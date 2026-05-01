@@ -1717,8 +1717,13 @@
                         goToStep('final');
                     }, 500);
                 }
+                
+                // O gráfico desenha 2x mais rápido que a barra
+                let graphProgress = progress * 2;
+                if (graphProgress > 100) graphProgress = 100;
+
                 fill.style.width = progress + '%';
-                revealRect.setAttribute('width', (progress / 100) * 400);
+                revealRect.setAttribute('width', (graphProgress / 100) * 400);
             }, intervalTime);
         }
 
