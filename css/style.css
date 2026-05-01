@@ -1802,28 +1802,33 @@ margin-bottom: 10px;}}
     margin-top: 20px;
 }
 .testimonials-track {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    gap: 20px;
     padding: 10px 5px 25px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    width: 100%;
 }
 .testimonials-track::-webkit-scrollbar {
     display: none;
 }
 .testimonial-card {
+    flex: 0 0 85%;
     min-width: 280px;
+    max-width: 350px;
     background: #181818;
-    border: 1px solid #222;
-    border-radius: 20px;
-    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 24px;
+    padding: 24px;
     scroll-snap-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
 }
 .test-header {
     display: flex;
