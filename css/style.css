@@ -2759,3 +2759,48 @@ body #screen-targetweight .large-weight-display .weak-val.active {
     color: #fff !important;
 }
 
+
+/* GAUGE ROW - KCAL E AGUA LADO A LADO */
+.gauge-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: 0;
+}
+
+.gauge-half {
+    flex: 1;
+    min-width: 0;
+}
+
+.gauge-half .gauge-title {
+    font-size: 11px;
+}
+
+.gauge-half .gauge-val {
+    font-size: 22px;
+}
+
+.gauge-half .gauge-labels span {
+    font-size: 9px;
+}
+
+.gauge-half .recommended-tag {
+    font-size: 8px;
+    padding: 2px 6px;
+}
+
+.gauge-half .water-icons {
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.gauge-half .water-icon {
+    font-size: 16px;
+}
+
+@media (max-width: 400px) {
+    .gauge-row {
+        flex-direction: column;
+    }
+}
