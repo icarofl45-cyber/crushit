@@ -702,6 +702,19 @@
 
         // Recupera a etapa da URL ao carregar a página
         window.addEventListener('DOMContentLoaded', () => {
+            // Testimonials Slider Logic
+            const track = document.querySelector('.testimonials-track');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (track && dots.length > 0) {
+                track.addEventListener('scroll', () => {
+                    const index = Math.round(track.scrollLeft / (track.clientWidth * 0.8));
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                });
+            }
+
             const hash = window.location.hash.substring(1);
             if (hash && document.getElementById('screen-' + hash)) {
                 // Navega direto para a etapa salva no hash

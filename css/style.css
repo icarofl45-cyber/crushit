@@ -1797,6 +1797,109 @@ margin-bottom: 10px;}}
 .comparison-row{gap: 8px;}
 .comp-card{padding: 12px 8px; border-radius: 18px;}
 .comp-imc-val{font-size: 18px;}
+.testimonials-slider-wrap {
+    width: 100%;
+    margin-top: 20px;
+}
+.testimonials-track {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 5px 25px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.testimonials-track::-webkit-scrollbar {
+    display: none;
+}
+.testimonial-card {
+    min-width: 280px;
+    background: #181818;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 20px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.test-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+.test-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    color: #fff;
+    background: #333;
+}
+.test-name {
+    font-weight: 800;
+    font-size: 15px;
+}
+.test-text {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+.test-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+.test-stars {
+    color: #F97316;
+    font-size: 14px;
+}
+.verified-badge {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22C55E;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #333;
+    transition: all 0.3s ease;
+}
+.dot.active {
+    background: #fff;
+    transform: scale(1.2);
+}
+.review-policy {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-gray);
+    margin-top: 25px;
+    opacity: 0.8;
+}
+
 .gauge-section{padding: 12px;}
 .gauge-val{font-size: 24px;}
 .gauge-title{font-size: 10px;}
