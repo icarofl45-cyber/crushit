@@ -244,6 +244,9 @@
             document.getElementById('input-height').placeholder = isMetric ? '175' : '5.9';
             document.getElementById('input-weight').placeholder = isMetric ? '80' : '175';
             
+            // SINCRONIZA COM A PRÓXIMA TELA (PESO OBJETIVO)
+            setWeightUnit(isMetric ? 'kg' : 'lb');
+            
             calcIMC();
         }
 
@@ -340,12 +343,19 @@
         }
 
         function setWeightUnit(unit) {
-            document.getElementById('unit-kg').classList.toggle('active', unit === 'kg');
-            document.getElementById('unit-lb').classList.toggle('active', unit === 'lb');
+            const isKg = unit === 'kg';
+            document.getElementById('unit-kg').classList.toggle('active', isKg);
+            document.getElementById('unit-lb').classList.toggle('active', !isKg);
             
             const label = document.getElementById('label-target-weight');
             if (label) {
-                label.innerText = unit === 'kg' ? 'kilogramos' : 'libras';
+                label.innerText = isKg ? 'kilogramos' : 'libras';
+            }
+
+            const input = document.getElementById('input-target-weight');
+            if (input) {
+                input.placeholder = isKg ? '70' : '155';
+                updateTargetWeightDisplay(input.value);
             }
         }
 
