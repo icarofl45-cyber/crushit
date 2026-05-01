@@ -1189,8 +1189,8 @@ input[type=number] {
 }
 
 .validation-card {
-    background: rgba(249, 115, 22, 0.1);
-    border: 1px solid rgba(249, 115, 22, 0.3);
+    background: rgba(123, 47, 247, 0.1);
+    border: 1px solid rgba(123, 47, 247, 0.3);
     border-radius: 20px;
     padding: 25px;
     display: flex;
@@ -1208,7 +1208,7 @@ input[type=number] {
 }
 
 .validation-content h4 {
-    color: #4da6ff;
+    color: var(--cta-green);
     font-size: 16px;
     font-weight: 900;
     text-transform: uppercase;
@@ -2578,13 +2578,13 @@ body #screen-targetweight .large-weight-display .weak-val {
     transition: all 0.3s ease-in-out;
 }
 
-/* ADJUSTING BRIGHTNESS: -35% */
+/* ADJUSTING BRIGHTNESS: -40% further */
 body #screen-targetweight .large-weight-display .weak-val.active {
     color: #ffffff !important;
     text-shadow: 
-        0 0 7px #fff,
-        0 0 15px rgba(0, 255, 102, 0.7),
-        0 0 30px rgba(0, 255, 102, 0.4) !important;
+        0 0 4px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 255, 102, 0.4),
+        0 0 20px rgba(0, 255, 102, 0.2) !important;
     opacity: 1 !important;
     transform: scale(1.05) !important;
     filter: none !important;
