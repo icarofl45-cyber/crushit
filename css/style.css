@@ -2772,3 +2772,45 @@ body #screen-targetweight .large-weight-display .weak-val.active {
     }
 }
 
+
+/* EFEITO DE IMAGEM EM DESTAQUE COM FADE NA BASE */
+.highlight-card {
+    transform: scale(1.05);
+    border: 1px solid rgba(0, 255, 102, 0.2) !important;
+    background: linear-gradient(180deg, #1a1a1a 0%, #000 100%) !important;
+    z-index: 2;
+}
+
+.goal-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.goal-wrapper img {
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+.img-fade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.comp-card h6 {
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+    .highlight-card {
+        transform: scale(1);
+        margin-bottom: 10px;
+    }
+}
