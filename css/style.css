@@ -9,7 +9,8 @@
 padding: 0;
 box-sizing: border-box;}
 body{font-family: 'Inter', sans-serif;
-background-color: var(--bg-color);
+background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%) no-repeat center center fixed;
+background-size: cover;
 color: var(--text-white);
 display: flex;
 flex-direction: column;
@@ -55,7 +56,7 @@ to{opacity: 1; transform: translateY(0);}}
 display: flex;
 flex-direction: column;
 margin-bottom: 10px;
-background: var(--bg-color);
+background: transparent;
 position: relative;
 z-index: 100;}
 .logo-container{width: 100%;
