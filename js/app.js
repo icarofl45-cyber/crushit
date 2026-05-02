@@ -507,10 +507,10 @@
             if (nameEl) nameEl.innerText = name.toUpperCase();
 
             // Altura e peso
-            const h = parseFloat(userProfile.height) || 170;
-            const w = parseFloat(userProfile.weight) || 70;
-            const tw = parseFloat(userProfile.targetWeight) || w;
-            const unit = document.getElementById('unit-kg') && document.getElementById('unit-kg').classList.contains('active') ? 'kg' : 'lb';
+            let h = parseFloat(userProfile.height) || 170;
+            let w = parseFloat(userProfile.weight) || 70;
+            let tw = parseFloat(userProfile.targetWeight) || w;
+            const unit = userProfile.units === 'metric' ? 'kg' : 'lb';
 
             // Peso atual e objetivo
             const weightNowEl = document.getElementById('off-weight-now');
@@ -526,9 +526,20 @@
             const dateGoalEl = document.getElementById('off-date-goal');
             if (dateGoalEl) dateGoalEl.innerText = dateStr;
 
+            // Conversão para cálculo de IMC se necessário
+            let hMetric = h;
+            let wMetric = w;
+            let twMetric = tw;
+
+            if (userProfile.units === 'imperial') {
+                hMetric = h * 30.48; // ft para cm
+                wMetric = w * 0.453592; // lb para kg
+                twMetric = tw * 0.453592;
+            }
+
             // IMC
-            const currentImc = (w / ((h / 100) ** 2)).toFixed(1);
-            const targetImc = (tw / ((h / 100) ** 2)).toFixed(1);
+            const currentImc = (wMetric / ((hMetric / 100) ** 2)).toFixed(1);
+            const targetImc = (twMetric / ((hMetric / 100) ** 2)).toFixed(1);
 
             // IMC Level text
             let imcCategory = 'Normal';
