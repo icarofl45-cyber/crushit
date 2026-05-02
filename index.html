@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.6">
+    <link rel="stylesheet" href="css/style.css?v=1.7">
 </head>
 <body>
 
@@ -253,6 +253,39 @@
                     <img loading="lazy" src="imagens_webp_crush_it/genero-m.webp" alt="Femenino">
                 </div>
                 <span class="gender-label">Femenino</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 3: TIPO DE CORPO -->
+    <div id="screen-bodytype" class="screen">
+        <h1 class="headline anim-fade">ELIGE EL CUERPO QUE TIENES <span style="color:var(--cta-green)">HOY</span></h1>
+        <p class="subheadline anim-fade delay-1">El sistema necesita la verdad para darte el plan correcto</p>
+
+        <div class="hex-grid">
+            <div class="hex-card anim-down delay-2" onclick="goToStep('goal', 'Delgado')">
+                <div class="hex-image-wrap">
+                    <img src="imagens_webp_crush_it/delgado.webp" id="img-delgado" alt="Delgado">
+                </div>
+                <div class="hex-label">Delgado</div>
+            </div>
+            <div class="hex-card anim-down delay-3" onclick="goToStep('goal', 'Promedio')">
+                <div class="hex-image-wrap">
+                    <img loading="lazy" src="imagens_webp_crush_it/promedio.webp" id="img-promedio" alt="Promedio">
+                </div>
+                <div class="hex-label">Promedio</div>
+            </div>
+            <div class="hex-card anim-down delay-4" onclick="goToStep('goal', 'Grande')">
+                <div class="hex-image-wrap">
+                    <img loading="lazy" src="imagens_webp_crush_it/grande.webp" id="img-grande" alt="Grande">
+                </div>
+                <div class="hex-label">Grande</div>
+            </div>
+            <div class="hex-card anim-down delay-5" onclick="goToStep('goal', 'Pesado')">
+                <div class="hex-image-wrap">
+                    <img loading="lazy" src="imagens_webp_crush_it/pesado.webp" id="img-pesado" alt="Pesado">
+                </div>
+                <div class="hex-label">Pesado</div>
             </div>
         </div>
     </div>
@@ -658,37 +691,7 @@
 
 
     <!-- ETAPA 3: TIPO DE CORPO (MASCULINO) -->
-    <div id="screen-bodytype" class="screen">
-        <h1 class="headline">ELIGE EL CUERPO QUE TIENES <span style="color:var(--cta-green)">HOY</span></h1>
-        <p class="subheadline">El sistema necesita la verdade para darte el plan correcto</p>
 
-        <div class="hex-grid">
-            <div class="hex-card anim-down delay-1" onclick="goToStep('goal', 'Delgado')">
-                <div class="hex-image-wrap">
-                    <img src="imagens_webp_crush_it/delgado.webp" id="img-delgado" alt="Delgado" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Delgado'">
-                </div>
-                <div class="hex-label">Delgado</div>
-            </div>
-            <div class="hex-card anim-down delay-2" onclick="goToStep('goal', 'Promedio')">
-                <div class="hex-image-wrap">
-                    <img loading="lazy" src="imagens_webp_crush_it/promedio.webp" id="img-promedio" alt="Promedio" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Promedio'">
-                </div>
-                <div class="hex-label">Promedio</div>
-            </div>
-            <div class="hex-card anim-down delay-3" onclick="goToStep('goal', 'Grande')">
-                <div class="hex-image-wrap">
-                    <img loading="lazy" src="imagens_webp_crush_it/grande.webp" id="img-grande" alt="Grande" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Grande'">
-                </div>
-                <div class="hex-label">Grande</div>
-            </div>
-            <div class="hex-card anim-down delay-4" onclick="goToStep('goal', 'Pesado')">
-                <div class="hex-image-wrap">
-                    <img loading="lazy" src="imagens_webp_crush_it/pesado.webp" id="img-pesado" alt="Pesado" onerror="this.src='https://via.placeholder.com/200x250/111/7B2FF7?text=Pesado'">
-                </div>
-                <div class="hex-label">Pesado</div>
-            </div>
-        </div>
-    </div>
 
     <!-- ETAPA 4: META (MASCULINO) -->
     <div id="screen-goal" class="screen">

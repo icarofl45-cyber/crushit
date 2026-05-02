@@ -28,11 +28,11 @@ animation: fadeIn 0.4s ease-out;}
 to{opacity: 1; transform: translateY(0);}}
 
 /* Animations System */
-.anim-fade { opacity: 0; animation: animFade 0.6s ease forwards; }
-.anim-left { opacity: 0; animation: animLeft 0.6s ease forwards; }
-.anim-right { opacity: 0; animation: animRight 0.6s ease forwards; }
-.anim-up { opacity: 0; animation: animUp 0.6s ease forwards; }
-.anim-down { opacity: 0; animation: animDown 0.6s ease forwards; }
+.anim-fade { opacity: 1; animation: animFade 0.6s ease both; }
+.anim-left { opacity: 1; animation: animLeft 0.6s ease both; }
+.anim-right { opacity: 1; animation: animRight 0.6s ease both; }
+.anim-up { opacity: 1; animation: animUp 0.6s ease both; }
+.anim-down { opacity: 1; animation: animDown 0.6s ease both; }
 
 @keyframes animFade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes animLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
