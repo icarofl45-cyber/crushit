@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.11">
+    <link rel="stylesheet" href="css/style.css?v=1.13">
 </head>
 <body>
 
@@ -505,6 +505,401 @@
         </div>
     </div>
 
+    <!-- ETAPA 9: ALTURA E PESO -->
+    <div id="screen-biometrics" class="screen">
+        <h1 class="headline" style="font-size:32px">TU <span style="color:var(--cta-green)">ALTURA Y PESO</span></h1>
+        <p class="subheadline" style="font-size:15px">Usamos estos datos para calcular tu <strong style="color:var(--cta-green)">IMC</strong> e ajustar la intensidade do protocolo.</p>
+
+        <div class="unit-toggle" style="margin-bottom: 20px;">
+            <button class="unit-btn active" id="bio-unit-metric" onclick="toggleBioUnits('metric')">CM / KG</button>
+            <button class="unit-btn" id="bio-unit-imperial" onclick="toggleBioUnits('imperial')">FT / LB</button>
+        </div>
+
+        <div class="biometrics-grid">
+            <div class="bio-field"><label for="input-height" class="bio-label">Altura</label><div class="bio-input-wrap"><input type="text" id="input-height" class="bio-value-input" value="" placeholder="175" oninput="calcIMC()" aria-describedby="label-height"><span class="bio-unit" id="label-height">centímetros</span></div>
+                <div id="error-height" class="error-message">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                    <span>Mínimo 140cm / Máximo 220cm</span>
+                </div>
+            </div>
+            <div class="bio-field"><label for="input-weight" class="bio-label">Peso</label><div class="bio-input-wrap"><input type="number" id="input-weight" class="bio-value-input" value="" placeholder="80" oninput="calcIMC()" aria-describedby="label-weight"><span class="bio-unit" id="label-weight">kilogramos</span></div>
+
+                <div id="error-weight" class="error-message">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                    <span>Mínimo 40kg / Máximo 140kg</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="imc-box" class="imc-box">
+            <div class="imc-box-header">
+                <div class="imc-box-label">IMC Calculado</div>
+                <div class="imc-value" id="imc-display">--</div>
+            </div>
+            
+            <div class="imc-gauge-container">
+                <div class="imc-gauge-track">
+                    <div id="imc-gauge-pin" class="imc-gauge-pin" style="left: 50%;"></div>
+                </div>
+                <div class="imc-gauge-labels">
+                    <span>BAJO</span>
+                    <span>NORMAL</span>
+                    <span>SOBREPESO</span>
+                    <span>OBESO</span>
+                </div>
+            </div>
+            
+            <div id="imc-category" class="imc-category"></div>
+        </div>
+
+        <div class="security-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            Tus datos están seguros y encriptados
+        </div>
+
+        <div class="areas-footer">
+            <button class="btn-areas-continue active-btn" onclick="submitBiometrics()">CONTINUAR →</button>
+        </div>
+    </div>
+
+    <!-- ETAPA 10: PESO DESEJADO -->
+    <div id="screen-targetweight" class="screen">
+        <div class="target-weight-container">
+            <h1 class="headline" style="font-size:32px; color: #fff;">¿CUÁL ES TU <span style="color:var(--cta-green)">PESO OBJETIVO</span>?</h1>
+            
+            <div class="unit-toggle">
+                <button class="unit-btn active" id="unit-kg" onclick="setWeightUnit('kg')">KG</button>
+                <button class="unit-btn" id="unit-lb" onclick="setWeightUnit('lb')">LB</button>
+            </div>
+
+            <div class="biometrics-grid" style="margin-top: 30px; grid-template-columns: 1fr; display: flex; justify-content: center;">
+                <div class="bio-field" style="width: 100%; max-width: 320px;">
+                    <label for="input-target-weight" class="bio-label">Peso Objetivo</label>
+                    <div class="bio-input-wrap">
+                        <input type="number" id="input-target-weight" class="bio-value-input" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)" aria-describedby="label-target-weight">
+                        <span class="bio-unit" id="label-target-weight">kilogramos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPARISON GAUGE -->
+            <div class="imc-comparison-box">
+                <div class="comparison-header">
+                    <span>TU PROGRESO ESTIMADO</span>
+                    <div class="comparison-values">
+                        <div class="comp-val-item">
+                            <span class="comp-label">ACTUAL</span>
+                            <span id="comp-imc-current" class="comp-number">--</span>
+                        </div>
+                        <div class="comp-val-item">
+                            <span class="comp-label">OBJETIVO</span>
+                            <span id="comp-imc-target" class="comp-number" style="color:var(--cta-green);">--</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-gauge">
+                    <div class="comp-track">
+                        <div id="comp-bar" class="comp-fill-bar"></div>
+                    </div>
+                </div>
+                <div class="comparison-footer">
+                    <span id="comp-status-text">Analizando tu trayectoria...</span>
+                </div>
+            </div>
+
+            <div class="areas-footer">
+                <button class="btn-areas-continue active-btn" onclick="submitTargetWeight()">CONTINUAR →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 11: GRÁFICO PREDIÇÃO -->
+    <div id="screen-prediction" class="screen">
+        <div class="prediction-screen">
+            <h1 class="prediction-headline">
+                El último plan que necesitarás para<br>
+                <span style="color:var(--cta-green)">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
+            </h1>
+            
+            <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong id="pred-weight-display">70 kg</strong> para el</p>
+            
+            <div class="prediction-date" id="pred-date-display">17 may 2026</div>
+
+            <div class="graph-container">
+                <div class="graph-legend">
+                    <div class="legend-item"><div class="line-green"></div> MASA MUSCULAR</div>
+                    <div class="legend-item"><div class="line-orange"></div> % GRASA</div>
+                </div>
+
+                <div class="graph-svg-wrap" id="graph-anim-box">
+                    <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="none" class="graph-grid">
+                        <defs>
+                            <linearGradient id="grad-fat" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.25" />
+                                <stop offset="100%" style="stop-color:#f97316;stop-opacity:0" />
+                            </linearGradient>
+                            <linearGradient id="grad-muscle" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.25" />
+                                <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
+                            </linearGradient>
+                            <clipPath id="graph-reveal">
+                                <rect id="reveal-rect" x="0" y="0" width="0" height="200" style="transition: width 0.1s linear;" />
+                            </clipPath>
+                        </defs>
+
+                        <!-- Horizontal Grid Lines (Dashed) -->
+                        <line x1="0" y1="40" x2="400" y2="40" stroke-dasharray="2" />
+                        <line x1="0" y1="80" x2="400" y2="80" stroke-dasharray="2" />
+                        <line x1="0" y1="120" x2="400" y2="120" stroke-dasharray="2" />
+                        <line x1="0" y1="160" x2="400" y2="160" stroke-dasharray="2" />
+
+                        <!-- Vertical Grid Lines (Dashed) -->
+                        <line x1="80" y1="0" x2="80" y2="200" stroke-dasharray="2"/>
+                        <line x1="160" y1="0" x2="160" y2="200" stroke-dasharray="2"/>
+                        <line x1="240" y1="0" x2="240" y2="200" stroke-dasharray="2"/>
+                        <line x1="320" y1="0" x2="320" y2="200" stroke-dasharray="2"/>
+                        
+                        <!-- Grouped Elements for Reveal -->
+                        <g clip-path="url(#graph-reveal)">
+                            <!-- Area Fills (Glow) -->
+                            <path id="area-fat" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-fat)" />
+                            <path id="area-muscle" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-muscle)" />
+
+                            <!-- Fat Line (Orange) -->
+                            <path id="path-fat" d="M 0,40 C 100,50 250,160 400,185" stroke="#f97316" stroke-width="4" fill="none" />
+                            <circle cx="400" cy="185" r="5" fill="#f97316" />
+                            
+                            <!-- Muscle Line (Green) -->
+                            <path id="path-muscle" d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
+                            <circle cx="400" cy="35" r="5" fill="#86efac" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="graph-labels">
+                    <span>AHORA</span>
+                    <span id="lbl-step1">DÍA 7</span>
+                    <span id="lbl-step2">DÍA 14</span>
+                    <span id="lbl-step3" class="label-last">DÍA 21</span>
+                </div>
+            </div>
+            <p class="graph-note">Este gráfico es solo para fines ilustrativos</p>
+            
+            <div class="loading-bar-wrap" style="margin-top: 20px;">
+                <div class="loading-track">
+                    <div id="pred-loading-fill" class="loading-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 12: FLEXÕES -->
+    <div id="screen-pushups" class="screen">
+        <h1 class="headline">¿CUÁNTAS <span style="color:var(--cta-green)">FLEXIONES</span> PUEDES HACER?</h1>
+        <p class="subheadline">Sin descanso, en un solo intento. Sé honesto — tu protocolo depende de esto.</p>
+
+        <div class="pushups-grid">
+            <div class="pushup-hex-card" onclick="goToStep('training', '0')">
+                <div class="pushup-hex-wrap">0</div>
+                <div class="pushup-label">NINGUNA</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '1-5')">
+                <div class="pushup-hex-wrap">1-5</div>
+                <div class="pushup-label">PRINCIPIANTE</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '6-15')">
+                <div class="pushup-hex-wrap">6-15</div>
+                <div class="pushup-label">BÁSICO</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '16-30')">
+                <div class="pushup-hex-wrap">16-30</div>
+                <div class="pushup-label">INTERMEDIO</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '31-50')">
+                <div class="pushup-hex-wrap">31-50</div>
+                <div class="pushup-label">AVANZADO</div>
+            </div>
+            <div class="pushup-hex-card" onclick="goToStep('training', '50+')">
+                <div class="pushup-hex-wrap">50+</div>
+                <div class="pushup-label">MILITAR</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 13: FREQUÊNCIA DE TREINO -->
+    <div id="screen-training" class="screen">
+        <h1 class="headline">¿CON QUÉ <span style="color:var(--cta-green)">FRECUENCIA</span> ENTRENAS?</h1>
+        <p class="subheadline">Esto determina el volumen de entrenamiento semanal de tu plan.</p>
+
+        <div class="training-list">
+            <div class="training-card" onclick="goToStep('startdate', 'Casi nunca')">
+                <div class="training-icon">🪑</div>
+                <div class="training-info">
+                    <div class="training-title">CASI NUNCA</div>
+                    <div class="training-subtitle">Menos de 1 vez por semana</div>
+                </div>
+            </div>
+            <div class="training-card" onclick="goToStep('startdate', '1-2 veces')">
+                <div class="training-icon">🏃</div>
+                <div class="training-info">
+                    <div class="training-title">1-2 VECES POR SEMANA</div>
+                    <div class="training-subtitle">Estoy empezando a moverme</div>
+                </div>
+            </div>
+            <div class="training-card" onclick="goToStep('startdate', '3-5 veces')">
+                <div class="training-icon">💪</div>
+                <div class="training-info">
+                    <div class="training-title">3-5 VECES POR SEMANA</div>
+                    <div class="training-subtitle">Entreno con regularidad</div>
+                </div>
+            </div>
+            <div class="training-card" onclick="goToStep('startdate', '6+ veces')">
+                <div class="training-icon">⚡</div>
+                <div class="training-info">
+                    <div class="training-title">6+ VECES POR SEMANA</div>
+                    <div class="training-subtitle">Atleta o estilo de vida muy activo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 14: DATA DE INÍCIO -->
+    <div id="screen-startdate" class="screen">
+        <h1 class="headline">UNA PREGUNTA HONESTA:<br><span style="color:var(--cta-green)">¿CUÁNDO VAS A EMPEZAR DE VERDAD?</span></h1>
+        
+        <div class="start-list" style="width:100%; margin-top:20px;">
+            <div class="start-card" onclick="handleStartDate('Hoy')">
+                <div class="start-icon">⚡</div>
+                <div class="start-info">
+                    <div class="start-title">EMPIEZO HOY</div>
+                    <div class="start-sub">En las próximas horas. El sistema activa tu protocolo ahora.</div>
+                </div>
+            </div>
+
+            <div class="start-card" onclick="handleStartDate('Mañana')">
+                <div class="start-icon">📅</div>
+                <div class="start-info">
+                    <div class="start-title">MAÑANA</div>
+                    <div class="start-sub">Bien. Pero recuerda: mañana siempre llega como hoy.</div>
+                </div>
+            </div>
+
+            <div class="start-card" onclick="handleStartDate('No estoy listo')">
+                <div class="start-icon">⌛</div>
+                <div class="start-info">
+                    <div class="start-title">NO ESTOY LISTO</div>
+                    <div class="start-sub">Llevas tiempo diciéndote eso.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="start-warning" class="start-warning-box" style="display: none; margin-top: 20px;">
+            <div class="start-warning-icon">⚠️</div>
+            <p>La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.</p>
+        </div>
+    </div>
+
+    <!-- ETAPA 15: GRÁFICO HORMONAL -->
+    <div id="screen-hormones" class="screen">
+        <div class="prediction-screen">
+            <h1 class="prediction-headline" style="color:var(--text-white)">
+                ¡No tienes que exigirte<br>
+                <span style="color:var(--cta-green)">más de lo que puedes!</span>
+            </h1>
+
+            <div class="graph-container">
+                <div class="graph-legend">
+                    <div class="legend-item"><div class="line-white"></div> CORTISOL</div>
+                    <div class="legend-item"><div class="line-green"></div> TESTOSTERONA</div>
+                </div>
+
+                <div class="graph-svg-wrap" id="hormones-anim-box">
+                    <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="none" class="graph-grid">
+                        <defs>
+                            <linearGradient id="grad-cortisol" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#fff;stop-opacity:0.2" />
+                                <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
+                            </linearGradient>
+                            <linearGradient id="grad-testo" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.25" />
+                                <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
+                            </linearGradient>
+                            <clipPath id="graph-reveal-h">
+                                <rect id="reveal-rect-h" x="0" y="0" width="0" height="200" style="transition: width 0.1s linear;" />
+                            </clipPath>
+                        </defs>
+
+                        <!-- Horizontal Grid Lines -->
+                        <line x1="0" y1="40" x2="400" y2="40" stroke-dasharray="2" />
+                        <line x1="0" y1="80" x2="400" y2="80" stroke-dasharray="2" />
+                        <line x1="0" y1="120" x2="400" y2="120" stroke-dasharray="2" />
+                        <line x1="0" y1="160" x2="400" y2="160" stroke-dasharray="2" />
+
+                        <!-- Vertical Grid Lines -->
+                        <line x1="133" y1="0" x2="133" y2="200" stroke-dasharray="2" />
+                        <line x1="266" y1="0" x2="266" y2="200" stroke-dasharray="2" />
+
+                        <!-- Grouped Elements for Reveal -->
+                        <g clip-path="url(#graph-reveal-h)">
+                            <!-- Area Fills -->
+                            <path id="area-cortisol-h" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-cortisol)" />
+                            <path id="area-testo-h" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-testo)" />
+
+                            <!-- Cortisol Line (White) -->
+                            <path d="M 0,40 C 100,50 250,160 400,185" stroke="#fff" stroke-width="4" fill="none" />
+                            <circle cx="400" cy="185" r="5" fill="#fff" />
+                            
+                            <!-- Testo Line (Green) -->
+                            <path d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
+                            <circle cx="400" cy="35" r="5" fill="#86efac" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="graph-labels">
+                    <span>AHORA</span>
+                    <span id="lbl-h-step1">DÍA 7</span>
+                    <span id="lbl-h-step2">DÍA 14</span>
+                    <span id="lbl-h-step3" class="label-last">DÍA 21</span>
+                </div>
+            </div>
+
+            <div class="analysis-box" style="margin-top:20px;">
+                <p style="text-align:center; font-weight:400; font-size:15px;">
+                    Un entrenamiento demasiado intenso puede aumentar tus niveles de cortisol y dificultar la definición corporal. El <strong>Protocolo Militar 21D</strong> adapta la intensidad para que alcances tus objetivos sin excederte.
+                </p>
+            </div>
+            
+            <p class="graph-note" style="margin-top:5px;">*Basado en datos de más de 1.3 millones de entrenamientos</p>
+
+            <div class="loading-bar-wrap" style="margin-top: 20px;">
+                <div class="loading-track">
+                    <div id="hormones-loading-fill" class="loading-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 16: CAPTURA DE NOME -->
+    <div id="screen-final" class="screen">
+        <h1 class="headline">TU PLAN ESTÁ <span style="color:var(--cta-green)">LISTO</span></h1>
+        <p class="subheadline">Ingresa tus datos para recibir tu <strong>protocolo personalizado</strong> con IMC, nivel de intensidad y plan de 21 días.</p>
+
+        <div class="name-field">
+            <span class="bio-label">Nombre</span>
+            <div class="name-input-wrap">
+                <input type="text" id="input-name" class="name-input" placeholder="Tu nombre" oninput="validateName(this.value)">
+            </div>
+            <p class="privacy-note">🔒 Solo necesitamos tu nombre para personalizar tu plan.</p>
+        </div>
+        <div class="areas-footer" style="margin-top:40px;">
+            <button id="btn-final-continue" class="btn-areas-continue active-btn" onclick="finishQuiz()">
+                VER MI PLAN →
+            </button>
+        </div>
+    </div>
+
     <!-- ETAPA 19: TELA DE OFERTA -->
     <div id="screen-offer" class="screen">
         <div class="offer-container">
@@ -899,546 +1294,6 @@
                 <div class="faq-question" onclick="toggleFaq(this)">¿TIENE GARANTÍA DE REEMBOLSO? <span class="faq-toggle">+</span></div>
                 <div class="faq-answer">30 días. Sin preguntas. Si sigues el protocolo y no ves resultados, te devolvemos cada centavo. No porque tengamos que decirlo. Porque estamos seguros de lo que pasa cuando alguien realmente lo hace.</div>
             </div>
-
-        </div>
-    </div>
-
-
-
-    <!-- ETAPA 3: TIPO DE CORPO (MASCULINO) -->
-
-
-
-
-    <!-- ETAPA 5-A: CORPO DESEJADO (PERDER PESO) -->
-    <div id="screen-desired-perder" class="screen">
-        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
-        <p class="subheadline">Configuraremos tus macros para este resultado</p>
-
-        <div class="horizontal-list">
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado')">
-                <span class="horizontal-label">Delgado</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/delgado.webp" id="img-desired-delgado" alt="Cuerpo Delgado" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado y Tonificado')">
-                <span class="horizontal-label" style="font-size:18px;">Delgado y Tonificado</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4.webp" id="img-delgado-ton" alt="Cuerpo Delgado y Tonificado" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 5-B: CORPO DESEJADO (GANAR MÚSCULO) -->
-    <div id="screen-desired-ganar" class="screen">
-        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
-        <p class="subheadline">Configuraremos tus macros para este resultado</p>
-
-        <div class="horizontal-list">
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Atleta')">
-                <span class="horizontal-label">Atleta</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/Atleta-pergunta-4.webp" id="img-atleta" alt="Cuerpo Atleta" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Héroe')">
-                <span class="horizontal-label">Héroe</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/heroe-pergunta-4.webp" id="img-heroe" alt="Cuerpo Héroe" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Culturista')">
-                <span class="horizontal-label">Culturista</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/culturista-pergunta-4.webp" id="img-culturista" alt="Cuerpo Culturista" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 5-C: CORPO DESEJADO (DEFINIR CUERPO) -->
-    <div id="screen-desired-definir" class="screen">
-        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
-        <p class="subheadline">Configuraremos tus macros para este resultado</p>
-
-        <div class="horizontal-list">
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Playa')">
-                <span class="horizontal-label">De Playa</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/De-playa-pergunta-4.webp" id="img-de-playa" alt="Cuerpo de Playa" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Crossfit')">
-                <span class="horizontal-label">De Crossfit</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/De-crossfit-pergunta-4.webp" id="img-de-crossfit" alt="Cuerpo de Crossfit" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- ETAPA 9: ALTURA E PESO -->
-    <div id="screen-biometrics" class="screen">
-        <h1 class="headline" style="font-size:32px">TU <span style="color:var(--cta-green)">ALTURA Y PESO</span></h1>
-        <p class="subheadline" style="font-size:15px">Usamos estos datos para calcular tu <strong style="color:var(--cta-green)">IMC</strong> y ajustar la intensidad del protocolo.</p>
-
-        <div class="unit-toggle" style="margin-bottom: 20px;">
-            <button class="unit-btn active" id="bio-unit-metric" onclick="toggleBioUnits('metric')">CM / KG</button>
-            <button class="unit-btn" id="bio-unit-imperial" onclick="toggleBioUnits('imperial')">FT / LB</button>
-        </div>
-
-        <div class="biometrics-grid">
-            <div class="bio-field"><label for="input-height" class="bio-label">Altura</label><div class="bio-input-wrap"><input type="text" id="input-height" class="bio-value-input" value="" placeholder="175" oninput="calcIMC()" aria-describedby="label-height"><span class="bio-unit" id="label-height">centímetros</span></div>
-                <div id="error-height" class="error-message">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
-                    <span>Mínimo 140cm / Máximo 220cm</span>
-                </div>
-            </div>
-            <div class="bio-field"><label for="input-weight" class="bio-label">Peso</label><div class="bio-input-wrap"><input type="number" id="input-weight" class="bio-value-input" value="" placeholder="80" oninput="calcIMC()" aria-describedby="label-weight"><span class="bio-unit" id="label-weight">kilogramos</span></div>
-
-                <div id="error-weight" class="error-message">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
-                    <span>Mínimo 40kg / Máximo 140kg</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="imc-box" class="imc-box">
-            <div class="imc-box-header">
-                <div class="imc-box-label">IMC Calculado</div>
-                <div class="imc-value" id="imc-display">--</div>
-            </div>
-            
-            <div class="imc-gauge-container">
-                <div class="imc-gauge-track">
-                    <div id="imc-gauge-pin" class="imc-gauge-pin" style="left: 50%;"></div>
-                </div>
-                <div class="imc-gauge-labels">
-                    <span>BAJO</span>
-                    <span>NORMAL</span>
-                    <span>SOBREPESO</span>
-                    <span>OBESO</span>
-                </div>
-            </div>
-            
-            <div id="imc-category" class="imc-category"></div>
-        </div>
-
-        <div class="security-badge">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-            Tus datos están seguros y encriptados
-        </div>
-
-        <div class="areas-footer">
-            <button class="btn-areas-continue active-btn" onclick="submitBiometrics()">CONTINUAR →</button>
-        </div>
-    </div>
-
-    <!-- ETAPA 10: PESO DESEJADO -->
-    <div id="screen-targetweight" class="screen">
-        <div class="target-weight-container">
-            <h1 class="headline" style="font-size:32px; color: #fff;">¿CUÁL ES TU <span style="color:var(--cta-green)">PESO OBJETIVO</span>?</h1>
-            
-            <div class="unit-toggle">
-                <button class="unit-btn active" id="unit-kg" onclick="setWeightUnit('kg')">KG</button>
-                <button class="unit-btn" id="unit-lb" onclick="setWeightUnit('lb')">LB</button>
-            </div>
-
-            <div class="biometrics-grid" style="margin-top: 30px; grid-template-columns: 1fr; display: flex; justify-content: center;">
-                <div class="bio-field" style="width: 100%; max-width: 320px;">
-                    <label for="input-target-weight" class="bio-label">Peso Objetivo</label>
-                    <div class="bio-input-wrap">
-                        <input type="number" id="input-target-weight" class="bio-value-input" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)" aria-describedby="label-target-weight">
-                        <span class="bio-unit" id="label-target-weight">kilogramos</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- COMPARISON GAUGE -->
-            <div class="imc-comparison-box">
-                <div class="comparison-header">
-                    <span>TU PROGRESO ESTIMADO</span>
-                    <div class="comparison-values">
-                        <div class="comp-val-item">
-                            <span class="comp-label">ACTUAL</span>
-                            <span id="comp-imc-current" class="comp-number">--</span>
-                        </div>
-                        <div class="comp-val-arrow">→</div>
-                        <div class="comp-val-item">
-                            <span class="comp-label">OBJETIVO</span>
-                            <span id="comp-imc-target" class="comp-number">--</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="imc-gauge-container">
-                    <div class="imc-gauge-track">
-                        <!-- Current Pin -->
-                        <div id="target-gauge-pin-current" class="imc-gauge-pin current-pin" style="left: 50%;"></div>
-                        <!-- Target Pin -->
-                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin" style="left: 50%;"></div>
-                    </div>
-                    <div class="imc-gauge-labels">
-                        <span>BAJO</span>
-                        <span>NORMAL</span>
-                        <span>SOBREPESO</span>
-                        <span>OBESO</span>
-                    </div>
-                </div>
-            </div>
-            <div id="feedback-target" class="dynamic-feedback" style="margin-bottom: 20px;">Tu cuerpo está listo para este cambio.</div>
-            <div class="validation-card" id="val-card" style="display: none;">
-                <div class="validation-icon" id="val-icon">🏆</div>
-                <div class="validation-content">
-                    <h4 id="val-title">OBJETIVO VIABLE. BIEN CALCULADO.</h4>
-                    <p id="val-text">Hombres con tu perfil que siguen el protocolo completo mantienen su peso en un promedio de 21 días. No en meses. En días.</p>
-                </div>
-            </div>
-
-            <div class="areas-footer">
-                <button class="btn-areas-continue active-btn" onclick="submitTargetWeight()">CONTINUAR →</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 11: GRÁFICO PREDIÇÃO -->
-    <div id="screen-prediction" class="screen">
-        <div class="prediction-screen">
-            <h1 class="prediction-headline">
-                El último plan que necesitarás para<br>
-                <span style="color:var(--cta-green)">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
-            </h1>
-            
-            <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong id="pred-weight-display">70 kg</strong> para el</p>
-            
-            <div class="prediction-date" id="pred-date-display">17 may 2026</div>
-
-            <div class="graph-container">
-                <div class="graph-legend">
-                    <div class="legend-item"><div class="line-green"></div> MASA MUSCULAR</div>
-                    <div class="legend-item"><div class="line-orange"></div> % GRASA</div>
-                </div>
-
-                <div class="graph-svg-wrap" id="graph-anim-box">
-                    <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="none" class="graph-grid">
-                        <defs>
-                            <linearGradient id="grad-fat" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.25" />
-                                <stop offset="100%" style="stop-color:#f97316;stop-opacity:0" />
-                            </linearGradient>
-                            <linearGradient id="grad-muscle" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.25" />
-                                <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
-                            </linearGradient>
-                            <clipPath id="graph-reveal">
-                                <rect id="reveal-rect" x="0" y="0" width="0" height="200" style="transition: width 0.1s linear;" />
-                            </clipPath>
-                        </defs>
-
-                        <!-- Horizontal Grid Lines (Dashed) -->
-                        <line x1="0" y1="40" x2="400" y2="40" stroke-dasharray="2" />
-                        <line x1="0" y1="80" x2="400" y2="80" stroke-dasharray="2" />
-                        <line x1="0" y1="120" x2="400" y2="120" stroke-dasharray="2" />
-                        <line x1="0" y1="160" x2="400" y2="160" stroke-dasharray="2" />
-
-                        <!-- Vertical Grid Lines (Dashed) -->
-                        <line x1="80" y1="0" x2="80" y2="200" stroke-dasharray="2"/>
-                        <line x1="160" y1="0" x2="160" y2="200" stroke-dasharray="2"/>
-                        <line x1="240" y1="0" x2="240" y2="200" stroke-dasharray="2"/>
-                        <line x1="320" y1="0" x2="320" y2="200" stroke-dasharray="2"/>
-                        
-                        <!-- Grouped Elements for Reveal -->
-                        <g clip-path="url(#graph-reveal)">
-                            <!-- Area Fills (Glow) -->
-                            <path id="area-fat" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-fat)" />
-                            <path id="area-muscle" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-muscle)" />
-
-                            <!-- Fat Line (Orange) -->
-                            <path id="path-fat" d="M 0,40 C 100,50 250,160 400,185" stroke="#f97316" stroke-width="4" fill="none" />
-                            <circle cx="400" cy="185" r="5" fill="#f97316" />
-                            
-                            <!-- Muscle Line (Green) -->
-                            <path id="path-muscle" d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
-                            <circle cx="400" cy="35" r="5" fill="#86efac" />
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="graph-labels">
-                    <span>AHORA</span>
-                    <span id="lbl-step1">DÍA 7</span>
-                    <span id="lbl-step2">DÍA 14</span>
-                    <span id="lbl-step3" class="label-last">DÍA 21</span>
-                </div>
-            </div>
-            <p class="graph-note">Este gráfico es solo para fines ilustrativos</p>
-            
-            <div class="loading-bar-wrap" style="margin-top: 20px;">
-                <div class="loading-track">
-                    <div id="pred-loading-fill" class="loading-fill"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 12: FLEXÕES -->
-    <div id="screen-pushups" class="screen">
-        <h1 class="headline">¿CUÁNTAS <span style="color:var(--cta-green)">FLEXIONES</span> PUEDES HACER?</h1>
-        <p class="subheadline">Sin descanso, en un solo intento. Sé honesto — tu protocolo depende de esto.</p>
-
-        <div class="pushups-grid">
-            <div class="pushup-hex-card" onclick="goToStep('training', '0')">
-                <div class="pushup-hex-wrap">0</div>
-                <div class="pushup-label">NINGUNA</div>
-            </div>
-            <div class="pushup-hex-card" onclick="goToStep('training', '1-5')">
-                <div class="pushup-hex-wrap">1-5</div>
-                <div class="pushup-label">PRINCIPIANTE</div>
-            </div>
-            <div class="pushup-hex-card" onclick="goToStep('training', '6-15')">
-                <div class="pushup-hex-wrap">6-15</div>
-                <div class="pushup-label">BÁSICO</div>
-            </div>
-            <div class="pushup-hex-card" onclick="goToStep('training', '16-30')">
-                <div class="pushup-hex-wrap">16-30</div>
-                <div class="pushup-label">INTERMEDIO</div>
-            </div>
-            <div class="pushup-hex-card" onclick="goToStep('training', '31-50')">
-                <div class="pushup-hex-wrap">31-50</div>
-                <div class="pushup-label">AVANZADO</div>
-            </div>
-            <div class="pushup-hex-card" onclick="goToStep('training', '50+')">
-                <div class="pushup-hex-wrap">50+</div>
-                <div class="pushup-label">ÉLITE</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 13: FREQUÊNCIA DE TREINO -->
-    <div id="screen-training" class="screen">
-        <h1 class="headline">TU ENTRENAMIENTO EN LOS <span style="color:var(--cta-green)">ÚLTIMOS 3 MESES</span></h1>
-        
-        <div class="training-list">
-            <div class="training-card anim-left delay-1" onclick="goToStep('startdate', 'Nada o casi nada')">
-                <div class="training-dots">
-                    <div class="dots-row-top">
-                        <div class="training-dot active"></div>
-                        <div class="training-dot"></div>
-                        <div class="training-dot"></div>
-                    </div>
-                    <div class="dots-row-bottom">
-                        <div class="training-dot"></div>
-                        <div class="training-dot"></div>
-                    </div>
-                </div>
-                <div class="training-info">
-                    <div class="training-title">NADA O CASI NADA</div>
-                    <div class="training-sub">0-1 días por semana</div>
-                </div>
-            </div>
-
-            <div class="training-card anim-right delay-2" onclick="goToStep('startdate', 'Poco frecuente')">
-                <div class="training-dots">
-                    <div class="dots-row-top">
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                        <div class="training-dot"></div>
-                    </div>
-                    <div class="dots-row-bottom">
-                        <div class="training-dot"></div>
-                        <div class="training-dot"></div>
-                    </div>
-                </div>
-                <div class="training-info">
-                    <div class="training-title">POCO FRECUENTE</div>
-                    <div class="training-sub">1-2 días por semana</div>
-                </div>
-            </div>
-
-            <div class="training-card anim-left delay-3" onclick="goToStep('startdate', 'Moderado')">
-                <div class="training-dots">
-                    <div class="dots-row-top">
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                    </div>
-                    <div class="dots-row-bottom">
-                        <div class="training-dot"></div>
-                        <div class="training-dot"></div>
-                    </div>
-                </div>
-                <div class="training-info">
-                    <div class="training-title">MODERADO</div>
-                    <div class="training-sub">3 días por semana</div>
-                </div>
-            </div>
-
-            <div class="training-card anim-right delay-4" onclick="goToStep('startdate', 'Frecuente')">
-                <div class="training-dots">
-                    <div class="dots-row-top">
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                    </div>
-                    <div class="dots-row-bottom">
-                        <div class="training-dot active"></div>
-                        <div class="training-dot"></div>
-                    </div>
-                </div>
-                <div class="training-info">
-                    <div class="training-title">FRECUENTE</div>
-                    <div class="training-sub">4-5 días por semana</div>
-                </div>
-            </div>
-
-            <div class="training-card anim-left delay-5" onclick="goToStep('startdate', 'Muy frecuente')">
-                <div class="training-dots">
-                    <div class="dots-row-top">
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                    </div>
-                    <div class="dots-row-bottom">
-                        <div class="training-dot active"></div>
-                        <div class="training-dot active"></div>
-                    </div>
-                </div>
-                <div class="training-info">
-                    <div class="training-title">MUY FRECUENTE</div>
-                    <div class="training-sub">6-7 días por semana</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="motivational-box anim-up delay-6">
-            <p>"No importa dónde estés empezando, lo que importa es que tu cuerpo ya está pidiendo un cambio real. Tu protocolo Crush It se adaptará a tu ritmo exacto para maximizar resultados sin quemarte."</p>
-            <strong>Tú eres el proyecto más importante en el que trabajarás.</strong>
-        </div>
-    </div>
-
-    <!-- ETAPA 14: DATA DE INÍCIO -->
-    <div id="screen-startdate" class="screen">
-        <h1 class="headline">UNA PREGUNTA HONESTA:<br><span style="color:var(--cta-green)">¿CUÁNDO VAS A EMPEZAR DE VERDAD?</span></h1>
-        
-        <div class="start-list" style="width:100%; margin-top:20px;">
-            <div class="start-card anim-left delay-1" onclick="handleStartDate('Hoy')">
-                <div class="start-icon">⚡</div>
-                <div class="start-info">
-                    <div class="start-title">EMPIEZO HOY</div>
-                    <div class="start-sub">En las próximas horas. El sistema activa tu protocolo ahora.</div>
-                </div>
-            </div>
-
-            <div class="start-card anim-right delay-2" onclick="handleStartDate('Mañana')">
-                <div class="start-icon">📅</div>
-                <div class="start-info">
-                    <div class="start-title">MAÑANA</div>
-                    <div class="start-sub">Bien. Pero recuerda: mañana siempre llega como hoy.</div>
-                </div>
-            </div>
-
-            <div class="start-card anim-left delay-3" onclick="handleStartDate('No estoy listo')">
-                <div class="start-icon">⌛</div>
-                <div class="start-info">
-                    <div class="start-title">NO ESTOY LISTO</div>
-                    <div class="start-sub">Llevas tiempo diciéndote eso.</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="start-warning" class="start-warning-box" style="display: none; margin-top: 20px;">
-            <div class="start-warning-icon">⚠️</div>
-            <p>La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.</p>
-        </div>
-    </div>
-
-    <!-- ETAPA 15: GRÁFICO HORMONAL -->
-    <div id="screen-hormones" class="screen">
-        <div class="prediction-screen">
-            <h1 class="prediction-headline" style="color:var(--text-white)">
-                ¡No tienes que exigirte<br>
-                <span style="color:var(--cta-green)">más de lo que puedes!</span>
-            </h1>
-
-            <div class="graph-container">
-                <div class="graph-legend">
-                    <div class="legend-item"><div class="line-white"></div> CORTISOL</div>
-                    <div class="legend-item"><div class="line-green"></div> TESTOSTERONA</div>
-                </div>
-
-                <div class="graph-svg-wrap" id="hormones-anim-box">
-                    <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="none" class="graph-grid">
-                        <defs>
-                            <linearGradient id="grad-cortisol" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#fff;stop-opacity:0.2" />
-                                <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
-                            </linearGradient>
-                            <linearGradient id="grad-testo" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.25" />
-                                <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
-                            </linearGradient>
-                            <clipPath id="graph-reveal-h">
-                                <rect id="reveal-rect-h" x="0" y="0" width="0" height="200" style="transition: width 0.1s linear;" />
-                            </clipPath>
-                        </defs>
-
-                        <!-- Horizontal Grid Lines -->
-                        <line x1="0" y1="40" x2="400" y2="40" stroke-dasharray="2" />
-                        <line x1="0" y1="80" x2="400" y2="80" stroke-dasharray="2" />
-                        <line x1="0" y1="120" x2="400" y2="120" stroke-dasharray="2" />
-                        <line x1="0" y1="160" x2="400" y2="160" stroke-dasharray="2" />
-
-                        <!-- Vertical Grid Lines -->
-                        <line x1="133" y1="0" x2="133" y2="200" stroke-dasharray="2" />
-                        <line x1="266" y1="0" x2="266" y2="200" stroke-dasharray="2" />
-
-                        <!-- Grouped Elements for Reveal -->
-                        <g clip-path="url(#graph-reveal-h)">
-                            <!-- Area Fills -->
-                            <path id="area-cortisol" d="M 0,40 C 100,50 250,160 400,185 L 400,200 L 0,200 Z" fill="url(#grad-cortisol)" />
-                            <path id="area-testo" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-testo)" />
-
-                            <!-- Cortisol Line (White) -->
-                            <path d="M 0,40 C 100,50 250,160 400,185" stroke="#fff" stroke-width="4" fill="none" />
-                            <circle cx="400" cy="185" r="5" fill="#fff" />
-                            
-                            <!-- Testo Line (Green) -->
-                            <path d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
-                            <circle cx="400" cy="35" r="5" fill="#86efac" />
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="graph-labels">
-                    <span>AHORA</span>
-                    <span id="lbl-h-step1">DÍA 7</span>
-                    <span id="lbl-h-step2">DÍA 14</span>
-                    <span id="lbl-h-step3" class="label-last">DÍA 21</span>
-                </div>
-            </div>
-
-            <div class="analysis-box" style="margin-top:20px;">
-                <p style="text-align:center; font-weight:400; font-size:15px;">
-                    Un entrenamiento demasiado intenso puede aumentar tus niveles de cortisol y dificultar la definición corporal. El <strong>Protocolo Militar 21D</strong> adapta la intensidad para que alcances tus objetivos sin excederte.
-                </p>
-            </div>
-            
-            <p class="graph-note" style="margin-top:5px;">*Basado en datos de más de 1.3 millones de entrenamientos</p>
-
-            <div class="loading-bar-wrap" style="margin-top: 20px;">
-                <div class="loading-track">
-                    <div id="hormones-loading-fill" class="loading-fill"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 16: CAPTURA DE NOME -->
-    <div id="screen-final" class="screen">
-        <h1 class="headline">TU PLAN ESTÁ <span style="color:var(--cta-green)">LISTO</span></h1>
-        <p class="subheadline">Ingresa tus datos para recibir tu <strong>protocolo personalizado</strong> con IMC, nivel de intensidad y plan de 21 días.</p>
-
-        <div class="name-field">
-            <span class="bio-label">Nombre</span>
-            <div class="name-input-wrap">
-                <input type="text" id="input-name" class="name-input" placeholder="Tu nombre" oninput="validateName(this.value)">
-            </div>
-            <p class="privacy-note">🔒 Solo necesitamos tu nombre para personalizar tu plan.</p>
-        </div>
-        <div class="areas-footer" style="margin-top:40px;">
-            <button id="btn-final-continue" class="btn-areas-continue active-btn" onclick="finishQuiz()">
-                VER MI PLAN →
-            </button>
         </div>
     </div>
 
