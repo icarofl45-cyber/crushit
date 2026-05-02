@@ -106,7 +106,8 @@
             if (percEl) percEl.innerText = percentage + '%';
             if (claimEl) {
                 const areaWord = areas.length > 1 ? 'ÁREAS PROBLEMÁTICAS' : 'ÁREA PROBLEMÁTICA';
-                claimEl.innerHTML = `DE LOS HOMBRES QUE ELIGEN<br><span style="color:var(--cta-green);">${areasText}</span> COMO ${areaWord}`;
+                const genderTerm = userProfile.gender === 'Femenino' ? 'LAS MUJERES' : 'LOS HOMBRES';
+                claimEl.innerHTML = `DE ${genderTerm} QUE ELIGEN<br><span style="color:var(--cta-green);">${areasText}</span> COMO ${areaWord}`;
             }
 
             let perc = 0;
@@ -195,7 +196,42 @@
                 document.getElementById('img-definir').src = 'imagens_webp_crush_it/Definir-tu-cuerpo.webp';
             }
             
+            updateGenderUI();
             goToStep('bodytype');
+        }
+
+        function updateGenderUI() {
+            const isFemale = userProfile.gender === 'Femenino';
+            
+            // Text 1: The difference...
+            const txtDiff = document.getElementById('txt-gender-difference');
+            if (txtDiff) {
+                txtDiff.innerText = isFemale 
+                    ? "La diferencia entre la mujer que eres y la que podrías ser son exactamente 21 días."
+                    : "La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.";
+            }
+
+            // Text 2: Not ready
+            const txtReady = document.getElementById('txt-not-ready');
+            if (txtReady) {
+                txtReady.innerText = isFemale ? "NO ESTOY LISTA" : "NO ESTOY LISTO";
+            }
+
+            // Text 3: Most men/women
+            const txtMost = document.getElementById('txt-most-men');
+            if (txtMost) {
+                txtMost.innerText = isFemale
+                    ? "La mayoría de las mujeres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listas - El protocolo fue diseñado para cuando no te sientes lista - Ese es exactamente el punto de entrada."
+                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.";
+            }
+
+            // Text 4: Men/women who use it
+            const txtWho = document.getElementById('txt-men-who-use');
+            if (txtWho) {
+                txtWho.innerText = isFemale
+                    ? "El papel donde marcas cada día completado. Simple. Pero las mujeres que lo usan tienen 3 veces más probabilidades de terminar el reto."
+                    : "El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.";
+            }
         }
 
         function handleGoal(goal) {
@@ -502,7 +538,8 @@
 
         function populateOfferScreen() {
             // Nome
-            const name = userProfile.name || 'GUERRERO';
+            const defaultName = userProfile.gender === 'Femenino' ? 'GUERRERA' : 'GUERRERO';
+            const name = userProfile.name || defaultName;
             const nameEl = document.getElementById('offer-name');
             if (nameEl) nameEl.innerText = name.toUpperCase();
 
@@ -560,6 +597,31 @@
             const compImcGoal = document.getElementById('comp-imc-goal');
             if (compImcNow) compImcNow.innerText = currentImc;
             if (compImcGoal) compImcGoal.innerText = targetImc;
+
+            // Comparison Images
+            const suffix = userProfile.gender === 'Femenino' ? '-w' : '';
+            const offImgNow = document.getElementById('off-img-now');
+            const offImgGoal = document.getElementById('off-img-goal');
+            
+            if (offImgNow) {
+                // Here we assume the baseline is delgado for the "now" image if not selected
+                // But a better way would be to track selection. For now, let's just apply suffix
+                let currentSrc = offImgNow.src;
+                if (userProfile.gender === 'Femenino' && !currentSrc.includes('-w.webp')) {
+                    offImgNow.src = currentSrc.replace('.webp', '-w.webp');
+                } else if (userProfile.gender === 'Masculino' && currentSrc.includes('-w.webp')) {
+                    offImgNow.src = currentSrc.replace('-w.webp', '.webp');
+                }
+            }
+
+            if (offImgGoal) {
+                let currentSrc = offImgGoal.src;
+                if (userProfile.gender === 'Femenino' && !currentSrc.includes('-w.webp')) {
+                    offImgGoal.src = currentSrc.replace('.webp', '-w.webp');
+                } else if (userProfile.gender === 'Masculino' && currentSrc.includes('-w.webp')) {
+                    offImgGoal.src = currentSrc.replace('-w.webp', '.webp');
+                }
+            }
 
             // ======= IMC GAUGE =======
             const gImcVal = document.getElementById('g-imc-val');

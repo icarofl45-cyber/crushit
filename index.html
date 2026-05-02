@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.27">
+    <link rel="stylesheet" href="css/style.css?v=1.28">
 </head>
 <body>
 
@@ -623,7 +623,7 @@
         <div class="prediction-screen">
             <h1 class="prediction-headline">
                 El último plan que necesitarás para<br>
-                <span style="color:var(--cta-green)">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
+                <span id="txt-gender-difference" style="color:var(--cta-green)">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
             </h1>
             
             <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong id="pred-weight-display">70 kg</strong> para el</p>
@@ -792,7 +792,7 @@
             <div class="start-card" onclick="handleStartDate('No estoy listo')">
                 <div class="start-icon">⌛</div>
                 <div class="start-info">
-                    <div class="start-title">NO ESTOY LISTO</div>
+                    <div class="start-title" id="txt-not-ready">NO ESTOY LISTO</div>
                     <div class="start-sub">Llevas tiempo diciéndote eso.</div>
                 </div>
             </div>
@@ -800,7 +800,7 @@
 
         <div id="start-warning" class="start-warning-box" style="display: none; margin-top: 20px;">
             <div class="start-warning-icon">⚠️</div>
-            <p>La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.</p>
+            <p id="txt-most-men">La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.</p>
         </div>
     </div>
 
@@ -1146,7 +1146,7 @@
                 </div>
                 <div class="bonus-info">
                     <h6>MAPA DE PROGRESO TÁCTICO</h6>
-                    <p>El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.</p>
+                    <p id="txt-men-who-use">El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.</p>
                     <div class="bonus-price-row">
                         <span class="old-bonus-price">$19.90 USD</span>
                         <span class="gratis-tag">GRATIS</span>
