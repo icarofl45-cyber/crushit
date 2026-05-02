@@ -1161,7 +1161,7 @@ background: #000;}
 .comp-card img{width: 100%;
 height: 100%;
 object-fit: cover;
-object-position: center 15%;
+object-position: center top;
 display: block;
 -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 mask-image: linear-gradient(to bottom, black 80%, transparent 100%);}
@@ -1790,7 +1790,7 @@ z-index: 2;}
 .goal-wrapper{position: relative;
 overflow: hidden;
 border-radius: 12px;}
-.goal-wrapper img{transform: scale(1.1);
+.goal-wrapper img{transform: scale(1);
 transition: transform 0.5s ease;}
 .img-fade-bottom{position: absolute;
 bottom: 0;
