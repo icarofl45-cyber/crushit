@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.36">
+    <link rel="stylesheet" href="css/style.css?v=1.37">
 </head>
 <body>
 
@@ -419,41 +419,63 @@
         <div class="areas-screen">
             <h1 class="areas-headline">ELIGE <span>ÁREAS PROBLEMÁTICAS</span></h1>
 
-            <div class="areas-body">
-                <!-- Avatar placeholder esquerdo -->
-                <!-- Espaço removido para nova implementação -->
-
-                <!-- Opções à direita -->
+            <!-- Conteúdo Dinâmico por Gênero -->
+            <div id="areas-content-female" class="areas-body" style="display: none;">
+                <!-- Avatar Feminino -->
+                <div class="areas-avatar-v2">
+                    <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6-w.webp" alt="Avatar Femenino" class="avatar-img-v2">
+                </div>
+                <!-- Opções Femininas -->
                 <div class="areas-options">
-                    <div class="area-option" onclick="toggleArea('pecho', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/pectoral.webp" alt="Enfoque: Pectoral" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label" id="label-area-pecho">Pecho</span>
-                    </div>
-                    <div class="area-option" onclick="toggleArea('brazos', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/area-brazos.webp" alt="Enfoque: Brazos" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label" id="label-area-brazos">Brazos</span>
+                    <div class="area-option" onclick="toggleArea('superiores', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/pectoral.webp" alt="Superiores"></div>
+                        <span class="area-option-label">Superiores</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('abdomen', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/area-abs.webp" alt="Enfoque: Abdominales" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label" id="label-area-abdomen">Abdomen</span>
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-abs.webp" alt="Abdomen"></div>
+                        <span class="area-option-label">Abdomen</span>
                     </div>
-                    <div class="area-option" onclick="toggleArea('piernas', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" alt="Enfoque: Piernas" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label" id="label-area-piernas">Piernas</span>
+                    <div class="area-option" onclick="toggleArea('gluteos', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" alt="Glúteos"></div>
+                        <span class="area-option-label">Glúteos</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('muslos', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" alt="Muslos"></div>
+                        <span class="area-option-label">Muslos</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('todo', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp" alt="Enfoque: Todo el cuerpo" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label" id="label-area-todo">Todo el Cuerpo</span>
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp" alt="Todo el cuerpo"></div>
+                        <span class="area-option-label">Todo el Cuerpo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="areas-content-male" class="areas-body" style="display: none;">
+                <!-- Avatar Masculino -->
+                <div class="areas-avatar-v2">
+                    <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6.webp" alt="Avatar Masculino" class="avatar-img-v2">
+                </div>
+                <!-- Opções Masculinas -->
+                <div class="areas-options">
+                    <div class="area-option" onclick="toggleArea('pecho', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/pectoral.webp" alt="Pecho"></div>
+                        <span class="area-option-label">Pecho</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('brazos', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-brazos.webp" alt="Brazos"></div>
+                        <span class="area-option-label">Brazos</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('abdomen', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-abs.webp" alt="Abdomen"></div>
+                        <span class="area-option-label">Abdomen</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('piernas', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" alt="Piernas"></div>
+                        <span class="area-option-label">Piernas</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('todo', this)">
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp" alt="Todo el cuerpo"></div>
+                        <span class="area-option-label">Todo el Cuerpo</span>
                     </div>
                 </div>
             </div>

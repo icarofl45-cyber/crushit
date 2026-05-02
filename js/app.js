@@ -247,8 +247,22 @@
             const txtWho = document.getElementById('txt-men-who-use');
             if (txtWho) {
                 txtWho.innerText = isFemale
-                    ? "El papel donde marcas cada día completado. Simple. Pero las mujeres que lo usan tienen 3 veces más probabilidades de terminar el reto."
-                    : "El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.";
+                    ? "El papel donde marcas cada día completado. Simple. Pero las mujeres que lo usan tienen 3 veces mais probabilidades de terminar el reto."
+                    : "El papel onde marcas cada dia completado. Simple. Mas os homens que o usam têm 3 vezes mais probabilidades de terminar o desafio.";
+            }
+
+            // Gender Specific Areas Screen
+            const femaleContainer = document.getElementById('areas-content-female');
+            const maleContainer = document.getElementById('areas-content-male');
+            
+            if (femaleContainer && maleContainer) {
+                if (isFemale) {
+                    femaleContainer.style.display = 'flex';
+                    maleContainer.style.display = 'none';
+                } else {
+                    femaleContainer.style.display = 'none';
+                    maleContainer.style.display = 'flex';
+                }
             }
 
             // Area Labels

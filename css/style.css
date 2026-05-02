@@ -457,6 +457,22 @@ width: 100%;}
 align-items: stretch;
 gap: 16px;
 width: 100%;}
+.areas-avatar-v2{
+    flex-shrink: 0;
+    width: 200px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
+}
+.avatar-img-v2{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+}
 .areas-avatar{flex-shrink: 0;
 width: 240px;
 background: transparent;
