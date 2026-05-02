@@ -1843,21 +1843,19 @@ margin-bottom: 10px;}}
     position: relative;
     padding: 30px 0;
     margin: 20px 0;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .testimonials-track.marquee {
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: marquee-scroll 35s linear infinite;
-    padding-left: 20px;
+    animation: marquee-scroll 40s linear infinite;
+    padding-left: 10px;
 }
 
 @keyframes marquee-scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-300px * 5)); }
+    100% { transform: translateX(calc(-300px * 6)); }
 }
 
 .testimonial-card {
