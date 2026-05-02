@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.14">
+    <link rel="stylesheet" href="css/style.css?v=1.15">
 </head>
 <body>
 
@@ -579,7 +579,7 @@
                 </div>
             </div>
 
-            <!-- COMPARISON GAUGE -->
+            <!-- COMPARISON GAUGE RESTORED -->
             <div class="imc-comparison-box">
                 <div class="comparison-header">
                     <span>TU PROGRESO ESTIMADO</span>
@@ -588,20 +588,27 @@
                             <span class="comp-label">ACTUAL</span>
                             <span id="comp-imc-current" class="comp-number">--</span>
                         </div>
+                        <div class="comp-val-arrow">→</div>
                         <div class="comp-val-item">
                             <span class="comp-label">OBJETIVO</span>
                             <span id="comp-imc-target" class="comp-number" style="color:var(--cta-green);">--</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="comparison-gauge">
-                    <div class="comp-track">
-                        <div id="comp-bar" class="comp-fill-bar"></div>
+
+                <div class="imc-gauge-container">
+                    <div class="imc-gauge-track">
+                        <!-- Current Pin -->
+                        <div id="target-gauge-pin-current" class="imc-gauge-pin current-pin" style="left: 50%;"></div>
+                        <!-- Target Pin -->
+                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin" style="left: 50%;"></div>
                     </div>
-                </div>
-                <div class="comparison-footer">
-                    <span id="comp-status-text">Analizando tu trayectoria...</span>
+                    <div class="imc-gauge-labels">
+                        <span>BAJO</span>
+                        <span>NORMAL</span>
+                        <span>SOBREPESO</span>
+                        <span>OBESO</span>
+                    </div>
                 </div>
             </div>
 

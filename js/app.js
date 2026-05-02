@@ -162,7 +162,8 @@
             pushups: '',
             training: '',
             startDate: '',
-            name: ''
+            name: '',
+            units: 'metric'
         };
 
         const history = ['age'];
@@ -245,6 +246,7 @@
             document.getElementById('input-weight').placeholder = isMetric ? '80' : '175';
             
             // SINCRONIZA COM A PRÓXIMA TELA (PESO OBJETIVO)
+            userProfile.units = isMetric ? 'metric' : 'imperial';
             setWeightUnit(isMetric ? 'kg' : 'lb');
             
             calcIMC();
@@ -401,7 +403,7 @@
             
             // Atualizar a prediction screen com dados dinâmicos
             const tw = parseFloat(userProfile.targetWeight) || 70;
-            const unit = document.getElementById('unit-kg').classList.contains('active') ? 'kg' : 'lb';
+            const unit = userProfile.units === 'metric' ? 'kg' : 'lb';
             document.getElementById('pred-weight-display').innerText = tw + ' ' + unit;
             
             // Data dinâmica: hoje + 21 dias
