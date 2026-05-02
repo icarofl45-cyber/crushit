@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.8">
+    <link rel="stylesheet" href="css/style.css?v=1.9">
 </head>
 <body>
 
@@ -322,6 +322,61 @@
                     <div class="goal-title">DEFINIR TU CUERPO</div>
                     <div class="goal-subtitle">Tengo el músculo, me falta la definición</div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 5-A: CORPO DESEJADO (PERDER PESO) -->
+    <div id="screen-desired-perder" class="screen">
+        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <p class="subheadline">Configuraremos tus macros para este resultado</p>
+
+        <div class="horizontal-list">
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado')">
+                <span class="horizontal-label">Delgado</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/delgado.webp" id="img-desired-delgado" alt="Cuerpo Delgado" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado y Tonificado')">
+                <span class="horizontal-label" style="font-size:18px;">Delgado y Tonificado</span>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4.webp" id="img-delgado-ton" alt="Cuerpo Delgado y Tonificado" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 5-B: CORPO DESEJADO (GANAR MÚSCULO) -->
+    <div id="screen-desired-ganar" class="screen">
+        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <p class="subheadline">Tu plan de hipertrofia se basará en esta elección</p>
+
+        <div class="horizontal-list">
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Atleta')">
+                <span class="horizontal-label">Atleta</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/Atleta-pergunta-4.webp" id="img-desired-atleta" alt="Cuerpo Atleta" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Culturista')">
+                <span class="horizontal-label">Culturista</span>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/culturista-pergunta-4.webp" id="img-desired-culturista" alt="Cuerpo Culturista" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 5-C: CORPO DESEJADO (DEFINIR) -->
+    <div id="screen-desired-definir" class="screen">
+        <h1 class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <p class="subheadline">Ajustaremos tu déficit para máxima definición</p>
+
+        <div class="horizontal-list">
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Playa')">
+                <span class="horizontal-label">De Playa</span>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/de-playa-pergunta-4.webp" id="img-desired-playa" alt="Cuerpo de Playa" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'De CrossFit')">
+                <span class="horizontal-label">De CrossFit</span>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/de-crossfit-pergunta-4.webp" id="img-desired-crossfit" alt="Cuerpo de CrossFit" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Héroe')">
+                <span class="horizontal-label">Héroe</span>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/heroe-pergunta-4.webp" id="img-desired-heroe" alt="Cuerpo de Héroe" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
         </div>
     </div>
