@@ -513,10 +513,10 @@ transform: scale(1.05);}
 .highlight-pierna-r{width: 25%; height: 45%; top: 48%; right: 20%; border-radius: 50%;}
 
 /* Highlights Femininos v2 */
-.highlight-female-superiores { width: 50%; height: 15%; top: 18%; left: 25%; border-radius: 30%; }
-.highlight-female-abdomen { width: 35%; height: 12%; top: 35%; left: 32%; border-radius: 30%; }
-.highlight-female-gluteos { width: 30%; height: 18%; top: 45%; left: 45%; border-radius: 40%; }
-.highlight-female-muslos { width: 40%; height: 40%; top: 55%; left: 30%; border-radius: 40%; }
+.highlight-female-superiores { width: 70%; height: 18%; top: 15%; left: 15%; border-radius: 40%; }
+.highlight-female-abdomen { width: 35%; height: 10%; top: 32%; left: 32%; border-radius: 30%; }
+.highlight-female-gluteos { width: 35%; height: 15%; top: 41%; left: 52%; border-radius: 40%; }
+.highlight-female-muslos { width: 45%; height: 35%; top: 48%; left: 35%; border-radius: 40%; }
 
 .areas-options{flex: 1;
 display: flex;
