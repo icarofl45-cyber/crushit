@@ -459,13 +459,12 @@ gap: 16px;
 width: 100%;}
 .areas-avatar-v2{
     flex-shrink: 0;
-    width: 200px;
+    width: 260px;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 10px 0;
 }
 .avatar-img-v2{
     width: 100%;
