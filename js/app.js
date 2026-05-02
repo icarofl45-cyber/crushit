@@ -178,7 +178,7 @@
                 document.getElementById('img-promedio').src = 'imagens_webp_crush_it/promedio-w.webp';
                 document.getElementById('img-grande').src = 'imagens_webp_crush_it/grande-w.webp';
                 document.getElementById('img-pesado').src = 'imagens_webp_crush_it/pesado-w.webp';
-                document.getElementById('img-avatar-focus').src = 'imagens_webp_crush_it/avatar-pergunta-6-w.webp';
+                // Avatar removido para nova implementação
                 
                 // Also update goal images
                 document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso-w.webp';
@@ -198,7 +198,7 @@
                 document.getElementById('img-promedio').src = 'imagens_webp_crush_it/promedio.webp';
                 document.getElementById('img-grande').src = 'imagens_webp_crush_it/grande.webp';
                 document.getElementById('img-pesado').src = 'imagens_webp_crush_it/pesado.webp';
-                document.getElementById('img-avatar-focus').src = 'imagens_webp_crush_it/avatar-pergunta-6.webp';
+                // Avatar removido para nova implementação
                 
                 document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso.webp';
                 document.getElementById('img-ganar').src = 'imagens_webp_crush_it/ganar-musculo.webp';
@@ -826,10 +826,9 @@
                 }
                 
                 // Se for a tela de focusarea, atualiza a imagem
+                // Avatar logic removido para nova implementação
                 if (hash === 'focusarea') {
-                    const suffix = userProfile.gender === 'Femenino' ? '-w' : '';
-                    const avatar = document.getElementById('img-avatar-focus');
-                    if (avatar) avatar.src = `imagens_webp_crush_it/avatar-pergunta-6${suffix}.webp`;
+                    // Implementação futura
                 }
             }
         });
