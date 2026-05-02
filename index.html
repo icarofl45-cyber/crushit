@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.10">
+    <link rel="stylesheet" href="css/style.css?v=1.11">
 </head>
 <body>
 
@@ -412,6 +412,97 @@
         </div>
 
         <button class="btn-continue" onclick="goToStep('focusarea', document.getElementById('bubble').innerText)">CONTINUAR</button>
+    </div>
+
+    <!-- ETAPA 7: ÁREAS PROBLEMÁTICAS -->
+    <div id="screen-focusarea" class="screen">
+        <div class="areas-screen">
+            <h1 class="areas-headline">ELIGE <span>ÁREAS PROBLEMÁTICAS</span></h1>
+
+            <div class="areas-body">
+                <!-- Avatar placeholder esquerdo -->
+                <div class="areas-avatar">
+                    <div class="areas-avatar-inner">
+                        <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6.webp" id="img-avatar-focus" alt="Avatar de enfoque muscular" style="width:100%; height:100%; object-fit:cover;">
+                        <!-- Body Part Highlights -->
+                        <div class="body-highlight highlight-pecho" id="highlight-pecho"></div>
+                        <div class="body-highlight highlight-brazo-l" id="highlight-brazo-l"></div>
+                        <div class="body-highlight highlight-brazo-r" id="highlight-brazo-r"></div>
+                        <div class="body-highlight highlight-abdomen" id="highlight-abdomen"></div>
+                        <div class="body-highlight highlight-pierna-l" id="highlight-pierna-l"></div>
+                        <div class="body-highlight highlight-pierna-r" id="highlight-pierna-r"></div>
+                    </div>
+                </div>
+
+                <!-- Opções à direita -->
+                <div class="areas-options">
+                    <div class="area-option" onclick="toggleArea('pecho', this)">
+                        <div class="area-hex-icon">
+                            <img loading="lazy" src="imagens_webp_crush_it/pectoral.webp" alt="Enfoque: Pectoral" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="area-option-label">Pecho</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('brazos', this)">
+                        <div class="area-hex-icon">
+                            <img loading="lazy" src="imagens_webp_crush_it/area-brazos.webp" alt="Enfoque: Brazos" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="area-option-label">Brazos</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('abdomen', this)">
+                        <div class="area-hex-icon">
+                            <img loading="lazy" src="imagens_webp_crush_it/area-abs.webp" alt="Enfoque: Abdominales" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="area-option-label">Abdomen</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('piernas', this)">
+                        <div class="area-hex-icon">
+                            <img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" alt="Enfoque: Piernas" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="area-option-label">Piernas</span>
+                    </div>
+                    <div class="area-option" onclick="toggleArea('todo', this)">
+                        <div class="area-hex-icon">
+                            <img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp" alt="Enfoque: Todo el cuerpo" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="area-option-label">Todo el Cuerpo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="areas-footer">
+                <button id="btn-areas-continue" class="btn-areas-continue" onclick="submitAreas()">
+                    CONTINUAR →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 8: TELA DE ANÁLISE / LOADING -->
+    <div id="screen-analysis" class="screen">
+        <div class="analysis-screen">
+            <div class="analysis-icon">
+                <!-- Ícone de raio: precisão e energia -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="var(--brand-purple)" stroke="var(--cta-green)" stroke-width="1" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <div class="analysis-percent">78%</div>
+            <div class="analysis-claim" id="analysis-claim">DE LOS HOMBRES QUE ELIGEN<br>ABDOMEN COMO ÁREA PROBLEMÁTICA</div>
+
+            <div class="analysis-box">
+                <p>llevan más de 2 anos con ese problema. <strong>No es falta de voluntad. Es falta del protocolo correcto.</strong> Tu plan atacará esa zona con precisión táctica.</p>
+            </div>
+
+            <p class="analysis-note">No es falta de voluntad. Es falta del protocolo correcto.<br>Tu plan atacará esa zona con precisión táctica, no con exercícios genéricos de YouTube.</p>
+
+            <div class="loading-bar-wrap">
+                <div class="loading-label">Analizando tu perfil...</div>
+                <div class="loading-track">
+                    <div id="loading-fill" class="loading-fill"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- ETAPA 19: TELA DE OFERTA -->
@@ -867,11 +958,7 @@
                 <span class="horizontal-label">De Playa</span>
                 <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/De-playa-pergunta-4.webp" id="img-de-playa" alt="Cuerpo de Playa" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
-            <div class="horizontal-card" onclick="goToStep('bodyfat', 'Ejercitado')">
-                <span class="horizontal-label">Ejercitado</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/Ejercitado-pergunta-4.webp" id="img-ejercitado" alt="Cuerpo Ejercitado" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-            <div class="horizontal-card" onclick="goToStep('focusarea', 'De Crossfit')">
+            <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Crossfit')">
                 <span class="horizontal-label">De Crossfit</span>
                 <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/De-crossfit-pergunta-4.webp" id="img-de-crossfit" alt="Cuerpo de Crossfit" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
@@ -879,97 +966,6 @@
     </div>
 
 
-
-    <!-- ETAPA 7: ÁREAS PROBLEMÁTICAS -->
-    <div id="screen-focusarea" class="screen">
-        <div class="areas-screen">
-            <h1 class="areas-headline">ELIGE <span>ÁREAS PROBLEMÁTICAS</span></h1>
-
-            <div class="areas-body">
-                <!-- Avatar placeholder esquerdo -->
-                <div class="areas-avatar">
-                    <div class="areas-avatar-inner">
-                        <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6.webp" id="img-avatar-focus" alt="Avatar de enfoque muscular" style="width:100%; height:100%; object-fit:cover;">
-                        <!-- Body Part Highlights -->
-                        <div class="body-highlight highlight-pecho" id="highlight-pecho"></div>
-                        <div class="body-highlight highlight-brazo-l" id="highlight-brazo-l"></div>
-                        <div class="body-highlight highlight-brazo-r" id="highlight-brazo-r"></div>
-                        <div class="body-highlight highlight-abdomen" id="highlight-abdomen"></div>
-                        <div class="body-highlight highlight-pierna-l" id="highlight-pierna-l"></div>
-                        <div class="body-highlight highlight-pierna-r" id="highlight-pierna-r"></div>
-                    </div>
-                </div>
-
-                <!-- Opções à direita -->
-                <div class="areas-options">
-                    <div class="area-option" onclick="toggleArea('pecho', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/pectoral.webp" alt="Enfoque: Pectoral" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label">Pecho</span>
-                    </div>
-                    <div class="area-option" onclick="toggleArea('brazos', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/area-brazos.webp" alt="Enfoque: Brazos" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label">Brazos</span>
-                    </div>
-                    <div class="area-option" onclick="toggleArea('abdomen', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/area-abs.webp" alt="Enfoque: Abdominales" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label">Abdomen</span>
-                    </div>
-                    <div class="area-option" onclick="toggleArea('piernas', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" alt="Enfoque: Piernas" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label">Piernas</span>
-                    </div>
-                    <div class="area-option" onclick="toggleArea('todo', this)">
-                        <div class="area-hex-icon">
-                            <img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp" alt="Enfoque: Todo el cuerpo" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <span class="area-option-label">Todo el Cuerpo</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="areas-footer">
-                <button id="btn-areas-continue" class="btn-areas-continue" onclick="submitAreas()">
-                    CONTINUAR →
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 8: TELA DE ANÁLISE / LOADING -->
-    <div id="screen-analysis" class="screen">
-        <div class="analysis-screen">
-            <div class="analysis-icon">
-                <!-- Ícone de raio: precisão e energia -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="var(--brand-purple)" stroke="var(--cta-green)" stroke-width="1" stroke-linejoin="round"/>
-                </svg>
-            </div>
-
-            <div class="analysis-percent">78%</div>
-            <div class="analysis-claim" id="analysis-claim">DE LOS HOMBRES QUE ELIGEN<br>ABDOMEN COMO ÁREA PROBLEMÁTICA</div>
-
-            <div class="analysis-box">
-                <p>llevan más de 2 años con ese problema. <strong>No es falta de voluntad. Es falta del protocolo correcto.</strong> Tu plan atacará esa zona con precisión táctica.</p>
-            </div>
-
-            <p class="analysis-note">No es falta de voluntad. Es falta del protocolo correcto.<br>Tu plan atacará esa zona con precisión táctica, no con ejercicios genéricos de YouTube.</p>
-
-            <div class="loading-bar-wrap">
-                <div class="loading-label">Analizando tu perfil...</div>
-                <div class="loading-track">
-                    <div id="loading-fill" class="loading-fill"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ETAPA 9: ALTURA E PESO -->
     <div id="screen-biometrics" class="screen">
