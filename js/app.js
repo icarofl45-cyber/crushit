@@ -46,6 +46,22 @@
 
         function goToStep(stepId, value) {
             const currentActive = document.querySelector('.screen.active');
+            const currentStepId = currentActive ? currentActive.id.replace('screen-', '') : null;
+
+            // Map current step to profile property if value exists
+            if (value !== undefined && currentStepId) {
+                const map = {
+                    'age': 'age',
+                    'bodytype': 'bodyType',
+                    'bodyfat': 'bodyFat',
+                    'pushups': 'pushups',
+                    'training': 'training'
+                };
+                if (map[currentStepId]) {
+                    userProfile[map[currentStepId]] = value;
+                }
+            }
+
             if (currentActive && currentActive.id !== 'screen-' + stepId) {
                 navigationHistory.push(currentActive.id);
             }
@@ -63,9 +79,10 @@
             }
 
             updateBackBtnVisibility();
+            saveProfile();
             
             // Progress Bar Update
-            const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final'];
+            const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final', 'offer'];
             const currentIdx = steps.indexOf(stepId);
             if (currentIdx !== -1) {
                 const perc = ((currentIdx + 1) / steps.length) * 100;
@@ -127,6 +144,7 @@
             
             const areas = Array.from(selected).map(el => el.querySelector('.area-option-label').innerText);
             userProfile.focusAreas = areas;
+            saveProfile();
             goToStep('analysis');
         }
 
@@ -169,52 +187,56 @@
 
         const history = ['age'];
 
+        function saveProfile() {
+            localStorage.setItem('crushit_profile', JSON.stringify(userProfile));
+        }
+
+        function loadProfile() {
+            const saved = localStorage.getItem('crushit_profile');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    Object.assign(userProfile, data);
+                    applyGenderSpecifics(userProfile.gender);
+                    updateGenderUI();
+                } catch(e) {
+                    console.error("Erro ao carregar perfil:", e);
+                }
+            }
+        }
+
+        function applyGenderSpecifics(gender) {
+            const isFemale = gender === 'Femenino';
+            const suffix = isFemale ? '-w.webp' : '.webp';
+            
+            const mapping = {
+                'img-delgado': 'delgado',
+                'img-promedio': 'promedio',
+                'img-grande': 'grande',
+                'img-pesado': 'pesado',
+                'img-perder': 'perder-peso',
+                'img-ganar': 'ganar-musculo',
+                'img-definir': 'definir-tu-cuerpo',
+                'img-desired-delgado': 'delgado',
+                'img-delgado-ton': 'delgado-y-tonificado-pergunta-4',
+                'img-desired-atleta': 'atleta-pergunta-4',
+                'img-desired-culturista': 'culturista-pergunta-4',
+                'img-desired-playa': 'de-playa-pergunta-4',
+                'img-desired-crossfit': 'de-crossfit-pergunta-4',
+                'img-desired-heroe': 'heroe-pergunta-4'
+            };
+
+            for (let id in mapping) {
+                const el = document.getElementById(id);
+                if (el) el.src = 'imagens_webp_crush_it/' + mapping[id] + suffix;
+            }
+        }
+
         function handleGender(gender) {
             userProfile.gender = gender;
-            
-            // Update images for female if selected
-            if (gender === 'Femenino') {
-                document.getElementById('img-delgado').src = 'imagens_webp_crush_it/delgado-w.webp';
-                document.getElementById('img-promedio').src = 'imagens_webp_crush_it/promedio-w.webp';
-                document.getElementById('img-grande').src = 'imagens_webp_crush_it/grande-w.webp';
-                document.getElementById('img-pesado').src = 'imagens_webp_crush_it/pesado-w.webp';
-                // Avatar removido para nova implementação
-                
-                // Also update goal images
-                document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso-w.webp';
-                document.getElementById('img-ganar').src = 'imagens_webp_crush_it/ganar-musculo-w.webp';
-                document.getElementById('img-definir').src = 'imagens_webp_crush_it/definir-tu-cuerpo-w.webp';
-
-                // Update desired body images
-                document.getElementById('img-desired-delgado').src = 'imagens_webp_crush_it/delgado-w.webp';
-                document.getElementById('img-delgado-ton').src = 'imagens_webp_crush_it/delgado-y-tonificado-pergunta-4-w.webp';
-                document.getElementById('img-desired-atleta').src = 'imagens_webp_crush_it/atleta-pergunta-4-w.webp';
-                document.getElementById('img-desired-culturista').src = 'imagens_webp_crush_it/culturista-pergunta-4-w.webp';
-                document.getElementById('img-desired-playa').src = 'imagens_webp_crush_it/de-playa-pergunta-4-w.webp';
-                document.getElementById('img-desired-crossfit').src = 'imagens_webp_crush_it/de-crossfit-pergunta-4-w.webp';
-                document.getElementById('img-desired-heroe').src = 'imagens_webp_crush_it/heroe-pergunta-4-w.webp';
-            } else {
-                document.getElementById('img-delgado').src = 'imagens_webp_crush_it/delgado.webp';
-                document.getElementById('img-promedio').src = 'imagens_webp_crush_it/promedio.webp';
-                document.getElementById('img-grande').src = 'imagens_webp_crush_it/grande.webp';
-                document.getElementById('img-pesado').src = 'imagens_webp_crush_it/pesado.webp';
-                // Avatar removido para nova implementação
-                
-                document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso.webp';
-                document.getElementById('img-ganar').src = 'imagens_webp_crush_it/ganar-musculo.webp';
-                document.getElementById('img-definir').src = 'imagens_webp_crush_it/definir-tu-cuerpo.webp';
-
-                // Update desired body images
-                document.getElementById('img-desired-delgado').src = 'imagens_webp_crush_it/delgado.webp';
-                document.getElementById('img-delgado-ton').src = 'imagens_webp_crush_it/delgado-y-tonificado-pergunta-4.webp';
-                document.getElementById('img-desired-atleta').src = 'imagens_webp_crush_it/atleta-pergunta-4.webp';
-                document.getElementById('img-desired-culturista').src = 'imagens_webp_crush_it/culturista-pergunta-4.webp';
-                document.getElementById('img-desired-playa').src = 'imagens_webp_crush_it/de-playa-pergunta-4.webp';
-                document.getElementById('img-desired-crossfit').src = 'imagens_webp_crush_it/de-crossfit-pergunta-4.webp';
-                document.getElementById('img-desired-heroe').src = 'imagens_webp_crush_it/heroe-pergunta-4.webp';
-            }
-            
+            applyGenderSpecifics(gender);
             updateGenderUI();
+            saveProfile();
             goToStep('bodytype');
         }
 
@@ -289,6 +311,7 @@
 
         function handleGoal(goal) {
             userProfile.goal = goal;
+            saveProfile();
             if (goal === 'Perder Peso') goToStep('desired-perder');
             else if (goal === 'Ganar Músculo') goToStep('desired-ganar');
             else goToStep('desired-definir');
@@ -430,6 +453,7 @@
         function submitBiometrics() {
             userProfile.height = document.getElementById('input-height').value;
             userProfile.weight = document.getElementById('input-weight').value;
+            saveProfile();
             goToStep('targetweight');
         }
 
@@ -489,6 +513,7 @@
 
         function submitTargetWeight() {
             userProfile.targetWeight = document.getElementById('input-target-weight').value;
+            saveProfile();
             
             // Atualizar a prediction screen com dados dinâmicos
             const tw = parseFloat(userProfile.targetWeight) || 70;
@@ -544,6 +569,7 @@
 
         function finishQuiz() {
             userProfile.name = document.getElementById('input-name').value;
+            saveProfile();
             
             // Ativa o modo limpo no header (centraliza logo e remove nav)
             const header = document.querySelector('.main-header');
@@ -740,6 +766,7 @@
 
         function handleStartDate(choice) {
             userProfile.startDate = choice;
+            saveProfile();
             const warning = document.getElementById('start-warning');
             
             if (choice === 'No estoy listo') {
@@ -832,6 +859,8 @@
 
         // Recupera a etapa da URL ao carregar a página
         window.addEventListener('DOMContentLoaded', () => {
+            loadProfile();
+
             // Testimonials Slider Logic
             const track = document.querySelector('.testimonials-track');
             const dots = document.querySelectorAll('.dot');
@@ -857,6 +886,7 @@
                 if (hash === 'offer') {
                     document.getElementById('main-header').classList.add('clean-header');
                     document.getElementById('global-back-btn').style.display = 'none';
+                    populateOfferScreen();
                     initScrollAnimations();
                 }
                 
