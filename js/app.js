@@ -250,6 +250,27 @@
                     ? "El papel donde marcas cada día completado. Simple. Pero las mujeres que lo usan tienen 3 veces más probabilidades de terminar el reto."
                     : "El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.";
             }
+
+            // Area Labels
+            const lbPecho = document.getElementById('label-area-pecho');
+            const lbBrazos = document.getElementById('label-area-brazos');
+            const lbAbdomen = document.getElementById('label-area-abdomen');
+            const lbPiernas = document.getElementById('label-area-piernas');
+            const lbTodo = document.getElementById('label-area-todo');
+
+            if (isFemale) {
+                if (lbPecho) lbPecho.innerText = 'Superiores';
+                if (lbBrazos) lbBrazos.innerText = 'Glúteos';
+                if (lbAbdomen) lbAbdomen.innerText = 'Abdomen';
+                if (lbPiernas) lbPiernas.innerText = 'Muslos';
+                if (lbTodo) lbTodo.innerText = 'Todo el Cuerpo';
+            } else {
+                if (lbPecho) lbPecho.innerText = 'Pecho';
+                if (lbBrazos) lbBrazos.innerText = 'Brazos';
+                if (lbAbdomen) lbAbdomen.innerText = 'Abdomen';
+                if (lbPiernas) lbPiernas.innerText = 'Piernas';
+                if (lbTodo) lbTodo.innerText = 'Todo el Cuerpo';
+            }
         }
 
         function handleGoal(goal) {
