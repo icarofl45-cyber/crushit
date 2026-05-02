@@ -184,6 +184,15 @@
                 document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso-w.webp';
                 document.getElementById('img-ganar').src = 'imagens_webp_crush_it/Ganar-musculo-w.webp';
                 document.getElementById('img-definir').src = 'imagens_webp_crush_it/Definir-tu-cuerpo-w.webp';
+
+                // Update desired body images
+                document.getElementById('img-desired-delgado').src = 'imagens_webp_crush_it/delgado-w.webp';
+                document.getElementById('img-delgado-ton').src = 'imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4-w.webp';
+                document.getElementById('img-desired-atleta').src = 'imagens_webp_crush_it/Atleta-pergunta-4-w.webp';
+                document.getElementById('img-desired-culturista').src = 'imagens_webp_crush_it/culturista-pergunta-4-w.webp';
+                document.getElementById('img-desired-playa').src = 'imagens_webp_crush_it/de-playa-pergunta-4-w.webp';
+                document.getElementById('img-desired-crossfit').src = 'imagens_webp_crush_it/de-crossfit-pergunta-4-w.webp';
+                document.getElementById('img-desired-heroe').src = 'imagens_webp_crush_it/heroe-pergunta-4-w.webp';
             } else {
                 document.getElementById('img-delgado').src = 'imagens_webp_crush_it/delgado.webp';
                 document.getElementById('img-promedio').src = 'imagens_webp_crush_it/promedio.webp';
@@ -194,6 +203,15 @@
                 document.getElementById('img-perder').src = 'imagens_webp_crush_it/perder-peso.webp';
                 document.getElementById('img-ganar').src = 'imagens_webp_crush_it/Ganar-musculo.webp';
                 document.getElementById('img-definir').src = 'imagens_webp_crush_it/Definir-tu-cuerpo.webp';
+
+                // Update desired body images
+                document.getElementById('img-desired-delgado').src = 'imagens_webp_crush_it/delgado.webp';
+                document.getElementById('img-delgado-ton').src = 'imagens_webp_crush_it/Delgado-y-tonificado-pergunta-4.webp';
+                document.getElementById('img-desired-atleta').src = 'imagens_webp_crush_it/Atleta-pergunta-4.webp';
+                document.getElementById('img-desired-culturista').src = 'imagens_webp_crush_it/culturista-pergunta-4.webp';
+                document.getElementById('img-desired-playa').src = 'imagens_webp_crush_it/de-playa-pergunta-4.webp';
+                document.getElementById('img-desired-crossfit').src = 'imagens_webp_crush_it/de-crossfit-pergunta-4.webp';
+                document.getElementById('img-desired-heroe').src = 'imagens_webp_crush_it/heroe-pergunta-4.webp';
             }
             
             updateGenderUI();
