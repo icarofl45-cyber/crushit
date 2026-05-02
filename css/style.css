@@ -1822,20 +1822,6 @@ margin-bottom: 10px;}}
 .comparison-row{gap: 8px;}
 .comp-card{padding: 12px 8px; border-radius: 18px;}
 .comp-imc-val{font-size: 18px;}
-.testimonials-slider-wrap {
-    width: 100%;
-    margin-top: 20px;
-}
-.testimonials-track {
-    display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    gap: 20px;
-    padding: 10px 5px 25px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    width: 100%;
 }
 .testimonials-slider-wrap {
     overflow: hidden;
@@ -1958,7 +1944,7 @@ margin-bottom: 10px;}}
 .main-header.clean-header .logo-img{max-width: 130px;}
 .slider-track-dots{padding: 0 5px;}
 .track-dot{width: 6px; height: 6px;}
-.slider-labels{font-size: 11px;}}
+.slider-labels{font-size: 11px;}
 @media (min-width: 376px) and (max-width: 480px){body{padding: 0 12px;}
 .headline{font-size: 30px;}
 .fat-image-display{height: 300px;}
