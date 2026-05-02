@@ -344,8 +344,10 @@
 
         function setWeightUnit(unit) {
             const isKg = unit === 'kg';
-            document.getElementById('unit-kg').classList.toggle('active', isKg);
-            document.getElementById('unit-lb').classList.toggle('active', !isKg);
+            const btnKg = document.getElementById('unit-kg');
+            const btnLb = document.getElementById('unit-lb');
+            if (btnKg) btnKg.classList.toggle('active', isKg);
+            if (btnLb) btnLb.classList.toggle('active', !isKg);
             
             const label = document.getElementById('label-target-weight');
             if (label) {
