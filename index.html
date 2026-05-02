@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.7">
+    <link rel="stylesheet" href="css/style.css?v=1.8">
 </head>
 <body>
 
@@ -286,6 +286,42 @@
                     <img loading="lazy" src="imagens_webp_crush_it/pesado.webp" id="img-pesado" alt="Pesado">
                 </div>
                 <div class="hex-label">Pesado</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAPA 4: META -->
+    <div id="screen-goal" class="screen">
+        <h1 class="headline">ELIGE TU <span style="color:var(--cta-green)">META</span></h1>
+        <p class="subheadline">Personalizaremos tu rutina para este objetivo</p>
+
+        <div class="goal-list">
+            <div class="goal-card" onclick="handleGoal('Perder Peso')">
+                <div class="goal-img-box">
+                    <img loading="lazy" src="imagens_webp_crush_it/perder-peso.webp" alt="Objetivo: Perder Peso" id="img-perder" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="goal-info">
+                    <div class="goal-title">PERDER PESO</div>
+                    <div class="goal-subtitle">Ya no quiero verme así en el espejo</div>
+                </div>
+            </div>
+            <div class="goal-card" onclick="handleGoal('Ganar Músculo')">
+                <div class="goal-img-box">
+                    <img loading="lazy" src="imagens_webp_crush_it/Ganar-musculo.webp" alt="Objetivo: Ganar Músculo" id="img-ganar" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="goal-info">
+                    <div class="goal-title">GANAR MÚSCULO</div>
+                    <div class="goal-subtitle">Quiero que se note que entreno</div>
+                </div>
+            </div>
+            <div class="goal-card" onclick="handleGoal('Definir tu Cuerpo')">
+                <div class="goal-img-box">
+                    <img loading="lazy" src="imagens_webp_crush_it/Definir-tu-cuerpo.webp" alt="Objetivo: Definir Cuerpo" id="img-definir" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="goal-info">
+                    <div class="goal-title">DEFINIR TU CUERPO</div>
+                    <div class="goal-subtitle">Tengo el músculo, me falta la definición</div>
+                </div>
             </div>
         </div>
     </div>
@@ -693,41 +729,7 @@
     <!-- ETAPA 3: TIPO DE CORPO (MASCULINO) -->
 
 
-    <!-- ETAPA 4: META (MASCULINO) -->
-    <div id="screen-goal" class="screen">
-        <h1 class="headline">ELIGE TU <span style="color:var(--cta-green)">META</span></h1>
-        <p class="subheadline">Personalizaremos tu rutina para este objetivo</p>
 
-        <div class="goal-list">
-            <div class="goal-card anim-fade delay-1" onclick="handleGoal('Perder Peso')">
-                <div class="goal-img-box">
-                    <img loading="lazy" src="imagens_webp_crush_it/perder-peso.webp" alt="Objetivo: Perder Peso" id="img-perder" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="goal-info">
-                    <div class="goal-title">PERDER PESO</div>
-                    <div class="goal-subtitle">Ya no quiero verme assim no espelho</div>
-                </div>
-            </div>
-            <div class="goal-card anim-fade delay-2" onclick="handleGoal('Ganar Músculo')">
-                <div class="goal-img-box">
-                    <img loading="lazy" src="imagens_webp_crush_it/Ganar-musculo.webp" alt="Objetivo: Ganar Músculo" id="img-ganar" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="goal-info">
-                    <div class="goal-title">GANAR MÚSCULO</div>
-                    <div class="goal-subtitle">Quiero que se note que entreno</div>
-                </div>
-            </div>
-            <div class="goal-card anim-fade delay-3" onclick="handleGoal('Definir tu Cuerpo')">
-                <div class="goal-img-box">
-                    <img loading="lazy" src="imagens_webp_crush_it/Definir-tu-cuerpo.webp" alt="Objetivo: Definir Cuerpo" id="img-definir" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="goal-info">
-                    <div class="goal-title">DEFINIR TU CUERPO</div>
-                    <div class="goal-subtitle">Tengo el músculo, me falta la definição</div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ETAPA 5-A: CORPO DESEJADO (PERDER PESO) -->
     <div id="screen-desired-perder" class="screen">
