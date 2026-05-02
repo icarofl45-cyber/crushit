@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.9">
+    <link rel="stylesheet" href="css/style.css?v=1.10">
 </head>
 <body>
 
@@ -379,6 +379,39 @@
                 <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/heroe-pergunta-4.webp" id="img-desired-heroe" alt="Cuerpo de Héroe" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
         </div>
+    </div>
+
+    <!-- ETAPA 6: NIVEL DE GRASA (SLIDER) -->
+    <div id="screen-bodyfat" class="screen">
+        <h1 class="headline">Elige tu nivel de grasa corporal</h1>
+        <p class="subheadline">Desliza para encontrar el cuerpo que tienes hoy</p>
+
+        <div class="fat-image-display">
+            <img src="imagens_webp_crush_it/15-19.webp" id="fat-body-img" class="fat-img" loading="eager" decoding="async" fetchpriority="high">
+        </div>
+
+        <div class="fat-slider-container">
+            <div class="slider-wrap">
+                <div id="bubble" class="fat-value-bubble">15-19%</div>
+                <div class="slider-track-dots">
+                    <span class="track-dot"></span>
+                    <span class="track-dot"></span>
+                    <span class="track-dot"></span>
+                    <span class="track-dot"></span>
+                    <span class="track-dot"></span>
+                    <span class="track-dot"></span>
+                    <span class="track-dot"></span>
+                    <span class="track-dot"></span>
+                </div>
+                <input type="range" id="fat-slider" min="1" max="8" step="1" value="3" oninput="updateFatSlider(this.value)">
+            </div>
+            <div class="slider-labels">
+                <span>5-9%</span>
+                <span>&gt;40%</span>
+            </div>
+        </div>
+
+        <button class="btn-continue" onclick="goToStep('focusarea', document.getElementById('bubble').innerText)">CONTINUAR</button>
     </div>
 
     <!-- ETAPA 19: TELA DE OFERTA -->
@@ -845,38 +878,7 @@
         </div>
     </div>
 
-    <!-- ETAPA 6: NIVEL DE GRASA (SLIDER) -->
-    <div id="screen-bodyfat" class="screen">
-        <h1 class="headline">Elige tu nivel de grasa corporal</h1>
-        <p class="subheadline">Desliza para encontrar el cuerpo que tienes hoy</p>
 
-        <div class="fat-image-display">
-            <img src="imagens_webp_crush_it/15-19.webp" id="fat-body-img" class="fat-img" loading="eager" decoding="async" fetchpriority="high">
-        </div>
-
-        <div class="fat-slider-container">
-            <div class="slider-wrap">
-                <div id="bubble" class="fat-value-bubble">15-19%</div>
-                <div class="slider-track-dots">
-                    <span class="track-dot"></span>
-                    <span class="track-dot"></span>
-                    <span class="track-dot"></span>
-                    <span class="track-dot"></span>
-                    <span class="track-dot"></span>
-                    <span class="track-dot"></span>
-                    <span class="track-dot"></span>
-                    <span class="track-dot"></span>
-                </div>
-                <input type="range" id="fat-slider" min="1" max="8" step="1" value="3" oninput="updateFatSlider(this.value)">
-            </div>
-            <div class="slider-labels">
-                <span>5-9%</span>
-                <span>&gt;40%</span>
-            </div>
-        </div>
-
-        <button class="btn-continue" onclick="goToStep('focusarea', document.getElementById('bubble').innerText)">CONTINUAR</button>
-    </div>
 
     <!-- ETAPA 7: ÁREAS PROBLEMÁTICAS -->
     <div id="screen-focusarea" class="screen">
