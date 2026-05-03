@@ -1150,9 +1150,15 @@
                         </div>
                     </div>
 
-                    <div class="pricing-details">
+                    <div class="pricing-details" id="pricing-area">
                         <p class="protocol-type">Tu protocolo personalizado</p>
-                        <span class="new-price-v2">$39.99 USD</span>
+                        <div class="price-container">
+                            <span class="old-price-v2" id="original-price">$39.99 USD</span>
+                            <div class="new-price-wrapper">
+                                <span class="new-price-v2" id="current-price">$39.99 USD</span>
+                                <span class="discount-tag" id="discount-tag" style="display:none;">-75% DESCUENTO</span>
+                            </div>
+                        </div>
                         <p class="pricing-meta">Acceso inmediato ao app · Pago único</p>
                         <p class="pricing-safety">🔒 Pago seguro · Garantía de 30 días</p>
                     </div>
@@ -1405,6 +1411,39 @@
                     <span class="badge">🛡️ Garantía 30 días</span>
                 </div>
             </footer>
+        </div>
+    </div>
+
+    <!-- MODAL ROLETA DE DESCONTO -->
+    <div id="discount-modal" class="roulette-modal">
+        <div class="roulette-content">
+            <div class="roulette-header">
+                <h3>¡OFERTA RELÁMPAGO!</h3>
+                <p>Gira la ruleta para ganar un descuento exclusivo en tu protocolo.</p>
+            </div>
+            
+            <div class="wheel-container">
+                <div class="wheel-pointer">▼</div>
+                <div id="wheel" class="wheel">
+                    <div class="wheel-segment" style="--i:1; --clr:#7B2FF7;"><span>5%</span></div>
+                    <div class="wheel-segment" style="--i:2; --clr:#1a1a1a;"><span>10%</span></div>
+                    <div class="wheel-segment" style="--i:3; --clr:#7B2FF7;"><span>15%</span></div>
+                    <div class="wheel-segment" style="--i:4; --clr:#1a1a1a;"><span>20%</span></div>
+                    <div class="wheel-segment" style="--i:5; --clr:#22C55E;"><span>75%</span></div>
+                    <div class="wheel-segment" style="--i:6; --clr:#1a1a1a;"><span>30%</span></div>
+                    <div class="wheel-segment" style="--i:7; --clr:#7B2FF7;"><span>40%</span></div>
+                    <div class="wheel-segment" style="--i:8; --clr:#1a1a1a;"><span>50%</span></div>
+                </div>
+                <button id="spin-btn" class="spin-button" onclick="spinWheel()">GIRAR AHORA</button>
+            </div>
+
+            <div id="roulette-result" class="roulette-result" style="display:none;">
+                <h4>¡FELICIDADES!</h4>
+                <p>Has ganado un <strong>75% de descuento</strong> fijo.</p>
+                <button class="btn-areas-continue active-btn cta-glow" onclick="applyDiscount()">
+                    QUIERO MI DESCUENTO
+                </button>
+            </div>
         </div>
     </div>
 

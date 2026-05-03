@@ -907,4 +907,88 @@
                     balloons[currentBalloon].classList.add('active');
                 }, 3000);
             }
+
+            // Inicia verificação da roleta se estiver na tela de oferta
+            checkRouletteTrigger();
+            checkAppliedDiscount();
         });
+
+        // DISCOUNT ROULETTE LOGIC
+        let rouletteTriggered = false;
+        
+        function checkRouletteTrigger() {
+            const pricingArea = document.getElementById('pricing-area');
+            if (!pricingArea || rouletteTriggered || localStorage.getItem('crushit_discount_applied')) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !rouletteTriggered) {
+                        rouletteTriggered = true;
+                        setTimeout(() => {
+                            if (!localStorage.getItem('crushit_discount_applied')) {
+                                document.getElementById('discount-modal').classList.add('active');
+                            }
+                        }, 10000); // 10 segundos após visualizar o preço
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(pricingArea);
+        }
+
+        function spinWheel() {
+            const wheel = document.getElementById('wheel');
+            const spinBtn = document.getElementById('spin-btn');
+            
+            // Rotação fixa para cair no 75% (segmento 5)
+            // Cada segmento tem 45 graus. O 75% está no centro do segmento 5.
+            const rotation = 360 * 8 + 157.5; 
+            wheel.style.transform = `rotate(${rotation}deg)`;
+            spinBtn.disabled = true;
+            spinBtn.style.opacity = '0.5';
+
+            setTimeout(() => {
+                document.getElementById('roulette-result').style.display = 'block';
+                document.getElementById('spin-btn').style.display = 'none';
+            }, 5000);
+        }
+
+        function applyDiscount() {
+            // Atualiza Preços
+            const originalPrice = document.getElementById('original-price');
+            const currentPrice = document.getElementById('current-price');
+            const discountTag = document.getElementById('discount-tag');
+
+            if (originalPrice) originalPrice.style.display = 'block';
+            if (currentPrice) {
+                currentPrice.innerText = '$9.90 USD';
+                currentPrice.style.color = 'var(--cta-green)';
+                currentPrice.style.fontSize = '62px'; // Destaque extra
+            }
+            if (discountTag) discountTag.style.display = 'inline-block';
+            
+            // Fecha Modal
+            document.getElementById('discount-modal').classList.remove('active');
+            
+            // Persiste o desconto
+            localStorage.setItem('crushit_discount_applied', 'true');
+            
+            // Scroll suave de volta para o preço
+            document.getElementById('pricing-area').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function checkAppliedDiscount() {
+            if (localStorage.getItem('crushit_discount_applied')) {
+                const originalPrice = document.getElementById('original-price');
+                const currentPrice = document.getElementById('current-price');
+                const discountTag = document.getElementById('discount-tag');
+
+                if (originalPrice) originalPrice.style.display = 'block';
+                if (currentPrice) {
+                    currentPrice.innerText = '$9.90 USD';
+                    currentPrice.style.color = 'var(--cta-green)';
+                    currentPrice.style.fontSize = '62px';
+                }
+                if (discountTag) discountTag.style.display = 'inline-block';
+            }
+        }
