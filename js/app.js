@@ -896,4 +896,15 @@
                     // Implementação futura
                 }
             }
+
+            // Social Proof Balloons Rotation
+            const balloons = document.querySelectorAll('.balloon-item');
+            if (balloons.length > 0) {
+                let currentBalloon = 0;
+                setInterval(() => {
+                    balloons[currentBalloon].classList.remove('active');
+                    currentBalloon = (currentBalloon + 1) % balloons.length;
+                    balloons[currentBalloon].classList.add('active');
+                }, 3000);
+            }
         });
