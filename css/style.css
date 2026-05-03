@@ -2302,11 +2302,11 @@ text-rendering: optimizeLegibility;}
 
 .segment span {
     position: absolute;
-    transform: rotate(45deg) translate(65px, -65px);
+    transform: rotate(45deg) translate(60px, -60px);
     font-weight: 900;
-    font-size: 15px;
+    font-size: 18px;
     color: #fff;
-    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .wheel-center-v2 {
