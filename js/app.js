@@ -920,24 +920,21 @@
         let rouletteTriggered = false;
         
         function checkRouletteTrigger() {
-            const pricingArea = document.getElementById('pricing-area');
-            if (!pricingArea || rouletteTriggered || localStorage.getItem('crushit_discount_applied')) return;
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !rouletteTriggered) {
-                        rouletteTriggered = true;
-                        console.log("Preço visualizado, iniciando timer de 10s para roleta...");
-                        setTimeout(() => {
-                            if (!localStorage.getItem('crushit_discount_applied')) {
-                                document.getElementById('discount-modal').classList.add('active');
-                            }
-                        }, 10000); 
-                    }
-                });
-            }, { threshold: 0.1 }); // Menor threshold para facilitar o disparo
+            // Se já foi disparado ou desconto já foi aplicado, sai
+            if (rouletteTriggered || localStorage.getItem('crushit_discount_applied')) return;
             
-            observer.observe(pricingArea);
+            rouletteTriggered = true;
+            console.log("Tela de oferta ativa. Roleta aparecerá em 10 segundos...");
+            
+            setTimeout(() => {
+                if (!localStorage.getItem('crushit_discount_applied')) {
+                    const modal = document.getElementById('discount-modal');
+                    if (modal) {
+                        modal.classList.add('active');
+                        console.log("Roleta exibida!");
+                    }
+                }
+            }, 10000); // 10 segundos após entrar na tela de oferta
         }
 
         function spinWheel() {
