@@ -963,7 +963,7 @@
             if (currentPrice) {
                 currentPrice.innerText = '$9.90 USD';
                 currentPrice.style.color = 'var(--cta-green)';
-                currentPrice.style.fontSize = '62px'; // Destaque extra
+                currentPrice.style.fontSize = '42px'; // Reduzido conforme pedido
             }
             if (discountTag) discountTag.style.display = 'inline-block';
             
@@ -987,7 +987,7 @@
                 if (currentPrice) {
                     currentPrice.innerText = '$9.90 USD';
                     currentPrice.style.color = 'var(--cta-green)';
-                    currentPrice.style.fontSize = '62px';
+                    currentPrice.style.fontSize = '42px';
                 }
                 if (discountTag) discountTag.style.display = 'inline-block';
             }

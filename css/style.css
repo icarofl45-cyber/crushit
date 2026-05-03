@@ -2369,30 +2369,38 @@ text-rendering: optimizeLegibility;}
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    margin-bottom: 15px;
+    gap: 12px;
+    margin-bottom: 25px;
 }
 .old-price-v2 {
-    font-size: 20px;
-    color: #444;
+    font-size: 18px;
+    color: #555;
     text-decoration: line-through;
     font-weight: 700;
     display: none;
 }
-.new-price-wrapper {
+.discount-tag-wrapper {
+    height: 28px;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 .discount-tag {
     background: #F97316;
     color: #fff;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 900;
-    padding: 4px 10px;
+    padding: 6px 14px;
     border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
     animation: bounce 2s infinite;
+    white-space: nowrap;
+}
+.new-price-v2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--text-white);
+    line-height: 1;
+    display: inline-block;
 }
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
