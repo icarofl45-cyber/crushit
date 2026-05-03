@@ -2200,67 +2200,96 @@ text-rendering: optimizeLegibility;}
     gap: 6px;
 }
 
-/* ROLETA DE DESCONTO STYLES */
+/* ROLETA DE DESCONTO STYLES V2 */
 .roulette-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95);
+    background: rgba(0,0,0,0.92);
     z-index: 10000;
     display: none;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
 }
+.roulette-modal.active { display: flex; animation: fadeIn 0.4s ease; }
 
-.roulette-modal.active { display: flex; animation: fadeIn 0.5s ease; }
-
-.roulette-content {
-    background: #111;
-    border: 2px solid #222;
-    border-radius: 30px;
-    padding: 40px 20px;
+.roulette-content-v2 {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 40px;
+    padding: 40px 24px;
     width: 100%;
-    max-width: 400px;
+    max-width: 440px;
     text-align: center;
     position: relative;
-    box-shadow: 0 0 50px rgba(123, 47, 247, 0.3);
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+    border: 2px solid rgba(34, 197, 94, 0.2);
 }
 
-.roulette-header h3 { font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 10px; }
-.roulette-header p { font-size: 14px; color: #888; margin-bottom: 30px; }
-
-.wheel-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto 30px;
+.roulette-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22C55E;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
 }
 
-.wheel-pointer {
-    position: absolute;
-    top: -15px; left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
+.roulette-h3 {
     font-size: 32px;
+    font-weight: 900;
     color: #fff;
-    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    line-height: 1.1;
+    margin-bottom: 12px;
+    text-transform: none;
 }
 
-.wheel {
+.roulette-p {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.wheel-container-v2 {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 40px;
+}
+
+.wheel-v2 {
     width: 100%; height: 100%;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
-    border: 8px solid #222;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    border: 4px solid #1a1a1a;
     transition: transform 5s cubic-bezier(0.1, 0, 0.1, 1);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-.wheel-segment {
+.wheel-pointer-v2 {
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 25px solid var(--cta-green);
+    z-index: 10;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+.segment {
     position: absolute;
     width: 50%; height: 50%;
-    background: var(--clr);
+    background: var(--bg);
     top: 0; right: 0;
     transform-origin: bottom left;
     transform: rotate(calc(45deg * var(--i)));
@@ -2268,34 +2297,72 @@ text-rendering: optimizeLegibility;}
     display: flex;
     justify-content: center;
     align-items: center;
+    border-left: 1px solid rgba(255,255,255,0.05);
 }
 
-.wheel-segment span {
+.segment span {
     position: absolute;
-    transform: rotate(45deg) translate(70px, -70px);
+    transform: rotate(45deg) translate(65px, -65px);
     font-weight: 900;
-    font-size: 18px;
+    font-size: 15px;
     color: #fff;
+    opacity: 0.9;
 }
 
-.spin-button {
+.wheel-center-v2 {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 70px; height: 70px;
+    width: 54px; height: 54px;
+    background: #000;
     border-radius: 50%;
-    background: #fff;
-    border: 5px solid #222;
-    color: #000;
-    font-weight: 900;
-    font-size: 12px;
-    cursor: pointer;
-    z-index: 11;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    z-index: 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 3px solid #1a1a1a;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-.roulette-result h4 { font-size: 24px; color: var(--cta-green); margin-bottom: 10px; }
-.roulette-result p { margin-bottom: 25px; }
+.btn-roulette-main {
+    width: 100%;
+    background: #4d7c0f; /* Verde oliva/acinzentado inicial */
+    color: #000;
+    border: none;
+    padding: 22px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 0 #365314;
+}
+
+.btn-roulette-main:active { transform: translateY(2px); box-shadow: 0 2px 0 #365314; }
+
+.btn-roulette-main.active-btn {
+    background: var(--cta-green);
+    box-shadow: 0 4px 0 #166534;
+}
+
+.roulette-result-v2 {
+    margin-top: -10px;
+    animation: fadeIn 0.5s ease both;
+}
+
+.result-box {
+    background: rgba(34, 197, 94, 0.05);
+    border: 1.5px solid rgba(34, 197, 94, 0.2);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.result-box h4 { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+.result-box p { font-size: 14px; color: #888; margin: 0; }
 
 /* PRICING UPDATES */
 .price-container {
@@ -2305,21 +2372,18 @@ text-rendering: optimizeLegibility;}
     gap: 5px;
     margin-bottom: 15px;
 }
-
 .old-price-v2 {
     font-size: 20px;
     color: #444;
     text-decoration: line-through;
     font-weight: 700;
-    display: none; /* Hidden until discount applied */
+    display: none;
 }
-
 .new-price-wrapper {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-
 .discount-tag {
     background: #F97316;
     color: #fff;
@@ -2330,8 +2394,5 @@ text-rendering: optimizeLegibility;}
     box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
     animation: bounce 2s infinite;
 }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}

@@ -938,18 +938,17 @@
 
         function spinWheel() {
             const wheel = document.getElementById('wheel');
-            const spinBtn = document.getElementById('spin-btn');
+            const initialBtnArea = document.getElementById('roulette-initial-btn');
             
             // Rotação fixa para cair no 75% (segmento 5)
-            // Cada segmento tem 45 graus. O 75% está no centro do segmento 5.
-            const rotation = 360 * 8 + 157.5; 
+            const rotation = 360 * 10 + 157.5; 
             wheel.style.transform = `rotate(${rotation}deg)`;
-            spinBtn.disabled = true;
-            spinBtn.style.opacity = '0.5';
+            
+            if (initialBtnArea) initialBtnArea.style.display = 'none';
 
             setTimeout(() => {
-                document.getElementById('roulette-result').style.display = 'block';
-                document.getElementById('spin-btn').style.display = 'none';
+                const resultArea = document.getElementById('roulette-result');
+                if (resultArea) resultArea.style.display = 'block';
             }, 5000);
         }
 
