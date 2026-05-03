@@ -2402,5 +2402,28 @@ text-rendering: optimizeLegibility;}
     line-height: 1;
     display: inline-block;
 }
+.bonus-badge-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+.bonus-badge {
+    background: #1a0d00;
+    border: 1.5px solid #854d0e;
+    color: #f97316;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 8px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
