@@ -753,6 +753,9 @@
                 if (i < activeGlasses) icon.classList.add('active');
                 else icon.classList.remove('active');
             });
+
+            // Garante que o gatilho da roleta seja inicializado ao popular a tela
+            checkRouletteTrigger();
         }
 
         function toggleFaq(el) {
@@ -924,14 +927,15 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !rouletteTriggered) {
                         rouletteTriggered = true;
+                        console.log("Preço visualizado, iniciando timer de 10s para roleta...");
                         setTimeout(() => {
                             if (!localStorage.getItem('crushit_discount_applied')) {
                                 document.getElementById('discount-modal').classList.add('active');
                             }
-                        }, 10000); // 10 segundos após visualizar o preço
+                        }, 10000); 
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.1 }); // Menor threshold para facilitar o disparo
             
             observer.observe(pricingArea);
         }
