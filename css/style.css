@@ -2738,13 +2738,13 @@ text-rendering: optimizeLegibility;}
     .trust-content { padding: 0 100px; }
     .trust-number { font-size: 38px; }
     .trust-subtitle-inline { font-size: 14px; }
-    .laurel { width: 120px; }
+    .laurel { width: 168px; }
 }
 
 @media (max-width: 768px) {
     .trust-container { min-height: 140px; padding: 0 10px; }
     .trust-content { padding: 0 50px; }
-    .laurel { display: block; width: 60px; opacity: 0.1; }
+    .laurel { display: block; width: 84px; opacity: 0.15; }
     .laurel-left { left: 5px; }
     .laurel-right { right: 5px; }
     .trust-number { font-size: 24px; display: inline-block; }
@@ -2879,7 +2879,7 @@ text-rendering: optimizeLegibility;}
 .stars { color: #ff6b00; font-size: 18px; letter-spacing: 2px; }
 .verified-badge { color: var(--cta-green); font-size: 10px; font-weight: 900; background: rgba(34, 197, 94, 0.1); padding: 4px 8px; border-radius: 4px; }
 
-.testimonials-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+.testimonials-dots { display: none; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); transition: all 0.3s ease; }
 .dot.active { background: #fff; width: 24px; border-radius: 10px; }
 .testimonials-footer { color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 30px; }
