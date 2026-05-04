@@ -1498,7 +1498,15 @@ flex-shrink: 0;}
     padding: 8px 24px;
     border-radius: 50px;
     display: inline-block;
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        padding: 16px 0;
+        font-size: 16px;
+    }
+}
     animation: pulseGlow 2s infinite;
 }
 
@@ -2734,10 +2742,16 @@ text-rendering: optimizeLegibility;}
 }
 
 @media (max-width: 768px) {
-    .trust-content { padding: 0 20px; }
-    .laurel { display: none; }
-    .trust-number { font-size: 32px; display: block; }
-    .trust-subtitle-inline { display: block; margin-left: 0; margin-top: 10px; }
+    .trust-container { min-height: 140px; padding: 0 10px; }
+    .trust-content { padding: 0 50px; }
+    .laurel { display: block; width: 60px; opacity: 0.1; }
+    .laurel-left { left: 5px; }
+    .laurel-right { right: 5px; }
+    .trust-number { font-size: 24px; display: inline-block; }
+    .trust-subtitle-inline { display: inline-block; margin-left: 5px; font-size: 11px; vertical-align: baseline; }
+    .trust-stars { font-size: 20px; margin-bottom: 10px; }
+    .trust-rating-badge { padding: 4px 12px; font-size: 13px; margin-bottom: 20px; }
+    .trust-footer-text { font-size: 14px; }
 }
 
 /* FAQ Section Styles */
@@ -2824,6 +2838,9 @@ text-rendering: optimizeLegibility;}
 }
 .testimonials-pre { color: rgba(255,255,255,0.6); font-size: 16px; margin-bottom: 5px; }
 .testimonials-count { color: #fff; font-size: 48px; font-weight: 950; margin-bottom: 5px; letter-spacing: -1px; }
+@media (max-width: 480px) {
+    .testimonials-count { font-size: 32px; }
+}
 .testimonials-post { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 40px; }
 
 .testimonials-carousel-wrapper {
