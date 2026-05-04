@@ -1320,43 +1320,140 @@ margin-top: 5px;}
 .m-bar{width: 18px; height: 4px; background: #222; border-radius: 2px;}
 .bars-now .m-bar.active{background: #ff6b00;}
 .bars-goal .m-bar.active{background: #22c55e;}
-.gauge-section{background: var(--card-bg);
-border: 1px solid #222;
-border-radius: 24px;
-padding: 24px;}
-.gauge-header{display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 15px;}
-.gauge-title{font-size: 14px; font-weight: 800; color: var(--text-gray); text-transform: uppercase;}
-.gauge-val{font-size: 24px; font-weight: 900; color: var(--text-white);}
-.gauge-track{height: 8px;
-border-radius: 10px;
-position: relative;
-margin: 20px 0;
-background: linear-gradient(to right, #4da6ff, #22c55e, #ff6b00, #ef4444);}
-.gauge-pin{width: 16px;
-height: 16px;
-background: #fff;
-border: 3px solid #000;
-border-radius: 50%;
-position: absolute;
-top: 50%;
-transform: translate(-50%, -50%);}
-.gauge-labels{display: flex;
-justify-content: space-between;
-font-size: 10px;
-font-weight: 700;
-color: #444;
-text-transform: uppercase;}
-.kcal-gauge{background: linear-gradient(to right, #222, #f97316, #222);}
-.recommended-tag{background: #ff6b00;
-color: #fff;
-font-size: 9px;
-font-weight: 900;
-padding: 2px 8px;
-border-radius: 4px;
-text-transform: uppercase;}
+.personal-summary-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+.summary-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+.summary-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+    flex: 1;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.card-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.card-value-large {
+    font-size: 42px;
+    font-weight: 950;
+    color: #fff;
+    line-height: 0.8;
+}
+.card-main-val {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+.label-with-tag {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+.recommended-badge {
+    background: #F97316;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+.gauge-container {
+    width: 100%;
+    margin-top: 10px;
+}
+.gauge-track {
+    height: 10px;
+    background: #222;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 12px;
+    overflow: visible;
+}
+.imc-gradient {
+    background: linear-gradient(90deg, #4da6ff 0%, #22c55e 30%, #ffcc00 60%, #ff4d4d 100%);
+}
+.kcal-gradient {
+    background: linear-gradient(90deg, rgba(249, 115, 22, 0.1) 0%, #F97316 100%);
+}
+.gauge-pin {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border: 4px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    z-index: 5;
+}
+.gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    font-weight: 800;
+    color: #444;
+    text-transform: uppercase;
+}
+.gauge-labels span.active {
+    color: var(--cta-green);
+    font-weight: 900;
+}
+.water-glasses-container {
+    display: flex;
+    gap: 6px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.glass {
+    flex: 1;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+.glass.active {
+    background: linear-gradient(180deg, #60a5fa, #2563eb);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+}
+
+@media (max-width: 480px) {
+    .summary-row {
+        flex-direction: column;
+    }
+    .card-value-large {
+        font-size: 32px;
+    }
+    .card-main-val {
+        font-size: 24px;
+    }
+}
 .water-icons{display: flex;
 gap: 10px;
 margin-top: 15px;}

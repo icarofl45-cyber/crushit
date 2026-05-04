@@ -654,7 +654,7 @@
                 imgGoal.src = `imagens_webp_crush_it/${goalFile}${sfx}.webp`;
             }
 
-            // 5. MEDIDORES (Gauges)
+            // 5. MEDIDORES (Gauges Premium)
             // Calorias
             let kcal = imc >= 25 ? 2000 : 2400;
             const gKcalVal = document.getElementById('g-kcal-val');
@@ -669,11 +669,14 @@
             let litros = imc >= 25 ? 3.0 : 2.0;
             const gWaterVal = document.getElementById('g-water-val');
             if (gWaterVal) gWaterVal.innerText = litros + ' litros';
-            const waterIcons = document.querySelectorAll('.water-icon');
-            const activeGlasses = Math.round((litros / 4) * 8); 
-            waterIcons.forEach((icon, i) => {
-                if (i < activeGlasses) icon.classList.add('active');
-                else icon.classList.remove('active');
+            
+            // Glasses logic
+            const glasses = document.querySelectorAll('#water-glasses-track .glass');
+            const totalGlasses = glasses.length;
+            const filledGlasses = Math.round((litros / 4) * totalGlasses); 
+            glasses.forEach((glass, i) => {
+                if (i < filledGlasses) glass.classList.add('active');
+                else glass.classList.remove('active');
             });
 
             // IMC Gauge
@@ -681,10 +684,18 @@
             const gImcPin = document.getElementById('g-imc-pin');
             if (gImcVal) gImcVal.innerText = imc;
             if (gImcPin) {
+                // Rango: 15 a 35
                 let imcPerc = ((imc - 15) / (35 - 15)) * 100;
                 if (imcPerc < 5) imcPerc = 5; if (imcPerc > 95) imcPerc = 95;
                 gImcPin.style.left = imcPerc + '%';
             }
+
+            // Highlighting BMI Label
+            document.querySelectorAll('.gauge-labels span').forEach(s => s.classList.remove('active'));
+            if (imc < 18.5) document.getElementById('lbl-bajo')?.classList.add('active');
+            else if (imc < 25) document.getElementById('lbl-normal')?.classList.add('active');
+            else if (imc < 30) document.getElementById('lbl-sobre')?.classList.add('active');
+            else document.getElementById('lbl-obeso')?.classList.add('active');
         }
 
         function toggleFaq(el) {
@@ -835,21 +846,15 @@
             // Logic for pre-applied discounts if needed
         }
 
-        // SOCIAL PROOF CAROUSEL - REFINADO
+        // SOCIAL PROOF CAROUSEL - REFINADO (PORTUGUÊS)
         let currentProofIndex = 0;
         const proofs = [
-            // 2 Homens
-            { name: 'carlos*', gender: 'male' },
-            { name: 'jorge*', gender: 'male' },
-            // 2 Mulheres
-            { name: 'ana*', gender: 'female' },
-            { name: 'laura*', gender: 'female' },
-            // 2 Homens
-            { name: 'mateo*', gender: 'male' },
-            { name: 'diego*', gender: 'male' },
-            // 2 Mulheres
-            { name: 'elena*', gender: 'female' },
-            { name: 'sofia*', gender: 'female' }
+            { name: 'Carlos*', gender: 'male' },
+            { name: 'Jorge*', gender: 'male' },
+            { name: 'Ana*', gender: 'female' },
+            { name: 'Laura*', gender: 'female' },
+            { name: 'Mateo*', gender: 'male' },
+            { name: 'Sofia*', gender: 'female' }
         ];
 
         function startSocialProofCarousel() {
@@ -857,55 +862,52 @@
             if (!badgeEl) return;
 
             setInterval(() => {
-                // Fade out + leve descida
                 badgeEl.style.opacity = '0';
-                badgeEl.style.transform = 'translateY(5px)';
-
                 setTimeout(() => {
                     currentProofIndex = (currentProofIndex + 1) % proofs.length;
                     const next = proofs[currentProofIndex];
-                    
+                    const actionText = next.gender === 'female' ? 'adquirió su protocolo' : 'adquirió su protocolo';
                     badgeEl.innerHTML = `
                         <span class="proof-dot ${next.gender}"></span>
-                        <span class="proof-text">${next.name} adquirió su protocolo único</span>
+                        <span class="proof-text">${next.name} ${actionText}</span>
                     `;
-                    
-                    // Fade in + sobe
                     badgeEl.style.opacity = '1';
-                    badgeEl.style.transform = 'translateY(0)';
                 }, 600);
-            }, 4500); // Tempo levemente aumentado para leitura
+            }, 5000);
         }
 
-        // Hook into offer screen population
-        // FAQ Accordion Logic
-        window.toggleFAQ = function(element) {
-            const item = element.parentElement;
-            const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
-        };
-
-        // Testimonials Carousel Logic (Smooth Auto-scroll)
+        // Testimonials Carousel Logic (Ultra Smooth Auto-scroll)
         function startTestimonialsCarousel() {
             const track = document.getElementById('testimonials-track');
             if (!track) return;
-            let scrollAmount = 0;
-            const step = 0.5;
-            function stepScroll() {
-                scrollAmount += step;
-                if (scrollAmount >= track.scrollWidth / 2) scrollAmount = 0;
-                track.style.transform = `translateX(-${scrollAmount}px)`;
-                requestAnimationFrame(stepScroll);
+            
+            // Remove CSS animation class to avoid conflict
+            track.classList.remove('marquee');
+            
+            // Duplicar conteúdo para scroll infinito
+            if (track.children.length < 12) {
+                track.innerHTML += track.innerHTML;
             }
-            track.innerHTML += track.innerHTML; // Duplicar para loop infinito
-            requestAnimationFrame(stepScroll);
+            
+            let scrollPos = track.scrollLeft;
+            const scrollSpeed = 0.5; 
+            
+            function animate() {
+                scrollPos += scrollSpeed;
+                if (scrollPos >= track.scrollWidth / 2) {
+                    scrollPos = 0;
+                }
+                track.scrollLeft = scrollPos;
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
         }
 
         // Hook into offer screen population
         const originalPopulate = populateOfferScreen;
         populateOfferScreen = function() {
-            originalPopulate();
+            if (typeof originalPopulate === 'function') originalPopulate();
             startSocialProofCarousel();
             startTestimonialsCarousel();
         };
