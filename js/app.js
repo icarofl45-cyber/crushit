@@ -911,8 +911,7 @@
                 }, 3000);
             }
 
-            // Inicia verificação da roleta se estiver na tela de oferta
-            checkRouletteTrigger();
+            // checkRouletteTrigger removido daqui para evitar disparo precoce no carregamento
             checkAppliedDiscount();
         });
 

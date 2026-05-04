@@ -2579,5 +2579,31 @@ text-rendering: optimizeLegibility;}
     line-height: 1.5;
 }
 
+/* RESPONSIVIDADE ROLETA */
+@media (max-width: 480px) {
+    .roulette-content-v2 {
+        padding: 30px 16px;
+        border-radius: 32px;
+        max-width: 92%;
+    }
+    .roulette-h3 {
+        font-size: 24px;
+    }
+    .wheel-container-v2 {
+        width: 240px;
+        height: 240px;
+        margin-bottom: 30px;
+    }
+    .segment span {
+        transform: rotate(45deg) translate(50px, -50px);
+        font-size: 15px;
+    }
+    .wheel-center-v2 {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+}
+
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
