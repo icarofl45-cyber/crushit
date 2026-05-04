@@ -652,7 +652,6 @@
                 };
                 const goalFile = goalMap[userProfile.bodyFat] || 'atleta-pergunta-4';
                 imgGoal.src = `imagens_webp_crush_it/${goalFile}${sfx}.webp`;
-                if (goalLabel) goalLabel.innerText = 'OBJETIVO: ' + (userProfile.bodyFat || 'ATLETA').toUpperCase();
             }
         }
 

@@ -1197,7 +1197,7 @@ text-align: left;}
     display: block;
 }
 .card-goal .comparison-card-label {
-    color: var(--cta-green);
+    color: var(--text-gray);
 }
 
 .offer-container{width: 100%;
