@@ -1125,6 +1125,7 @@ text-align: left;}
     text-align: center;
     margin-bottom: 20px;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 .bubble-subtitle {
@@ -1154,6 +1155,48 @@ text-align: left;}
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+/* Comparison Cards */
+.comparison-cards-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.comparison-card {
+    flex: 1;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.comparison-card-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+.comparison-card-img-wrap {
+    width: 100%;
+    aspect-ratio: 1/1.2;
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.comparison-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.card-goal .comparison-card-label {
+    color: var(--cta-green);
 }
 
 .offer-container{width: 100%;
@@ -2428,8 +2471,35 @@ text-rendering: optimizeLegibility;}
     opacity: 0.6;
     line-height: 1.5;
 }
-
-
-
-
-
+/* Mobile Responsiveness Fixes */
+@media screen and (max-width: 480px) {
+    .headline {
+        font-size: 24px !important;
+        line-height: 1.2 !important;
+    }
+    .subheadline {
+        font-size: 14px !important;
+        margin-bottom: 20px !important;
+    }
+    .bubble-title {
+        font-size: 24px !important;
+    }
+    .comparison-card {
+        padding: 10px !important;
+    }
+    .comparison-card-label {
+        font-size: 9px !important;
+    }
+    .pricing-card-v2 {
+        padding: 15px !important;
+    }
+    .new-price-v2 {
+        font-size: 32px !important;
+    }
+    .balloon-item p {
+        font-size: 11px !important;
+    }
+    .social-proof-header {
+        font-size: 12px !important;
+    }
+}

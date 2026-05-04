@@ -3,7 +3,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush It - Tu Plan de 21 Días</title>
     <meta name="description" content="Crush It - Tu protocolo militar de 21 días para transformar tu cuerpo con precisión táctica.">
     <meta name="keywords" content="fitness, militar, transformacion, 21 dias, entrenamiento, quiz">
     <meta name="author" content="Crush It Team">
@@ -913,7 +914,6 @@
             </div>
             <p class="privacy-note">🔒 Solo necesitamos tu nombre para personalizar tu plan.</p>
         </div>
-        <div class="areas-footer" style="margin-top:40px;">
             <button id="btn-final-continue" class="btn-areas-continue active-btn" onclick="finishQuiz()">
                 VER MI PLAN →
             </button>
@@ -922,150 +922,18 @@
 
     <!-- ETAPA 19: TELA DE OFERTA -->
     <div id="screen-offer" class="screen">
-        <div class="offer-container">
-            
-            <!-- ESPAÇO PARA REFORMULAÇÃO DO TOPO -->
+        <div class="offer-container" id="offer-root">
+            <!-- PASSO 1: CABEÇALHO EM BOLHA (RESPONSIVO) -->
             <div id="top-reformulation-area">
-                <div class="offer-header-bubble anim-up delay-1">
+                <div class="offer-header-bubble anim-up">
                     <span class="bubble-subtitle">TU ANÁLISIS PERSONALIZADO</span>
                     <h2 id="header-name" class="bubble-title">CARGANDO...</h2>
                     <div id="header-imc-badge" class="bubble-imc-badge">IMC: --</div>
                 </div>
             </div>
-
-            <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">RESUMEN PERSONAL</h2>
-            <p style="color:var(--text-gray); font-size:14px; font-weight:700; text-transform:uppercase; margin-top:-15px;">Basado en tus respuestas</p>
-
-            <!-- IMC - Largura total em cima -->
-            <div class="gauge-section anim-up delay-1">
-                <div class="gauge-header">
-                    <span id="g-imc-title" class="gauge-title">IMC ACTUAL</span>
-                    <span class="gauge-val" id="g-imc-val">--</span>
-                </div>
-                <div class="gauge-track">
-                    <div class="gauge-pin" id="g-imc-pin" style="left: 50%;"></div>
-                </div>
-                <div class="gauge-labels">
-                    <span>BAJO PESO</span>
-                    <span style="color:var(--cta-green)">NORMAL</span>
-                    <span>OBESO</span>
-                </div>
-            </div>
-
-            <!-- Kcal e Agua lado a lado -->
-            <div class="gauge-row">
-                <div class="gauge-section gauge-half anim-fade delay-2">
-                    <div class="gauge-header">
-                        <span class="gauge-title">Ingesta diaria de calorias</span>
-                        <span class="recommended-tag">RECOMENDADO</span>
-                    </div>
-                    <div class="gauge-val" id="g-kcal-val">-- kcal</div>
-                    <div class="gauge-track kcal-gauge">
-                        <div class="gauge-pin" id="g-kcal-pin" style="left: 50%;"></div>
-                    </div>
-                    <div class="gauge-labels">
-                        <span>1600 kcal</span>
-                        <span>3200 kcal</span>
-                    </div>
-                </div>
-
-                <div class="gauge-section gauge-half anim-fade delay-3">
-                    <div class="gauge-header">
-                        <span class="gauge-title">Ingesta diaria de agua</span>
-                        <span class="recommended-tag">RECOMENDADO</span>
-                    </div>
-                    <div class="gauge-val" id="g-water-val">-- litros</div>
-                    <div class="water-icons">
-                        <div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">LO QUE <span style="color:var(--cta-green)">OBTIENES</span></h2>
-
-            <div class="benefit-item anim-fade delay-4">
-                <div class="benefit-icon">📅</div>
-                <div class="benefit-info">
-                    <h5>PROGRESIÓN REAL. DÍA 1 AL DÍA 21.</h5>
-                    <p>No saltos que te rompan, sin lentitud que te aburra. Cada dia contribuye sobre el anterior.</p>
-                </div>
-            </div>
-
-            <div class="benefit-item anim-fade delay-5">
-                <div class="benefit-icon">⏱️</div>
-                <div class="benefit-info">
-                    <h5>15 A 30 MINUTOS AL DÍA. NO MÁS.</h5>
-                    <p>Diseñado para no tener excusas de "no tengo tempo". El mismo tiempo que el celular. Menos tempo para isso.</p>
-                </div>
-            </div>
-
-            <div class="benefit-item anim-fade delay-6">
-                <div class="benefit-icon">⚡</div>
-                <div class="benefit-info">
-                    <h5>DUERMES MEJOR DESDE LA PRIMERA SEMANA.</h5>
-                    <p>No es promesa, es lo que reportan 9 de cada 10 usuarios que completan los primeiros 7 dias.</p>
-                </div>
-            </div>
-
-            <div class="gift-box anim-fade delay-7" style="text-align: center; background:transparent; border:none; padding:0; margin-bottom:40px;">
-                <div style="position:relative; display:inline-block; width:100%; max-width:400px; -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 75%, transparent 100%);">
-                    <img loading="lazy" src="imagens_webp_crush_it/oferta-1.webp" alt="Visualización del Plan Imprimible 2026" style="width: 100%; border-radius: 12px; display: block;">
-                </div>
-            </div>
-
-            <div class="calendar-preview anim-fade delay-8" style="background: #1a1a1a; border: 1px solid #333; border-radius: 16px; padding: 0 20px 20px 20px; margin-top: 40px; text-align: center; position: relative; overflow: visible !important;">
-                <div style="position: absolute; top: -22px; left: 50%; transform: translateX(-50%); background: var(--brand-purple); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(123, 47, 247, 0.4); z-index: 10;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-                </div>
-                <p style="font-size:14px; font-weight:700; color:#fff; margin-top: 35px; margin-bottom: 10px;">Get a printable bonus in addition to the main program</p>
-                <h4 style="font-size:26px; font-weight:900; color:#fff; margin-bottom: 25px;">Printable plan for 2026</h4>
-                <div style="position:relative; display:inline-block; width:100%; max-width:420px; -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 75%, transparent 100%);">
-                    <img loading="lazy" src="imagens_webp_crush_it/oferta-2.webp" alt="Guía Básica de Fitness - Vista Previa" style="width: 100%; height: auto; border-radius: 12px; display: block;">
-                </div>
-            </div>
-
-            <!-- Pricing Card v2 -->
-            <div class="pricing-card-v2">
-                <div class="social-proof-header">
-                    +320 personas se unieron al protocolo esta semana
-                </div>
-                
-                <div class="social-proof-container">
-                    <div class="balloon-item male active">
-                        <span class="balloon-dot"></span>
-                        <p><strong>Carlos</strong> resgatou seu plano único personalizado</p>
-                    </div>
-                    <div class="balloon-item female">
-                        <span class="balloon-dot"></span>
-                        <p><strong>Ana</strong> resgatou seu plano único personalizado</p>
-                    </div>
-                </div>
-
-                <div class="pricing-details" id="pricing-area">
-                    <p class="protocol-type">Tu protocolo personalizado</p>
-                    <div class="price-container">
-                        <span class="old-price-v2" id="original-price">$39.99 USD</span>
-                        <div class="discount-tag-wrapper">
-                            <span class="discount-tag" id="discount-tag" style="display:none;">-75% DESCUENTO</span>
-                        </div>
-                        <span class="new-price-v2" id="current-price">$39.99 USD</span>
-                    </div>
-                    <p class="pricing-meta">Acceso inmediato ao app · Pago único</p>
-                    <p class="pricing-safety">🔒 Pago seguro · Garantía de 30 días</p>
-                </div>
-                
-                <button class="btn-areas-continue active-btn cta-glow" style="margin-top:0; font-size:16px; padding:22px; white-space: nowrap;">
-                    QUIERO MI PROTOCOLO AHORA
-                </button>
-            </div>
-
-            <div class="guarantee-section">
-                <div class="guarantee-content">
-                    <h3 class="guarantee-headline">GARANTÍA DE 30 DÍAS.</h3>
-                    <p class="guarantee-description">Te devolvemos el 100% de tu inversión si no estás satisfecho.</p>
-                </div>
-            </div>
         </div>
+    </div>
+
 
             <footer class="site-footer">
                 <div class="footer-logo">

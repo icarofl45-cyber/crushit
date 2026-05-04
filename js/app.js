@@ -600,69 +600,29 @@
             }, 1000);
         }
         function populateOfferScreen() {
-            // Nome
-            const defaultName = userProfile.gender === 'Femenino' ? 'GUERRERA' : 'GUERRERO';
-            const name = userProfile.name || defaultName;
-            const headerName = document.getElementById('header-name');
-            if (headerName) headerName.innerText = name.toUpperCase();
-
-            // Altura e peso
+            // 1. DADOS BÁSICOS
+            const isFemale = userProfile.gender === 'Femenino';
+            const name = userProfile.name || (isFemale ? 'GUERRERA' : 'GUERRERO');
+            
+            // 2. CÁLCULO DE IMC
             let h = parseFloat(userProfile.height) || 170;
             let w = parseFloat(userProfile.weight) || 70;
-
-            // Conversão para cálculo de IMC
-            let hMetric = h;
-            let wMetric = w;
             if (userProfile.units === 'imperial') {
-                hMetric = h * 30.48; // ft para cm
-                wMetric = w * 0.453592; // lb para kg
+                h = h * 30.48; w = w * 0.453592;
             }
+            const imc = (w / ((h / 100) ** 2)).toFixed(1);
+            
+            let cat = 'NORMAL';
+            if (imc < 18.5) cat = 'BAJO PESO';
+            else if (imc < 25) cat = 'NORMAL';
+            else if (imc < 30) cat = 'SOBREPESO';
+            else cat = 'OBESO';
 
-            // IMC
-            const currentImc = (wMetric / ((hMetric / 100) ** 2)).toFixed(1);
-
-            // IMC Category
-            let imcCategory = 'NORMAL';
-            if (currentImc < 18.5) imcCategory = 'BAJO PESO';
-            else if (currentImc < 25) imcCategory = 'NORMAL';
-            else if (currentImc < 30) imcCategory = 'SOBREPESO';
-            else imcCategory = 'OBESO';
-
-            const headerImcBadge = document.getElementById('header-imc-badge');
-            if (headerImcBadge) headerImcBadge.innerText = 'IMC: ' + currentImc + ' - ' + imcCategory;
-
-            // ======= IMC GAUGE =======
-            const gImcVal = document.getElementById('g-imc-val');
-            if (gImcVal) gImcVal.innerText = currentImc;
-            const gImcPin = document.getElementById('g-imc-pin');
-            if (gImcPin) {
-                let imcPerc = ((currentImc - 15) / (35 - 15)) * 100;
-                if (imcPerc < 5) imcPerc = 5; if (imcPerc > 95) imcPerc = 95;
-                gImcPin.style.left = imcPerc + '%';
-            }
-
-            // ======= CALORIAS =======
-            let kcal = currentImc >= 25 ? 2000 : 2400;
-            const gKcalVal = document.getElementById('g-kcal-val');
-            if (gKcalVal) gKcalVal.innerText = kcal + ' kcal';
-            const gKcalPin = document.getElementById('g-kcal-pin');
-            if (gKcalPin) {
-                let kcalPerc = ((kcal - 1600) / (3200 - 1600)) * 100;
-                gKcalPin.style.left = kcalPerc + '%';
-            }
-
-            // ======= ÁGUA =======
-            let litros = currentImc >= 25 ? 3.0 : 2.0;
-            const gWaterVal = document.getElementById('g-water-val');
-            if (gWaterVal) gWaterVal.innerText = litros + ' litros';
-
-            // Atualizar ícones de água
-            const waterIcons = document.querySelectorAll('.water-icon');
-            const activeGlasses = Math.round((litros / 4) * 8); 
-            waterIcons.forEach((icon, i) => {
-                if (i < activeGlasses) icon.classList.add('active');
-                else icon.classList.remove('active');
-            });
+            // 3. POPULAR CABEÇALHO (BOLHA)
+            const hName = document.getElementById('header-name');
+            const hBadge = document.getElementById('header-imc-badge');
+            if (hName) hName.innerText = name.toUpperCase();
+            if (hBadge) hBadge.innerText = `IMC: ${imc} - ${cat}`;
         }
 
         function toggleFaq(el) {
