@@ -835,4 +835,45 @@
             // Logic for pre-applied discounts if needed
         }
 
+        // SOCIAL PROOF CAROUSEL
+        let currentProofIndex = 0;
+        const proofs = [
+            { name: 'carlos*', gender: 'male' },
+            { name: 'ana*', gender: 'female' },
+            { name: 'jorge*', gender: 'male' },
+            { name: 'laura*', gender: 'female' },
+            { name: 'mateo*', gender: 'male' },
+            { name: 'elena*', gender: 'female' }
+        ];
+
+        function startSocialProofCarousel() {
+            const badgeEl = document.getElementById('proof-badge-el');
+            if (!badgeEl) return;
+
+            setInterval(() => {
+                badgeEl.classList.remove('anim-up');
+                badgeEl.style.opacity = '0';
+
+                setTimeout(() => {
+                    currentProofIndex = (currentProofIndex + 1) % proofs.length;
+                    const next = proofs[currentProofIndex];
+                    
+                    badgeEl.innerHTML = `
+                        <span class="proof-dot ${next.gender}"></span>
+                        <span class="proof-text">${next.name} se unió esta semana</span>
+                    `;
+                    
+                    badgeEl.style.opacity = '1';
+                    badgeEl.classList.add('anim-up');
+                }, 500);
+            }, 4000);
+        }
+
+        // Hook into offer screen population
+        const originalPopulate = populateOfferScreen;
+        populateOfferScreen = function() {
+            originalPopulate();
+            startSocialProofCarousel();
+        };
+
 
