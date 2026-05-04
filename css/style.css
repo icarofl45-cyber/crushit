@@ -2647,8 +2647,8 @@ text-rendering: optimizeLegibility;}
 /* Trust Section Styles - FINAL MEGA WIDE */
 .trust-section {
     background: transparent;
-    padding: 120px 0;
-    margin-top: 20px;
+    padding: 60px 0 20px 0;
+    margin-top: 0;
     text-align: center;
     position: relative;
     width: 100%;
@@ -2742,7 +2742,7 @@ text-rendering: optimizeLegibility;}
 
 /* FAQ Section Styles */
 .faq-section {
-    padding: 80px 20px;
+    padding: 20px 20px 60px 20px;
     background: transparent;
     max-width: 600px;
     margin: 0 auto;
