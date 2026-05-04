@@ -913,82 +913,9 @@
                 }, 3000);
             }
 
-            // checkRouletteTrigger removido daqui para evitar disparo precoce no carregamento
             checkAppliedDiscount();
         });
 
-        // DISCOUNT ROULETTE LOGIC
-        let rouletteTriggered = false;
-        
-        function checkRouletteTrigger() {
-            const pricingArea = document.getElementById('pricing-area');
-            if (!pricingArea || rouletteTriggered || localStorage.getItem('crushit_discount_applied')) return;
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !rouletteTriggered) {
-                        rouletteTriggered = true;
-                        console.log("Preço visualizado! Roleta aparecerá em 10 segundos...");
-                        
-                        setTimeout(() => {
-                            if (!localStorage.getItem('crushit_discount_applied')) {
-                                const modal = document.getElementById('discount-modal');
-                                if (modal) {
-                                    modal.classList.add('active');
-                                    console.log("Roleta exibida!");
-                                }
-                            }
-                        }, 10000); 
-                        
-                        // Para de observar após disparar o timer
-                        observer.unobserve(pricingArea);
-                    }
-                });
-            }, { threshold: 0.2 }); // Dispara quando 20% da área de preço estiver visível
-            
-            observer.observe(pricingArea);
-        }
-
-        function spinWheel() {
-            const wheel = document.getElementById('wheel');
-            const initialBtnArea = document.getElementById('roulette-initial-btn');
-            
-            // Rotação fixa para cair no 75% (segmento 5)
-            const rotation = 360 * 10 + 157.5; 
-            wheel.style.transform = `rotate(${rotation}deg)`;
-            
-            if (initialBtnArea) initialBtnArea.style.display = 'none';
-
-            setTimeout(() => {
-                const resultArea = document.getElementById('roulette-result');
-                if (resultArea) resultArea.style.display = 'block';
-            }, 5000);
-        }
-
-        function applyDiscount() {
-            // Atualiza Preços
-            const originalPrice = document.getElementById('original-price');
-            const currentPrice = document.getElementById('current-price');
-            const discountTag = document.getElementById('discount-tag');
-
-            if (originalPrice) originalPrice.style.display = 'block';
-            if (currentPrice) {
-                currentPrice.innerText = '$9.90 USD';
-                currentPrice.style.color = 'var(--cta-green)';
-                currentPrice.style.fontSize = '42px'; // Reduzido conforme pedido
-            }
-            if (discountTag) discountTag.style.display = 'inline-block';
-            
-            // Fecha Modal
-            document.getElementById('discount-modal').classList.remove('active');
-            
-            // Persiste o desconto
-            localStorage.setItem('crushit_discount_applied', 'true');
-            
-            // Scroll suave de volta para o preço
-            document.getElementById('pricing-area').scrollIntoView({ behavior: 'smooth' });
-        }
-        
         function checkAppliedDiscount() {
             if (localStorage.getItem('crushit_discount_applied')) {
                 const originalPrice = document.getElementById('original-price');
