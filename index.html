@@ -924,64 +924,12 @@
     <div id="screen-offer" class="screen">
         <div class="offer-container">
             
-            <div class="offer-header-box reveal reveal-bottom delay-1">
-                <span id="offer-sub-name">TU ANÁLISIS PERSONALIZADO</span>
-                <h2 id="offer-name">ICARO</h2>
-                <span id="offer-imc-level">IMC: 21.6 - Nivel: Máximo</span>
-            </div>
-
-            <div class="comparison-row reveal reveal-right delay-3">
-                <div class="comp-card highlight-card">
-                    <h6>AHORA</h6>
-                    <div class="img-wrapper goal-wrapper">
-                        <img id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Ahora">
-                        <div class="img-fade-bottom"></div>
-                    </div>
-                    <div class="comp-info-wrap">
-                        <span class="comp-imc-lbl">IMC ACTUAL</span>
-                        <span class="comp-imc-val val-now" id="comp-imc-now">21.6</span>
-                        <span class="comp-imc-lbl">MUSCULATURA CORPORAL</span>
-                        <div class="muscle-bars bars-now">
-                            <div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar"></div><div class="m-bar"></div><div class="m-bar"></div><div class="m-bar"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comp-card highlight-card">
-                    <h6>TU OBJETIVO</h6>
-                    <div class="img-wrapper goal-wrapper">
-                        <img id="off-img-goal" src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Objetivo">
-                        <div class="img-fade-bottom"></div>
-                    </div>
-                    <div class="comp-info-wrap">
-                        <span class="comp-imc-lbl">IMC OBJETIVO</span>
-                        <span class="comp-imc-val val-goal" id="comp-imc-goal">18.5</span>
-                        <span class="comp-imc-lbl">MUSCULATURA CORPORAL</span>
-                        <div class="muscle-bars bars-goal">
-                            <div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar active"></div><div class="m-bar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="status-box reveal reveal-left delay-2">
-                <div class="status-tag">PESO NORMAL</div>
-                <div class="status-title">TU CUERPO ESTÁ LISTO PARA DEFINICIÓN</div>
-                
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <span class="stat-val" id="off-weight-now">70 kg</span>
-                        <span class="stat-lbl">PESO ACTUAL</span>
-                    </div>
-                    <div class="stat-arrow">→</div>
-                    <div class="stat-item">
-                        <span class="stat-val" id="off-weight-goal">70 kg</span>
-                        <span class="stat-lbl">OBJETIVO</span>
-                    </div>
-                    <div class="stat-arrow">→</div>
-                    <div class="stat-item">
-                        <span class="stat-val" id="off-date-goal">17 may</span>
-                        <span class="stat-lbl">META ESTIMADA</span>
-                    </div>
+            <!-- ESPAÇO PARA REFORMULAÇÃO DO TOPO -->
+            <div id="top-reformulation-area">
+                <div class="offer-header-bubble anim-up delay-1">
+                    <span class="bubble-subtitle">TU ANÁLISIS PERSONALIZADO</span>
+                    <h2 id="header-name" class="bubble-title">CARGANDO...</h2>
+                    <div id="header-imc-badge" class="bubble-imc-badge">IMC: --</div>
                 </div>
             </div>
 
@@ -989,13 +937,13 @@
             <p style="color:var(--text-gray); font-size:14px; font-weight:700; text-transform:uppercase; margin-top:-15px;">Basado en tus respuestas</p>
 
             <!-- IMC - Largura total em cima -->
-            <div class="gauge-section anim-fade delay-4">
+            <div class="gauge-section anim-up delay-1">
                 <div class="gauge-header">
-                    <span class="gauge-title">IMC ACTUAL</span>
-                    <span class="gauge-val" id="g-imc-val">21.60</span>
+                    <span id="g-imc-title" class="gauge-title">IMC ACTUAL</span>
+                    <span class="gauge-val" id="g-imc-val">--</span>
                 </div>
                 <div class="gauge-track">
-                    <div class="gauge-pin" id="g-imc-pin" style="left: 40%;"></div>
+                    <div class="gauge-pin" id="g-imc-pin" style="left: 50%;"></div>
                 </div>
                 <div class="gauge-labels">
                     <span>BAJO PESO</span>
@@ -1006,12 +954,12 @@
 
             <!-- Kcal e Agua lado a lado -->
             <div class="gauge-row">
-                <div class="gauge-section gauge-half anim-fade delay-5">
+                <div class="gauge-section gauge-half anim-fade delay-2">
                     <div class="gauge-header">
                         <span class="gauge-title">Ingesta diaria de calorias</span>
                         <span class="recommended-tag">RECOMENDADO</span>
                     </div>
-                    <div class="gauge-val" id="g-kcal-val">2365 kcal</div>
+                    <div class="gauge-val" id="g-kcal-val">-- kcal</div>
                     <div class="gauge-track kcal-gauge">
                         <div class="gauge-pin" id="g-kcal-pin" style="left: 50%;"></div>
                     </div>
@@ -1021,21 +969,21 @@
                     </div>
                 </div>
 
-                <div class="gauge-section gauge-half anim-fade delay-6">
+                <div class="gauge-section gauge-half anim-fade delay-3">
                     <div class="gauge-header">
                         <span class="gauge-title">Ingesta diaria de agua</span>
                         <span class="recommended-tag">RECOMENDADO</span>
                     </div>
-                    <div class="gauge-val" id="g-water-val">2.5 litros</div>
+                    <div class="gauge-val" id="g-water-val">-- litros</div>
                     <div class="water-icons">
-                        <div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon active">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div>
+                        <div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div>
                     </div>
                 </div>
             </div>
 
             <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">LO QUE <span style="color:var(--cta-green)">OBTIENES</span></h2>
 
-            <div class="benefit-item anim-fade delay-7">
+            <div class="benefit-item anim-fade delay-4">
                 <div class="benefit-icon">📅</div>
                 <div class="benefit-info">
                     <h5>PROGRESIÓN REAL. DÍA 1 AL DÍA 21.</h5>
@@ -1043,29 +991,29 @@
                 </div>
             </div>
 
-            <div class="benefit-item anim-fade delay-8">
+            <div class="benefit-item anim-fade delay-5">
                 <div class="benefit-icon">⏱️</div>
                 <div class="benefit-info">
                     <h5>15 A 30 MINUTOS AL DÍA. NO MÁS.</h5>
-                    <p>Diseñado para no tener excusas de "no tengo tiempo". El mismo tiempo que el celular. Menos tiempo para esto.</p>
+                    <p>Diseñado para no tener excusas de "no tengo tempo". El mismo tiempo que el celular. Menos tempo para isso.</p>
                 </div>
             </div>
 
-            <div class="benefit-item anim-fade delay-9">
+            <div class="benefit-item anim-fade delay-6">
                 <div class="benefit-icon">⚡</div>
                 <div class="benefit-info">
                     <h5>DUERMES MEJOR DESDE LA PRIMERA SEMANA.</h5>
-                    <p>No es promesa, es lo que reportan 9 de cada 10 usuarios que completan los primeros 7 dias.</p>
+                    <p>No es promesa, es lo que reportan 9 de cada 10 usuarios que completan los primeiros 7 dias.</p>
                 </div>
             </div>
 
-            <div class="gift-box anim-fade delay-10" style="text-align: center; background:transparent; border:none; padding:0; margin-bottom:40px;">
+            <div class="gift-box anim-fade delay-7" style="text-align: center; background:transparent; border:none; padding:0; margin-bottom:40px;">
                 <div style="position:relative; display:inline-block; width:100%; max-width:400px; -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 75%, transparent 100%);">
                     <img loading="lazy" src="imagens_webp_crush_it/oferta-1.webp" alt="Visualización del Plan Imprimible 2026" style="width: 100%; border-radius: 12px; display: block;">
                 </div>
             </div>
 
-            <div class="calendar-preview anim-fade delay-11" style="background: #1a1a1a; border: 1px solid #333; border-radius: 16px; padding: 0 20px 20px 20px; margin-top: 40px; text-align: center; position: relative; overflow: visible !important;">
+            <div class="calendar-preview anim-fade delay-8" style="background: #1a1a1a; border: 1px solid #333; border-radius: 16px; padding: 0 20px 20px 20px; margin-top: 40px; text-align: center; position: relative; overflow: visible !important;">
                 <div style="position: absolute; top: -22px; left: 50%; transform: translateX(-50%); background: var(--brand-purple); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(123, 47, 247, 0.4); z-index: 10;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
                 </div>
@@ -1076,330 +1024,48 @@
                 </div>
             </div>
 
-            <div class="areas-footer" style="margin-top:20px;">
-                <button class="btn-areas-continue active-btn" style="font-size:18px; padding:20px;" onclick="scrollToPrice()">
-                    OBTENER MI PLAN PERSONALIZADO AHORA
-                </button>
-            </div>
-
-            <div style="margin-top:40px; text-align:left; padding: 0 10px;">
-                <h4 style="font-size:18px; font-weight:700; color:#fff; margin-bottom:20px;">Los objetivos de tu programa también incluyen:</h4>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-                    <div style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#eee;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-purple)" stroke-width="2" width="20" height="20" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 11 15 16 9"></polyline></svg>
-                        Reducir el estrés
-                    </div>
-                    <div style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#eee;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-purple)" stroke-width="2" width="20" height="20" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 11 15 16 9"></polyline></svg>
-                        Sentirte más saludable
-                    </div>
-                    <div style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#eee;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-purple)" stroke-width="2" width="20" height="20" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 11 15 16 9"></polyline></svg>
-                        Autodisciplina
-                    </div>
-                    <div style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#eee;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-purple)" stroke-width="2" width="20" height="20" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 11 15 16 9"></polyline></svg>
-                        Formar un hábito físico
-                    </div>
-                    <div style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#eee;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-purple)" stroke-width="2" width="20" height="20" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 11 15 16 9"></polyline></svg>
-                        Mejorar el sueño
-                    </div>
+            <!-- Pricing Card v2 -->
+            <div class="pricing-card-v2">
+                <div class="social-proof-header">
+                    +320 personas se unieron al protocolo esta semana
                 </div>
-            </div>
-
-            <div class="gift-box" style="margin-top:40px; text-align:left;">
-                <h4 style="font-size:22px; font-weight:900; margin-bottom:20px;">Plan de entrenamiento completo</h4>
-                <div style="display:flex; gap:12px; margin-bottom:15px; font-size:13px;"><span style="color:var(--cta-green)">✔</span> Desarrolla un hábito y establece técnicas de ejercicio adecuadas</div>
-                <div style="display:flex; gap:12px; margin-bottom:15px; font-size:13px;"><span style="color:var(--cta-green)">✔</span> Pierde el exceso de grasa corporal y mejora la intensidad</div>
-                <div style="display:flex; gap:12px; margin-bottom:15px; font-size:13px;"><span style="color:var(--cta-green)">✔</span> Alcanza tu objetivo y cambia tu vida para siempre</div>
                 
-                <button class="btn-areas-continue active-btn" style="background:#ea580c; border-color:#c2410c; margin-top:10px;" onclick="scrollToPrice()">OBTENER MI PLAN →</button>
-            </div>
-
-                <!-- Pricing Card v2 -->
-                <div class="pricing-card-v2">
-                    <div class="social-proof-header">
-                        +320 personas se unieron al protocolo esta semana
+                <div class="social-proof-container">
+                    <div class="balloon-item male active">
+                        <span class="balloon-dot"></span>
+                        <p><strong>Carlos</strong> resgatou seu plano único personalizado</p>
                     </div>
-                    
-                    <div class="social-proof-container">
-                        <div class="balloon-item male active">
-                            <span class="balloon-dot"></span>
-                            <p><strong>Carlos</strong> resgatou seu plano único personalizado</p>
-                        </div>
-                        <div class="balloon-item female">
-                            <span class="balloon-dot"></span>
-                            <p><strong>Ana</strong> resgatou seu plano único personalizado</p>
-                        </div>
-                        <div class="balloon-item male">
-                            <span class="balloon-dot"></span>
-                            <p><strong>Diego</strong> resgatou seu plano único personalizado</p>
-                        </div>
-                        <div class="balloon-item female">
-                            <span class="balloon-dot"></span>
-                            <p><strong>Sofia</strong> resgatou seu plano único personalizado</p>
-                        </div>
-                        <div class="balloon-item male">
-                            <span class="balloon-dot"></span>
-                            <p><strong>Gabriel</strong> resgatou seu plano único personalizado</p>
-                        </div>
-                        <div class="balloon-item female">
-                            <span class="balloon-dot"></span>
-                            <p><strong>Mariana</strong> resgatou seu plano único personalizado</p>
-                        </div>
+                    <div class="balloon-item female">
+                        <span class="balloon-dot"></span>
+                        <p><strong>Ana</strong> resgatou seu plano único personalizado</p>
                     </div>
-
-                    <div class="pricing-details" id="pricing-area">
-                        <p class="protocol-type">Tu protocolo personalizado</p>
-                        <div class="price-container">
-                            <span class="old-price-v2" id="original-price">$39.99 USD</span>
-                            <div class="discount-tag-wrapper">
-                                <span class="discount-tag" id="discount-tag" style="display:none;">-75% DESCUENTO</span>
-                            </div>
-                            <span class="new-price-v2" id="current-price">$39.99 USD</span>
-                        </div>
-                        <p class="pricing-meta">Acceso inmediato ao app · Pago único</p>
-                        <p class="pricing-safety">🔒 Pago seguro · Garantía de 30 días</p>
-                    </div>
-                    
-                    <button class="btn-areas-continue active-btn cta-glow" style="margin-top:0; font-size:16px; padding:22px; white-space: nowrap;" onclick="window.location.href='#'">
-                        QUIERO MI PROTOCOLO AHORA
-                    </button>
                 </div>
 
-            <div class="bonus-badge-wrapper">
-                <div class="bonus-badge">
-                    🎁 SI ENTRAS HOY, RECIBES ESTO TAMBIÉN
-                </div>
-            </div>
-            <h2 class="headline" style="font-size:22px; text-align:center; margin-top:20px;">SIN COSTO ADICIONAL:<br><span style="color:var(--cta-green)">4 BONOS EXCLUSIVOS</span></h2>
-            
-            <div class="bonus-item">
-                <div class="bonus-icon-box">
-                    <span class="bonus-icon">⚡</span>
-                </div>
-                <div class="bonus-info">
-                    <div class="bonus-header-row">
-                        <h4 class="bonus-title">Protocolo de Treino Acelerado</h4>
-                        <div class="bonus-value-tag">
-                            <span class="bonus-price-old">$27.00</span>
-                            <span class="bonus-seal">GRATIS SOLO HOY</span>
+                <div class="pricing-details" id="pricing-area">
+                    <p class="protocol-type">Tu protocolo personalizado</p>
+                    <div class="price-container">
+                        <span class="old-price-v2" id="original-price">$39.99 USD</span>
+                        <div class="discount-tag-wrapper">
+                            <span class="discount-tag" id="discount-tag" style="display:none;">-75% DESCUENTO</span>
                         </div>
+                        <span class="new-price-v2" id="current-price">$39.99 USD</span>
                     </div>
-                    <p class="bonus-desc">Máximos resultados con entrenamientos de solo 20 minutos.</p>
+                    <p class="pricing-meta">Acceso inmediato ao app · Pago único</p>
+                    <p class="pricing-safety">🔒 Pago seguro · Garantía de 30 días</p>
                 </div>
-            </div>
-
-            <div class="bonus-item">
-                <div class="bonus-icon-box">
-                    <span class="bonus-icon">🍎</span>
-                </div>
-                <div class="bonus-info">
-                    <div class="bonus-header-row">
-                        <h4 class="bonus-title">Guia de Nutrición Flexible</h4>
-                        <div class="bonus-value-tag">
-                            <span class="bonus-price-old">$35.00</span>
-                            <span class="bonus-seal">GRATIS SOLO HOY</span>
-                        </div>
-                    </div>
-                    <p class="bonus-desc">Come lo que te gusta mientras sigues perdiendo grasa.</p>
-                </div>
-            </div>
-
-            <div class="bonus-item">
-                <div class="bonus-icon-box">
-                    <span class="bonus-icon">🥗</span>
-                </div>
-                <div class="bonus-info">
-                    <div class="bonus-header-row">
-                        <h4 class="bonus-title">Pack de Recetas Express</h4>
-                        <div class="bonus-value-tag">
-                            <span class="bonus-price-old">$19.00</span>
-                            <span class="bonus-seal">GRATIS SOLO HOY</span>
-                        </div>
-                    </div>
-                    <p class="bonus-desc">Platos deliciosos y saludables listos en menos de 15 minutos.</p>
-                </div>
-            </div>
-
-            <div class="bonus-item">
-                <div class="bonus-icon-box">
-                    <span class="bonus-icon">👥</span>
-                </div>
-                <div class="bonus-info">
-                    <div class="bonus-header-row">
-                        <h4 class="bonus-title">Comunidad VIP Exclusiva</h4>
-                        <div class="bonus-value-tag">
-                            <span class="bonus-price-old">$47.00</span>
-                            <span class="bonus-seal">GRATIS SOLO HOY</span>
-                        </div>
-                    </div>
-                    <p class="bonus-desc">Soporte 24/7 y motivación constante con otros miembros.</p>
-                </div>
-            </div>
-
-            <div class="total-value-box">
-                <p class="total-label-v2">VALOR TOTAL DE LOS BONOS</p>
-                <div class="total-value-stack-v2">
-                    <span class="total-old-price-v2">$137.70 USD</span>
-                    <div class="total-gratis-badge-wrapper">
-                        <span class="total-gratis-badge">GRATIS SOLO HOY</span>
-                    </div>
-                </div>
+                
+                <button class="btn-areas-continue active-btn cta-glow" style="margin-top:0; font-size:16px; padding:22px; white-space: nowrap;">
+                    QUIERO MI PROTOCOLO AHORA
+                </button>
             </div>
 
             <div class="guarantee-section">
                 <div class="guarantee-content">
-                    <h3 class="guarantee-headline">GARANTÍA DE 30 DÍAS.<br>CERO RIESGO.</h3>
-                    <p class="guarantee-description">
-                        Prueba el protocolo. Si en 30 días no sientes que tu cuerpo está cambiando o simplemente no es lo que esperabas, escríbenos. Te devolvemos el 100% de tu inversión. Sin preguntas incómodas, sin burocracia.
-                    </p>
-                </div>
-                <div class="guarantee-seal-placeholder" style="border:none; background:transparent;">
-                    <img loading="lazy" src="imagens_webp_crush_it/reembolso.webp" alt="Garantía de 30 días" style="width: 100%; height: 100%; object-fit: contain;">
+                    <h3 class="guarantee-headline">GARANTÍA DE 30 DÍAS.</h3>
+                    <p class="guarantee-description">Te devolvemos el 100% de tu inversión si no estás satisfecho.</p>
                 </div>
             </div>
-
-            <div class="social-proof-section">
-                <div class="laurels-wrap">
-                    <img loading="lazy" src="imagens_webp_crush_it/ramo-esquerdo.webp" alt="" class="laurel-svg" aria-hidden="true">
-                    
-                    <div class="proof-main">
-                        <h2>+1.5 millones</h2>
-                        <p>iniciaron su recorrido<br>por el fitness con nosotros</p>
-                        <div class="proof-stars">★★★★★</div>
-                        <div class="proof-badge">4.7 de 5</div>
-                        <p class="proof-subtext">Más de 200.000 valoraciones de 5 estrellas<br>de usuarios satisfechos</p>
-                    </div>
-
-                    <img loading="lazy" src="imagens_webp_crush_it/ramo-direito.webp" alt="" class="laurel-svg laurel-right" aria-hidden="true">
-                </div>
-
-                <h2 class="headline" style="font-size:22px; text-align:center; margin-top:40px;">PREGUNTAS FRECUENTES</h2>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">¿NECESITO EQUIPO O GIMNASIO? <span class="faq-toggle">+</span></div>
-                    <div class="faq-answer">No. Solo tu cuerpo y un espacio del tamaño de una cama. Puedes hacerlo en casa, en el parque, en un hotel. El protocolo fue diseñado para no necesitar nada externo.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">¿ES ADECUADO PARA PRINCIPIANTES? <span class="faq-toggle">+</span></div>
-                    <div class="faq-answer">Sí. Y no te estamos mintiendo para que compres. El sistema empieza donde tú estás, no donde deberías estar. Si nunca has entrenado, arrancas en el nivel base. Si ya entrenas, el protocolo te lleva más lejos.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">¿CUÁNTO TIEMPO DURA CADA ENTRENAMIENTO? <span class="faq-toggle">+</span></div>
-                    <div class="faq-answer">Entre 20 y 40 minutos. Diseñado para que no haya excusa válida de "no tengo tiempo". Si tienes tiempo para scrollear 30 minutos, tienes tiempo para esto.</div>
-                </div>
-                <div class="faq-item" style="margin-bottom: 40px;">
-                    <div class="faq-question" onclick="toggleFaq(this)">¿TIENE GARANTÍA DE REEMBOLSO? <span class="faq-toggle">+</span></div>
-                    <div class="faq-answer">30 días. Sin preguntas. Si sigues el protocolo y no ves resultados, te devolvemos cada centavo. No porque tengamos que decirlo. Porque estamos seguros de lo que pasa cuando alguien realmente lo hace.</div>
-                </div>
-
-                <div class="testimonials-slider-wrap">
-                    <div class="testimonials-track marquee">
-                        <!-- MASCULINO 1 -->
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#22c55e; color:#000;">M</div>
-                                <div class="test-name">Marcos R.</div>
-                            </div>
-                            <p class="test-text">"Siempre me vi como alguien sin disciplina. Crush It cambió no solo mi cuerpo, sino cómo me veo en el espejo. Hoy soy mi mejor versión."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-
-                        <!-- FEMENINO 1 -->
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#3b82f6; color:#fff;">J</div>
-                                <div class="test-name">Juliana S.</div>
-                            </div>
-                            <p class="test-text">"Antes tenía vergüenza de las fotos. Después de 21 días, siento una confianza que nunca tuve. El programa es mágico y los resultados reales."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-
-                        <!-- MASCULINO 2 -->
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#22c55e; color:#000;">R</div>
-                                <div class="test-name">Ricardo M.</div>
-                            </div>
-                            <p class="test-text">"Pensé que después de los 40 ya no se podía. Me equivoqué. Me siento más fuerte y joven hoy que a los 20. Crush It me dio un nuevo aire."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-
-                        <!-- FEMENINO 2 -->
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#3b82f6; color:#fff;">F</div>
-                                <div class="test-name">Fernanda L.</div>
-                            </div>
-                            <p class="test-text">"Mi relación con el espejo era tóxica. Ahora, me siento empoderada y orgullosa de lo que logré en tan poco tiempo. Vale cada centavo."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-
-                        <!-- MASCULINO 3 -->
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#22c55e; color:#000;">G</div>
-                                <div class="test-name">Gabriel P.</div>
-                            </div>
-                            <p class="test-text">"Disciplina militar con resultados que nunca vi en años de gimnasio. El cambio visual es claro, pero el mental es lo que marca la diferencia."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-
-                        <!-- FEMENINO 3 -->
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#3b82f6; color:#fff;">C</div>
-                                <div class="test-name">Camila V.</div>
-                            </div>
-                            <p class="test-text">"Crush It desmitificó todo lo que sabía sobre entrenamiento. Hoy me veo como una atleta. La transformación fue de adentro hacia afuera."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-
-                        <!-- DUPLICADOS PARA LOOP INFINITO -->
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#22c55e; color:#000;">M</div>
-                                <div class="test-name">Marcos R.</div>
-                            </div>
-                            <p class="test-text">"Siempre me vi como alguien sin disciplina. Crush It cambió no solo mi cuerpo, sino cómo me veo en el espejo. Hoy soy mi melhor versão."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-
-                        <div class="testimonial-card">
-                            <div class="test-header">
-                                <div class="test-avatar" style="background:#3b82f6; color:#fff;">J</div>
-                                <div class="test-name">Juliana S.</div>
-                            </div>
-                            <p class="test-text">"Antes tenía vergüenza de las fotos. Después de 21 días, siento una confianza que nunca tuve. El programa es mágico y los resultados reales."</p>
-                            <div class="test-footer">
-                                <div class="test-stars">★★★★★</div>
-                                <div class="verified-badge">✔ VERIFICADO</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
 
             <footer class="site-footer">
                 <div class="footer-logo">
@@ -1429,45 +1095,6 @@
                     <span class="badge">🛡️ Garantía 30 días</span>
                 </div>
             </footer>
-        </div>
-    </div>
-
-    <!-- NOVO MODAL ROLETA DE DESCONTO (REF: IMAGEM) -->
-    <div id="new-roulette-modal" class="n-modal">
-        <div class="n-modal-content">
-            <div class="n-modal-badge">🎁 OFERTA EXCLUSIVA</div>
-            <h3 class="n-modal-title">Gira y gana un <span style="color:#4d7c0f">descuento exclusivo</span> ahora</h3>
-            <p class="n-modal-subtitle">Solo una oportunidad — no se repite</p>
-
-            <div class="n-wheel-container">
-                <div class="n-wheel-pointer"></div>
-                <div id="n-wheel" class="n-wheel">
-                    <div class="n-segment" style="--i:1; --bg:#4d7c0f; --color:#fff;"><span>-10%</span></div>
-                    <div class="n-segment" style="--i:2; --bg:#fff; --color:#000;"><span>-20%</span></div>
-                    <div class="n-segment" style="--i:3; --bg:#4d7c0f; --color:#fff;"><span>-15%</span></div>
-                    <div class="n-segment" style="--i:4; --bg:#fff; --color:#000;"><span>-35%</span></div>
-                    <div class="n-segment" style="--i:5; --bg:#4d7c0f; --color:#fff;"><span>-75%</span></div>
-                    <div class="n-segment" style="--i:6; --bg:#fff; --color:#000;"><span>-25%</span></div>
-                    <div class="n-segment" style="--i:7; --bg:#4d7c0f; --color:#fff;"><span>-50%</span></div>
-                    <div class="n-segment" style="--i:8; --bg:#fff; --color:#000;"><span>-5%</span></div>
-                </div>
-                <div class="n-wheel-center">🎁</div>
-            </div>
-
-            <div id="n-btn-spin-area">
-                <button class="n-btn-main" onclick="startNewSpin()">GIRAR AHORA</button>
-            </div>
-
-            <div id="n-result-area" style="display:none;">
-                <div class="n-result-box">
-                    <div style="font-size:32px; margin-bottom:10px;">🎉</div>
-                    <h4>¡GANASTE -75% DE DESCUENTO!</h4>
-                    <p>Válido solo por los próximos minutos</p>
-                </div>
-                <button class="n-btn-main n-btn-active" onclick="applyNewDiscount()">
-                    OBTENER MI DESCUENTO
-                </button>
-            </div>
         </div>
     </div>
 

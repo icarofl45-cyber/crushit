@@ -91,7 +91,9 @@
             }
 
             if (stepId === 'analysis') startAnalysis();
-            if (stepId === 'offer') populateOfferScreen();
+            if (stepId === 'offer') {
+                populateOfferScreen();
+            }
         }
 
         function startAnalysis() {
@@ -148,24 +150,7 @@
             goToStep('analysis');
         }
 
-        // Mutation Observer for scroll animations (fixing what was broken)
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    const target = mutation.target;
-                    if (target.classList.contains('active')) {
-                        const stepId = target.id.replace('screen-', '');
-                        if (stepId === 'offer') {
-                            initNewRouletteTrigger();
-                        }
-                    }
-                }
-            });
-        });
 
-        document.querySelectorAll('.screen').forEach(screen => {
-            observer.observe(screen, { attributes: true });
-        });
 
         // CORE QUIZ LOGIC
         let userProfile = {
@@ -614,93 +599,37 @@
                 }
             }, 1000);
         }
-
         function populateOfferScreen() {
             // Nome
             const defaultName = userProfile.gender === 'Femenino' ? 'GUERRERA' : 'GUERRERO';
             const name = userProfile.name || defaultName;
-            const nameEl = document.getElementById('offer-name');
-            if (nameEl) nameEl.innerText = name.toUpperCase();
+            const headerName = document.getElementById('header-name');
+            if (headerName) headerName.innerText = name.toUpperCase();
 
             // Altura e peso
             let h = parseFloat(userProfile.height) || 170;
             let w = parseFloat(userProfile.weight) || 70;
-            let tw = parseFloat(userProfile.targetWeight) || w;
-            const unit = userProfile.units === 'metric' ? 'kg' : 'lb';
 
-            // Peso atual e objetivo
-            const weightNowEl = document.getElementById('off-weight-now');
-            const weightGoalEl = document.getElementById('off-weight-goal');
-            if (weightNowEl) weightNowEl.innerText = w + ' ' + unit;
-            if (weightGoalEl) weightGoalEl.innerText = tw + ' ' + unit;
-
-            // Data estimada: hoje + 21 dias
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 21);
-            const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-            const dateStr = targetDate.getDate() + ' ' + months[targetDate.getMonth()];
-            const dateGoalEl = document.getElementById('off-date-goal');
-            if (dateGoalEl) dateGoalEl.innerText = dateStr;
-
-            // Conversão para cálculo de IMC se necessário
+            // Conversão para cálculo de IMC
             let hMetric = h;
             let wMetric = w;
-            let twMetric = tw;
-
             if (userProfile.units === 'imperial') {
                 hMetric = h * 30.48; // ft para cm
                 wMetric = w * 0.453592; // lb para kg
-                twMetric = tw * 0.453592;
             }
 
             // IMC
             const currentImc = (wMetric / ((hMetric / 100) ** 2)).toFixed(1);
-            const targetImc = (twMetric / ((hMetric / 100) ** 2)).toFixed(1);
 
-            // IMC Level text
-            let imcCategory = 'Normal';
-            if (currentImc < 18.5) imcCategory = 'Bajo';
-            else if (currentImc < 25) imcCategory = 'Normal';
-            else if (currentImc < 30) imcCategory = 'Sobrepeso';
-            else imcCategory = 'Obeso';
+            // IMC Category
+            let imcCategory = 'NORMAL';
+            if (currentImc < 18.5) imcCategory = 'BAJO PESO';
+            else if (currentImc < 25) imcCategory = 'NORMAL';
+            else if (currentImc < 30) imcCategory = 'SOBREPESO';
+            else imcCategory = 'OBESO';
 
-            const imcLevelEl = document.getElementById('offer-imc-level');
-            if (imcLevelEl) imcLevelEl.innerText = 'IMC: ' + currentImc + ' - Nivel: ' + imcCategory;
-
-            // Status tag
-            const statusTag = document.querySelector('.status-tag');
-            if (statusTag) statusTag.innerText = 'PESO ' + imcCategory.toUpperCase();
-
-            // Comparison IMCs
-            const compImcNow = document.getElementById('comp-imc-now');
-            const compImcGoal = document.getElementById('comp-imc-goal');
-            if (compImcNow) compImcNow.innerText = currentImc;
-            if (compImcGoal) compImcGoal.innerText = targetImc;
-
-            // Comparison Images
-            const suffix = userProfile.gender === 'Femenino' ? '-w' : '';
-            const offImgNow = document.getElementById('off-img-now');
-            const offImgGoal = document.getElementById('off-img-goal');
-            
-            if (offImgNow) {
-                // Here we assume the baseline is delgado for the "now" image if not selected
-                // But a better way would be to track selection. For now, let's just apply suffix
-                let currentSrc = offImgNow.src;
-                if (userProfile.gender === 'Femenino' && !currentSrc.includes('-w.webp')) {
-                    offImgNow.src = currentSrc.replace('.webp', '-w.webp');
-                } else if (userProfile.gender === 'Masculino' && currentSrc.includes('-w.webp')) {
-                    offImgNow.src = currentSrc.replace('-w.webp', '.webp');
-                }
-            }
-
-            if (offImgGoal) {
-                let currentSrc = offImgGoal.src;
-                if (userProfile.gender === 'Femenino' && !currentSrc.includes('-w.webp')) {
-                    offImgGoal.src = currentSrc.replace('.webp', '-w.webp');
-                } else if (userProfile.gender === 'Masculino' && currentSrc.includes('-w.webp')) {
-                    offImgGoal.src = currentSrc.replace('-w.webp', '.webp');
-                }
-            }
+            const headerImcBadge = document.getElementById('header-imc-badge');
+            if (headerImcBadge) headerImcBadge.innerText = 'IMC: ' + currentImc + ' - ' + imcCategory;
 
             // ======= IMC GAUGE =======
             const gImcVal = document.getElementById('g-imc-val');
@@ -712,50 +641,28 @@
                 gImcPin.style.left = imcPerc + '%';
             }
 
-            // ======= CALORIAS (inverso ao IMC) =======
-            // IMC alto = menos kcal (déficit), IMC baixo = mais kcal
-            let kcal;
-            if (currentImc >= 30) kcal = 1650;
-            else if (currentImc >= 27) kcal = 1800;
-            else if (currentImc >= 25) kcal = 2000;
-            else if (currentImc >= 22) kcal = 2200;
-            else if (currentImc >= 20) kcal = 2400;
-            else if (currentImc >= 18.5) kcal = 2600;
-            else kcal = 2800;
-
+            // ======= CALORIAS =======
+            let kcal = currentImc >= 25 ? 2000 : 2400;
             const gKcalVal = document.getElementById('g-kcal-val');
             if (gKcalVal) gKcalVal.innerText = kcal + ' kcal';
             const gKcalPin = document.getElementById('g-kcal-pin');
             if (gKcalPin) {
                 let kcalPerc = ((kcal - 1600) / (3200 - 1600)) * 100;
-                if (kcalPerc < 5) kcalPerc = 5; if (kcalPerc > 95) kcalPerc = 95;
                 gKcalPin.style.left = kcalPerc + '%';
             }
 
-            // ======= ÁGUA (proporcional ao IMC) =======
-            // IMC alto = mais água para acelerar metabolismo
-            let litros;
-            if (currentImc >= 30) litros = 3.5;
-            else if (currentImc >= 27) litros = 3.2;
-            else if (currentImc >= 25) litros = 3.0;
-            else if (currentImc >= 22) litros = 2.5;
-            else if (currentImc >= 20) litros = 2.2;
-            else if (currentImc >= 18.5) litros = 2.0;
-            else litros = 1.8;
-
+            // ======= ÁGUA =======
+            let litros = currentImc >= 25 ? 3.0 : 2.0;
             const gWaterVal = document.getElementById('g-water-val');
             if (gWaterVal) gWaterVal.innerText = litros + ' litros';
 
-            // Atualizar ícones de água (8 copos no total)
+            // Atualizar ícones de água
             const waterIcons = document.querySelectorAll('.water-icon');
-            const activeGlasses = Math.round((litros / 4) * 8); // 4 litros = 8 copos cheios
+            const activeGlasses = Math.round((litros / 4) * 8); 
             waterIcons.forEach((icon, i) => {
                 if (i < activeGlasses) icon.classList.add('active');
                 else icon.classList.remove('active');
             });
-
-            // Garante que o gatilho da roleta seja inicializado ao popular a tela
-            checkRouletteTrigger();
         }
 
         function toggleFaq(el) {
@@ -847,18 +754,7 @@
             }
         }
 
-        function initScrollAnimations() {
-            const reveals = document.querySelectorAll('.reveal');
-            const observerOptions = { threshold: 0.1 };
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, observerOptions);
-            reveals.forEach(r => revealObserver.observe(r));
-        }
+
 
         // Recupera a etapa da URL ao carregar a página
         window.addEventListener('DOMContentLoaded', () => {
@@ -890,7 +786,6 @@
                     document.getElementById('main-header').classList.add('clean-header');
                     document.getElementById('global-back-btn').style.display = 'none';
                     populateOfferScreen();
-                    initScrollAnimations();
                 }
                 
                 // Se for a tela de focusarea, atualiza a imagem
@@ -915,82 +810,7 @@
         });
 
         function checkAppliedDiscount() {
-            if (localStorage.getItem('crushit_discount_applied')) {
-                const originalPrice = document.getElementById('original-price');
-                const currentPrice = document.getElementById('current-price');
-                const discountTag = document.getElementById('discount-tag');
-
-                if (originalPrice) originalPrice.style.display = 'block';
-                if (currentPrice) {
-                    currentPrice.innerText = '$9.90 USD';
-                    currentPrice.style.color = 'var(--cta-green)';
-                    currentPrice.style.fontSize = '42px';
-                }
-                if (discountTag) discountTag.style.display = 'inline-block';
-            }
+            // Logic for pre-applied discounts if needed
         }
 
-        // NEW ROULETTE LOGIC
-        let nRouletteActive = false;
-        
-        function initNewRouletteTrigger() {
-            const priceSection = document.getElementById('pricing-area');
-            if (!priceSection || nRouletteActive || localStorage.getItem('crushit_discount_applied')) return;
 
-            const nObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !nRouletteActive) {
-                        nRouletteActive = true;
-                        console.log("Preço visto. Roleta em 10s...");
-                        
-                        setTimeout(() => {
-                            if (!localStorage.getItem('crushit_discount_applied')) {
-                                const modal = document.getElementById('new-roulette-modal');
-                                if (modal) modal.classList.add('active');
-                            }
-                        }, 10000);
-
-                        nObserver.unobserve(priceSection);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            nObserver.observe(priceSection);
-        }
-
-        function startNewSpin() {
-            const wheel = document.getElementById('n-wheel');
-            const btnArea = document.getElementById('n-btn-spin-area');
-            const resultArea = document.getElementById('n-result-area');
-            
-            // Giro de 4 segundos parando no 75% (Segmento 5)
-            const extraRotation = 157.5; 
-            const totalRotation = (360 * 8) + extraRotation; 
-            
-            wheel.style.transform = `rotate(${totalRotation}deg)`;
-            if (btnArea) btnArea.style.display = 'none';
-
-            setTimeout(() => {
-                if (resultArea) resultArea.style.display = 'block';
-            }, 4000);
-        }
-
-        function applyNewDiscount() {
-            const orig = document.getElementById('original-price');
-            const curr = document.getElementById('current-price');
-            const tag = document.getElementById('discount-tag');
-            const modal = document.getElementById('new-roulette-modal');
-
-            if (orig) orig.style.display = 'block';
-            if (curr) {
-                curr.innerText = '$9.90 USD';
-                curr.style.color = 'var(--cta-green)';
-                curr.style.fontSize = '42px';
-            }
-            if (tag) tag.style.display = 'inline-block';
-            
-            if (modal) modal.classList.remove('active');
-            localStorage.setItem('crushit_discount_applied', 'true');
-            
-            document.getElementById('pricing-area').scrollIntoView({ behavior: 'smooth' });
-        }
