@@ -835,15 +835,21 @@
             // Logic for pre-applied discounts if needed
         }
 
-        // SOCIAL PROOF CAROUSEL
+        // SOCIAL PROOF CAROUSEL - REFINADO
         let currentProofIndex = 0;
         const proofs = [
+            // 2 Homens
             { name: 'carlos*', gender: 'male' },
-            { name: 'ana*', gender: 'female' },
             { name: 'jorge*', gender: 'male' },
+            // 2 Mulheres
+            { name: 'ana*', gender: 'female' },
             { name: 'laura*', gender: 'female' },
+            // 2 Homens
             { name: 'mateo*', gender: 'male' },
-            { name: 'elena*', gender: 'female' }
+            { name: 'diego*', gender: 'male' },
+            // 2 Mulheres
+            { name: 'elena*', gender: 'female' },
+            { name: 'sofia*', gender: 'female' }
         ];
 
         function startSocialProofCarousel() {
@@ -851,8 +857,9 @@
             if (!badgeEl) return;
 
             setInterval(() => {
-                badgeEl.classList.remove('anim-up');
+                // Fade out + leve descida
                 badgeEl.style.opacity = '0';
+                badgeEl.style.transform = 'translateY(5px)';
 
                 setTimeout(() => {
                     currentProofIndex = (currentProofIndex + 1) % proofs.length;
@@ -860,13 +867,14 @@
                     
                     badgeEl.innerHTML = `
                         <span class="proof-dot ${next.gender}"></span>
-                        <span class="proof-text">${next.name} se unió esta semana</span>
+                        <span class="proof-text">${next.name} adquirió su protocolo único</span>
                     `;
                     
+                    // Fade in + sobe
                     badgeEl.style.opacity = '1';
-                    badgeEl.classList.add('anim-up');
-                }, 500);
-            }, 4000);
+                    badgeEl.style.transform = 'translateY(0)';
+                }, 600);
+            }, 4500); // Tempo levemente aumentado para leitura
         }
 
         // Hook into offer screen population

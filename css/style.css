@@ -2555,42 +2555,6 @@ text-rendering: optimizeLegibility;}
     background: var(--cta-green); /* Verde para o objetivo */
 }
 
-/* Social Proof Carousel Styles */
-.proof-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.05);
-    padding: 6px 14px;
-    border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-.proof-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-}
-.proof-dot.male {
-    background: #4ade80; /* Verde */
-    box-shadow: 0 0 10px #4ade80;
-    animation: blink-green 1.5s infinite;
-}
-.proof-dot.female {
-    background: #f472b6; /* Rosa */
-    box-shadow: 0 0 10px #f472b6;
-    animation: blink-pink 1.5s infinite;
-}
-@keyframes blink-green {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-}
-@keyframes blink-pink {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-}
-.proof-text {
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    text-transform: capitalize;
-}
+
+/* Social Proof Carousel Styles - REFINADO */
+.proof-badge { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.08); transition: opacity 0.6s ease, transform 0.6s ease; min-width: 240px; } .proof-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; } .proof-dot.male { background: #4ade80; box-shadow: 0 0 12px rgba(74, 222, 128, 0.6); animation: blink-soft 2s infinite ease-in-out; } .proof-dot.female { background: #f472b6; box-shadow: 0 0 12px rgba(244, 114, 182, 0.6); animation: blink-soft 2s infinite ease-in-out; } @keyframes blink-soft { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } } .proof-text { font-size: 12px; font-weight: 700; color: #fff; text-transform: capitalize; line-height: 1; }
