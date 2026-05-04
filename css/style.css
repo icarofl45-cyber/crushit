@@ -2643,3 +2643,80 @@ text-rendering: optimizeLegibility;}
 .total-new {
     color: #fff;
 }
+
+/* Trust Section Styles */
+.trust-section {
+    background: #080f08;
+    padding: 60px 20px;
+    margin-top: 40px;
+    text-align: center;
+    overflow: hidden;
+}
+.trust-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.laurel {
+    width: 100px;
+    height: auto;
+    opacity: 0.2;
+}
+.laurel-left {
+    margin-right: -20px;
+}
+.laurel-right {
+    margin-left: -20px;
+}
+.trust-content {
+    z-index: 2;
+}
+.trust-number {
+    color: #fff;
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+.trust-subtitle {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+.trust-stars {
+    color: #ff4500;
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+}
+.trust-rating-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 4px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+.trust-footer-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+    .trust-number { font-size: 32px; }
+    .laurel { width: 60px; }
+    .trust-subtitle { font-size: 12px; }
+    .trust-footer-text { font-size: 13px; }
+}
