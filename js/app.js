@@ -156,7 +156,6 @@
                     if (target.classList.contains('active')) {
                         const stepId = target.id.replace('screen-', '');
                         if (stepId === 'offer') {
-                            setTimeout(initScrollAnimations, 100);
                             if (typeof checkRouletteTrigger === 'function') {
                                 checkRouletteTrigger();
                             }
