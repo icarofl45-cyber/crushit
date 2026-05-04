@@ -1184,7 +1184,7 @@ text-align: left;}
 }
 .comparison-card-img-wrap {
     width: 100%;
-    aspect-ratio: 1/1.2;
+    aspect-ratio: 1/1.4;
     background: #111;
     border-radius: 12px;
     overflow: hidden;
@@ -1193,6 +1193,7 @@ text-align: left;}
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
     display: block;
 }
 .card-goal .comparison-card-label {
@@ -2502,4 +2503,38 @@ text-rendering: optimizeLegibility;}
     .social-proof-header {
         font-size: 12px !important;
     }
+}
+
+.comparison-card-footer {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.comp-imc {
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+}
+.comp-progress {
+    display: flex;
+    justify-content: center;
+}
+.progress-segments {
+    display: flex;
+    gap: 4px;
+}
+.progress-segments span {
+    width: 25px;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+}
+/* AHORA: 1 bar preenchida */
+.card-now .progress-segments span:nth-child(1) {
+    background: #ff4d4d; /* Vermelho/Alerta para o estado atual */
+}
+/* OBJETIVO: 5 bars preenchidas */
+.card-goal .progress-segments span {
+    background: var(--cta-green); /* Verde para o objetivo */
 }

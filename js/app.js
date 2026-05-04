@@ -624,6 +624,9 @@
             if (hName) hName.innerText = name.toUpperCase();
             if (hBadge) hBadge.innerText = `IMC: ${imc} - ${cat}`;
 
+            const offImcNow = document.getElementById('off-imc-now-val');
+            if (offImcNow) offImcNow.innerText = imc;
+
             // 4. IMAGENS DE COMPARAÇÃO
             const isFem = userProfile.gender === 'Femenino';
             const sfx = isFem ? '-w' : '';
