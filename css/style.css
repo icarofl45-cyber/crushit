@@ -2558,3 +2558,88 @@ text-rendering: optimizeLegibility;}
 
 /* Social Proof Carousel Styles - REFINADO */
 .proof-badge { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.08); transition: opacity 0.6s ease, transform 0.6s ease; min-width: 240px; } .proof-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; } .proof-dot.male { background: #4ade80; box-shadow: 0 0 12px rgba(74, 222, 128, 0.6); animation: blink-soft 2s infinite ease-in-out; } .proof-dot.female { background: #f472b6; box-shadow: 0 0 12px rgba(244, 114, 182, 0.6); animation: blink-soft 2s infinite ease-in-out; } @keyframes blink-soft { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } } .proof-text { font-size: 12px; font-weight: 700; color: #fff; text-transform: capitalize; line-height: 1; }
+
+/* Bonus Section Styles */
+.bonus-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+.bonus-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    text-align: left;
+}
+.bonus-icon {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.bonus-info h3 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+.bonus-info p {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+.bonus-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.bonus-price .old-price {
+    color: rgba(255,255,255,0.2);
+    text-decoration: line-through;
+    font-size: 12px;
+    font-weight: 700;
+}
+.bonus-price .gratis-badge {
+    background: var(--cta-green);
+    color: #000;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.bonus-total-card {
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+}
+.total-label {
+    font-size: 10px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.total-value {
+    font-size: 14px;
+    font-weight: 900;
+}
+.total-old {
+    color: var(--cta-green);
+    text-decoration: line-through;
+}
+.total-new {
+    color: #fff;
+}
