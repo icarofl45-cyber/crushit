@@ -156,9 +156,7 @@
                     if (target.classList.contains('active')) {
                         const stepId = target.id.replace('screen-', '');
                         if (stepId === 'offer') {
-                            if (typeof checkRouletteTrigger === 'function') {
-                                checkRouletteTrigger();
-                            }
+                            initNewRouletteTrigger();
                         }
                     }
                 }
@@ -930,4 +928,69 @@
                 }
                 if (discountTag) discountTag.style.display = 'inline-block';
             }
+        }
+
+        // NEW ROULETTE LOGIC
+        let nRouletteActive = false;
+        
+        function initNewRouletteTrigger() {
+            const priceSection = document.getElementById('pricing-area');
+            if (!priceSection || nRouletteActive || localStorage.getItem('crushit_discount_applied')) return;
+
+            const nObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !nRouletteActive) {
+                        nRouletteActive = true;
+                        console.log("Preço visto. Roleta em 10s...");
+                        
+                        setTimeout(() => {
+                            if (!localStorage.getItem('crushit_discount_applied')) {
+                                const modal = document.getElementById('new-roulette-modal');
+                                if (modal) modal.classList.add('active');
+                            }
+                        }, 10000);
+
+                        nObserver.unobserve(priceSection);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            nObserver.observe(priceSection);
+        }
+
+        function startNewSpin() {
+            const wheel = document.getElementById('n-wheel');
+            const btnArea = document.getElementById('n-btn-spin-area');
+            const resultArea = document.getElementById('n-result-area');
+            
+            // Giro de 4 segundos parando no 75% (Segmento 5)
+            const extraRotation = 157.5; 
+            const totalRotation = (360 * 8) + extraRotation; 
+            
+            wheel.style.transform = `rotate(${totalRotation}deg)`;
+            if (btnArea) btnArea.style.display = 'none';
+
+            setTimeout(() => {
+                if (resultArea) resultArea.style.display = 'block';
+            }, 4000);
+        }
+
+        function applyNewDiscount() {
+            const orig = document.getElementById('original-price');
+            const curr = document.getElementById('current-price');
+            const tag = document.getElementById('discount-tag');
+            const modal = document.getElementById('new-roulette-modal');
+
+            if (orig) orig.style.display = 'block';
+            if (curr) {
+                curr.innerText = '$9.90 USD';
+                curr.style.color = 'var(--cta-green)';
+                curr.style.fontSize = '42px';
+            }
+            if (tag) tag.style.display = 'inline-block';
+            
+            if (modal) modal.classList.remove('active');
+            localStorage.setItem('crushit_discount_applied', 'true');
+            
+            document.getElementById('pricing-area').scrollIntoView({ behavior: 'smooth' });
         }
