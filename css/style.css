@@ -2441,11 +2441,12 @@ text-rendering: optimizeLegibility;}
 }
 
 .bonus-price-old {
-    font-size: 10px;
-    color: #666;
+    font-size: 14px;
+    color: #888;
     text-decoration: line-through;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.5px;
+    opacity: 0.8;
 }
 
 .bonus-seal {
