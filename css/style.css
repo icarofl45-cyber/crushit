@@ -1,8 +1,10 @@
 :root{--bg-color: #0F0F0F;
 --card-bg: #181818;
---brand-purple: #7B2FF7;
---brand-purple-dark: #4C1D95;
---cta-green: #22C55E;
+--brand-purple: #7b2ff7;
+--deep-purple: #1e1535;
+--dark-grey: #121212;
+--darker-grey: #0a0a0a;
+--cta-green: #22c55e;
 --text-white: #FFFFFF;
 --text-gray: #A1A1AA;}
 *{margin: 0;
@@ -2754,7 +2756,51 @@ text-rendering: optimizeLegibility;}
     .trust-footer-text { font-size: 14px; }
 }
 
-/* FAQ Section Styles */
+/* Section Transitions & Reveal Animations */
+.offer-section {
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s ease;
+}
+
+.bg-charcoal { background-color: var(--dark-grey); }
+.bg-deep-purple { background-color: var(--deep-purple); }
+.bg-black { background-color: var(--darker-grey); }
+
+.section-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(123, 47, 247, 0.3), transparent);
+    margin: 0;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific section polish */
+.guarantee-section-new {
+    background: rgba(123, 47, 247, 0.05) !important;
+    border: 1px solid rgba(123, 47, 247, 0.2) !important;
+}
+
+.main-offer-card {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(10px);
+}
+
+.trust-section {
+    background: transparent;
+    padding-bottom: 80px;
+}
 .faq-section {
     padding: 20px 20px 60px 20px;
     background: transparent;
