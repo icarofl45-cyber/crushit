@@ -2814,3 +2814,57 @@ text-rendering: optimizeLegibility;}
     padding-top: 10px;
     border-top: 1px solid rgba(255,255,255,0.05);
 }
+
+/* Testimonials Carousel Styles */
+.testimonials-section {
+    padding: 80px 0;
+    background: transparent;
+    text-align: center;
+    overflow: hidden;
+}
+.testimonials-pre { color: rgba(255,255,255,0.6); font-size: 16px; margin-bottom: 5px; }
+.testimonials-count { color: #fff; font-size: 48px; font-weight: 950; margin-bottom: 5px; letter-spacing: -1px; }
+.testimonials-post { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 40px; }
+
+.testimonials-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+.testimonials-track {
+    display: flex;
+    gap: 20px;
+    padding-left: 20px;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+.testimonial-card {
+    min-width: 320px;
+    max-width: 320px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: left;
+}
+.card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.user-initial {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 900; font-size: 18px;
+}
+.user-name { color: #fff; font-size: 16px; font-weight: 800; margin: 0; }
+.user-text { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.6; margin-bottom: 25px; height: 110px; overflow: hidden; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; }
+.stars { color: #ff6b00; font-size: 18px; letter-spacing: 2px; }
+.verified-badge { color: var(--cta-green); font-size: 10px; font-weight: 900; background: rgba(34, 197, 94, 0.1); padding: 4px 8px; border-radius: 4px; }
+
+.testimonials-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); transition: all 0.3s ease; }
+.dot.active { background: #fff; width: 24px; border-radius: 10px; }
+.testimonials-footer { color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 30px; }
+.testimonials-footer a { color: #fff; text-decoration: underline; }
+

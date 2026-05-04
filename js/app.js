@@ -878,24 +878,36 @@
         }
 
         // Hook into offer screen population
-        const originalPopulate = populateOfferScreen;
-        populateOfferScreen = function() {
-            originalPopulate();
-            startSocialProofCarousel();
-        };
-
         // FAQ Accordion Logic
         window.toggleFAQ = function(element) {
             const item = element.parentElement;
             const isActive = item.classList.contains('active');
-            
-            // Fecha todos os outros
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-            
-            // Abre o atual se não estava aberto
-            if (!isActive) {
-                item.classList.add('active');
+            if (!isActive) item.classList.add('active');
+        };
+
+        // Testimonials Carousel Logic (Smooth Auto-scroll)
+        function startTestimonialsCarousel() {
+            const track = document.getElementById('testimonials-track');
+            if (!track) return;
+            let scrollAmount = 0;
+            const step = 0.5;
+            function stepScroll() {
+                scrollAmount += step;
+                if (scrollAmount >= track.scrollWidth / 2) scrollAmount = 0;
+                track.style.transform = `translateX(-${scrollAmount}px)`;
+                requestAnimationFrame(stepScroll);
             }
+            track.innerHTML += track.innerHTML; // Duplicar para loop infinito
+            requestAnimationFrame(stepScroll);
+        }
+
+        // Hook into offer screen population
+        const originalPopulate = populateOfferScreen;
+        populateOfferScreen = function() {
+            originalPopulate();
+            startSocialProofCarousel();
+            startTestimonialsCarousel();
         };
 
 
