@@ -623,6 +623,34 @@
             const hBadge = document.getElementById('header-imc-badge');
             if (hName) hName.innerText = name.toUpperCase();
             if (hBadge) hBadge.innerText = `IMC: ${imc} - ${cat}`;
+
+            // 4. IMAGENS DE COMPARAÇÃO
+            const isFem = userProfile.gender === 'Femenino';
+            const sfx = isFem ? '-w' : '';
+            const imgNow = document.getElementById('off-img-now');
+            const imgGoal = document.getElementById('off-img-goal');
+            const goalLabel = document.getElementById('off-goal-label');
+
+            if (imgNow) {
+                const nowMap = { 'Delgado': 'delgado', 'Promedio': 'promedio', 'Grande': 'grande', 'Pesado': 'pesado' };
+                const nowFile = nowMap[userProfile.bodyType] || 'delgado';
+                imgNow.src = `imagens_webp_crush_it/${nowFile}${sfx}.webp`;
+            }
+
+            if (imgGoal) {
+                const goalMap = {
+                    'Delgado': 'delgado-pergunta-4',
+                    'Delgado y Tonificado': 'delgado-y-tonificado-pergunta-4',
+                    'Atleta': 'atleta-pergunta-4',
+                    'Culturista': 'culturista-pergunta-4',
+                    'De Playa': 'de-playa-pergunta-4',
+                    'De CrossFit': 'de-crossfit-pergunta-4',
+                    'Héroe': 'heroe-pergunta-4'
+                };
+                const goalFile = goalMap[userProfile.bodyFat] || 'atleta-pergunta-4';
+                imgGoal.src = `imagens_webp_crush_it/${goalFile}${sfx}.webp`;
+                if (goalLabel) goalLabel.innerText = 'OBJETIVO: ' + (userProfile.bodyFat || 'ATLETA').toUpperCase();
+            }
         }
 
         function toggleFaq(el) {
