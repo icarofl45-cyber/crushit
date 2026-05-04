@@ -919,21 +919,32 @@
         let rouletteTriggered = false;
         
         function checkRouletteTrigger() {
-            // Se já foi disparado ou desconto já foi aplicado, sai
-            if (rouletteTriggered || localStorage.getItem('crushit_discount_applied')) return;
+            const pricingArea = document.getElementById('pricing-area');
+            if (!pricingArea || rouletteTriggered || localStorage.getItem('crushit_discount_applied')) return;
             
-            rouletteTriggered = true;
-            console.log("Tela de oferta ativa. Roleta aparecerá em 10 segundos...");
-            
-            setTimeout(() => {
-                if (!localStorage.getItem('crushit_discount_applied')) {
-                    const modal = document.getElementById('discount-modal');
-                    if (modal) {
-                        modal.classList.add('active');
-                        console.log("Roleta exibida!");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !rouletteTriggered) {
+                        rouletteTriggered = true;
+                        console.log("Preço visualizado! Roleta aparecerá em 10 segundos...");
+                        
+                        setTimeout(() => {
+                            if (!localStorage.getItem('crushit_discount_applied')) {
+                                const modal = document.getElementById('discount-modal');
+                                if (modal) {
+                                    modal.classList.add('active');
+                                    console.log("Roleta exibida!");
+                                }
+                            }
+                        }, 10000); 
+                        
+                        // Para de observar após disparar o timer
+                        observer.unobserve(pricingArea);
                     }
-                }
-            }, 10000); // 10 segundos após entrar na tela de oferta
+                });
+            }, { threshold: 0.2 }); // Dispara quando 20% da área de preço estiver visível
+            
+            observer.observe(pricingArea);
         }
 
         function spinWheel() {
