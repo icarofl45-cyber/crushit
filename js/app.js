@@ -653,6 +653,38 @@
                 const goalFile = goalMap[userProfile.bodyFat] || 'atleta-pergunta-4';
                 imgGoal.src = `imagens_webp_crush_it/${goalFile}${sfx}.webp`;
             }
+
+            // 5. MEDIDORES (Gauges)
+            // Calorias
+            let kcal = imc >= 25 ? 2000 : 2400;
+            const gKcalVal = document.getElementById('g-kcal-val');
+            const gKcalPin = document.getElementById('g-kcal-pin');
+            if (gKcalVal) gKcalVal.innerText = kcal + ' kcal';
+            if (gKcalPin) {
+                let kcalPerc = ((kcal - 1600) / (3200 - 1600)) * 100;
+                gKcalPin.style.left = kcalPerc + '%';
+            }
+
+            // Água
+            let litros = imc >= 25 ? 3.0 : 2.0;
+            const gWaterVal = document.getElementById('g-water-val');
+            if (gWaterVal) gWaterVal.innerText = litros + ' litros';
+            const waterIcons = document.querySelectorAll('.water-icon');
+            const activeGlasses = Math.round((litros / 4) * 8); 
+            waterIcons.forEach((icon, i) => {
+                if (i < activeGlasses) icon.classList.add('active');
+                else icon.classList.remove('active');
+            });
+
+            // IMC Gauge
+            const gImcVal = document.getElementById('g-imc-val');
+            const gImcPin = document.getElementById('g-imc-pin');
+            if (gImcVal) gImcVal.innerText = imc;
+            if (gImcPin) {
+                let imcPerc = ((imc - 15) / (35 - 15)) * 100;
+                if (imcPerc < 5) imcPerc = 5; if (imcPerc > 95) imcPerc = 95;
+                gImcPin.style.left = imcPerc + '%';
+            }
         }
 
         function toggleFaq(el) {

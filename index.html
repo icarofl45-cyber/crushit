@@ -962,6 +962,54 @@
                     </div>
                 </div>
             </div>
+
+            <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">RESUMEN PERSONAL</h2>
+            <p style="color:var(--text-gray); font-size:14px; font-weight:700; text-transform:uppercase; margin-top:-15px;">Basado en tus respuestas</p>
+
+            <!-- IMC GAUGE -->
+            <div class="gauge-section anim-up">
+                <div class="gauge-header">
+                    <span id="g-imc-title" class="gauge-title">IMC ACTUAL</span>
+                    <span class="gauge-val" id="g-imc-val">--</span>
+                </div>
+                <div class="gauge-track">
+                    <div class="gauge-pin" id="g-imc-pin" style="left: 50%;"></div>
+                </div>
+                <div class="gauge-labels">
+                    <span>BAJO PESO</span>
+                    <span style="color:var(--cta-green)">NORMAL</span>
+                    <span>OBESO</span>
+                </div>
+            </div>
+
+            <!-- Kcal e Agua lado a lado -->
+            <div class="gauge-row">
+                <div class="gauge-section gauge-half anim-fade">
+                    <div class="gauge-header">
+                        <span class="gauge-title">Ingesta diaria de calorias</span>
+                        <span class="recommended-tag">RECOMENDADO</span>
+                    </div>
+                    <div class="gauge-val" id="g-kcal-val">-- kcal</div>
+                    <div class="gauge-track kcal-gauge">
+                        <div class="gauge-pin" id="g-kcal-pin" style="left: 50%;"></div>
+                    </div>
+                    <div class="gauge-labels">
+                        <span>1600 kcal</span>
+                        <span>3200 kcal</span>
+                    </div>
+                </div>
+
+                <div class="gauge-section gauge-half anim-fade">
+                    <div class="gauge-header">
+                        <span class="gauge-title">Ingesta diaria de agua</span>
+                        <span class="recommended-tag">RECOMENDADO</span>
+                    </div>
+                    <div class="gauge-val" id="g-water-val">-- litros</div>
+                    <div class="water-icons">
+                        <div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div><div class="water-icon">🥛</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
