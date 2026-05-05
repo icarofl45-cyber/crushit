@@ -1520,6 +1520,35 @@ margin-top: 5px;}
 .m-bar{width: 18px; height: 4px; background: #222; border-radius: 2px;}
 .bars-now .m-bar.active{background: #ff6b00;}
 .bars-goal .m-bar.active{background: #22c55e;}
+
+.comp-social-proof {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.proof-dot {
+    width: 7px;
+    height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    animation: blink-soft 2s infinite ease-in-out;
+}
+.proof-text {
+    font-size: 9px;
+    font-weight: 800;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+@keyframes blink-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); }
+}
 .personal-summary-grid {
     display: flex;
     flex-direction: column;
