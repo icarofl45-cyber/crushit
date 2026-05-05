@@ -3129,3 +3129,50 @@ text-rendering: optimizeLegibility;}
 .protocol-text strong {
     color: #22c55e;
 }
+
+/* GUARANTEE CARD PREMIUM */
+.guarantee-card-premium {
+    background: #181818;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 32px;
+    padding: 35px;
+    margin: 40px 16px;
+    text-align: left;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.guarantee-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.guarantee-title {
+    font-size: 32px;
+    font-weight: 850;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0;
+}
+.guarantee-badge-wrap {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+.guarantee-body {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+.guarantee-footer {
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.4;
+}
+.guarantee-footer a {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(249, 115, 22, 0.3);
+}
