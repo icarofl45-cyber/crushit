@@ -1492,10 +1492,10 @@ overflow: hidden;}
     font-weight: 800;
 }
 .comp-imc-val {
-    font-size: 42px;
+    font-size: 21px;
     font-weight: 950;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     line-height: 1;
 }
 .comp-imc-val.val-now { color: #ef4444; }
@@ -1554,10 +1554,10 @@ margin-top: 5px;}
     letter-spacing: 1px;
 }
 .card-value-large {
-    font-size: 42px;
+    font-size: 21px;
     font-weight: 950;
     color: #fff;
-    line-height: 0.8;
+    line-height: 1;
 }
 .card-main-val {
     font-size: 28px;
