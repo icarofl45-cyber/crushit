@@ -1645,7 +1645,7 @@ margin-top: 5px;}
     width: 120px;
     height: 1.5px;
     background: linear-gradient(90deg, transparent 0%, var(--brand-purple) 50%, transparent 100%);
-    margin: 15px auto 30px;
+    margin: 5px auto 25px;
     box-shadow: 0 0 12px var(--brand-purple);
     border-radius: 50%;
     opacity: 0.9;
