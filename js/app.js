@@ -170,7 +170,6 @@
             units: 'metric'
         };
 
-        const history = ['age'];
 
         function saveProfile() {
             localStorage.setItem('crushit_profile', JSON.stringify(userProfile));
