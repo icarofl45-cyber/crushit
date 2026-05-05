@@ -91,8 +91,15 @@
             }
 
             if (stepId === 'analysis') startAnalysis();
-            if (stepId === 'offer') {
-                populateOfferScreen();
+            
+            const footer = document.querySelector('.main-footer');
+            if (footer) {
+                if (stepId === 'offer') {
+                    populateOfferScreen();
+                    footer.style.display = 'block';
+                } else {
+                    footer.style.display = 'none';
+                }
             }
         }
 
@@ -624,7 +631,8 @@
             if (offImcNow) offImcNow.innerText = imc;
 
             const targetW = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? (parseFloat(userProfile.weight) || 70) + 5 : (parseFloat(userProfile.weight) || 70) - 5);
-            const h = parseFloat(userProfile.height) || 170;
+            h = parseFloat(userProfile.height) || 170;
+            if (userProfile.units === 'imperial') h = h * 30.48; 
             const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
             const offImcGoal = document.getElementById('off-imc-goal-val');
             if (offImcGoal) offImcGoal.innerText = targetImc;

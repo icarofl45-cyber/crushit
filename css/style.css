@@ -3206,3 +3206,9 @@ text-rendering: optimizeLegibility;}
     text-align: center;
 }
 
+
+/* HIDE FOOTER DURING QUIZ */
+.main-footer {
+    display: none;
+}
+
