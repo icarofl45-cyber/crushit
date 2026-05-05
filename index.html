@@ -800,20 +800,22 @@
 
     <!-- ETAPA 16: NOMBRE -->
     <div id="screen-final" class="screen">
-        <h1 class="headline">ÚLTIMO PASO</h1>
-        <p class="subheadline">¿A quién debemos enviar el plan personalizado?</p>
+        <h1 class="headline anim-fade">ÚLTIMO PASO</h1>
+        <p class="subheadline anim-fade delay-1">¿A quién debemos enviar el plan personalizado?</p>
 
-        <div class="bio-field" style="margin-bottom: 20px; width: 100%;">
-            <label style="display:block; margin-bottom:10px; font-size:12px; font-weight:700; opacity:0.6; letter-spacing:1px; text-align: center;">TU PRIMER NOMBRE</label>
-            <input type="text" id="input-name" placeholder="Ej: Carlos" oninput="validateName(this.value)" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:20px; border-radius:15px; color:#fff; font-size:18px; font-weight:700; text-align:center;">
+        <div class="name-input-card anim-up delay-2">
+            <div class="bio-field" style="margin-bottom: 25px;">
+                <label>TU PRIMER NOMBRE</label>
+                <input type="text" id="input-name" class="name-input-field" placeholder="Ej: Carlos" oninput="validateName(this.value)">
+            </div>
+
+            <button id="btn-final-continue" class="btn-final-step" onclick="finishQuiz()" disabled>
+                OBTENER MI PLAN
+            </button>
         </div>
 
-        <button id="btn-final-continue" class="btn-primary" onclick="finishQuiz()" disabled style="opacity:0.5;">
-            OBTENER MI PLAN
-        </button>
-
-        <p style="margin-top:20px; font-size:12px; opacity:0.5; text-align:center;">
-            Protegemos tus datos. Al continuar, aceptas nuestros términos.
+        <p style="margin-top:30px; font-size:12px; opacity:0.5; text-align:center; max-width: 280px; line-height: 1.4;">
+            Protegemos tus datos. Al continuar, aceptas nuestros términos y condiciones de uso.
         </p>
     </div>
 
