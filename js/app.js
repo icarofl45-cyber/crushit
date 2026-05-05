@@ -933,7 +933,7 @@
             }
             
             let scrollPos = track.scrollLeft;
-            const scrollSpeed = 0.5; 
+            const scrollSpeed = 0.8; 
             
             function animate() {
                 scrollPos += scrollSpeed;
