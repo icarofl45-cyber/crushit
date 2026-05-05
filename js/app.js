@@ -678,13 +678,13 @@
             }
             
             // Lógica de pesos e unidades
-            const isMetric = userProfile.units !== 'imperial';
-            const unitSuffix = isMetric ? 'kg' : 'lb';
-            const currentW = parseFloat(userProfile.weight) || (isMetric ? 70 : 155);
-            const targetW = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? currentW + (isMetric ? 5 : 11) : currentW - (isMetric ? 5 : 11));
+            const isMetricUnit = userProfile.units !== 'imperial';
+            const unitSuffix = isMetricUnit ? 'kg' : 'lb';
+            const currentWeight = parseFloat(userProfile.weight) || (isMetricUnit ? 70 : 155);
+            const targetWeightVal = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? currentWeight + (isMetricUnit ? 5 : 11) : currentWeight - (isMetricUnit ? 5 : 11));
             
-            if (stWeightNow) stWeightNow.innerText = `${currentW} ${unitSuffix}`;
-            if (stWeightGoal) stWeightGoal.innerText = `${targetW} ${unitSuffix}`;
+            if (stWeightNow) stWeightNow.innerText = `${currentWeight} ${unitSuffix}`;
+            if (stWeightGoal) stWeightGoal.innerText = `${targetWeightVal} ${unitSuffix}`;
 
             // Data estimada (21 dias)
             const futureDate = new Date();
