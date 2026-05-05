@@ -2713,7 +2713,7 @@ text-rendering: optimizeLegibility;}
 .site-footer {
     margin-top: 0px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
     text-align: center;
     color: #888;
     font-size: 11px;
