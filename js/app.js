@@ -780,7 +780,7 @@
             else document.getElementById('lbl-obeso')?.classList.add('active');
         }
 
-        function toggleFaq(el) {
+        function toggleFAQ(el) {
             const item = el.parentElement;
             item.classList.toggle('active');
         }
