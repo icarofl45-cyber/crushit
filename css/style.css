@@ -156,24 +156,25 @@ opacity: 0.85;
 text-align: center;}
 .quiz-grid{display: grid;
 grid-template-columns: repeat(2, 1fr);
-gap: 16px;
+gap: 15px;
 width: 100%;}
 .age-card{background-color: var(--card-bg);
 border-radius: 28px;
 overflow: hidden;
 cursor: pointer;
-transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 display: flex;
 flex-direction: column;
 align-items: center;
 padding-bottom: 18px;
 position: relative;
-border: 1px solid #222;}
+border: 1px solid rgba(255,255,255,0.05);}
 .age-card:hover{transform: translateY(-8px) scale(1.02);
 background-color: #222;
 border-color: var(--brand-purple);}
 .age-card img{width: 100%;
-height: 240px;
+height: auto;
+aspect-ratio: 2/3;
 display: block;
 margin-bottom: -18px; 
 object-fit: cover;
@@ -2528,9 +2529,7 @@ margin-bottom: 10px;}}
 @media (max-width: 375px){body{padding: 0 10px;}
 .headline{font-size: 26px !important;}
 .subheadline{font-size: 13px;}
-.age-card{min-height: 140px;}
 .age-button{font-size: 13px; padding: 8px 16px;}
-.quiz-grid{gap: 10px;}
 .gender-card{min-height: 160px;}
 .fat-image-display{height: 260px;}
 .fat-value-bubble{font-size: 14px; padding: 6px 14px;}
@@ -2674,11 +2673,7 @@ margin-bottom: 10px;}}
 .offer-container{padding: 0 8px;}
 .slider-labels{font-size: 12px;}}
 @media (min-width: 481px) and (max-width: 768px){body{max-width: 600px; margin: 0 auto;}
-.quiz-grid{gap: 15px;}
 .comparison-row{gap: 18px;}
-.fat-image-display{height: 400px;}}
-@media (min-width: 769px){body{max-width: 680px; margin: 0 auto;}
-.quiz-grid{gap: 20px;}
 .fat-image-display{height: 450px;}
 .btn-continue{max-width: 500px; margin-left: auto; margin-right: auto;}}
 @media (hover: none) and (pointer: coarse){.btn-continue,
