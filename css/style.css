@@ -1642,14 +1642,14 @@ margin-top: 5px;}
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 .glow-beam {
-    width: 200px;
-    height: 1.5px;
+    width: 300px;
+    height: 2px;
     background: linear-gradient(90deg, transparent 0%, var(--brand-purple) 50%, transparent 100%);
     margin: -18px auto 12px;
-    box-shadow: 0 0 12px var(--brand-purple);
+    box-shadow: 0 0 20px var(--brand-purple), 0 0 8px rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    opacity: 0.9;
-    filter: blur(0.5px);
+    opacity: 1;
+    filter: blur(0.2px);
 }
 .summary-card {
     background: rgba(255, 255, 255, 0.03);
