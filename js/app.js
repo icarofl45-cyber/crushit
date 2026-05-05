@@ -924,23 +924,21 @@
             const track = document.getElementById('testimonials-track');
             if (!track) return;
             
-            // Remove CSS animation class to avoid conflict
-            track.classList.remove('marquee');
-            
-            // Duplicar conteúdo para scroll infinito
-            if (track.children.length < 12) {
+            // Duplicar conteúdo apenas se ainda não foi duplicado
+            if (track.children.length < 15) {
                 track.innerHTML += track.innerHTML;
             }
             
-            let scrollPos = track.scrollLeft;
-            const scrollSpeed = 0.8; 
+            let x = 0;
+            const speed = 1.0; // Velocidade ajustada para ser visível
             
             function animate() {
-                scrollPos += scrollSpeed;
-                if (scrollPos >= track.scrollWidth / 2) {
-                    scrollPos = 0;
+                x -= speed;
+                // Quando metade do conteúdo (que é o original) passar, reseta para o início
+                if (Math.abs(x) >= track.scrollWidth / 2) {
+                    x = 0;
                 }
-                track.scrollLeft = scrollPos;
+                track.style.transform = `translateX(${x}px)`;
                 requestAnimationFrame(animate);
             }
             

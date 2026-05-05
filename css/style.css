@@ -2995,8 +2995,7 @@ text-rendering: optimizeLegibility;}
 .testimonials-track {
     display: flex;
     gap: 20px;
-    padding-left: 20px;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    width: max-content;
     will-change: transform;
 }
 .testimonial-card {
