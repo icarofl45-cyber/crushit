@@ -962,31 +962,41 @@
                     </div>
                 </div>
 
-                <div class="comparison-cards-row anim-up" style="margin-top: 20px;">
+                <!-- FILA DE COMPARACIÓN (V2 REFINADA) -->
+                <div class="comparison-cards-row anim-up">
+                    <!-- CARD AHORA -->
                     <div class="comparison-card card-now">
                         <span class="comparison-card-label">AHORA</span>
                         <div class="comparison-card-img-wrap">
-                            <img id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Ahora">
+                            <img id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Estado Atual">
                         </div>
                         <div class="comparison-card-footer">
-                            <div class="comp-imc">IMC: <span id="off-imc-now-val">--</span></div>
-                            <p class="comp-musculatura-label">Musculatura corporal</p>
-                            <div class="comp-progress">
+                            <div class="comp-imc">
+                                <span class="comp-imc-lbl">IMC ACTUAL</span>
+                                <span class="comp-imc-val val-now" id="off-imc-now-val">--</span>
+                            </div>
+                            <div class="comp-musculatura">
+                                <span class="comp-musculatura-label">MUSCULATURA CORPORAL</span>
                                 <div class="progress-segments" data-filled="1">
                                     <span></span><span></span><span></span><span></span><span></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- CARD OBJETIVO -->
                     <div class="comparison-card card-goal">
                         <span class="comparison-card-label">TU OBJETIVO</span>
                         <div class="comparison-card-img-wrap">
-                            <img id="off-img-goal" src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Objetivo">
+                            <img id="off-img-goal" src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Estado Objetivo">
                         </div>
                         <div class="comparison-card-footer">
-                            <div class="comp-imc">IMC: <span id="off-imc-goal-val">22.5</span></div>
-                            <p class="comp-musculatura-label">Musculatura corporal</p>
-                            <div class="comp-progress">
+                            <div class="comp-imc">
+                                <span class="comp-imc-lbl">IMC OBJETIVO</span>
+                                <span class="comp-imc-val val-goal" id="off-imc-goal-val">22.5</span>
+                            </div>
+                            <div class="comp-musculatura">
+                                <span class="comp-musculatura-label">MUSCULATURA CORPORAL</span>
                                 <div class="progress-segments" data-filled="5">
                                     <span></span><span></span><span></span><span></span><span></span>
                                 </div>
