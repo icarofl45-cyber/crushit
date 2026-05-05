@@ -635,7 +635,24 @@
             const stProtocol = document.getElementById('status-protocol-desc');
 
             if (stImc) stImc.innerText = `IMC: ${imc}`;
-            if (stBadge) stBadge.innerText = cat === 'SOBREPESO' ? 'SOBREPESO' : (cat === 'NORMAL' ? 'PESO NORMAL' : cat);
+            
+            const stCard = document.querySelector('.summary-status-card');
+            if (stCard) {
+                stCard.classList.remove('status-blue', 'status-green', 'status-orange', 'status-red');
+                if (cat === 'BAJO PESO') {
+                    stCard.classList.add('status-blue');
+                    if (stBadge) stBadge.innerText = 'BAJO PESO';
+                } else if (cat === 'NORMAL') {
+                    stCard.classList.add('status-green');
+                    if (stBadge) stBadge.innerText = 'PESO NORMAL';
+                } else if (cat === 'SOBREPESO') {
+                    stCard.classList.add('status-orange');
+                    if (stBadge) stBadge.innerText = 'SOBREPESO';
+                } else {
+                    stCard.classList.add('status-red');
+                    if (stBadge) stBadge.innerText = 'OBESIDAD';
+                }
+            }
             
             // Lógica de pesos e unidades
             const isMetric = userProfile.units !== 'imperial';

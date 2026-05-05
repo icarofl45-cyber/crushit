@@ -3176,3 +3176,21 @@ text-rendering: optimizeLegibility;}
     font-weight: 700;
     border-bottom: 1px solid rgba(249, 115, 22, 0.3);
 }
+
+/* DINAMIC STATUS CARD THEMES */
+.summary-status-card.status-blue { border-color: #3b82f6 !important; }
+.summary-status-card.status-blue .status-badge { color: #3b82f6 !important; background: rgba(59, 130, 246, 0.15) !important; border-color: rgba(59, 130, 246, 0.3) !important; }
+.summary-status-card.status-blue .stat-val.highlight { color: #3b82f6 !important; }
+
+.summary-status-card.status-green { border-color: #22c55e !important; }
+.summary-status-card.status-green .status-badge { color: #22c55e !important; background: rgba(34, 197, 94, 0.15) !important; border-color: rgba(34, 197, 94, 0.3) !important; }
+.summary-status-card.status-green .stat-val.highlight { color: #22c55e !important; }
+
+.summary-status-card.status-orange { border-color: #f97316 !important; }
+.summary-status-card.status-orange .status-badge { color: #f97316 !important; background: rgba(249, 115, 22, 0.15) !important; border-color: rgba(249, 115, 22, 0.3) !important; }
+.summary-status-card.status-orange .stat-val.highlight { color: #f97316 !important; }
+
+.summary-status-card.status-red { border-color: #ef4444 !important; }
+.summary-status-card.status-red .status-badge { color: #ef4444 !important; background: rgba(239, 68, 68, 0.15) !important; border-color: rgba(239, 68, 68, 0.3) !important; }
+.summary-status-card.status-red .stat-val.highlight { color: #ef4444 !important; }
+
