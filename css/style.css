@@ -3230,7 +3230,7 @@ text-rendering: optimizeLegibility;}
     padding-bottom: 20px;
 }
 .faq-section {
-    padding: 10px 20px 60px 20px;
+    padding: 10px 20px 10px 20px;
     background: transparent;
     max-width: 600px;
     margin: 0 auto;
@@ -3305,7 +3305,8 @@ text-rendering: optimizeLegibility;}
 
 /* Testimonials Carousel Styles */
 .testimonials-section {
-    padding: 10px 0;
+    padding: 5px 0 10px 0;
+    margin-top: -30px;
     background: transparent;
     text-align: center;
     overflow: hidden;
