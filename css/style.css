@@ -3555,8 +3555,8 @@ text-rendering: optimizeLegibility;}
     background: var(--cta-green);
     color: #000;
     border: none;
-    padding: 18px 32px;
-    font-size: 18px;
+    padding: 14px 20px;
+    font-size: 15px;
     font-weight: 950;
     border-radius: 50px;
     cursor: pointer;
@@ -3565,8 +3565,9 @@ text-rendering: optimizeLegibility;}
     box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
     animation: cta-main-pulse 2s infinite;
     transition: all 0.3s ease;
-    width: 90%;
-    max-width: 340px;
+    width: 95%;
+    max-width: 400px;
+    white-space: nowrap;
 }
 
 .cta-pulse-button:hover {
