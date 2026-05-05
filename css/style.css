@@ -1557,6 +1557,22 @@ margin-top: 5px;}
     letter-spacing: 1px;
 }
 
+.proof-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin: 5px 0;
+}
+
+.proof-dot.male { background: #4da6ff; box-shadow: 0 0 10px rgba(77, 166, 255, 0.5); }
+.proof-dot.female { background: #f472b6; box-shadow: 0 0 10px rgba(244, 114, 182, 0.5); }
+
 .proof-dot {
     width: 7px;
     height: 7px;

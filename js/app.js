@@ -945,17 +945,27 @@
 
             setInterval(() => {
                 badgeEl.style.opacity = '0';
+                badgeEl.style.transform = 'translateY(-10px)';
+                
                 setTimeout(() => {
                     currentProofIndex = (currentProofIndex + 1) % proofs.length;
                     const next = proofs[currentProofIndex];
                     const actionText = 'adquiriu acesso ao aplicativo';
+                    
                     badgeEl.innerHTML = `
                         <span class="proof-dot ${next.gender}"></span>
                         <span class="proof-text">${next.name} ${actionText}</span>
                     `;
+                    
+                    badgeEl.style.transform = 'translateY(10px)';
+                    
+                    // Trigger reflow
+                    badgeEl.offsetHeight;
+                    
                     badgeEl.style.opacity = '1';
+                    badgeEl.style.transform = 'translateY(0)';
                 }, 600);
-            }, 5000);
+            }, 4000);
         }
 
         // Testimonials Carousel Logic (Ultra Smooth Auto-scroll)
