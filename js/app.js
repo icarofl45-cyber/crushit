@@ -948,7 +948,7 @@
                 setTimeout(() => {
                     currentProofIndex = (currentProofIndex + 1) % proofs.length;
                     const next = proofs[currentProofIndex];
-                    const actionText = next.gender === 'female' ? 'adquirió su protocolo' : 'adquirió su protocolo';
+                    const actionText = 'adquiriu acesso ao aplicativo';
                     badgeEl.innerHTML = `
                         <span class="proof-dot ${next.gender}"></span>
                         <span class="proof-text">${next.name} ${actionText}</span>
