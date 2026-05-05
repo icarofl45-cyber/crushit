@@ -3348,6 +3348,13 @@ text-rendering: optimizeLegibility;}
     text-align: left;
 }
 .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.user-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+}
 .user-initial {
     width: 40px; height: 40px;
     background: rgba(255,255,255,0.1);
