@@ -1642,7 +1642,7 @@ margin-top: 5px;}
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 .glow-beam {
-    width: 120px;
+    width: 200px;
     height: 1.5px;
     background: linear-gradient(90deg, transparent 0%, var(--brand-purple) 50%, transparent 100%);
     margin: -18px auto 12px;
