@@ -91,6 +91,7 @@
             }
 
             if (stepId === 'analysis') startAnalysis();
+            if (stepId === 'hormones') startHormonesTimer();
             
             const footer = document.querySelector('.main-footer');
             if (footer) {
