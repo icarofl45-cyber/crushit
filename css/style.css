@@ -87,7 +87,7 @@ height: 8px;
 background: rgba(255, 255, 255, 0.05);
 border-bottom: 1px solid rgba(255, 255, 255, 0.1);}
 .main-header.clean-header .logo-container{justify-content: center;
-padding: 20px 0;}
+padding: 10px 0 0;}
 .main-header.clean-header .logo-img{max-width: 160px;
 height: auto !important;
 filter: drop-shadow(0 0 12px rgba(123, 47, 247, 0.4));}
@@ -1645,7 +1645,7 @@ margin-top: 5px;}
     width: 120px;
     height: 1.5px;
     background: linear-gradient(90deg, transparent 0%, var(--brand-purple) 50%, transparent 100%);
-    margin: 5px auto 25px;
+    margin: -8px auto 15px;
     box-shadow: 0 0 12px var(--brand-purple);
     border-radius: 50%;
     opacity: 0.9;
