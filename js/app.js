@@ -618,7 +618,6 @@
             else if (imc < 30) cat = 'SOBREPESO';
             else cat = 'OBESO';
 
-            // 3. POPULAR CABEÇALHO (BOLHA)
             const hName = document.getElementById('header-name');
             const hBadge = document.getElementById('header-imc-badge');
             if (hName) hName.innerText = name.toUpperCase();
@@ -626,6 +625,47 @@
 
             const offImcNow = document.getElementById('off-imc-now-val');
             if (offImcNow) offImcNow.innerText = imc;
+
+            // 3.5 POPULAR STATUS CARD (NOVO)
+            const stBadge = document.getElementById('status-bmi-cat');
+            const stImc = document.getElementById('status-bmi-val');
+            const stHeadline = document.getElementById('status-headline');
+            const stSubtext = document.getElementById('status-subtext');
+            const stWeightNow = document.getElementById('status-weight-now');
+            const stWeightGoal = document.getElementById('status-weight-goal');
+            const stDateGoal = document.getElementById('status-date-goal');
+            const stProtocol = document.getElementById('status-protocol-desc');
+
+            if (stImc) stImc.innerText = `IMC: ${imc}`;
+            if (stBadge) stBadge.innerText = cat === 'SOBREPESO' ? 'SOBREPESO' : (cat === 'NORMAL' ? 'PESO NORMAL' : cat);
+            
+            // Lógica de pesos
+            const currentW = parseFloat(userProfile.weight) || 70;
+            const targetW = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? currentW + 5 : currentW - 5);
+            if (stWeightNow) stWeightNow.innerText = `${currentW} kg`;
+            if (stWeightGoal) stWeightGoal.innerText = `${targetW} kg`;
+
+            // Data estimada (21 dias)
+            const futureDate = new Date();
+            futureDate.setDate(futureDate.getDate() + 21);
+            const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+            if (stDateGoal) stDateGoal.innerText = `${futureDate.getDate()} ${months[futureDate.getMonth()]}`;
+
+            // Conteúdo dinâmico por objetivo
+            const goal = userProfile.goal || 'Definir';
+            if (goal === 'Ganar músculo') {
+                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA EL VOLUMEN';
+                stSubtext.innerText = 'Estás en el punto ideal para activar el modo anabólico y construir masa muscular magra rápidamente.';
+                stProtocol.innerText = 'Entrenamiento de fuerza hipertrófica con progresión de carga — 4-5 días/semana, superávit calórico controlado.';
+            } else if (goal === 'Perder grasa') {
+                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA LA QUEMA';
+                stSubtext.innerText = 'Tu metabolismo está preparado para entrar en estado de cetosis natural y eliminar grasa localizada.';
+                stProtocol.innerText = 'Protocolo HIIT metabólico con enfoque en movilización de grasas — 5-6 días/semana, déficit nutricional optimizado.';
+            } else {
+                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA DEFINICIÓN';
+                stSubtext.innerText = 'Estás en el punto ideal para esculpir tus músculos y eliminar la capa final de grasa subcutánea.';
+                stProtocol.innerText = 'Calistenia de definición con circuitos de alta intensidad — 4-5 días/semana, máxima quema de grasa.';
+            }
 
             // 4. IMAGENS DE COMPARAÇÃO
             const isFem = userProfile.gender === 'Femenino';

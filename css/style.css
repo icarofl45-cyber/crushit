@@ -3028,3 +3028,105 @@ text-rendering: optimizeLegibility;}
 .testimonials-footer { color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 30px; }
 .testimonials-footer a { color: #fff; text-decoration: underline; }
 
+
+/* STATUS CARD OFFER SCREEN */
+.summary-status-card {
+    background: #0f140f;
+    border: 1px solid #22c55e;
+    border-radius: 20px;
+    padding: 24px;
+    margin: 25px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.status-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.status-badge {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.status-imc {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    font-weight: 800;
+}
+.status-headline {
+    font-size: 28px;
+    font-weight: 950;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.status-subtext {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+.status-stats-row {
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+.stat-val {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.stat-val.highlight {
+    color: #22c55e;
+}
+.stat-val.orange {
+    color: #f97316;
+}
+.stat-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+}
+.stat-arrow {
+    color: rgba(255,255,255,0.1);
+    font-size: 18px;
+}
+.status-protocol-box {
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+}
+.protocol-icon {
+    font-size: 20px;
+}
+.protocol-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+}
+.protocol-text strong {
+    color: #22c55e;
+}
