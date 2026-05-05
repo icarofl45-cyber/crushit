@@ -1633,9 +1633,9 @@ margin-top: 5px;}
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     padding: 12px 10px;
-    text-align: center;
-    margin: 0 auto 10px;
-    display: block; /* Ensure it respects margins */
+    text-align: center !important;
+    margin: 0 auto 10px !important;
+    display: block !important;
     max-width: 320px;
     width: 90%;
     backdrop-filter: blur(10px);
@@ -3007,9 +3007,10 @@ text-rendering: optimizeLegibility;}
     text-align: center;
 }
 .bonus-headline {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 25px;
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+    margin-bottom: 25px !important;
 }
 .bonus-card {
     background: rgba(255,255,255,0.03);
