@@ -3194,3 +3194,15 @@ text-rendering: optimizeLegibility;}
 .summary-status-card.status-red .status-badge { color: #ef4444 !important; background: rgba(239, 68, 68, 0.15) !important; border-color: rgba(239, 68, 68, 0.3) !important; }
 .summary-status-card.status-red .stat-val.highlight { color: #ef4444 !important; }
 
+
+/* COMP CARD LABELS */
+.comp-musculatura-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+

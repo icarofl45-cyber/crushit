@@ -624,6 +624,22 @@
             const offImcNow = document.getElementById('off-imc-now-val');
             if (offImcNow) offImcNow.innerText = imc;
 
+            const targetW = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? (parseFloat(userProfile.weight) || 70) + 5 : (parseFloat(userProfile.weight) || 70) - 5);
+            const h = parseFloat(userProfile.height) || 170;
+            const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
+            const offImcGoal = document.getElementById('off-imc-goal-val');
+            if (offImcGoal) offImcGoal.innerText = targetImc;
+
+            // Update progress segments color/fill for "Ahora" card
+            const nowSegments = document.querySelector('.card-now .progress-segments');
+            if (nowSegments) {
+                let fills = 1;
+                if (cat === 'NORMAL') fills = 4;
+                else if (cat === 'SOBREPESO') fills = 2;
+                else if (cat === 'OBESO') fills = 1;
+                nowSegments.setAttribute('data-filled', fills);
+            }
+
             // 3.5 POPULAR STATUS CARD (NOVO)
             const stBadge = document.getElementById('status-bmi-cat');
             const stImc = document.getElementById('status-bmi-val');
