@@ -3467,7 +3467,7 @@ text-rendering: optimizeLegibility;}
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 32px;
     padding: 35px;
-    margin: 40px 16px;
+    margin: 10px 16px 40px;
     text-align: left;
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
