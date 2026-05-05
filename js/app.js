@@ -619,9 +619,7 @@
             else cat = 'OBESO';
 
             const hName = document.getElementById('header-name');
-            const hBadge = document.getElementById('header-imc-badge');
             if (hName) hName.innerText = name.toUpperCase();
-            if (hBadge) hBadge.innerText = `IMC: ${imc} - ${cat}`;
 
             const offImcNow = document.getElementById('off-imc-now-val');
             if (offImcNow) offImcNow.innerText = imc;
