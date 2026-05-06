@@ -559,6 +559,9 @@ width: 100%;}
     justify-content: center;
     position: relative;
 }
+.areas-avatar-v2.female-v2{
+    width: 240px;
+}
 .avatar-img-v2{
     width: 100%;
     height: auto;
