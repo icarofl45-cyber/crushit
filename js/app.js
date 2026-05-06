@@ -53,6 +53,9 @@
                 const map = {
                     'age': 'age',
                     'bodytype': 'bodyType',
+                    'desired-perder': 'desiredBody',
+                    'desired-ganar': 'desiredBody',
+                    'desired-definir': 'desiredBody',
                     'bodyfat': 'bodyFat',
                     'pushups': 'pushups',
                     'training': 'training'
@@ -85,6 +88,10 @@
 
             if (stepId === 'analysis') startAnalysis();
             if (stepId === 'hormones') startHormonesTimer();
+            if (stepId === 'bodyfat') {
+                const slider = document.getElementById('fat-slider');
+                if (slider) updateFatSlider(slider.value);
+            }
             
             const footer = document.querySelector('.main-footer');
             if (footer) {
@@ -745,7 +752,7 @@
                     'De CrossFit': 'de-crossfit-pergunta-4',
                     'Héroe': 'heroe-pergunta-4'
                 };
-                const goalFile = goalMap[userProfile.bodyFat] || 'atleta-pergunta-4';
+                const goalFile = goalMap[userProfile.desiredBody] || 'atleta-pergunta-4';
                 imgGoal.src = `imagens_webp_crush_it/${goalFile}${sfx}.webp`;
             }
 
@@ -917,11 +924,13 @@
                     populateOfferScreen();
                 }
                 
-                // Se for a tela de focusarea, atualiza a imagem
-                // Avatar logic removido para nova implementação
-                if (hash === 'focusarea') {
-                    // Implementação futura
+                // Se for a tela de bodyfat, atualiza a imagem
+                if (hash === 'bodyfat') {
+                    const slider = document.getElementById('fat-slider');
+                    if (slider) updateFatSlider(slider.value);
                 }
+
+                // Se for a tela de focusarea, atualiza a imagem
             }
 
             // Social Proof Balloons Rotation
