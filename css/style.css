@@ -194,20 +194,24 @@ position: relative;}
 grid-template-columns: 1fr 1fr;
 gap: 12px;
 width: 100%;}
-.gender-card{background-color: var(--card-bg);
-border-radius: 20px;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-align-items: center;
-cursor: pointer;
-border: 2px solid #222;
-transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-position: relative;}
-.gender-card:hover, .gender-card:active{border-color: var(--brand-purple);
-background-color: #222;
-transform: translateY(-4px) scale(1.02);
-box-shadow: 0 8px 24px rgba(123, 47, 247, 0.3);}
+.gender-card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+.gender-card:hover, .gender-card:active {
+    border-color: var(--brand-purple);
+    background-color: rgba(123, 47, 247, 0.05);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(123, 47, 247, 0.2);
+}
 .gender-img-wrap{width: 100%;
 height: 200px;
 overflow: hidden;
@@ -234,19 +238,21 @@ flex-direction: column;
 align-items: center;
 cursor: pointer;
 transition: all 0.3s ease;}
-.hex-image-wrap{width: 100%;
-max-width: 160px;
-aspect-ratio: 3 / 4;
-background-color: #1a1a1a;
-border-radius: 20px;
-overflow: hidden;
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-margin-bottom: 12px;
-border: 2px solid #2a2a2a;
-transition: all 0.3s;}
+.hex-image-wrap {
+    width: 100%;
+    max-width: 160px;
+    aspect-ratio: 3 / 4;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 12px;
+    border: 2px solid rgba(255,255,255,0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .hex-card:hover .hex-image-wrap{transform: scale(1.05);
 border-color: var(--brand-purple);
 box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);}
@@ -256,19 +262,23 @@ box-shadow: 0 0 20px var(--brand-purple);}
 height: 100%;
 object-fit: cover;
 object-position: top center;}
-.hex-label{font-family: 'Barlow Condensed', sans-serif;
-font-weight: 800;
-font-size: 18px;
-text-transform: uppercase;
-background: #222;
-padding: 6px 20px;
-border-radius: 50px;
-color: var(--text-white);
-border: 1px solid #333;
-transition: all 0.2s;}
-.hex-card:hover .hex-label{background-color: var(--brand-purple);
-border-color: var(--brand-purple);
-color: #fff;}
+.hex-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.05);
+    padding: 6px 20px;
+    border-radius: 50px;
+    color: var(--text-white);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+.hex-card:hover .hex-label {
+    background-color: var(--brand-purple);
+    border-color: var(--brand-purple);
+    color: #fff;
+}
 .goal-list{display: flex;
 flex-direction: column;
 gap: 16px;
@@ -2530,7 +2540,7 @@ margin-bottom: 10px;}}
 .headline{font-size: 26px !important;}
 .subheadline{font-size: 13px;}
 .age-button{font-size: 13px; padding: 8px 16px;}
-.gender-card{min-height: 160px;}
+
 .fat-image-display{height: 260px;}
 .fat-value-bubble{font-size: 14px; padding: 6px 14px;}
 .btn-continue{font-size: 14px; padding: 14px;}
