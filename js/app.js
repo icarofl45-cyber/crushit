@@ -42,7 +42,7 @@
             }
         }
 
-        const navigationHistory = [];
+        let navigationHistory = [];
 
         function goToStep(stepId, value) {
             const currentActive = document.querySelector('.screen.active');
@@ -81,14 +81,7 @@
             updateBackBtnVisibility();
             saveProfile();
             
-            // Progress Bar Update
-            const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final', 'offer'];
-            const currentIdx = steps.indexOf(stepId);
-            if (currentIdx !== -1) {
-                const perc = ((currentIdx + 1) / steps.length) * 100;
-                const pb = document.getElementById('progress-bar');
-                if (pb) pb.style.width = perc + '%';
-            }
+            updateProgressBar(stepId);
 
             if (stepId === 'analysis') startAnalysis();
             if (stepId === 'hormones') startHormonesTimer();
@@ -101,6 +94,16 @@
                 } else {
                     footer.style.display = 'none';
                 }
+            }
+        }
+
+        function updateProgressBar(stepId) {
+            const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final', 'offer'];
+            const currentIdx = steps.indexOf(stepId);
+            if (currentIdx !== -1) {
+                const perc = ((currentIdx + 1) / steps.length) * 100;
+                const pb = document.getElementById('progress-bar');
+                if (pb) pb.style.width = perc + '%';
             }
         }
 
@@ -181,10 +184,12 @@
 
         function saveProfile() {
             localStorage.setItem('crushit_profile', JSON.stringify(userProfile));
+            localStorage.setItem('crushit_history', JSON.stringify(navigationHistory));
         }
 
         function loadProfile() {
             const saved = localStorage.getItem('crushit_profile');
+            const savedHistory = localStorage.getItem('crushit_history');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
@@ -193,6 +198,14 @@
                     updateGenderUI();
                 } catch(e) {
                     console.error("Erro ao carregar perfil:", e);
+                }
+            }
+            if (savedHistory) {
+                try {
+                    const hist = JSON.parse(savedHistory);
+                    navigationHistory = hist;
+                } catch(e) {
+                    console.error("Erro ao carregar histórico:", e);
                 }
             }
         }
@@ -895,6 +908,7 @@
                 document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
                 document.getElementById('screen-' + hash).classList.add('active');
                 updateBackBtnVisibility();
+                updateProgressBar(hash);
                 
                 // Se for a tela de oferta, esconde o header
                 if (hash === 'offer') {
