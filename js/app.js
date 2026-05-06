@@ -593,27 +593,81 @@
         }
 
         function startChecklist() {
-            const fill = document.getElementById('checklist-loading-fill');
-            let perc = 0;
-            const interval = setInterval(() => {
-                perc += 1;
-                fill.style.width = perc + '%';
-                document.getElementById('checklist-perc').innerText = perc + '%';
-                
-                if (perc === 25) document.getElementById('chk-1').classList.add('active');
-                if (perc === 50) document.getElementById('chk-2').classList.add('active');
-                if (perc === 75) document.getElementById('chk-3').classList.add('active');
-                if (perc === 95) document.getElementById('chk-4').classList.add('active');
+            const circle1 = document.getElementById('circle-1');
+            const circle2 = document.getElementById('circle-2');
+            const circle3 = document.getElementById('circle-3');
+            const mainFill = document.getElementById('checklist-loading-fill');
+            const mainPerc = document.getElementById('checklist-perc');
 
-                if (perc >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        document.getElementById('summary-name').innerText = userProfile.name;
-                        goToStep('summary');
-                        startSummaryTimer();
-                    }, 500);
+            const radius = 18;
+            const circumference = 2 * Math.PI * radius;
+
+            // Inicializa anéis
+            [circle1, circle2, circle3].forEach(c => {
+                if (c) {
+                    c.style.strokeDasharray = `${circumference} ${circumference}`;
+                    c.style.strokeDashoffset = circumference;
                 }
-            }, 50);
+            });
+
+            // Helper para animar cada fase
+            function animatePhase(phaseNum, duration, nextCallback) {
+                const item = document.getElementById(`chk-v2-${phaseNum}`);
+                const circle = document.getElementById(`circle-${phaseNum}`);
+                const status = document.getElementById(`status-${phaseNum}`);
+                
+                if (item) {
+                    item.classList.remove('waiting');
+                    item.classList.add('active-now');
+                }
+
+                let start = null;
+                function step(timestamp) {
+                    if (!start) start = timestamp;
+                    let progress = Math.min((timestamp - start) / duration, 1);
+                    let percent = Math.floor(progress * 100);
+                    
+                    if (circle) circle.style.strokeDashoffset = circumference - (progress * circumference);
+                    if (status) status.innerText = percent + '%';
+                    
+                    // Atualiza a barra de progresso principal (global)
+                    let globalPerc = Math.floor(((phaseNum - 1) * 33.3) + (progress * 33.3));
+                    if (globalPerc > 100) globalPerc = 100;
+                    if (mainFill) mainFill.style.width = globalPerc + '%';
+                    if (mainPerc) mainPerc.innerText = globalPerc + '%';
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        if (item) {
+                            item.classList.remove('active-now');
+                            item.classList.add('completed');
+                        }
+                        if (nextCallback) setTimeout(nextCallback, 300);
+                    }
+                }
+                window.requestAnimationFrame(step);
+            }
+
+            // Inicia a sequência
+            document.getElementById('chk-v2-2').classList.add('waiting');
+            document.getElementById('chk-v2-3').classList.add('waiting');
+
+            animatePhase(1, 2500, () => {
+                animatePhase(2, 3000, () => {
+                    animatePhase(3, 2000, () => {
+                        // Finaliza tudo
+                        if (mainFill) mainFill.style.width = '100%';
+                        if (mainPerc) mainPerc.innerText = '100%';
+                        
+                        setTimeout(() => {
+                            document.getElementById('summary-name').innerText = userProfile.name;
+                            goToStep('summary');
+                            startSummaryTimer();
+                        }, 800);
+                    });
+                });
+            });
         }
 
         function startSummaryTimer() {
