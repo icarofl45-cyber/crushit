@@ -598,12 +598,13 @@ z-index: 5;
 mix-blend-mode: hard-light;}
 .body-highlight.active{opacity: 1;
 transform: scale(1.05);}
-.highlight-pecho{width: 66%; height: 18%; top: 16%; left: 17%; border-radius: 30%; background: radial-gradient(ellipse at 50% 65%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 55%), radial-gradient(circle at 20% 30%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 30%, transparent 45%), radial-gradient(circle at 80% 30%, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 30%, transparent 45%);}
-.highlight-brazo-l{width: 15%; height: 25%; top: 25%; left: 10%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 1) 0%, rgba(255, 85, 0, 0.65) 60%, transparent 100%);}
-.highlight-brazo-r{width: 15%; height: 25%; top: 25%; right: 10%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 1) 0%, rgba(255, 85, 0, 0.65) 60%, transparent 100%);}
-.highlight-abdomen{width: 40%; height: 20%; top: 28%; left: 30%; border-radius: 50%;}
-.highlight-pierna-l{width: 25%; height: 45%; top: 48%; left: 20%; border-radius: 50%;}
-.highlight-pierna-r{width: 25%; height: 45%; top: 48%; right: 20%; border-radius: 50%;}
+/* Highlights Masculinos v2 - Ajustados para 170px */
+.highlight-male-pecho { width: 70%; height: 16%; top: 15%; left: 15%; border-radius: 40%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 60%, transparent 80%); }
+.highlight-male-brazos-l { width: 22%; height: 28%; top: 22%; left: 2%; border-radius: 50%; }
+.highlight-male-brazos-r { width: 22%; height: 28%; top: 22%; right: 2%; border-radius: 50%; }
+.highlight-male-abdomen { width: 35%; height: 18%; top: 32%; left: 32.5%; border-radius: 30%; }
+.highlight-male-piernas-l { width: 30%; height: 42%; top: 52%; left: 18%; border-radius: 40%; }
+.highlight-male-piernas-r { width: 30%; height: 42%; top: 52%; right: 18%; border-radius: 40%; }
 
 /* Highlights Femininos v2 - Precisão Cirúrgica */
 .highlight-female-superiores { width: 60%; height: 25%; top: 15%; left: 32%; border-radius: 40%; }
