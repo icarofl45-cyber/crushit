@@ -629,22 +629,28 @@
             const isFemale = userProfile.gender === 'Femenino';
             const name = userProfile.name || (isFemale ? 'GUERRERA' : 'GUERRERO');
             
+            const hName = document.getElementById('header-name');
+            if (hName) hName.innerText = name.toUpperCase();
+
+            const sName = document.getElementById('summary-name');
+            if (sName) sName.innerText = name;
+
             // 2. CÁLCULO DE IMC
             let h = parseFloat(userProfile.height) || 170;
             let w = parseFloat(userProfile.weight) || 70;
             if (userProfile.units === 'imperial') {
-                h = h * 30.48; w = w * 0.453592;
+                h = h * 30.48; 
+                w = w * 0.453592;
             }
-            const imc = (w / ((h / 100) ** 2)).toFixed(1);
+            const imcVal = (w / ((h / 100) ** 2));
+            const imc = isNaN(imcVal) ? '22.0' : imcVal.toFixed(1);
             
             let cat = 'NORMAL';
-            if (imc < 18.5) cat = 'BAJO PESO';
-            else if (imc < 25) cat = 'NORMAL';
-            else if (imc < 30) cat = 'SOBREPESO';
+            const imcNum = parseFloat(imc);
+            if (imcNum < 18.5) cat = 'BAJO PESO';
+            else if (imcNum < 25) cat = 'NORMAL';
+            else if (imcNum < 30) cat = 'SOBREPESO';
             else cat = 'OBESO';
-
-            const hName = document.getElementById('header-name');
-            if (hName) hName.innerText = name.toUpperCase();
 
             const offImcNow = document.getElementById('off-imc-now-val');
             if (offImcNow) offImcNow.innerText = imc;
@@ -756,7 +762,7 @@
 
             // 5. MEDIDORES (Gauges Premium)
             // Calorias
-            let kcal = imc >= 25 ? 2000 : 2400;
+            let kcal = imcNum >= 25 ? 2000 : 2400;
             const gKcalVal = document.getElementById('g-kcal-val');
             const gKcalPin = document.getElementById('g-kcal-pin');
             if (gKcalVal) gKcalVal.innerText = kcal + ' kcal';
@@ -766,18 +772,20 @@
             }
 
             // Água
-            let litros = imc >= 25 ? 3.0 : 2.0;
+            let litros = imcNum >= 25 ? 3.0 : 2.0;
             const gWaterVal = document.getElementById('g-water-val');
             if (gWaterVal) gWaterVal.innerText = litros + ' litros';
             
             // Glasses logic
             const glasses = document.querySelectorAll('#water-glasses-track .glass');
-            const totalGlasses = glasses.length;
+            if (glasses.length > 0) {
+                const totalGlasses = glasses.length;
             const filledGlasses = Math.round((litros / 4) * totalGlasses); 
-            glasses.forEach((glass, i) => {
-                if (i < filledGlasses) glass.classList.add('active');
-                else glass.classList.remove('active');
-            });
+                glasses.forEach((glass, i) => {
+                    if (i < filledGlasses) glass.classList.add('active');
+                    else glass.classList.remove('active');
+                });
+            }
 
             // IMC Gauge
             const gImcVal = document.getElementById('g-imc-val');
@@ -785,16 +793,16 @@
             if (gImcVal) gImcVal.innerText = imc;
             if (gImcPin) {
                 // Rango: 15 a 35
-                let imcPerc = ((imc - 15) / (35 - 15)) * 100;
+                let imcPerc = ((imcNum - 15) / (35 - 15)) * 100;
                 if (imcPerc < 5) imcPerc = 5; if (imcPerc > 95) imcPerc = 95;
                 gImcPin.style.left = imcPerc + '%';
             }
 
             // Highlighting BMI Label
             document.querySelectorAll('.gauge-labels span').forEach(s => s.classList.remove('active'));
-            if (imc < 18.5) document.getElementById('lbl-bajo')?.classList.add('active');
-            else if (imc < 25) document.getElementById('lbl-normal')?.classList.add('active');
-            else if (imc < 30) document.getElementById('lbl-sobre')?.classList.add('active');
+            if (imcNum < 18.5) document.getElementById('lbl-bajo')?.classList.add('active');
+            else if (imcNum < 25) document.getElementById('lbl-normal')?.classList.add('active');
+            else if (imcNum < 30) document.getElementById('lbl-sobre')?.classList.add('active');
             else document.getElementById('lbl-obeso')?.classList.add('active');
         }
 
