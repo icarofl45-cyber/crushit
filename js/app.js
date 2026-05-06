@@ -91,10 +91,13 @@
                 if (slider) updateFatSlider(slider.value);
             }
             
-            const footer = document.querySelector('.main-footer');
+            if (stepId === 'offer') {
+                populateOfferScreen();
+            }
+
+            const footer = document.querySelector('.site-footer');
             if (footer) {
                 if (stepId === 'offer') {
-                    populateOfferScreen();
                     footer.style.display = 'block';
                 } else {
                     footer.style.display = 'none';
