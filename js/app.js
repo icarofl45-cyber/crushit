@@ -3,10 +3,8 @@
             element.classList.toggle('selected');
             const isSelected = element.classList.contains('selected');
 
-            // Map plural names from onclick to singular IDs used in HTML
-            let targetId = area;
-            if (area === 'brazos') targetId = 'brazo';
-            if (area === 'piernas') targetId = 'pierna';
+            // Use the area name directly as targetId (e.g., pecho, brazos, abdomen, piernas)
+            const targetId = area;
 
             if (area === 'todo') {
                 document.querySelectorAll('.area-option').forEach(opt => {
