@@ -552,7 +552,7 @@ gap: 16px;
 width: 100%;}
 .areas-avatar-v2{
     flex-shrink: 0;
-    width: 260px;
+    width: 210px;
     height: auto;
     display: flex;
     align-items: center;
