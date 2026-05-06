@@ -445,24 +445,24 @@ input[type=range]::-webkit-slider-runnable-track {
     border: none;
 }
 
-/* Webkit Slider Thumb - Tech Glowing Dot */
+/* Webkit Slider Thumb - Horizontal Pill */
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
+    height: 18px;
+    width: 60px;
+    border-radius: 50px;
     background: #fff;
     cursor: grab;
-    margin-top: -11px;
-    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.2), 0 0 20px var(--cta-green);
+    margin-top: -8px;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2), 0 0 20px var(--cta-green);
     border: 3px solid var(--cta-green);
     transition: all 0.2s ease;
 }
 
 input[type=range]:active::-webkit-slider-thumb {
     cursor: grabbing;
-    transform: scale(1.2);
-    box-shadow: 0 0 0 12px rgba(34, 197, 94, 0.3), 0 0 30px var(--cta-green);
+    width: 70px;
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.3), 0 0 30px var(--cta-green);
 }
 
 /* Firefox */
