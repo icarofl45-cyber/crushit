@@ -3218,13 +3218,21 @@ text-rendering: optimizeLegibility;}
 .proof-badge { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.08); transition: opacity 0.6s ease, transform 0.6s ease; min-width: 240px; } .proof-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; } .proof-dot.male { background: #4ade80; box-shadow: 0 0 12px rgba(74, 222, 128, 0.6); animation: blink-soft 2s infinite ease-in-out; } .proof-dot.female { background: #f472b6; box-shadow: 0 0 12px rgba(244, 114, 182, 0.6); animation: blink-soft 2s infinite ease-in-out; } @keyframes blink-soft { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } } .proof-text { font-size: 12px; font-weight: 700; color: #fff; text-transform: capitalize; line-height: 1; }
 
 /* Bonus Section Styles */
+/* Bonus Section Styles */
 .bonus-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     text-align: center;
 }
+
+@media (max-width: 420px) {
+    .bonus-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 .bonus-headline {
     text-align: center !important;
     width: 100% !important;
@@ -3235,15 +3243,17 @@ text-rendering: optimizeLegibility;}
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 16px;
-    padding: 20px;
+    padding: 15px 12px;
     display: flex;
-    gap: 15px;
-    text-align: left;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
 }
 .bonus-icon {
-    font-size: 24px;
-    width: 48px;
-    height: 48px;
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
     background: rgba(255,255,255,0.05);
     border-radius: 12px;
     display: flex;
