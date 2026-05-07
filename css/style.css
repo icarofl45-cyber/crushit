@@ -3218,20 +3218,25 @@ text-rendering: optimizeLegibility;}
 .proof-badge { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.08); transition: opacity 0.6s ease, transform 0.6s ease; min-width: 240px; } .proof-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; } .proof-dot.male { background: #4ade80; box-shadow: 0 0 12px rgba(74, 222, 128, 0.6); animation: blink-soft 2s infinite ease-in-out; } .proof-dot.female { background: #f472b6; box-shadow: 0 0 12px rgba(244, 114, 182, 0.6); animation: blink-soft 2s infinite ease-in-out; } @keyframes blink-soft { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } } .proof-text { font-size: 12px; font-weight: 700; color: #fff; text-transform: capitalize; line-height: 1; }
 
 /* Bonus Section Styles */
+#screen-offer {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 15px 100px !important;
+    margin: 0 auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .bonus-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin-bottom: 25px;
     width: 100%;
-    max-width: 700px;
+    max-width: 550px; /* Reduzi para caber melhor no viewport mobile */
     margin: 0 auto;
     padding: 0;
-}
-
-#screen-offer {
-    max-width: 750px !important;
-    padding: 0 10px 100px !important;
 }
 
 @media (max-width: 500px) {
