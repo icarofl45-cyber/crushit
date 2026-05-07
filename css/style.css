@@ -3222,14 +3222,31 @@ text-rendering: optimizeLegibility;}
 .bonus-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
-    text-align: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 800px; /* Permite expansão */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@media (max-width: 420px) {
+/* Aumentando a largura da tela de oferta especificamente */
+#screen-offer {
+    max-width: 750px !important;
+}
+
+@media (max-width: 500px) {
     .bonus-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* No mobile muito estreito volta a 1 col, mas no tablet/large phone fica 2 */
+        width: 95%;
+    }
+}
+
+/* Tablet e Celulares Largos */
+@media (min-width: 410px) and (max-width: 768px) {
+    .bonus-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 }
 
@@ -3243,17 +3260,18 @@ text-rendering: optimizeLegibility;}
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 16px;
-    padding: 15px 12px;
+    padding: 18px 15px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+    flex-direction: row; /* Volta a ser horizontal */
+    gap: 15px;
+    text-align: left;
     align-items: center;
+    min-height: 100px;
 }
 .bonus-icon {
-    font-size: 20px;
-    width: 42px;
-    height: 42px;
+    font-size: 22px;
+    width: 46px;
+    height: 46px;
     background: rgba(255,255,255,0.05);
     border-radius: 12px;
     display: flex;
