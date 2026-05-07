@@ -3327,11 +3327,14 @@ text-rendering: optimizeLegibility;}
     background: rgba(34, 197, 94, 0.05);
     border: 1px solid rgba(34, 197, 94, 0.2);
     border-radius: 16px;
-    padding: 20px;
+    padding: 15px 20px;
     text-align: center;
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 320px; /* Mais estreito para centralizar "entre" os dois de cima */
+    margin: -10px auto 20px; /* Margem negativa para aproximar da grade */
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 .total-label {
     font-size: 10px;
