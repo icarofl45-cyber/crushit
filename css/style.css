@@ -3328,6 +3328,40 @@ text-rendering: optimizeLegibility;}
     padding: 4px 8px;
     border-radius: 4px;
 }
+/* Novo Card de Resumo de Bônus Centralizado */
+.bonus-summary-badge {
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 20px;
+    padding: 15px 30px;
+    margin: 15px auto 35px;
+    text-align: center;
+    width: fit-content; /* Chave para centralização perfeita */
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+}
+.summary-label {
+    font-size: 10px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.summary-value {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+}
+.summary-value strong {
+    color: var(--cta-green);
+    font-weight: 950;
+}
 .bonus-total-card {
     background: rgba(34, 197, 94, 0.05);
     border: 1px solid rgba(34, 197, 94, 0.2);
