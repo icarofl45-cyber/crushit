@@ -3262,35 +3262,46 @@ text-rendering: optimizeLegibility;}
     border-radius: 16px;
     padding: 18px 15px;
     display: flex;
-    flex-direction: row; /* Volta a ser horizontal */
+    flex-direction: column; /* Agora é vertical */
     gap: 15px;
     text-align: left;
+    min-height: 180px; /* Ajuste para manter altura uniforme */
+}
+.bonus-header {
+    display: flex;
     align-items: center;
-    min-height: 100px;
+    gap: 12px;
 }
 .bonus-icon {
-    font-size: 22px;
-    width: 46px;
-    height: 46px;
+    font-size: 20px;
+    width: 38px; /* Reduzi levemente para caber melhor na linha */
+    height: 38px;
     background: rgba(255,255,255,0.05);
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
 }
+.bonus-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .bonus-info h3 {
     color: #fff;
-    font-size: 14px;
+    font-size: 13px; /* Leve redução para a nova largura do grid */
     font-weight: 900;
-    margin-bottom: 8px;
+    margin: 0; /* Remove margem antiga */
     text-transform: uppercase;
+    line-height: 1.2;
 }
 .bonus-info p {
     color: rgba(255,255,255,0.5);
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.5;
     margin-bottom: 12px;
+    flex-grow: 1; /* Garante que o preço fique sempre no rodapé */
 }
 .bonus-price {
     display: flex;
