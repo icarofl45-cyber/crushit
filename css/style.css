@@ -3927,60 +3927,56 @@ text-rendering: optimizeLegibility;}
     70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
-/* FOOTER BADGES PREMIUM */
+/* FOOTER BADGES PREMIUM - FORCING ROW ON ALL SCREENS */
 .footer-badges {
     display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 40px !important;
+    gap: 15px !important; /* Gap reduzido para mobile */
     margin: 40px auto 20px !important;
     padding-bottom: 20px;
     flex-wrap: nowrap !important;
     width: 100%;
-    max-width: 900px;
+    max-width: 95% !important;
 }
 
 .badge-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    flex-shrink: 1 !important; /* Permite encolher se necessário */
 }
 
 .footer-badge-img {
-    height: 60px;
+    height: 50px; /* Altura base menor para mobile */
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.05));
     transition: transform 0.3s ease;
 }
 
-.badge-item:nth-child(1) .footer-badge-img { height: 75px; } /* SSL um pouco maior */
-.badge-item:nth-child(2) .footer-badge-img { height: 65px; } /* Pagamentos */
-.badge-item:nth-child(3) .footer-badge-img { height: 85px; } /* Garantia */
+.badge-item:nth-child(1) .footer-badge-img { height: 60px; } /* SSL */
+.badge-item:nth-child(2) .footer-badge-img { height: 35px; } /* Pagamentos (mais largo, menos alto) */
+.badge-item:nth-child(3) .footer-badge-img { height: 65px; } /* Garantia */
 
 .footer-badge-img:hover {
     transform: scale(1.05);
     filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
 }
 
-@media (max-width: 768px) {
-    .footer-badges {
-        flex-direction: column !important;
-        gap: 25px !important;
-        flex-wrap: wrap !important;
-    }
-    .footer-badge-img {
-        height: 50px !important;
-    }
-    .badge-item:nth-child(3) .footer-badge-img { height: 70px !important; }
+/* Desktop sizing restoration */
+@media (min-width: 769px) {
+    .footer-badges { gap: 40px !important; }
+    .badge-item:nth-child(1) .footer-badge-img { height: 75px; }
+    .badge-item:nth-child(2) .footer-badge-img { height: 65px; }
+    .badge-item:nth-child(3) .footer-badge-img { height: 85px; }
 }
-.bubble-ready {
-    font-size: 13px;
-    color: #fff;
-    margin-top: 10px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+
+/* Tablet/Mobile refinement */
+@media (max-width: 480px) {
+    .footer-badges { gap: 10px !important; }
+    .badge-item:nth-child(1) .footer-badge-img { height: 45px; }
+    .badge-item:nth-child(2) .footer-badge-img { height: 25px; }
+    .badge-item:nth-child(3) .footer-badge-img { height: 50px; }
 }
