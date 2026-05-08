@@ -1,4 +1,4 @@
-﻿:root{--bg-color: #0F0F0F;
+:root{--bg-color: #0F0F0F;
 --card-bg: #181818;
 --brand-purple: #7b2ff7;
 --deep-purple: #1e1535;
@@ -3207,41 +3207,44 @@ text-rendering: optimizeLegibility;}
 /* Social Proof Carousel Styles - REFINADO */
 .proof-badge { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.08); transition: opacity 0.6s ease, transform 0.6s ease; min-width: 240px; } .proof-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; } .proof-dot.male { background: #4ade80; box-shadow: 0 0 12px rgba(74, 222, 128, 0.6); animation: blink-soft 2s infinite ease-in-out; } .proof-dot.female { background: #f472b6; box-shadow: 0 0 12px rgba(244, 114, 182, 0.6); animation: blink-soft 2s infinite ease-in-out; } @keyframes blink-soft { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } } .proof-text { font-size: 12px; font-weight: 700; color: #fff; text-transform: capitalize; line-height: 1; }
 
-/* BONUS SECTION - WIDE HORIZONTAL CARDS (GRID 2X2) */
+/* BONUS CARDS - NEW STACKED LAYOUT (Emoji + Title top, Text bottom) */
 .bonus-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin-bottom: 30px;
     width: 100%;
-    max-width: 800px; /* Aumentado em ~40% em relação aos 550px anteriores */
+    max-width: 850px;
     margin: 0 auto;
     padding: 0 10px;
 }
 
 .bonus-card {
     background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 20px;
     display: flex;
-    flex-direction: row; /* Horizontal */
-    align-items: flex-start;
-    gap: 15px;
+    flex-direction: column; /* Empilhamento Vertical */
+    gap: 12px;
     text-align: left;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    min-height: 200px;
 }
 
-.bonus-card:hover {
-    transform: translateY(-3px);
-    background: rgba(255,255,255,0.06);
+.bonus-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
 }
 
 .bonus-icon {
-    font-size: 28px;
+    font-size: 24px;
     background: rgba(255,255,255,0.05);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3249,30 +3252,33 @@ text-rendering: optimizeLegibility;}
     flex-shrink: 0;
 }
 
-.bonus-info {
-    flex: 1;
-}
-
 .bonus-info h3 {
     font-size: 14px;
     font-weight: 900;
     color: #fff;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
+    margin: 0;
     line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.bonus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .bonus-info p {
-    font-size: 11px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.4;
-    margin-bottom: 10px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    margin: 0;
 }
 
 .bonus-price {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 5px;
 }
 
 .old-price {
@@ -3285,12 +3291,12 @@ text-rendering: optimizeLegibility;}
     background: var(--cta-green);
     color: #000;
     font-size: 10px;
-    font-weight: 900;
-    padding: 2px 8px;
-    border-radius: 4px;
+    font-weight: 950;
+    padding: 3px 10px;
+    border-radius: 5px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
     .bonus-container {
         grid-template-columns: 1fr;
         max-width: 450px;
@@ -3303,6 +3309,9 @@ text-rendering: optimizeLegibility;}
     padding: 15px;
     border-radius: 12px;
     margin-top: 10px;
+    width: 100%;
+}
+ 10px;
     width: 100%;
 }
 
