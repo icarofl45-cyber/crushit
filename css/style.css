@@ -3930,42 +3930,52 @@ text-rendering: optimizeLegibility;}
 /* FOOTER BADGES PREMIUM */
 .footer-badges {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
     margin-top: 30px;
     padding-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .badge-item {
-    width: 100%;
-    max-width: 350px;
+    width: auto;
+    max-width: 250px;
     display: flex;
     justify-content: center;
 }
 
 .footer-badge-img {
     width: 100%;
-    height: auto;
+    max-height: 80px;
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.05));
     transition: transform 0.3s ease;
 }
 
+.footer-badge-img.guarantee-badge {
+    max-width: 100px;
+}
+
 .footer-badge-img.payment-methods {
-    max-width: 450px; /* A barra de pagamentos pode ser um pouco maior */
+    max-width: 350px; 
 }
 
 .footer-badge-img:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
     filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
 }
 
 @media (max-width: 768px) {
+    .footer-badges {
+        flex-direction: column;
+        gap: 20px;
+    }
     .badge-item {
-        max-width: 280px;
+        max-width: 220px;
     }
     .footer-badge-img.payment-methods {
-        max-width: 320px;
+        max-width: 280px;
     }
 }
