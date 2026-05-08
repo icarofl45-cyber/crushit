@@ -3913,14 +3913,15 @@ text-rendering: optimizeLegibility;}
     animation: cta-main-pulse 2s infinite;
     transition: all 0.3s ease;
     width: 95%;
-/* NEW FOOTER TRUST STRUCTURE - PYRAMID LAYOUT */
+/* NEW FOOTER TRUST STRUCTURE - PYRAMID ADJUSTED */
 .footer-trust-container {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 15px !important;
+    gap: 12px !important;
     margin: 30px auto 10px !important;
     width: 100%;
+    max-width: 500px; /* Limita a largura total para o triângulo ficar bonito */
     padding-bottom: 20px;
 }
 
@@ -3931,30 +3932,31 @@ text-rendering: optimizeLegibility;}
 }
 
 .trust-badge-payments {
-    height: 30px !important; 
+    height: 25px !important; 
     width: auto !important;
-    max-width: 250px !important;
+    max-width: 220px !important;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+.trust-row-bottom {
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; /* Espalha um para cada lado */
+    align-items: center !important;
+    padding: 0 15px; /* Respiro nas laterais */
+}
+
+.trust-badge-small {
+    height: 28px !important; /* Bem menores como solicitado */
+    width: auto !important;
     object-fit: contain;
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.05));
 }
 
-.trust-row-bottom {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 25px !important;
-}
-
-.trust-badge-small {
-    height: 45px !important; 
-    width: auto !important;
-    object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.08));
-}
-
 @media (max-width: 480px) {
-    .trust-badge-payments { height: 22px !important; max-width: 180px !important; }
-    .trust-badge-small { height: 35px !important; }
-    .trust-row-bottom { gap: 15px !important; }
+    .trust-badge-payments { height: 18px !important; }
+    .trust-badge-small { height: 22px !important; }
+    .trust-row-bottom { padding: 0 40px; } /* Mais centralizados no mobile */
 }
