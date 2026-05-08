@@ -3913,14 +3913,14 @@ text-rendering: optimizeLegibility;}
     animation: cta-main-pulse 2s infinite;
     transition: all 0.3s ease;
     width: 95%;
-/* FOOTER BADGES PREMIUM - REDUCED BY 50% FOR COMPACT LAYOUT */
+/* FOOTER BADGES PREMIUM - ULTRA COMPACT (REDUCED ANOTHER 50%) */
 .footer-badges {
     display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 15px !important; 
-    margin: 30px auto 10px !important;
+    gap: 10px !important; 
+    margin: 20px auto 10px !important;
     padding-bottom: 20px;
     flex-wrap: nowrap !important;
     width: 100%;
@@ -3935,32 +3935,26 @@ text-rendering: optimizeLegibility;}
 }
 
 .footer-badge-img {
-    height: 35px; 
+    height: 18px; 
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.05));
+    filter: drop-shadow(0 0 3px rgba(255,255,255,0.05));
     transition: transform 0.3s ease;
 }
 
-/* Mobile Sizes (Reduced 50%) */
-.badge-item:nth-child(1) .footer-badge-img { height: 32px; } /* SSL */
-.badge-item:nth-child(2) .footer-badge-img { height: 18px; } /* Pagamentos */
-.badge-item:nth-child(3) .footer-badge-img { height: 35px; } /* Garantia */
+/* Mobile Sizes (Ultra Compact) */
+.badge-item:nth-child(1) .footer-badge-img { height: 16px; } /* SSL */
+.badge-item:nth-child(2) .footer-badge-img { height: 10px; } /* Pagamentos */
+.badge-item:nth-child(3) .footer-badge-img { height: 18px; } /* Garantia */
 
 .footer-badge-img:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+    transform: scale(1.2);
 }
 
-/* Desktop Sizes (Reduced 50%) */
+/* Desktop Sizes (Ultra Compact) */
 @media (min-width: 769px) {
-    .footer-badges { gap: 30px !important; }
-    .badge-item:nth-child(1) .footer-badge-img { height: 50px; }
-    .badge-item:nth-child(2) .footer-badge-img { height: 35px; }
-    .badge-item:nth-child(3) .footer-badge-img { height: 60px; }
-}
-
-/* Extra small mobile refinement */
-@media (max-width: 480px) {
-    .footer-badges { gap: 8px !important; }
+    .footer-badges { gap: 20px !important; }
+    .badge-item:nth-child(1) .footer-badge-img { height: 25px; }
+    .badge-item:nth-child(2) .footer-badge-img { height: 18px; }
+    .badge-item:nth-child(3) .footer-badge-img { height: 30px; }
 }
