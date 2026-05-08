@@ -3978,9 +3978,9 @@ text-rendering: optimizeLegibility;}
 }
 .bubble-ready {
     font-size: 13px;
-    color: rgba(255,255,255,0.7);
-    margin-top: 8px;
-    font-weight: 500;
+    color: #fff;
+    margin-top: 10px;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
