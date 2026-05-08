@@ -3913,50 +3913,47 @@ text-rendering: optimizeLegibility;}
     animation: cta-main-pulse 2s infinite;
     transition: all 0.3s ease;
     width: 95%;
-/* NEW FOOTER TRUST STRUCTURE - PYRAMID ADJUSTED */
+/* NEW FOOTER TRUST STRUCTURE - ABSOLUTE ALIGNMENT */
 .footer-trust-container {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 12px !important;
-    margin: 30px auto 10px !important;
-    width: 100%;
-    max-width: 500px; /* Limita a largura total para o triângulo ficar bonito */
+    gap: 15px !important;
+    margin: 30px 0 10px !important;
+    width: 100% !important; /* Largura total */
+    max-width: 100% !important; 
     padding-bottom: 20px;
 }
 
 .trust-row-top {
-    width: 100%;
+    width: 100% !important;
     display: flex !important;
-    justify-content: center !important;
+    justify-content: center !important; /* Mantém pagamentos no centro */
 }
 
 .trust-badge-payments {
     height: 25px !important; 
     width: auto !important;
-    max-width: 220px !important;
+    max-width: 250px !important;
     object-fit: contain;
-    opacity: 0.9;
 }
 
 .trust-row-bottom {
-    width: 100%;
+    width: 100% !important;
     display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important; /* Espalha um para cada lado */
+    justify-content: flex-start !important; /* Força início na esquerda */
     align-items: center !important;
-    padding: 0 15px; /* Respiro nas laterais */
+    padding: 0 25px !important; /* Respiro da borda esquerda */
 }
 
 .trust-badge-small {
-    height: 28px !important; /* Bem menores como solicitado */
+    height: 25px !important; 
     width: auto !important;
-    object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.05));
+    margin-right: auto !important; /* Garante que fique empurrado para a esquerda */
 }
 
 @media (max-width: 480px) {
-    .trust-badge-payments { height: 18px !important; }
+    .trust-badge-payments { height: 20px !important; }
     .trust-badge-small { height: 22px !important; }
-    .trust-row-bottom { padding: 0 40px; } /* Mais centralizados no mobile */
+    .trust-row-bottom { padding: 0 15px !important; }
 }
