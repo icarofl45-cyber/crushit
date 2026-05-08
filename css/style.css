@@ -3924,9 +3924,9 @@ text-rendering: optimizeLegibility;}
 }
 
 .trust-badge-payments {
-    height: 25px !important; 
+    height: 45px !important; 
     width: auto !important;
-    max-width: 250px !important;
+    max-width: 350px !important;
     object-fit: contain;
 }
 
@@ -3939,13 +3939,13 @@ text-rendering: optimizeLegibility;}
 }
 
 .trust-badge-small {
-    height: 35px !important; 
+    height: 45px !important; 
     width: auto !important;
     object-fit: contain;
 }
 
 @media (max-width: 480px) {
-    .trust-badge-payments { height: 18px !important; }
-    .trust-badge-small { height: 28px !important; }
+    .trust-badge-payments { height: 32px !important; }
+    .trust-badge-small { height: 38px !important; }
     .trust-row-bottom { gap: 20px !important; }
 }
