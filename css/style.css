@@ -3927,3 +3927,45 @@ text-rendering: optimizeLegibility;}
     70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
+/* FOOTER BADGES PREMIUM */
+.footer-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+.badge-item {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-badge-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.05));
+    transition: transform 0.3s ease;
+}
+
+.footer-badge-img.payment-methods {
+    max-width: 450px; /* A barra de pagamentos pode ser um pouco maior */
+}
+
+.footer-badge-img:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
+}
+
+@media (max-width: 768px) {
+    .badge-item {
+        max-width: 280px;
+    }
+    .footer-badge-img.payment-methods {
+        max-width: 320px;
+    }
+}
