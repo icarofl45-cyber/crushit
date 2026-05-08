@@ -3913,48 +3913,48 @@ text-rendering: optimizeLegibility;}
     animation: cta-main-pulse 2s infinite;
     transition: all 0.3s ease;
     width: 95%;
-/* FOOTER BADGES PREMIUM - ULTRA COMPACT (REDUCED ANOTHER 50%) */
-.footer-badges {
+/* NEW FOOTER TRUST STRUCTURE - PYRAMID LAYOUT */
+.footer-trust-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+    margin: 30px auto 10px !important;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.trust-row-top {
+    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.trust-badge-payments {
+    height: 30px !important; 
+    width: auto !important;
+    max-width: 250px !important;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.05));
+}
+
+.trust-row-bottom {
     display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 10px !important; 
-    margin: 20px auto 10px !important;
-    padding-bottom: 20px;
-    flex-wrap: nowrap !important;
-    width: 100%;
-    max-width: 95% !important;
+    gap: 25px !important;
 }
 
-.badge-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 1 !important;
-}
-
-.footer-badge-img {
-    height: 18px; 
-    width: auto;
+.trust-badge-small {
+    height: 45px !important; 
+    width: auto !important;
     object-fit: contain;
-    filter: drop-shadow(0 0 3px rgba(255,255,255,0.05));
-    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.08));
 }
 
-/* Mobile Sizes (Ultra Compact) */
-.badge-item:nth-child(1) .footer-badge-img { height: 16px; } /* SSL */
-.badge-item:nth-child(2) .footer-badge-img { height: 10px; } /* Pagamentos */
-.badge-item:nth-child(3) .footer-badge-img { height: 18px; } /* Garantia */
-
-.footer-badge-img:hover {
-    transform: scale(1.2);
-}
-
-/* Desktop Sizes (Ultra Compact) */
-@media (min-width: 769px) {
-    .footer-badges { gap: 20px !important; }
-    .badge-item:nth-child(1) .footer-badge-img { height: 25px; }
-    .badge-item:nth-child(2) .footer-badge-img { height: 18px; }
-    .badge-item:nth-child(3) .footer-badge-img { height: 30px; }
+@media (max-width: 480px) {
+    .trust-badge-payments { height: 22px !important; max-width: 180px !important; }
+    .trust-badge-small { height: 35px !important; }
+    .trust-row-bottom { gap: 15px !important; }
 }
