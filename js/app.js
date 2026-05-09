@@ -1104,12 +1104,12 @@ const segments = [
     { label: '5%',  color: '#2a2a3e' },
     { label: '50%', color: '#4C1D95' },
     { label: '15%', color: '#2a2a3e' },
-    { label: '75%', color: '#7B2FF7' },
+    { label: '75%', color: '#2a2a3e' },
     { label: '20%', color: '#2a2a3e' },
     { label: '30%', color: '#4C1D95' }
 ];
 
-function drawWheel(rotation) {
+function drawWheel(rotation, highlightWinner) {
     const canvas = document.getElementById('roulette-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -1126,18 +1126,19 @@ function drawWheel(rotation) {
     segments.forEach((seg, i) => {
         const startAngle = i * segAngle;
         const endAngle = startAngle + segAngle;
+        const isWinner = highlightWinner && seg.label === '75%';
 
         // Draw segment
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.arc(0, 0, r, startAngle, endAngle);
         ctx.closePath();
-        ctx.fillStyle = seg.color;
+        ctx.fillStyle = isWinner ? '#7B2FF7' : seg.color;
         ctx.fill();
 
         // Segment border
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = isWinner ? 'rgba(255, 215, 0, 0.6)' : 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = isWinner ? 3 : 1.5;
         ctx.stroke();
 
         // Draw label
@@ -1145,8 +1146,8 @@ function drawWheel(rotation) {
         ctx.rotate(startAngle + segAngle / 2);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillStyle = seg.label === '75%' ? '#FFD700' : '#fff';
-        ctx.font = seg.label === '75%' ? 'bold 22px Inter, sans-serif' : 'bold 16px Inter, sans-serif';
+        ctx.fillStyle = isWinner ? '#FFD700' : '#fff';
+        ctx.font = isWinner ? 'bold 22px Inter, sans-serif' : 'bold 16px Inter, sans-serif';
         ctx.fillText(seg.label, r * 0.65, 0);
         ctx.restore();
     });
@@ -1213,12 +1214,15 @@ function spinRoulette() {
         const eased = 1 - Math.pow(1 - progress, 3);
         const currentRotation = eased * finalAngle;
 
-        drawWheel(currentRotation);
+        drawWheel(currentRotation, false);
 
         if (progress < 1) {
             requestAnimationFrame(animateSpin);
         } else {
-            // Spin complete - show result
+            // Spin complete - highlight the winner segment
+            drawWheel(currentRotation, true);
+            
+            // Show result after a brief pause
             setTimeout(() => {
                 const spinBtn = document.getElementById('roulette-spin-btn');
                 if (spinBtn) spinBtn.style.display = 'none';
