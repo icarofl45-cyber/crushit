@@ -1089,3 +1089,218 @@
         };
 
 
+
+// ============================================
+// ROULETTE DISCOUNT SYSTEM
+// ============================================
+let rouletteTimer = null;
+let rouletteShown = false;
+let rouletteSpun = false;
+
+// Wheel segments configuration
+const segments = [
+    { label: '10%', color: '#2a2a3e' },
+    { label: '25%', color: '#4C1D95' },
+    { label: '5%',  color: '#2a2a3e' },
+    { label: '50%', color: '#4C1D95' },
+    { label: '15%', color: '#2a2a3e' },
+    { label: '75%', color: '#7B2FF7' },
+    { label: '20%', color: '#2a2a3e' },
+    { label: '30%', color: '#4C1D95' }
+];
+
+function drawWheel(rotation) {
+    const canvas = document.getElementById('roulette-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const r = cx - 10;
+    const segAngle = (2 * Math.PI) / segments.length;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(rotation);
+
+    segments.forEach((seg, i) => {
+        const startAngle = i * segAngle;
+        const endAngle = startAngle + segAngle;
+
+        // Draw segment
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.arc(0, 0, r, startAngle, endAngle);
+        ctx.closePath();
+        ctx.fillStyle = seg.color;
+        ctx.fill();
+
+        // Segment border
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Draw label
+        ctx.save();
+        ctx.rotate(startAngle + segAngle / 2);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = seg.label === '75%' ? '#FFD700' : '#fff';
+        ctx.font = seg.label === '75%' ? 'bold 22px Inter, sans-serif' : 'bold 16px Inter, sans-serif';
+        ctx.fillText(seg.label, r * 0.65, 0);
+        ctx.restore();
+    });
+
+    // Center circle
+    ctx.beginPath();
+    ctx.arc(0, 0, 30, 0, 2 * Math.PI);
+    ctx.fillStyle = '#1a1a2e';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(123, 47, 247, 0.6)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // Center text
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 11px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('GIRAR', 0, 0);
+
+    ctx.restore();
+}
+
+function showRoulette() {
+    if (rouletteShown || rouletteSpun) return;
+    rouletteShown = true;
+
+    const overlay = document.getElementById('roulette-overlay');
+    if (overlay) {
+        overlay.classList.add('active');
+        drawWheel(0);
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function spinRoulette() {
+    if (rouletteSpun) return;
+    rouletteSpun = true;
+
+    const spinBtn = document.getElementById('roulette-spin-btn');
+    if (spinBtn) spinBtn.disabled = true;
+
+    const segAngle = (2 * Math.PI) / segments.length;
+    // Index 5 = 75% segment. The pointer is at the top (12 o'clock = -PI/2).
+    // We need the middle of segment 5 to be at the top.
+    // Segment 5 center angle = 5 * segAngle + segAngle/2
+    // For it to be at the top (where pointer is), final rotation should place it at -PI/2
+    const targetSegCenter = 5 * segAngle + segAngle / 2;
+    // Rotation needed so that targetSegCenter aligns with top (-PI/2 in canvas coords)
+    // Canvas 0 is at 3 o'clock, pointer is at top = -PI/2
+    // We rotate clockwise, so: finalAngle = -(targetSegCenter + PI/2) + fullSpins
+    const fullSpins = 8 * 2 * Math.PI; // 8 full rotations for dramatic effect
+    const finalAngle = fullSpins + (2 * Math.PI - targetSegCenter) - Math.PI / 2;
+
+    let startTime = null;
+    const duration = 4000; // 4 seconds spin
+
+    function animateSpin(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing: cubic ease-out for realistic deceleration
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const currentRotation = eased * finalAngle;
+
+        drawWheel(currentRotation);
+
+        if (progress < 1) {
+            requestAnimationFrame(animateSpin);
+        } else {
+            // Spin complete - show result
+            setTimeout(() => {
+                const spinBtn = document.getElementById('roulette-spin-btn');
+                if (spinBtn) spinBtn.style.display = 'none';
+
+                const result = document.getElementById('roulette-result');
+                if (result) result.style.display = 'block';
+            }, 500);
+        }
+    }
+
+    requestAnimationFrame(animateSpin);
+}
+
+function claimDiscount() {
+    // Close the popup
+    const overlay = document.getElementById('roulette-overlay');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+
+    // Apply discount to the price card
+    applyDiscountToPrice();
+
+    // Save discount state
+    localStorage.setItem('crushit_discount_applied', 'true');
+}
+
+function applyDiscountToPrice() {
+    const originalPrice = document.getElementById('original-price');
+    const originalCurrency = document.getElementById('original-currency');
+    const discountContainer = document.getElementById('discount-badge-container');
+
+    if (originalPrice) {
+        originalPrice.classList.add('price-discounted');
+    }
+    if (originalCurrency) {
+        originalCurrency.classList.add('currency-discounted');
+    }
+    if (discountContainer) {
+        discountContainer.style.display = 'flex';
+        discountContainer.style.animation = 'rouletteResultIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both';
+    }
+
+    // Scroll to the price section smoothly
+    const priceArea = document.getElementById('price-display-area');
+    if (priceArea) {
+        setTimeout(() => {
+            priceArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+    }
+}
+
+// Start the roulette timer when the offer screen becomes active
+function startRouletteTimer() {
+    if (rouletteTimer || rouletteSpun) return;
+    
+    // Check if discount was already applied
+    if (localStorage.getItem('crushit_discount_applied') === 'true') {
+        rouletteSpun = true;
+        applyDiscountToPrice();
+        return;
+    }
+
+    rouletteTimer = setTimeout(() => {
+        showRoulette();
+    }, 15000); // 15 seconds for testing
+}
+
+// Hook into the offer screen navigation
+const _originalGoToStep = goToStep;
+goToStep = function(stepId, value) {
+    _originalGoToStep(stepId, value);
+    if (stepId === 'offer') {
+        startRouletteTimer();
+    }
+};
+
+// Also handle direct page load on offer screen
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const hash = window.location.hash.substring(1);
+        if (hash === 'offer') {
+            startRouletteTimer();
+        }
+    }, 500);
+});

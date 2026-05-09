@@ -1344,9 +1344,19 @@
                 </div>
 
                 <div style="padding: 30px 20px;">
-                    <div style="display: flex; align-items: flex-end; justify-content: center; gap: 8px; margin-bottom: 25px;">
-                        <span style="font-size: 72px; font-weight: 900; color: #fff; line-height: 1;">$39.99</span>
-                        <span style="font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 12px; opacity: 0.6;">USD</span>
+                    <div id="price-display-area" style="display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 25px;">
+                        <div style="display: flex; align-items: flex-end; justify-content: center; gap: 8px;">
+                            <span id="original-price" style="font-size: 72px; font-weight: 900; color: #fff; line-height: 1;">$39.99</span>
+                            <span id="original-currency" style="font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 12px; opacity: 0.6;">USD</span>
+                        </div>
+                        <!-- Discount elements (hidden by default, shown after roulette) -->
+                        <div id="discount-badge-container" style="display: none; flex-direction: column; align-items: center; gap: 8px;">
+                            <span id="discount-badge" style="background: #ff6b00; color: #fff; font-size: 13px; font-weight: 900; padding: 5px 16px; border-radius: 50px; display: inline-block; letter-spacing: 0.5px;">75% DE DESCUENTO</span>
+                            <div style="display: flex; align-items: flex-end; justify-content: center; gap: 8px;">
+                                <span id="new-price" style="font-size: 72px; font-weight: 900; color: var(--cta-green); line-height: 1;">$9.99</span>
+                                <span style="font-size: 18px; font-weight: 900; color: var(--cta-green); margin-bottom: 12px; opacity: 0.8;">USD</span>
+                            </div>
+                        </div>
                     </div>
 
                     <button onclick="window.location.href='https://pay.hotmart.com/YOUR_LINK_HERE'" style="width: 100%; background: var(--cta-green); color: #000; border: none; padding: 22px; border-radius: 16px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 10px;">
@@ -1737,6 +1747,34 @@
                     </div>
                 </div>
             </footer>
+        </div>
+    </div>
+
+    <!-- ROULETTE DISCOUNT POPUP -->
+    <div id="roulette-overlay" class="roulette-overlay">
+        <div class="roulette-modal">
+            <div class="roulette-header">
+                <div class="roulette-gift-icon">🎰</div>
+                <h2 class="roulette-title">¡ESPERA!</h2>
+                <p class="roulette-subtitle">Tienes una oportunidad exclusiva.<br>Gira la ruleta y descubre tu descuento.</p>
+            </div>
+
+            <div class="roulette-wheel-container">
+                <div class="roulette-pointer"></div>
+                <canvas id="roulette-canvas" width="320" height="320"></canvas>
+            </div>
+
+            <button id="roulette-spin-btn" class="roulette-spin-btn" onclick="spinRoulette()">
+                ¡GIRAR AHORA!
+            </button>
+
+            <div id="roulette-result" class="roulette-result" style="display: none;">
+                <div class="roulette-result-badge">🎉 ¡FELICIDADES!</div>
+                <p class="roulette-result-text">Ganaste un <strong>75% de descuento</strong></p>
+                <button id="roulette-claim-btn" class="roulette-claim-btn" onclick="claimDiscount()">
+                    ¡QUIERO MI DESCUENTO!
+                </button>
+            </div>
         </div>
     </div>
 

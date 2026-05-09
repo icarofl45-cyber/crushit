@@ -1,4 +1,4 @@
-:root{--bg-color: #0F0F0F;
+﻿:root{--bg-color: #0F0F0F;
 --card-bg: #181818;
 --brand-purple: #7b2ff7;
 --deep-purple: #1e1535;
@@ -411,7 +411,7 @@ overflow: visible;}
 .fat-img{height: 110%; /* Reduzido levemente para caber melhor */
 width: auto;
 object-fit: contain;
-object-position: center 40px; /* Abaixado para nÃ£o cortar a cabeÃ§a */
+object-position: center 40px; /* Abaixado para nÃƒÂ£o cortar a cabeÃƒÂ§a */
 filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
 transition: all 0.3s ease;
 z-index: 2;}
@@ -587,7 +587,7 @@ transform: scale(1.05);}
 .highlight-male-piernas-l { width: 30%; height: 42%; top: 48%; left: 18%; border-radius: 40%; }
 .highlight-male-piernas-r { width: 30%; height: 42%; top: 48%; right: 18%; border-radius: 40%; }
 
-/* Highlights Femininos v2 - PrecisÃ£o CirÃºrgica */
+/* Highlights Femininos v2 - PrecisÃƒÂ£o CirÃƒÂºrgica */
 .highlight-female-superiores { width: 60%; height: 25%; top: 15%; left: 32%; border-radius: 40%; }
 .highlight-female-abdomen { width: 30%; height: 10%; top: 32%; left: 34%; border-radius: 30%; }
 .highlight-female-gluteos { width: 28%; height: 16%; top: 42%; left: 45%; border-radius: 40%; }
@@ -1172,7 +1172,7 @@ box-shadow: 0 0 10px var(--brand-purple);}
 color: var(--text-white);}
 .chk-item.completed .chk-circle{border-color: var(--cta-green);
 background: rgba(34, 197, 94, 0.1);}
-.chk-item.completed .chk-circle::after{content: 'Ã¢Å“â€œ';
+.chk-item.completed .chk-circle::after{content: 'ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“';
 color: var(--cta-green);
 font-weight: 900;
 font-size: 14px;}
@@ -1495,7 +1495,7 @@ box-shadow: 0 0 10px var(--brand-purple);}
 color: var(--text-white);}
 .chk-item.completed .chk-circle{border-color: var(--cta-green);
 background: rgba(34, 197, 94, 0.1);}
-.chk-item.completed .chk-circle::after{content: 'âœ“';
+.chk-item.completed .chk-circle::after{content: 'Ã¢Å“â€œ';
 color: var(--cta-green);
 font-weight: 900;
 font-size: 14px;}
@@ -1563,9 +1563,9 @@ text-align: left;}
     background: #111;
     border-radius: 12px;
     overflow: hidden;
-    position: relative; /* NecessÃ¡rio para o overlay */
+    position: relative; /* NecessÃƒÂ¡rio para o overlay */
 }
-/* Gradiente para suavizar a transiÃ§Ã£o embaixo */
+/* Gradiente para suavizar a transiÃƒÂ§ÃƒÂ£o embaixo */
 .comparison-card-img-wrap::after {
     content: '';
     position: absolute;
@@ -3311,9 +3311,6 @@ text-rendering: optimizeLegibility;}
     margin-top: 10px;
     width: 100%;
 }
- 10px;
-    width: 100%;
-}
 
 .summary-label {
     display: block;
@@ -3637,7 +3634,7 @@ text-rendering: optimizeLegibility;}
 }
 .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
 
-/* Novos Estilos de TransformaÃ§Ã£o */
+/* Novos Estilos de TransformaÃƒÂ§ÃƒÂ£o */
 .transformation-container {
     width: 100%;
     height: 180px;
@@ -3913,7 +3910,7 @@ text-rendering: optimizeLegibility;}
     gap: 15px !important;
     margin: 30px auto 10px !important;
     width: 100% !important;
-    max-width: 450px !important; /* Mantém o conjunto centralizado e 'fechado' */
+    max-width: 450px !important; /* MantÃ©m o conjunto centralizado e 'fechado' */
     padding-bottom: 20px;
 }
 
@@ -3935,7 +3932,7 @@ text-rendering: optimizeLegibility;}
     display: flex !important;
     justify-content: center !important; /* Tudo no centro */
     align-items: center !important;
-    gap: 30px !important; /* Espaço entre SSL e Garantia */
+    gap: 30px !important; /* EspaÃ§o entre SSL e Garantia */
 }
 
 .trust-badge-small {
@@ -3948,4 +3945,184 @@ text-rendering: optimizeLegibility;}
     .trust-badge-payments { height: 90px !important; }
     .trust-badge-small { height: 100px !important; }
     .trust-row-bottom { gap: 20px !important; }
+}
+
+/* ============================================= */
+/* ROULETTE DISCOUNT POPUP - PREMIUM DESIGN      */
+/* ============================================= */
+.roulette-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    animation: rouletteOverlayIn 0.4s ease both;
+}
+.roulette-overlay.active {
+    display: flex;
+}
+@keyframes rouletteOverlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.roulette-modal {
+    background: linear-gradient(145deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%);
+    border: 2px solid rgba(123, 47, 247, 0.4);
+    border-radius: 28px;
+    padding: 30px 25px;
+    max-width: 380px;
+    width: 92%;
+    text-align: center;
+    position: relative;
+    box-shadow: 
+        0 0 60px rgba(123, 47, 247, 0.3),
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    animation: rouletteModalIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: 0.2s;
+}
+@keyframes rouletteModalIn {
+    from { opacity: 0; transform: scale(0.8) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.roulette-header {
+    margin-bottom: 20px;
+}
+.roulette-gift-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    animation: rouletteBounce 1.5s infinite;
+}
+@keyframes rouletteBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.roulette-title {
+    font-size: 32px;
+    font-weight: 950;
+    color: #fff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+.roulette-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    font-weight: 500;
+}
+.roulette-wheel-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 20px;
+}
+#roulette-canvas {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 6px rgba(123, 47, 247, 0.5),
+        0 0 0 10px rgba(123, 47, 247, 0.2),
+        0 0 40px rgba(123, 47, 247, 0.3);
+}
+.roulette-pointer {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 28px solid #ff6b00;
+    filter: drop-shadow(0 4px 8px rgba(255, 107, 0, 0.5));
+    z-index: 10;
+}
+.roulette-spin-btn {
+    background: linear-gradient(135deg, #7B2FF7 0%, #9b59f7 100%);
+    color: #fff;
+    border: none;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 950;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(123, 47, 247, 0.5);
+    transition: all 0.3s ease;
+    animation: rouletteSpinPulse 2s infinite;
+    width: 90%;
+}
+@keyframes rouletteSpinPulse {
+    0%, 100% { box-shadow: 0 10px 30px rgba(123, 47, 247, 0.5); }
+    50% { box-shadow: 0 10px 40px rgba(123, 47, 247, 0.8), 0 0 20px rgba(123, 47, 247, 0.3); }
+}
+.roulette-spin-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+}
+.roulette-result {
+    margin-top: 15px;
+    animation: rouletteResultIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes rouletteResultIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+.roulette-result-badge {
+    font-size: 24px;
+    font-weight: 950;
+    color: #fff;
+    margin-bottom: 8px;
+}
+.roulette-result-text {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+}
+.roulette-result-text strong {
+    color: var(--cta-green);
+    font-size: 20px;
+}
+.roulette-claim-btn {
+    background: var(--cta-green);
+    color: #000;
+    border: none;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 950;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5);
+    width: 100%;
+    animation: rouletteClaimPulse 1.5s infinite;
+}
+@keyframes rouletteClaimPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5); }
+    50% { transform: scale(1.03); box-shadow: 0 10px 40px rgba(34, 197, 94, 0.8); }
+}
+
+/* PRICE DISCOUNT ANIMATION */
+.price-discounted {
+    text-decoration: line-through !important;
+    opacity: 0.35 !important;
+    font-size: 36px !important;
+    transition: all 0.6s ease !important;
+}
+.currency-discounted {
+    opacity: 0.2 !important;
+    font-size: 12px !important;
+    transition: all 0.6s ease !important;
 }
