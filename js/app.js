@@ -1104,7 +1104,7 @@ const segments = [
     { label: '5%',  color: '#2a2a3e' },
     { label: '50%', color: '#4C1D95' },
     { label: '15%', color: '#2a2a3e' },
-    { label: '75%', color: '#2a2a3e' },
+    { label: '75%', color: '#4C1D95' },
     { label: '20%', color: '#2a2a3e' },
     { label: '30%', color: '#4C1D95' }
 ];
