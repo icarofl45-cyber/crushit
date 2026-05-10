@@ -1,4 +1,4 @@
-// JS LOGIC FOR FOCUS AREAS
+﻿// JS LOGIC FOR FOCUS AREAS
         function toggleArea(area, element) {
             element.classList.toggle('selected');
             const isSelected = element.classList.contains('selected');
@@ -30,7 +30,7 @@
                 }
             }
 
-            // Ativa/Desativa botão de continuar
+            // Ativa/Desativa botÃ£o de continuar
             const btn = document.getElementById('btn-areas-continue');
             const hasSelection = document.querySelectorAll('.area-option.selected').length > 0;
             if (hasSelection) {
@@ -72,7 +72,7 @@
             if (next) next.classList.add('active');
             window.scrollTo(0,0);
             
-            // Salva a etapa atual na URL sem recarregar a página
+            // Salva a etapa atual na URL sem recarregar a pÃ¡gina
             if (history.replaceState) {
                 history.replaceState(null, null, '#' + stepId);
             } else {
@@ -143,7 +143,7 @@
 
             if (percEl) percEl.innerText = percentage + '%';
             if (claimEl) {
-                const areaWord = areas.length > 1 ? 'ÁREAS PROBLEMÁTICAS' : 'ÁREA PROBLEMÁTICA';
+                const areaWord = areas.length > 1 ? 'ÃREAS PROBLEMÃTICAS' : 'ÃREA PROBLEMÃTICA';
                 const genderTerm = userProfile.gender === 'Femenino' ? 'LAS MUJERES' : 'LOS HOMBRES';
                 claimEl.innerHTML = `DE ${genderTerm} QUE ELIGEN<br><span style="color:var(--cta-green);">${areasText}</span> COMO ${areaWord}`;
             }
@@ -213,7 +213,7 @@
                     const hist = JSON.parse(savedHistory);
                     navigationHistory = hist;
                 } catch(e) {
-                    console.error("Erro ao carregar histórico:", e);
+                    console.error("Erro ao carregar histÃ³rico:", e);
                 }
             }
         }
@@ -260,8 +260,8 @@
             const txtDiff = document.getElementById('txt-gender-difference');
             if (txtDiff) {
                 txtDiff.innerText = isFemale 
-                    ? "La diferencia entre la mujer que eres y la que podrías ser son exactamente 21 días."
-                    : "La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.";
+                    ? "La diferencia entre la mujer que eres y la que podrÃ­as ser son exactamente 21 dÃ­as."
+                    : "La diferencia entre el hombre que eres y el que podrÃ­as ser son exactamente 21 dÃ­as.";
             }
 
             // Text 2: Not ready
@@ -274,16 +274,16 @@
             const txtMost = document.getElementById('txt-most-men');
             if (txtMost) {
                 txtMost.innerText = isFemale
-                    ? "La mayoría de las mujeres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listas - El protocolo fue diseñado para cuando no te sientes lista - Ese es exactamente el punto de entrada."
-                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.";
+                    ? "La mayorÃ­a de las mujeres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listas - El protocolo fue diseÃ±ado para cuando no te sientes lista - Ese es exactamente el punto de entrada."
+                    : "La mayorÃ­a de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseÃ±ado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.";
             }
 
             // Text 4: Men/women who use it
             const txtWho = document.getElementById('txt-men-who-use');
             if (txtWho) {
                 txtWho.innerText = isFemale
-                    ? "El papel donde marcas cada día completado. Simple. Pero las mujeres que lo usan tienen 3 veces mais probabilidades de terminar el reto."
-                    : "El papel onde marcas cada dia completado. Simple. Mas os homens que o usam têm 3 vezes mais probabilidades de terminar o desafio.";
+                    ? "El papel donde marcas cada dÃ­a completado. Simple. Pero las mujeres que lo usan tienen 3 veces mais probabilidades de terminar el reto."
+                    : "El papel onde marcas cada dia completado. Simple. Mas os homens que o usam tÃªm 3 vezes mais probabilidades de terminar o desafio.";
             }
 
             // Gender Specific Areas Screen
@@ -309,7 +309,7 @@
 
             if (isFemale) {
                 if (lbPecho) lbPecho.innerText = 'Superiores';
-                if (lbBrazos) lbBrazos.innerText = 'Glúteos';
+                if (lbBrazos) lbBrazos.innerText = 'GlÃºteos';
                 if (lbAbdomen) lbAbdomen.innerText = 'Abdomen';
                 if (lbPiernas) lbPiernas.innerText = 'Muslos';
                 if (lbTodo) lbTodo.innerText = 'Todo el Cuerpo';
@@ -326,7 +326,7 @@
             userProfile.goal = goal;
             saveProfile();
             if (goal === 'Perder Peso') goToStep('desired-perder');
-            else if (goal === 'Ganar Músculo') goToStep('desired-ganar');
+            else if (goal === 'Ganar MÃºsculo') goToStep('desired-ganar');
             else goToStep('desired-definir');
         }
 
@@ -359,18 +359,18 @@
             const isMetric = unit === 'metric';
             document.getElementById('bio-unit-metric').classList.toggle('active', isMetric);
             document.getElementById('bio-unit-imperial').classList.toggle('active', !isMetric);
-            document.getElementById('label-height').innerText = isMetric ? 'centímetros' : 'pies/pulgadas';
+            document.getElementById('label-height').innerText = isMetric ? 'centÃ­metros' : 'pies/pulgadas';
             document.getElementById('label-weight').innerText = isMetric ? 'kilogramos' : 'libras';
             
             // Atualiza mensagens de erro
-            document.querySelector('#error-height span').innerText = isMetric ? 'Mínimo 140cm / Máximo 220cm' : 'Mínimo 4\'7\" / Máximo 7\'2\"';
-            document.querySelector('#error-weight span').innerText = isMetric ? 'Mínimo 40kg / Máximo 140kg' : 'Mínimo 88lb / Máximo 308lb';
+            document.querySelector('#error-height span').innerText = isMetric ? 'MÃ­nimo 140cm / MÃ¡ximo 220cm' : 'MÃ­nimo 4\'7\" / MÃ¡ximo 7\'2\"';
+            document.querySelector('#error-weight span').innerText = isMetric ? 'MÃ­nimo 40kg / MÃ¡ximo 140kg' : 'MÃ­nimo 88lb / MÃ¡ximo 308lb';
             
             // Atualiza placeholders
             document.getElementById('input-height').placeholder = isMetric ? '175' : '5.9';
             document.getElementById('input-weight').placeholder = isMetric ? '80' : '175';
             
-            // SINCRONIZA COM A PRÓXIMA TELA (PESO OBJETIVO)
+            // SINCRONIZA COM A PRÃ“XIMA TELA (PESO OBJETIVO)
             userProfile.units = isMetric ? 'metric' : 'imperial';
             setWeightUnit(isMetric ? 'kg' : 'lb');
             
@@ -394,7 +394,7 @@
                 return;
             }
 
-            // Normalização para Metric para cálculo de IMC e Validação
+            // NormalizaÃ§Ã£o para Metric para cÃ¡lculo de IMC e ValidaÃ§Ã£o
             let hMetric = h;
             let wMetric = w;
 
@@ -490,7 +490,7 @@
         }
 
         function updateTargetWeightDisplay(val) {
-            // A lógica de exibição agora é automática pelo campo de input e estilo bio-field
+            // A lÃ³gica de exibiÃ§Ã£o agora Ã© automÃ¡tica pelo campo de input e estilo bio-field
             
 
 
@@ -528,12 +528,12 @@
             userProfile.targetWeight = document.getElementById('input-target-weight').value;
             saveProfile();
             
-            // Atualizar a prediction screen com dados dinâmicos
+            // Atualizar a prediction screen com dados dinÃ¢micos
             const tw = parseFloat(userProfile.targetWeight) || 70;
             const unit = userProfile.units === 'metric' ? 'kg' : 'lb';
             document.getElementById('pred-weight-display').innerText = tw + ' ' + unit;
             
-            // Data dinâmica: hoje + 21 dias
+            // Data dinÃ¢mica: hoje + 21 dias
             const targetDate = new Date();
             targetDate.setDate(targetDate.getDate() + 21);
             const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
@@ -567,7 +567,7 @@
                     }, 500);
                 }
                 
-                // O gráfico desenha 2x mais rápido que a barra
+                // O grÃ¡fico desenha 2x mais rÃ¡pido que a barra
                 let graphProgress = progress * 2;
                 if (graphProgress > 100) graphProgress = 100;
                 
@@ -593,9 +593,12 @@
         }
 
         function startChecklist() {
+        function startChecklist() {
             const circle1 = document.getElementById('circle-1');
             const circle2 = document.getElementById('circle-2');
             const circle3 = document.getElementById('circle-3');
+            const circle4 = document.getElementById('circle-4');
+            const circle5 = document.getElementById('circle-5');
             const mainFill = document.getElementById('checklist-loading-fill');
             const mainPerc = document.getElementById('checklist-perc');
 
@@ -603,18 +606,18 @@
             const circumference = 2 * Math.PI * radius;
 
             // Inicializa anéis
-            [circle1, circle2, circle3].forEach(c => {
+            [circle1, circle2, circle3, circle4, circle5].forEach(c => {
                 if (c) {
-                    c.style.strokeDasharray = `${circumference} ${circumference}`;
+                    c.style.strokeDasharray = ${circumference} ;
                     c.style.strokeDashoffset = circumference;
                 }
             });
 
             // Helper para animar cada fase
             function animatePhase(phaseNum, duration, nextCallback) {
-                const item = document.getElementById(`chk-v2-${phaseNum}`);
-                const circle = document.getElementById(`circle-${phaseNum}`);
-                const status = document.getElementById(`status-${phaseNum}`);
+                const item = document.getElementById(chk-v2-);
+                const circle = document.getElementById(circle-);
+                const status = document.getElementById(status-);
                 
                 if (item) {
                     item.classList.remove('waiting');
@@ -630,8 +633,8 @@
                     if (circle) circle.style.strokeDashoffset = circumference - (progress * circumference);
                     if (status) status.innerText = percent + '%';
                     
-                    // Atualiza a barra de progresso principal (global)
-                    let globalPerc = Math.floor(((phaseNum - 1) * 33.3) + (progress * 33.3));
+                    // Atualiza a barra de progresso principal (global) - 5 fases = 20% cada
+                    let globalPerc = Math.floor(((phaseNum - 1) * 20) + (progress * 20));
                     if (globalPerc > 100) globalPerc = 100;
                     if (mainFill) mainFill.style.width = globalPerc + '%';
                     if (mainPerc) mainPerc.innerText = globalPerc + '%';
@@ -650,21 +653,31 @@
             }
 
             // Inicia a sequência
-            document.getElementById('chk-v2-2').classList.add('waiting');
-            document.getElementById('chk-v2-3').classList.add('waiting');
+            [2,3,4,5].forEach(num => {
+                const el = document.getElementById(chk-v2-);
+                if (el) el.classList.add('waiting');
+            });
 
-            animatePhase(1, 2500, () => {
-                animatePhase(2, 3000, () => {
+            animatePhase(1, 1500, () => {
+                animatePhase(2, 2000, () => {
                     animatePhase(3, 2000, () => {
-                        // Finaliza tudo
-                        if (mainFill) mainFill.style.width = '100%';
-                        if (mainPerc) mainPerc.innerText = '100%';
-                        
-                        setTimeout(() => {
-                            document.getElementById('summary-name').innerText = userProfile.name;
-                            goToStep('summary');
-                            startSummaryTimer();
-                        }, 800);
+                        animatePhase(4, 1500, () => {
+                            animatePhase(5, 1200, () => {
+                                // Finaliza tudo
+                                if (mainFill) mainFill.style.width = '100%';
+                                if (mainPerc) mainPerc.innerText = '100%';
+                                
+                                setTimeout(() => {
+                                    document.getElementById('summary-name').innerText = userProfile.name;
+                                    goToStep('summary');
+                                    startSummaryTimer();
+                                }, 800);
+                            });
+                        });
+                    });
+                });
+            });
+        }
                     });
                 });
             });
@@ -682,7 +695,7 @@
             }, 1000);
         }
         function populateOfferScreen() {
-            // 1. DADOS BÁSICOS
+            // 1. DADOS BÃSICOS
             const isFemale = userProfile.gender === 'Femenino';
             const name = userProfile.name || (isFemale ? 'GUERRERA' : 'GUERRERO');
             
@@ -692,7 +705,7 @@
             const sName = document.getElementById('summary-name');
             if (sName) sName.innerText = name;
 
-            // 2. CÁLCULO DE IMC
+            // 2. CÃLCULO DE IMC
             let h = parseFloat(userProfile.height) || 170;
             let w = parseFloat(userProfile.weight) || 70;
             if (userProfile.units === 'imperial') {
@@ -712,7 +725,7 @@
             const offImcNow = document.getElementById('off-imc-now-val');
             if (offImcNow) offImcNow.innerText = imc;
 
-            const targetW = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? (parseFloat(userProfile.weight) || 70) + 5 : (parseFloat(userProfile.weight) || 70) - 5);
+            const targetW = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar mÃºsculo' ? (parseFloat(userProfile.weight) || 70) + 5 : (parseFloat(userProfile.weight) || 70) - 5);
             h = parseFloat(userProfile.height) || 170;
             if (userProfile.units === 'imperial') h = h * 30.48; 
             const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
@@ -759,11 +772,11 @@
                 }
             }
             
-            // Lógica de pesos e unidades
+            // LÃ³gica de pesos e unidades
             const isMetricUnit = userProfile.units !== 'imperial';
             const unitSuffix = isMetricUnit ? 'kg' : 'lb';
             const currentWeight = parseFloat(userProfile.weight) || (isMetricUnit ? 70 : 155);
-            const targetWeightVal = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? currentWeight + (isMetricUnit ? 5 : 11) : currentWeight - (isMetricUnit ? 5 : 11));
+            const targetWeightVal = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar mÃºsculo' ? currentWeight + (isMetricUnit ? 5 : 11) : currentWeight - (isMetricUnit ? 5 : 11));
             
             if (stWeightNow) stWeightNow.innerText = `${currentWeight} ${unitSuffix}`;
             if (stWeightGoal) stWeightGoal.innerText = `${targetWeightVal} ${unitSuffix}`;
@@ -774,23 +787,23 @@
             const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
             if (stDateGoal) stDateGoal.innerText = `${futureDate.getDate()} ${months[futureDate.getMonth()]}`;
 
-            // Conteúdo dinâmico por objetivo
+            // ConteÃºdo dinÃ¢mico por objetivo
             const goal = userProfile.goal || 'Definir';
-            if (goal === 'Ganar músculo') {
-                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA EL VOLUMEN';
-                stSubtext.innerText = 'Estás en el punto ideal para activar el modo anabólico y construir masa muscular magra rápidamente.';
-                stProtocol.innerText = 'Entrenamiento de fuerza hipertrófica con progresión de carga — 4-5 días/semana, superávit calórico controlado.';
+            if (goal === 'Ganar mÃºsculo') {
+                stHeadline.innerText = 'TU CUERPO ESTÃ LISTO PARA EL VOLUMEN';
+                stSubtext.innerText = 'EstÃ¡s en el punto ideal para activar el modo anabÃ³lico y construir masa muscular magra rÃ¡pidamente.';
+                stProtocol.innerText = 'Entrenamiento de fuerza hipertrÃ³fica con progresiÃ³n de carga â€” 4-5 dÃ­as/semana, superÃ¡vit calÃ³rico controlado.';
             } else if (goal === 'Perder grasa') {
-                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA LA QUEMA';
-                stSubtext.innerText = 'Tu metabolismo está preparado para entrar en estado de cetosis natural y eliminar grasa localizada.';
-                stProtocol.innerText = 'Protocolo HIIT metabólico con enfoque en movilización de grasas — 5-6 días/semana, déficit nutricional optimizado.';
+                stHeadline.innerText = 'TU CUERPO ESTÃ LISTO PARA LA QUEMA';
+                stSubtext.innerText = 'Tu metabolismo estÃ¡ preparado para entrar en estado de cetosis natural y eliminar grasa localizada.';
+                stProtocol.innerText = 'Protocolo HIIT metabÃ³lico con enfoque en movilizaciÃ³n de grasas â€” 5-6 dÃ­as/semana, dÃ©ficit nutricional optimizado.';
             } else {
-                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA DEFINICIÓN';
-                stSubtext.innerText = 'Estás en el punto ideal para esculpir tus músculos y eliminar la capa final de grasa subcutánea.';
-                stProtocol.innerText = 'Calistenia de definición con circuitos de alta intensidad — 4-5 días/semana, máxima quema de grasa.';
+                stHeadline.innerText = 'TU CUERPO ESTÃ LISTO PARA DEFINICIÃ“N';
+                stSubtext.innerText = 'EstÃ¡s en el punto ideal para esculpir tus mÃºsculos y eliminar la capa final de grasa subcutÃ¡nea.';
+                stProtocol.innerText = 'Calistenia de definiciÃ³n con circuitos de alta intensidad â€” 4-5 dÃ­as/semana, mÃ¡xima quema de grasa.';
             }
 
-            // 4. IMAGENS DE COMPARAÇÃO
+            // 4. IMAGENS DE COMPARAÃ‡ÃƒO
             const isFem = userProfile.gender === 'Femenino';
             const sfx = isFem ? '-w' : '';
             const imgNow = document.getElementById('off-img-now');
@@ -811,7 +824,7 @@
                     'Culturista': 'culturista-pergunta-4',
                     'De Playa': 'de-playa-pergunta-4',
                     'De CrossFit': 'de-crossfit-pergunta-4',
-                    'Héroe': 'heroe-pergunta-4'
+                    'HÃ©roe': 'heroe-pergunta-4'
                 };
                 const goalFile = goalMap[userProfile.desiredBody] || 'atleta-pergunta-4';
                 imgGoal.src = `imagens_webp_crush_it/${goalFile}${sfx}.webp`;
@@ -828,7 +841,7 @@
                 gKcalPin.style.left = kcalPerc + '%';
             }
 
-            // Água
+            // Ãgua
             let litros = imcNum >= 25 ? 3.0 : 2.0;
             const gWaterVal = document.getElementById('g-water-val');
             if (gWaterVal) gWaterVal.innerText = litros + ' litros';
@@ -912,7 +925,7 @@
                     }, 500);
                 }
                 
-                // O gráfico desenha 2x mais rápido que a barra
+                // O grÃ¡fico desenha 2x mais rÃ¡pido que a barra
                 let graphProgress = progress * 2;
                 if (graphProgress > 100) graphProgress = 100;
 
@@ -954,7 +967,7 @@
 
 
 
-        // Recupera a etapa da URL ao carregar a página
+        // Recupera a etapa da URL ao carregar a pÃ¡gina
         window.addEventListener('DOMContentLoaded', () => {
             loadProfile();
 
@@ -974,7 +987,7 @@
             const hash = window.location.hash.substring(1);
             if (hash && document.getElementById('screen-' + hash)) {
                 // Navega direto para a etapa salva no hash
-                // Mas não salva histórico do welcome
+                // Mas nÃ£o salva histÃ³rico do welcome
                 document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
                 document.getElementById('screen-' + hash).classList.add('active');
                 updateBackBtnVisibility();
@@ -1014,7 +1027,7 @@
             // Logic for pre-applied discounts if needed
         }
 
-        // SOCIAL PROOF CAROUSEL - REFINADO (PORTUGUÊS)
+        // SOCIAL PROOF CAROUSEL - REFINADO (PORTUGUÃŠS)
         let currentProofIndex = 0;
         const proofs = [
             { name: 'Carlos*', gender: 'male' },
@@ -1059,17 +1072,17 @@
             const track = document.getElementById('testimonials-track');
             if (!track) return;
             
-            // Duplicar conteúdo apenas se ainda não foi duplicado
+            // Duplicar conteÃºdo apenas se ainda nÃ£o foi duplicado
             if (track.children.length < 15) {
                 track.innerHTML += track.innerHTML;
             }
             
             let x = 0;
-            const speed = 1.0; // Velocidade ajustada para ser visível
+            const speed = 1.0; // Velocidade ajustada para ser visÃ­vel
             
             function animate() {
                 x -= speed;
-                // Quando metade do conteúdo (que é o original) passar, reseta para o início
+                // Quando metade do conteÃºdo (que Ã© o original) passar, reseta para o inÃ­cio
                 if (Math.abs(x) >= track.scrollWidth / 2) {
                     x = 0;
                 }
