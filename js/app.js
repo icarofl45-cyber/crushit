@@ -352,7 +352,12 @@
             bubble.style.left = ((val-1) / 7 * 100) + '%';
             
             const suffix = userProfile.gender === 'Femenino' ? '-w' : '';
-            img.src = `imagens_webp_crush_it/${files[val-1]}${suffix}.webp`;
+            let fileName = files[val-1];
+            if (suffix === '') {
+                if (fileName === '25-29') fileName = '30-34';
+                else if (fileName === '30-34') fileName = '25-29';
+            }
+            img.src = `imagens_webp_crush_it/${fileName}${suffix}.webp`;
         }
 
         function toggleBioUnits(unit) {
