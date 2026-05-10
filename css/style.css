@@ -611,8 +611,8 @@ user-select: none;}
 background: #1f1f1f;}
 .area-option.selected{border-color: #ff5500;
 background: #ff5500;}
-.area-hex-icon{width: 46px;
-height: 46px;
+.area-hex-icon{width: 68px;
+height: 68px;
 flex-shrink: 0;
 clip-path: url(#hex-clip-rounded);
 background: #252525;
@@ -4121,4 +4121,4 @@ text-rendering: optimizeLegibility;}
 .chk-item-v2.completed .progress-ring__circle {
     stroke: var(--cta-green); /* Green when finished */
 }
-\r\n/* Ajuste de Zoom para os ícones femininos gerados */\r\n#areas-content-female .area-hex-icon img {\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: cover;\r\n    transform: scale(1.1);\r\n}\r\n
+\r\n/* Ajuste de Zoom para os ícones femininos gerados */\r\n.area-hex-icon img {\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: cover;\r\n    transform: scale(1.1);\r\n}\r\n
