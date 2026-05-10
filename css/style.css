@@ -4106,3 +4106,18 @@ text-rendering: optimizeLegibility;}
 .price-new-v2.discounted {
     color: var(--cta-green);
 }
+
+
+/* DYNAMIC CIRCLE COLORS */
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.1s linear, stroke 0.4s ease;
+    stroke: rgba(255,255,255,0.2); /* Default / Waiting state */
+}
+
+.chk-item-v2.active-now .progress-ring__circle {
+    stroke: #ff6b00; /* Orange while loading */
+}
+
+.chk-item-v2.completed .progress-ring__circle {
+    stroke: var(--cta-green); /* Green when finished */
+}
