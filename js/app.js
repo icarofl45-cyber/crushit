@@ -356,6 +356,9 @@
             if (suffix === '') {
                 if (fileName === '25-29') fileName = '30-34';
                 else if (fileName === '30-34') fileName = '25-29';
+            } else if (suffix === '-w') {
+                if (fileName === '20-24') fileName = '25-29';
+                else if (fileName === '25-29') fileName = '20-24';
             }
             img.src = `imagens_webp_crush_it/${fileName}${suffix}.webp`;
         }
