@@ -321,6 +321,28 @@
                     : "Tengo el músculo, me falta la definición";
             }
 
+            // Desired Body Screens (33% stage)
+            const desiredHeads = ['desired-perder-headline', 'desired-ganar-headline', 'desired-definir-headline'];
+            const desiredSubs = ['desired-perder-sub', 'desired-ganar-sub', 'desired-definir-sub'];
+            
+            desiredHeads.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.innerHTML = isFemale 
+                        ? `DETERMINA TU DESTINO: ¿QUÉ <span style="color:var(--cta-green)">SILUETA</span> DESEAS CONSTRUIR?`
+                        : `DETERMINA TU DESTINO: ¿QUÉ <span style="color:var(--cta-green)">NIVEL FÍSICO</span> DESEAS ALCANZAR?`;
+                }
+            });
+            
+            desiredSubs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.innerText = isFemale
+                        ? "Esto definirá el balance nutricional y la redistribución de grasa para esculpir tu figura."
+                        : "Esto calibrará el volumen de entrenamiento y la intensidad de la carga metabólica necesaria.";
+                }
+            });
+
             // Gender Specific Areas Screen
             const femaleContainer = document.getElementById('areas-content-female');
             const maleContainer = document.getElementById('areas-content-male');
