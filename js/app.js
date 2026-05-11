@@ -157,8 +157,11 @@
 
             if (percEl) percEl.innerText = percentage + '%';
             if (claimEl) {
-                const areaWord = areas.length > 1 ? 'ÁREAS PROBLEMÁTICAS' : 'ÁREA PROBLEMÁTICA';
-                const genderTerm = userProfile.gender === 'Femenino' ? 'LAS MUJERES' : 'LOS HOMBRES';
+                const isFem = userProfile.gender === 'Femenino';
+                const areaWord = areas.length > 1 
+                    ? (isFem ? 'ZONAS CRÍTICAS' : 'ÁREAS PROBLEMÁTICAS') 
+                    : (isFem ? 'ZONA CRÍTICA' : 'ÁREA PROBLEMÁTICA');
+                const genderTerm = isFem ? 'LAS MUJERES' : 'LOS HOMBRES';
                 claimEl.innerHTML = `DE ${genderTerm} QUE ELIGEN<br><span style="color:var(--cta-green);">${areasText}</span> COMO ${areaWord}`;
             }
 
@@ -289,15 +292,15 @@
             if (txtMost) {
                 txtMost.innerText = isFemale
                     ? "La mayoría de las mujeres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listas - El protocolo fue diseñado para cuando no te sientes lista - Ese es exactamente el punto de entrada."
-                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.";
+                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.";
             }
 
             // Text 4: Men/women who use it
             const txtWho = document.getElementById('txt-men-who-use');
             if (txtWho) {
                 txtWho.innerText = isFemale
-                    ? "El papel donde marcas cada día completado. Simple. Pero las mujeres que lo usan tienen 3 veces mais probabilidades de terminar el reto."
-                    : "El papel onde marcas cada dia completado. Simple. Mas os homens que o usam têm 3 vezes mais probabilidades de terminar o desafio.";
+                    ? "El papel donde marcas cada día completado. Simple. Pero las mujeres que lo usan tienen 3 veces más probabilidades de terminar el reto."
+                    : "El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.";
             }
 
             // Goal Subtitles
@@ -368,6 +371,20 @@
                     femaleContainer.style.display = 'none';
                     maleContainer.style.display = 'flex';
                 }
+            }
+
+            // Areas Screen Headlines and Subtitles (Copy Alinhada)
+            const areasHead = document.getElementById('areas-headline');
+            const areasSub = document.getElementById('areas-sub');
+            if (areasHead) {
+                areasHead.innerHTML = isFemale 
+                    ? `ELIGE TUS <span style="color:var(--cta-green)">ZONAS CRÍTICAS</span>`
+                    : `ELIGE TUS <span style="color:var(--cta-green)">ÁREAS PROBLEMÁTICAS</span>`;
+            }
+            if (areasSub) {
+                areasSub.innerText = isFemale
+                    ? "Selecciona las áreas donde la grasa es más persistente. Diseñaremos tu protocolo para atacar estas zonas con precisión."
+                    : "Identifica los puntos donde tu metabolismo ha acumulado grasa difícil. El protocolo forzará la movilización de lípidos en estas zonas.";
             }
 
             // Area Labels

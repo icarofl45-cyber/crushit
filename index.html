@@ -321,7 +321,8 @@
     <!-- ETAPA 7: ÁREAS PROBLEMÁTICAS -->
     <div id="screen-focusarea" class="screen">
         <div class="areas-screen">
-            <h1 class="areas-headline">ELIGE <span>ÁREAS PROBLEMÁTICAS</span></h1>
+            <h1 id="areas-headline" class="areas-headline">ELIGE <span>ÁREAS PROBLEMÁTICAS</span></h1>
+            <p id="areas-sub" style="color: var(--text-gray); text-align: center; margin-bottom: 25px; font-size: 15px; opacity: 0.9; max-width: 90%; line-height: 1.4;"></p>
 
             <!-- Conteúdo Dinâmico por Gênero -->
             <div id="areas-content-female" class="areas-body" style="display: none;">
@@ -1383,9 +1384,12 @@
                 </div>
 
                 <div style="padding: 30px 20px;">
-                    <div style="display: flex; align-items: flex-end; justify-content: center; gap: 8px; margin-bottom: 25px;">
-                        <span style="font-size: 72px; font-weight: 900; color: #fff; line-height: 1;">$39.99</span>
+                    <div class="price-wrapper" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; gap: 5px;">
+                        <div class="discount-balloon">¡75% DE DESCUENTO APLICADO!</div>
+                        <div style="display: flex; align-items: flex-end; justify-content: center; gap: 10px;">
+                        <span style="font-size: 72px; font-weight: 900; color: #fff; line-height: 1;"><span class="price-old-v2" style="font-size: 24px; font-weight: 700; color: rgba(255,255,255,0.3); margin-bottom: 10px; display: none;">$39.99</span><span class="price-new-v2">$39.99</span></span>
                         <span style="font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 12px; opacity: 0.6;">USD</span>
+                        </div>
                     </div>
 
                     <button onclick="window.location.href='https://pay.hotmart.com/YOUR_LINK_HERE'" style="width: 100%; background: var(--cta-green); color: #000; border: none; padding: 22px; border-radius: 16px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 10px;">
@@ -1393,14 +1397,14 @@
                     </button>
 
                     <!-- SELOS PRATEADOS NA OFERTA -->
-                    <div class="guarantee-badges-v2 anim-fade delay-1" style="margin-top: 10px; background: transparent; border: none; padding: 0; gap: 20px;">
-                        <div class="badge-v2-item">
-                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso Vitalício" class="badge-v2-img" style="width: 45px; height: 45px;">
-                            <span class="badge-v2-label" style="font-size: 7px; opacity: 0.4;">ACCESO VITALÍCIO</span>
+                    <div class="guarantee-badges-v2 anim-fade delay-1" style="margin-top: 10px; background: transparent; border: none; padding: 0; gap: 25px; justify-content: center;">
+                        <div class="badge-v2-item" style="flex-direction: row; gap: 8px; align-items: center;">
+                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso Vitalício" class="badge-v2-img" style="width: 38px; height: 38px; opacity: 0.5;">
+                            <span class="badge-v2-label" style="font-size: 7px; opacity: 0.5; text-align: left; letter-spacing: 1px; line-height: 1.1;">ACCESO<br>VITALÍCIO</span>
                         </div>
-                        <div class="badge-v2-item">
-                            <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img" style="width: 45px; height: 45px;">
-                            <span class="badge-v2-label" style="font-size: 7px; opacity: 0.4;">30 DÍAS DE GARANTÍA</span>
+                        <div class="badge-v2-item" style="flex-direction: row; gap: 8px; align-items: center;">
+                            <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img" style="width: 38px; height: 38px; opacity: 0.5;">
+                            <span class="badge-v2-label" style="font-size: 7px; opacity: 0.5; text-align: left; letter-spacing: 1px; line-height: 1.1;">30 DÍAS DE<br>GARANTÍA</span>
                         </div>
                     </div>
                 </div>
@@ -1767,13 +1771,19 @@
                 
                 <!-- Footer badges removed for re-addition -->
                 <div class="footer-trust-container">
-                    <div class="trust-row-top">
-                        <img src="imagens_webp_crush_it/pagamentos.webp" alt="Métodos de Pago" class="trust-badge-payments">
+                    <img src="imagens_webp_crush_it/pagamentos.webp" alt="Métodos de Pago" class="trust-badge-payments" style="height: 50px; width: auto; margin-bottom: 10px;">
+                    <div class="trust-row-bottom" style="display: flex; gap: 25px; align-items: center; justify-content: center;">
+                        <img src="imagens_webp_crush_it/ssl.webp" alt="SSL Certificado Seguro" class="trust-badge-small" style="height: 40px; width: auto; opacity: 0.5;">
+                        <img src="imagens_webp_crush_it/30d.webp" alt="Garantía 30 Días" class="trust-badge-small" style="height: 40px; width: auto; opacity: 0.5;">
                     </div>
-                    <div class="trust-row-bottom">
-                        <img src="imagens_webp_crush_it/ssl.webp" alt="SSL Certificado Seguro" class="trust-badge-small">
-                        <img src="imagens_webp_crush_it/30d.webp" alt="Garantía 30 Días" class="trust-badge-small">
-                    </div>
+
+
+
+
+
+
+
+
                 </div>
             </footer>
         </div>

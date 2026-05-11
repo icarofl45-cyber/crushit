@@ -4084,6 +4084,7 @@ text-rendering: optimizeLegibility;}
 
 /* PRICE DISCOUNT STYLES */
 .price-old-v2.crossed-out {
+    display: inline-block !important;
     text-decoration: line-through;
     opacity: 0.3;
 }
