@@ -799,16 +799,16 @@
             // Conteúdo dinâmico por objetivo
             const goal = userProfile.goal || 'Definir';
             if (goal === 'Ganar músculo') {
-                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA EL VOLUMEN';
-                stSubtext.innerText = 'Estás en el punto ideal para activar el modo anabólico y construir masa muscular magra rápidamente.';
+                stHeadline.innerText = 'FASE DE ATAQUE ANABÓLICO DETECTADA';
+                stSubtext.innerText = 'Tu metabolismo está en el punto exacto para absorber nutrientes y blindar tus músculos. Cada día de retraso es masa muscular perdida.';
                 stProtocol.innerText = 'Entrenamiento de fuerza hipertrófica con progresión de carga — 4-5 días/semana, superávit calórico controlado.';
             } else if (goal === 'Perder grasa') {
-                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA LA QUEMA';
-                stSubtext.innerText = 'Tu metabolismo está preparado para entrar en estado de cetosis natural y eliminar grasa localizada.';
+                stHeadline.innerText = 'MODO QUEMA DE GRASA CRÍTICO ACTIVADO';
+                stSubtext.innerText = 'Hemos identificado el bloqueo que impedía tu pérdida de peso. El sistema ha configurado tu protocolo para forzar la quema inmediata.';
                 stProtocol.innerText = 'Protocolo HIIT metabólico con enfoque en movilización de grasas — 5-6 días/semana, déficit nutricional optimizado.';
             } else {
-                stHeadline.innerText = 'TU CUERPO ESTÁ LISTO PARA DEFINICIÓN';
-                stSubtext.innerText = 'Estás en el punto ideal para esculpir tus músculos y eliminar la capa final de grasa subcutánea.';
+                stHeadline.innerText = 'ESTADO DE DEFINICIÓN TÁCTICA';
+                stSubtext.innerText = 'Tu cuerpo ha entrado en la ventana de oportunidad para eliminar grasa subcutánea sin perder músculo. Es el momento de la verdad.';
                 stProtocol.innerText = 'Calistenia de definición con circuitos de alta intensidad — 4-5 días/semana, máxima quema de grasa.';
             }
 
@@ -1058,7 +1058,7 @@
                 setTimeout(() => {
                     currentProofIndex = (currentProofIndex + 1) % proofs.length;
                     const next = proofs[currentProofIndex];
-                    const actionText = 'adquiriu acesso ao aplicativo';
+                    const actionText = 'validó su acceso al protocolo';
                     
                     badgeEl.innerHTML = `
                         <span class="proof-dot ${next.gender}"></span>
