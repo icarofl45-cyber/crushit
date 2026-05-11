@@ -799,7 +799,7 @@
             const group = document.getElementById('cortisol-towers-group');
             if (!group) return;
             group.innerHTML = '';
-            const towerCount = 30;
+            const towerCount = 60;
             const width = 400 / towerCount;
             function getBezierY(t) {
                 const P0 = 10, P1 = 15, P2 = 105, P3 = 115;
@@ -822,7 +822,7 @@
             const group = document.getElementById('testo-towers-group');
             if (!group) return;
             group.innerHTML = '';
-            const towerCount = 30;
+            const towerCount = 60;
             const width = 400 / towerCount;
             function getBezierY(t) {
                 const P0 = 110, P1 = 100, P2 = 25, P3 = 15;
