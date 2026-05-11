@@ -604,6 +604,8 @@
             const circle1 = document.getElementById('circle-1');
             const circle2 = document.getElementById('circle-2');
             const circle3 = document.getElementById('circle-3');
+            const circle4 = document.getElementById('circle-4');
+            const circle5 = document.getElementById('circle-5');
             const mainFill = document.getElementById('checklist-loading-fill');
             const mainPerc = document.getElementById('checklist-perc');
 
@@ -611,7 +613,7 @@
             const circumference = 2 * Math.PI * radius;
 
             // Inicializa anéis
-            [circle1, circle2, circle3].forEach(c => {
+            [circle1, circle2, circle3, circle4, circle5].forEach(c => {
                 if (c) {
                     c.style.strokeDasharray = `${circumference} ${circumference}`;
                     c.style.strokeDashoffset = circumference;
@@ -639,7 +641,8 @@
                     if (status) status.innerText = percent + '%';
                     
                     // Atualiza a barra de progresso principal (global)
-                    let globalPerc = Math.floor(((phaseNum - 1) * 33.3) + (progress * 33.3));
+                    // 5 fases: cada uma vale 20%
+                    let globalPerc = Math.floor(((phaseNum - 1) * 20) + (progress * 20));
                     if (globalPerc > 100) globalPerc = 100;
                     if (mainFill) mainFill.style.width = globalPerc + '%';
                     if (mainPerc) mainPerc.innerText = globalPerc + '%';
@@ -657,22 +660,32 @@
                 window.requestAnimationFrame(step);
             }
 
-            // Inicia a sequência
-            document.getElementById('chk-v2-2').classList.add('waiting');
-            document.getElementById('chk-v2-3').classList.add('waiting');
+            // Inicia a sequência: 4000ms (4s) por fase, total 20s
+            const stepDur = 4000;
 
-            animatePhase(1, 2500, () => {
-                animatePhase(2, 3000, () => {
-                    animatePhase(3, 2000, () => {
-                        // Finaliza tudo
-                        if (mainFill) mainFill.style.width = '100%';
-                        if (mainPerc) mainPerc.innerText = '100%';
-                        
-                        setTimeout(() => {
-                            document.getElementById('summary-name').innerText = userProfile.name;
-                            goToStep('summary');
-                            startSummaryTimer();
-                        }, 800);
+            // Define estados iniciais
+            [2, 3, 4, 5].forEach(n => {
+                const el = document.getElementById(`chk-v2-${n}`);
+                if (el) el.classList.add('waiting');
+            });
+
+            animatePhase(1, stepDur, () => {
+                animatePhase(2, stepDur, () => {
+                    animatePhase(3, stepDur, () => {
+                        animatePhase(4, stepDur, () => {
+                            animatePhase(5, stepDur, () => {
+                                // Finaliza tudo
+                                if (mainFill) mainFill.style.width = '100%';
+                                if (mainPerc) mainPerc.innerText = '100%';
+                                
+                                setTimeout(() => {
+                                    const sumName = document.getElementById('summary-name');
+                                    if (sumName) sumName.innerText = userProfile.name || 'GUERRERO';
+                                    goToStep('summary');
+                                    startSummaryTimer();
+                                }, 800);
+                            });
+                        });
                     });
                 });
             });
