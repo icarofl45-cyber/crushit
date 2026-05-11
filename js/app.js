@@ -760,9 +760,9 @@
 
             // Injeta copy dinâmica "Pé na Porta"
             if (analysisText) {
-                const baseText = '¿Cansado de esforzarte y seguir viendo lo mismo en el espejo? El error no es tu genética, es tu <strong>Cortisol</strong>. Los entrenamientos genéricos están destruyendo tu progreso, bloqueando la quema de grasa y dejándote flácido. El <strong>Protocolo 21D</strong> detiene este proceso autodestructivo, ';
-                const maleEnding = 'protegiendo tu fuerza y definición muscular.';
-                const femaleEnding = 'eliminando la retención y tonificando sin inflamar.';
+                const baseText = '¿Entrenas y no ves cambios? Tu <strong>Cortisol</strong> está bloqueando la quema de grasa. El <strong>Protocolo 21D</strong> reprograma tu metabolismo para ';
+                const maleEnding = 'definir y ganar fuerza real.';
+                const femaleEnding = 'eliminar retención y tonificar.';
                 analysisText.innerHTML = baseText + (gender === 'female' ? femaleEnding : maleEnding);
             }
 
