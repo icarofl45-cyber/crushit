@@ -717,6 +717,14 @@
             const fill = document.getElementById('pred-loading-fill');
             const revealRectFat = document.getElementById('reveal-rect-fat');
             const revealRectMuscle = document.getElementById('reveal-rect-muscle');
+            
+            // Ajuste dinâmico da tela de Flexões/Agachamentos baseado no gênero
+            const gender = userProfile.gender || 'male';
+            const exerciseName = document.getElementById('perf-exercise-name');
+            if (exerciseName) {
+                exerciseName.innerText = (gender === 'female') ? 'SENTADILLAS' : 'FLEXIONES';
+            }
+
             if (!fill) return;
             
             fill.style.width = '0%';
