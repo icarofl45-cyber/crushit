@@ -777,7 +777,7 @@
             const mainFill = document.getElementById('checklist-loading-fill');
             const mainPerc = document.getElementById('checklist-perc');
 
-            const radius = 18;
+            const radius = 17;
             const circumference = 2 * Math.PI * radius;
 
             // Inicializa anéis
@@ -790,12 +790,12 @@
 
             // Helper para animar cada fase
             function animatePhase(phaseNum, duration, nextCallback) {
-                const item = document.getElementById(`chk-v2-${phaseNum}`);
+                const item = document.getElementById(`chk-v3-${phaseNum}`);
                 const circle = document.getElementById(`circle-${phaseNum}`);
                 const status = document.getElementById(`status-${phaseNum}`);
+                const check = document.getElementById(`check-${phaseNum}`);
                 
                 if (item) {
-                    item.classList.remove('waiting');
                     item.classList.add('active-now');
                 }
 
@@ -830,12 +830,6 @@
 
             // Inicia a sequência: 3000ms (3s) por fase, total 15s
             const stepDur = 3000;
-
-            // Define estados iniciais
-            [2, 3, 4, 5].forEach(n => {
-                const el = document.getElementById(`chk-v2-${n}`);
-                if (el) el.classList.add('waiting');
-            });
 
             animatePhase(1, stepDur, () => {
                 animatePhase(2, stepDur, () => {

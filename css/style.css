@@ -6415,3 +6415,28 @@ width: 100%;
 .start-info-v2{flex: 1; text-align: left;}
 .start-title-v2{font-size: 15px; font-weight: 900; color: #fff; margin-bottom: 4px;}
 .start-sub-v2{font-size: 11px; color: #666; font-weight: 700; line-height: 1.3;}
+
+/* CHECKLIST V3 - RECONSTRUÇÃO TOTAL */
+.checklist-container-v3{width: 100%; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 20px;}
+.chk-headline-v3{font-size: 24px; font-weight: 900; line-height: 1.2; text-align: center; text-transform: uppercase; margin-bottom: 5px;}
+.chk-timer-v3{font-size: 11px; font-weight: 800; color: #ef4444; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px;}
+.chk-authority-v3{background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px 20px; border-radius: 12px; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; width: 100%;}
+.chk-auth-icon{font-size: 20px;}
+.chk-authority-v3 p{font-size: 12px; opacity: 0.8; font-weight: 600; margin: 0;}
+.chk-loading-box-v3{width: 100%; margin-bottom: 40px;}
+.chk-loading-header-v3{display: flex; justify-content: space-between; margin-bottom: 10px;}
+.chk-loading-header-v3 span{font-size: 11px; font-weight: 900; letter-spacing: 1px;}
+.chk-progress-track-v3{height: 10px; background: #000; border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; overflow: hidden;}
+.chk-progress-fill-v3{height: 100%; width: 0%; background: var(--cta-green); box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); transition: width 0.3s ease;}
+.chk-list-v3{width: 100%; display: flex; flex-direction: column; gap: 20px;}
+.chk-row-v3{display: flex; align-items: center; gap: 15px; opacity: 0.3; transition: opacity 0.5s ease;}
+.chk-row-v3.active-now{opacity: 1;}
+.chk-row-v3.completed{opacity: 1;}
+.chk-ring-wrap-v3{position: relative; width: 40px; height: 40px; flex-shrink: 0;}
+.chk-ring-v3{transform: rotate(-90deg);}
+.chk-ring-bg-v3{fill: transparent; stroke: rgba(255,255,255,0.05); stroke-width: 3;}
+.chk-ring-fill-v3{fill: transparent; stroke: var(--cta-green); stroke-width: 3; stroke-dasharray: 107; stroke-dashoffset: 107; transition: stroke-dashoffset 0.1s linear;}
+.chk-mark-v3{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--cta-green); font-weight: 900; font-size: 16px; opacity: 0;}
+.chk-info-v3{text-align: left;}
+.chk-label-v3{font-size: 11px; font-weight: 800; color: #fff; margin-bottom: 2px; line-height: 1.3;}
+.chk-status-v3{font-size: 10px; font-weight: 700; color: #666;}
