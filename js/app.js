@@ -1110,37 +1110,7 @@
             }
         }
 
-        function startHormonesTimer() {
-            const fill = document.getElementById('hormones-loading-fill');
-            const revealRect = document.getElementById('reveal-rect-h');
-            if (!fill || !revealRect) return;
-            
-            fill.style.width = '0%';
-            revealRect.setAttribute('width', '0');
 
-            let progress = 0;
-            const duration = 6000; // 6 segundos para dar tempo de ler o texto
-            const intervalTime = 50;
-            const step = 100 / (duration / intervalTime);
-
-            const interval = setInterval(() => {
-                progress += step;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        goToStep('final');
-                    }, 500);
-                }
-                
-                // O gráfico desenha 2x mais rápido que a barra
-                let graphProgress = progress * 2;
-                if (graphProgress > 100) graphProgress = 100;
-
-                fill.style.width = progress + '%';
-                revealRect.setAttribute('width', (graphProgress / 100) * 400);
-            }, intervalTime);
-        }
 
         function goBack() {
             if (navigationHistory.length > 0) {
