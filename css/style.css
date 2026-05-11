@@ -588,7 +588,7 @@ mix-blend-mode: hard-light;}
 .body-highlight.active{opacity: 1;
 transform: scale(1.05);}
 /* Highlights Masculinos v2 - Ajustados para a nova escala compacta */
-.highlight-male-pecho { width: 40%; height: 10%; top: 21%; left: 30%; border-radius: 40%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 60%, transparent 80%); }
+.highlight-male-pecho { width: 40%; height: 10%; top: 23%; left: 30%; border-radius: 40%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 60%, transparent 80%); }
 .highlight-male-brazos-l { width: 12%; height: 26%; top: 27%; left: 14%; border-radius: 50%; }
 .highlight-male-brazos-r { width: 12%; height: 26%; top: 27%; right: 14%; border-radius: 50%; }
 .highlight-male-abdomen { width: 28%; height: 16%; top: 29%; left: 36%; border-radius: 30%; }
