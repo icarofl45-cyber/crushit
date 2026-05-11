@@ -966,7 +966,7 @@
         function updateBackBtnVisibility() {
             const current = document.querySelector('.screen.active');
             const btn = document.getElementById('global-back-btn');
-            if (current && current.id === 'screen-welcome') {
+            if (current && (current.id === 'screen-welcome' || current.id === 'screen-age')) {
                 btn.style.display = 'none';
                 navigationHistory.length = 0;
             } else {
