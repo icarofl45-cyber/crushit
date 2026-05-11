@@ -634,6 +634,7 @@
             
             goToStep('prediction');
             generateFatTowers();
+            generateMuscleTowers();
             startPredictionTimer();
         }
 
@@ -647,9 +648,9 @@
             const barWidth = 4;
             const gap = (width / numTowers);
 
-            // Função para pegar Y na curva Bezier M 0,30 C 100,35 250,90 400,105
+            // Função para pegar Y na curva Bezier M 0,10 C 50,15 150,105 400,115
             function getBezierY(t) {
-                const p0 = 30, p1 = 35, p2 = 90, p3 = 105;
+                const p0 = 10, p1 = 15, p2 = 105, p3 = 115;
                 return Math.pow(1-t, 3)*p0 + 3*Math.pow(1-t, 2)*t*p1 + 3*(1-t)*Math.pow(t, 2)*p2 + Math.pow(t, 3)*p3;
             }
 
@@ -670,7 +671,6 @@
                 group.appendChild(rect);
             }
 
-            // Atualiza o valor inicial baseado no perfil
             const fatNow = document.getElementById('pred-fat-now');
             if (fatNow) {
                 const ranges = ['8%', '12%', '17%', '22%', '27%', '32%', '37%', '42%'];
@@ -679,14 +679,49 @@
             }
         }
 
+        function generateMuscleTowers() {
+            const group = document.getElementById('muscle-towers-group');
+            if (!group) return;
+            group.innerHTML = '';
+            
+            const numTowers = 40;
+            const width = 400;
+            const barWidth = 4;
+            const gap = (width / numTowers);
+
+            // Função para pegar Y na curva Bezier M 0,110 C 150,100 300,25 400,15
+            function getBezierY(t) {
+                const p0 = 110, p1 = 100, p2 = 25, p3 = 15;
+                return Math.pow(1-t, 3)*p0 + 3*Math.pow(1-t, 2)*t*p1 + 3*(1-t)*Math.pow(t, 2)*p2 + Math.pow(t, 3)*p3;
+            }
+
+            for (let i = 0; i < numTowers; i++) {
+                const t = i / (numTowers - 1);
+                const x = i * gap;
+                const y = getBezierY(t);
+                const height = 120 - y;
+
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", x);
+                rect.setAttribute("y", y);
+                rect.setAttribute("width", barWidth);
+                rect.setAttribute("height", height);
+                rect.setAttribute("fill", "url(#bar-grad-muscle)");
+                rect.setAttribute("opacity", "0.4");
+                rect.classList.add("tower-bar");
+                group.appendChild(rect);
+            }
+        }
+
         function startPredictionTimer() {
             const fill = document.getElementById('pred-loading-fill');
-            const revealRect = document.getElementById('reveal-rect-fat');
-            if (!fill || !revealRect) return;
+            const revealRectFat = document.getElementById('reveal-rect-fat');
+            const revealRectMuscle = document.getElementById('reveal-rect-muscle');
+            if (!fill) return;
             
             fill.style.width = '0%';
-            revealRect.setAttribute('width', '0');
-
+            if (revealRectFat) revealRectFat.setAttribute('width', '0');
+            if (revealRectMuscle) revealRectMuscle.setAttribute('width', '0');
 
             let progress = 0;
             const duration = 5000; 
@@ -704,7 +739,8 @@
                 }
                 
                 fill.style.width = progress + '%';
-                if (revealRect) revealRect.setAttribute('width', (progress / 100) * 400);
+                if (revealRectFat) revealRectFat.setAttribute('width', (progress / 100) * 400);
+                if (revealRectMuscle) revealRectMuscle.setAttribute('width', (progress / 100) * 400);
             }, intervalTime);
         }
 
