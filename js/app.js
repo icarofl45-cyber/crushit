@@ -109,9 +109,23 @@
             const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final', 'offer'];
             const currentIdx = steps.indexOf(stepId);
             if (currentIdx !== -1) {
-                const perc = ((currentIdx + 1) / steps.length) * 100;
+                const pbPerc = ((currentIdx + 1) / steps.length) * 100;
                 const pb = document.getElementById('progress-bar');
-                if (pb) pb.style.width = perc + '%';
+                if (pb) pb.style.width = pbPerc + '%';
+
+                const pt = document.getElementById('step-percentage');
+                if (pt) {
+                    // Esconde na primeira tela, na oferta e em telas de transição técnica
+                    if (stepId === 'age' || stepId === 'offer' || stepId === 'checklist' || stepId === 'summary') {
+                        pt.style.display = 'none';
+                    } else {
+                        pt.style.display = 'block';
+                        // Cálculo para começar em ~13% e terminar em 98% no 'final' (index 17)
+                        let displayPerc = Math.floor(13 + (currentIdx / 17) * 85);
+                        if (displayPerc > 98) displayPerc = 98;
+                        pt.innerText = displayPerc + '%';
+                    }
+                }
             }
         }
 
