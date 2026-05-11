@@ -660,8 +660,8 @@
                 window.requestAnimationFrame(step);
             }
 
-            // Inicia a sequência: 4000ms (4s) por fase, total 20s
-            const stepDur = 4000;
+            // Inicia a sequência: 3000ms (3s) por fase, total 15s
+            const stepDur = 3000;
 
             // Define estados iniciais
             [2, 3, 4, 5].forEach(n => {
