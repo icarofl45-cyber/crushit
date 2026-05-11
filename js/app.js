@@ -300,6 +300,27 @@
                     : "El papel onde marcas cada dia completado. Simple. Mas os homens que o usam têm 3 vezes mais probabilidades de terminar o desafio.";
             }
 
+            // Goal Subtitles
+            const subPerder = document.getElementById('goal-sub-perder');
+            const subGanar = document.getElementById('goal-sub-ganar');
+            const subDefinir = document.getElementById('goal-sub-definir');
+            
+            if (subPerder) {
+                subPerder.innerText = isFemale 
+                    ? "Recuperar mi confianza y sentirme poderosa en qualquer ropa"
+                    : "Dejar de sentir vergüenza al mirarme al espejo";
+            }
+            if (subGanar) {
+                subGanar.innerText = isFemale 
+                    ? "Lograr un cuerpo firme, tonificado y ser la mujer más segura de la sala"
+                    : "Ser el hombre más respetado e imponente de la sala";
+            }
+            if (subDefinir) {
+                subDefinir.innerText = isFemale 
+                    ? "Esculpir mis curvas y eliminar la flacidez de una vez por todas"
+                    : "Tengo el músculo, me falta la definición";
+            }
+
             // Gender Specific Areas Screen
             const femaleContainer = document.getElementById('areas-content-female');
             const maleContainer = document.getElementById('areas-content-male');
