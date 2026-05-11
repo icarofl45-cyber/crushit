@@ -343,6 +343,19 @@
                 }
             });
 
+            // Body Fat Screen (48% stage)
+            const fatHead = document.getElementById('bodyfat-headline');
+            const fatSub = document.getElementById('bodyfat-sub');
+            
+            if (fatHead) {
+                fatHead.innerHTML = `IDENTIFICACIÓN DE <span style="color:var(--cta-green)">BLOQUEO METABÓLICO</span>`;
+            }
+            if (fatSub) {
+                fatSub.innerText = isFemale
+                    ? "Identifica tu estado actual para desbloquear tu tasa metabólica e eliminar adiposidad localizada."
+                    : "Identifica tu punto de partida para calibrar la eliminación de grasa visceral.";
+            }
+
             // Gender Specific Areas Screen
             const femaleContainer = document.getElementById('areas-content-female');
             const maleContainer = document.getElementById('areas-content-male');
