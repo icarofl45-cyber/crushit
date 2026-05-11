@@ -752,6 +752,43 @@
             }, intervalTime);
         }
 
+        function startHormonesTimer() {
+            const fill = document.getElementById('hormones-loading-fill');
+            const revealRect = document.getElementById('reveal-rect-h');
+            const analysisText = document.getElementById('hormones-analysis-text');
+            const gender = userProfile.gender || 'male';
+
+            // Injeta copy dinâmica "Pé na Porta"
+            if (analysisText) {
+                const baseText = '¿Cansado de esforzarte y seguir viendo lo mismo en el espejo? El error no es tu genética, es tu <strong>Cortisol</strong>. Los entrenamientos genéricos están destruyendo tu progreso, bloqueando la quema de grasa y dejándote flácido. El <strong>Protocolo 21D</strong> detiene este proceso autodestructivo, ';
+                const maleEnding = 'protegiendo tu fuerza y definición muscular.';
+                const femaleEnding = 'eliminando la retención y tonificando sin inflamar.';
+                analysisText.innerHTML = baseText + (gender === 'female' ? femaleEnding : maleEnding);
+            }
+
+            if (!fill) return;
+            fill.style.width = '0%';
+            if (revealRect) revealRect.setAttribute('width', '0');
+
+            let progress = 0;
+            const duration = 5000; 
+            const intervalTime = 50;
+            const step = 100 / (duration / intervalTime);
+
+            const interval = setInterval(() => {
+                progress += step;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        goToStep('final');
+                    }, 500);
+                }
+                fill.style.width = progress + '%';
+                if (revealRect) revealRect.setAttribute('width', (progress / 100) * 400);
+            }, intervalTime);
+        }
+
         function validateName(val) {
             document.getElementById('btn-final-continue').disabled = val.length < 2;
         }
