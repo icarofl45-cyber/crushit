@@ -747,30 +747,32 @@
 
     <!-- ETAPA 14: DATA DE INÍCIO -->
     <div id="screen-startdate" class="screen">
-        <h1 class="headline">UNA PREGUNTA HONESTA:<br><span style="color:var(--cta-green)">¿CUÁNDO VAS A EMPEZAR DE VERDAD?</span></h1>
+        <h1 class="headline" style="text-transform: uppercase; font-weight: 900;">EL MOMENTO DE LA <span style="color:var(--cta-green)">DECISIÓN</span></h1>
+        <p class="subheadline" style="opacity: 0.8;">Tu transformación depende de tu compromiso hoy. ¿Cuál es tu nivel de prioridad?</p>
         
-        <div class="start-list" style="width:100%; margin-top:20px;">
-            <div class="start-card" onclick="handleStartDate('Hoy')">
-                <div class="start-icon">⚡</div>
-                <div class="start-info">
-                    <div class="start-title">EMPIEZO HOY</div>
-                    <div class="start-sub">En las próximas horas. El sistema activa tu protocolo ahora.</div>
+        <div class="start-list-v2">
+            <div class="start-card-v2 featured-start" onclick="handleStartDate('Hoy')">
+                <div class="priority-badge">MÁXIMA PRIORIDAD</div>
+                <div class="start-icon-v2">⚡</div>
+                <div class="start-info-v2">
+                    <div class="start-title-v2">EMPIEZO HOY MISMO</div>
+                    <div class="start-sub-v2">Acceso inmediato. Activación de la fase de choque.</div>
                 </div>
             </div>
 
-            <div class="start-card" onclick="handleStartDate('Mañana')">
-                <div class="start-icon">📅</div>
-                <div class="start-info">
-                    <div class="start-title">MAÑANA</div>
-                    <div class="start-sub">Bien. Pero recuerda: mañana siempre llega como hoy.</div>
+            <div class="start-card-v2" onclick="handleStartDate('Mañana')">
+                <div class="start-icon-v2">📅</div>
+                <div class="start-info-v2">
+                    <div class="start-title-v2">MAÑANA SIN FALTA</div>
+                    <div class="start-sub-v2">Preparación hoy, ejecución total mañana.</div>
                 </div>
             </div>
 
-            <div class="start-card" onclick="handleStartDate('No estoy listo')">
-                <div class="start-icon">⌛</div>
-                <div class="start-info">
-                    <div class="start-title" id="txt-not-ready">NO ESTOY LISTO</div>
-                    <div class="start-sub">Llevas tiempo diciéndote eso.</div>
+            <div class="start-card-v2" onclick="handleStartDate('No estoy listo')">
+                <div class="start-icon-v2">⌛</div>
+                <div class="start-info-v2">
+                    <div class="start-title-v2">PRÓXIMO LUNES / DESPUÉS</div>
+                    <div class="start-sub-v2">Entiendo que mis resultados tardarán más en aparecer.</div>
                 </div>
             </div>
         </div>
