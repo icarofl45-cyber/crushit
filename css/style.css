@@ -2571,8 +2571,9 @@ font-weight: 600;}
 .security-badge svg{width: 12px;
 height: 12px;
 fill: currentColor;}
-.imc-comparison-box{background: linear-gradient(145deg, #0d0d0d, #111);
-border: 1px solid #222;
+.imc-comparison-box{background: rgba(24, 24, 24, 0.8) !important;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.08) !important;
 border-radius: 24px;
 padding: 24px;
 margin-top: 35px;
@@ -2605,18 +2606,25 @@ text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);}
 font-size: 24px;
 font-weight: 900;
 text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);}
-.current-pin{background: #333 !important;
-border: 2px solid #555 !important;
+.current-pin{background: #444 !important;
+border: 2px solid #666 !important;
 width: 10px !important;
 height: 10px !important;
 z-index: 1 !important;
-opacity: 0.8;}
+opacity: 0.7;}
 .target-pin{background: var(--cta-green) !important;
 border: 2px solid #fff !important;
-width: 20px !important;
-height: 20px !important;
+width: 18px !important;
+height: 18px !important;
 z-index: 3 !important;
-box-shadow: 0 0 20px var(--cta-green);}
+box-shadow: 0 0 15px var(--cta-green);
+animation: pulseGreen 2s infinite;}
+
+@keyframes pulseGreen {
+    0% { box-shadow: 0 0 10px var(--cta-green); }
+    50% { box-shadow: 0 0 25px var(--cta-green); }
+    100% { box-shadow: 0 0 10px var(--cta-green); }
+}
 .large-weight-display{margin: 30px 0;
 display: flex;
 justify-content: center;
