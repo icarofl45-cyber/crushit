@@ -703,37 +703,44 @@
 
     <!-- ETAPA 13: FREQUÊNCIA DE TREINO -->
     <div id="screen-training" class="screen">
-        <h1 class="headline">¿CON QUÉ <span style="color:var(--cta-green)">FRECUENCIA</span> ENTRENAS?</h1>
-        <p class="subheadline">Esto determina el volumen de entrenamiento semanal de tu plan.</p>
+        <h1 class="headline" style="text-transform: uppercase; font-weight: 900;">NIVEL DE <span style="color:var(--cta-green)">ACTIVIDAD METABÓLICA</span></h1>
+        <p class="subheadline" style="opacity: 0.8;">Esto calibra la tasa de recuperación e intensidad necesaria para tu protocolo inicial.</p>
 
-        <div class="training-list">
-            <div class="training-card" onclick="goToStep('startdate', 'Casi nunca')">
-                <div class="training-icon">🪑</div>
-                <div class="training-info">
-                    <div class="training-title">CASI NUNCA</div>
-                    <div class="training-subtitle">Menos de 1 vez por semana</div>
+        <div class="training-list-v2">
+            <div class="training-card-v2" onclick="goToStep('startdate', 'Sedentario')">
+                <div class="training-icon-v2">🪑</div>
+                <div class="training-info-v2">
+                    <div class="training-title-v2">SEDENTARIO</div>
+                    <div class="training-subtitle-v2">Fase de reactivación metabólica</div>
                 </div>
+                <div class="training-arrow-v2">→</div>
             </div>
-            <div class="training-card" onclick="goToStep('startdate', '1-2 veces')">
-                <div class="training-icon">🏃</div>
-                <div class="training-info">
-                    <div class="training-title">1-2 VECES POR SEMANA</div>
-                    <div class="training-subtitle">Estoy empezando a moverme</div>
+            
+            <div class="training-card-v2" onclick="goToStep('startdate', 'Activo Ocasional')">
+                <div class="training-icon-v2">🏃</div>
+                <div class="training-info-v2">
+                    <div class="training-title-v2">ACTIVO OCASIONAL</div>
+                    <div class="training-subtitle-v2">1-2 sesiones. Despertando el metabolismo</div>
                 </div>
+                <div class="training-arrow-v2">→</div>
             </div>
-            <div class="training-card" onclick="goToStep('startdate', '3-5 veces')">
-                <div class="training-icon">💪</div>
-                <div class="training-info">
-                    <div class="training-title">3-5 VECES POR SEMANA</div>
-                    <div class="training-subtitle">Entreno con regularidad</div>
+            
+            <div class="training-card-v2" onclick="goToStep('startdate', 'Atleta Constante')">
+                <div class="training-icon-v2">💪</div>
+                <div class="training-info-v2">
+                    <div class="training-title-v2">ATLETA CONSTANTE</div>
+                    <div class="training-subtitle-v2">3-5 sesiones. Rendimiento optimizado</div>
                 </div>
+                <div class="training-arrow-v2">→</div>
             </div>
-            <div class="training-card" onclick="goToStep('startdate', '6+ veces')">
-                <div class="training-icon">⚡</div>
-                <div class="training-info">
-                    <div class="training-title">6+ VECES POR SEMANA</div>
-                    <div class="training-subtitle">Atleta o estilo de vida muy activo</div>
+            
+            <div class="training-card-v2" onclick="goToStep('startdate', 'Elite')">
+                <div class="training-icon-v2">⚡</div>
+                <div class="training-info-v2">
+                    <div class="training-title-v2">ELITE / ALTO RENDIMIENTO</div>
+                    <div class="training-subtitle-v2">6+ sesiones. Máximo volumen de carga</div>
                 </div>
+                <div class="training-arrow-v2">→</div>
             </div>
         </div>
     </div>
