@@ -638,11 +638,10 @@
 
         function startPredictionTimer() {
             const fill = document.getElementById('pred-loading-fill');
-            const revealRect = document.getElementById('reveal-rect');
-            if (!fill || !revealRect) return;
+            if (!fill) return;
             
             fill.style.width = '0%';
-            revealRect.setAttribute('width', '0');
+
 
             let progress = 0;
             const duration = 5000; 
@@ -659,12 +658,7 @@
                     }, 500);
                 }
                 
-                // O gráfico desenha 2x mais rápido que a barra
-                let graphProgress = progress * 2;
-                if (graphProgress > 100) graphProgress = 100;
-                
                 fill.style.width = progress + '%';
-                revealRect.setAttribute('width', (graphProgress / 100) * 400);
             }, intervalTime);
         }
 
