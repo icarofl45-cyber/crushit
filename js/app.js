@@ -158,11 +158,8 @@
             if (percEl) percEl.innerText = percentage + '%';
             if (claimEl) {
                 const isFem = userProfile.gender === 'Femenino';
-                const areaWord = areas.length > 1 
-                    ? (isFem ? 'ZONAS CRÍTICAS' : 'ÁREAS PROBLEMÁTICAS') 
-                    : (isFem ? 'ZONA CRÍTICA' : 'ÁREA PROBLEMÁTICA');
                 const genderTerm = isFem ? 'LAS MUJERES' : 'LOS HOMBRES';
-                claimEl.innerHTML = `DE ${genderTerm} QUE ELIGEN<br><span style="color:var(--cta-green);">${areasText}</span> COMO ${areaWord}`;
+                claimEl.innerHTML = `EL <span style="color:var(--cta-green);">${percentage}%</span> DE ${genderTerm} CON TU PERFIL QUE ELIGEN <span style="color:var(--cta-green);">${areasText}</span> PRESENTAN UNA RESISTENCIA METABÓLICA A LA QUEMA DE GRASA LOCALIZADA.`;
             }
 
             let perc = 0;
