@@ -561,7 +561,45 @@
             
             <div class="prediction-date" id="pred-date-display">17 may 2026</div>
 
-            <!-- O novo gráfico de Gordura e Músculo será inserido aqui -->
+            <div class="prediction-graph-container">
+                <!-- BLOCO GORDURA -->
+                <div class="graph-block fat-block">
+                    <div class="graph-header-v2">
+                        <span class="graph-tag tag-fat">% GRASA CORPORAL</span>
+                        <div class="graph-val-now">INICIAL: <span id="pred-fat-now">--%</span></div>
+                    </div>
+                    
+                    <div class="graph-visual-box">
+                        <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="bar-grad-fat" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#f97316;stop-opacity:0" />
+                                </linearGradient>
+                                <clipPath id="reveal-fat-graph">
+                                    <rect id="reveal-rect-fat" x="0" y="0" width="0" height="120" />
+                                </clipPath>
+                            </defs>
+                            
+                            <g clip-path="url(#reveal-fat-graph)">
+                                <!-- Torres de Gordura (Geradas via CSS/SVG) -->
+                                <g id="fat-towers-group"></g>
+                                
+                                <!-- Linha de Queda -->
+                                <path id="path-fat-v2" d="M 0,30 C 100,35 250,90 400,105" stroke="#f97316" stroke-width="3" fill="none" style="filter: drop-shadow(0 0 8px #f97316);" />
+                                <circle id="pin-fat-v2" cx="400" cy="105" r="4" fill="#f97316" style="filter: drop-shadow(0 0 10px #f97316);" />
+                            </g>
+                        </svg>
+                        
+                        <div class="graph-labels-v2">
+                            <span>AHORA</span>
+                            <span>DÍA 7</span>
+                            <span>DÍA 14</span>
+                            <span>META</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             
             <div class="loading-bar-wrap" style="margin-top: 20px;">

@@ -633,14 +633,59 @@
             document.getElementById('pred-date-display').innerText = dateStr;
             
             goToStep('prediction');
+            generateFatTowers();
             startPredictionTimer();
+        }
+
+        function generateFatTowers() {
+            const group = document.getElementById('fat-towers-group');
+            if (!group) return;
+            group.innerHTML = '';
+            
+            const numTowers = 40;
+            const width = 400;
+            const barWidth = 4;
+            const gap = (width / numTowers);
+
+            // Função para pegar Y na curva Bezier M 0,30 C 100,35 250,90 400,105
+            function getBezierY(t) {
+                const p0 = 30, p1 = 35, p2 = 90, p3 = 105;
+                return Math.pow(1-t, 3)*p0 + 3*Math.pow(1-t, 2)*t*p1 + 3*(1-t)*Math.pow(t, 2)*p2 + Math.pow(t, 3)*p3;
+            }
+
+            for (let i = 0; i < numTowers; i++) {
+                const t = i / (numTowers - 1);
+                const x = i * gap;
+                const y = getBezierY(t);
+                const height = 120 - y;
+
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", x);
+                rect.setAttribute("y", y);
+                rect.setAttribute("width", barWidth);
+                rect.setAttribute("height", height);
+                rect.setAttribute("fill", "url(#bar-grad-fat)");
+                rect.setAttribute("opacity", "0.4");
+                rect.classList.add("tower-bar");
+                group.appendChild(rect);
+            }
+
+            // Atualiza o valor inicial baseado no perfil
+            const fatNow = document.getElementById('pred-fat-now');
+            if (fatNow) {
+                const ranges = ['8%', '12%', '17%', '22%', '27%', '32%', '37%', '42%'];
+                const val = parseInt(userProfile.bodyFat) || 3;
+                fatNow.innerText = ranges[val-1] || '20%';
+            }
         }
 
         function startPredictionTimer() {
             const fill = document.getElementById('pred-loading-fill');
-            if (!fill) return;
+            const revealRect = document.getElementById('reveal-rect-fat');
+            if (!fill || !revealRect) return;
             
             fill.style.width = '0%';
+            revealRect.setAttribute('width', '0');
 
 
             let progress = 0;
@@ -659,6 +704,7 @@
                 }
                 
                 fill.style.width = progress + '%';
+                if (revealRect) revealRect.setAttribute('width', (progress / 100) * 400);
             }, intervalTime);
         }
 
