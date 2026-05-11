@@ -550,10 +550,12 @@
     <!-- ETAPA 11: GRÁFICO PREDIÇÃO -->
     <div id="screen-prediction" class="screen">
         <div class="prediction-screen">
-            <h1 class="prediction-headline">
-                El último plan que necesitarás para<br>
-                <span id="txt-gender-difference" style="color:var(--cta-green)">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
+            <h1 class="prediction-headline" style="text-transform: uppercase; font-weight: 900; line-height: 1.1;">
+                EL ÚLTIMO PLAN QUE NECESITARÁS<br>
+                <span id="txt-gender-difference" style="color:var(--cta-green); font-size: 0.6em; display: block; margin-top: 10px; text-transform: none;">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
             </h1>
+            
+            <div class="prediction-status-label" style="font-size: 11px; font-weight: 800; color: var(--cta-green); letter-spacing: 2px; margin-bottom: 25px; animation: pulseOpacity 1.5s infinite;">CALIBRANDO TRAYECTORIA METABÓLICA...</div>
             
             <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong id="pred-weight-display">70 kg</strong> para el</p>
             
@@ -600,12 +602,12 @@
                             <path id="area-muscle" d="M 0,180 C 100,170 300,60 400,35 L 400,200 L 0,200 Z" fill="url(#grad-muscle)" />
 
                             <!-- Fat Line (Orange) -->
-                            <path id="path-fat" d="M 0,40 C 100,50 250,160 400,185" stroke="#f97316" stroke-width="4" fill="none" />
-                            <circle cx="400" cy="185" r="5" fill="#f97316" />
+                            <path id="path-fat" d="M 0,40 C 100,50 250,160 400,185" stroke="#f97316" stroke-width="4" fill="none" style="filter: drop-shadow(0 0 5px #f97316);" />
+                            <circle cx="400" cy="185" r="5" fill="#f97316" style="filter: drop-shadow(0 0 8px #f97316);" />
                             
                             <!-- Muscle Line (Green) -->
-                            <path id="path-muscle" d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" />
-                            <circle cx="400" cy="35" r="5" fill="#86efac" />
+                            <path id="path-muscle" d="M 0,180 C 100,170 300,60 400,35" stroke="#86efac" stroke-width="4" fill="none" style="filter: drop-shadow(0 0 5px #86efac);" />
+                            <circle cx="400" cy="35" r="5" fill="#86efac" style="filter: drop-shadow(0 0 8px #86efac);" />
                         </g>
                     </svg>
                 </div>
