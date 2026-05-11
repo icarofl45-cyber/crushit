@@ -754,11 +754,14 @@
 
         function startHormonesTimer() {
             const fill = document.getElementById('hormones-loading-fill');
-            const revealRect = document.getElementById('reveal-rect-h');
+            const revealCortisol = document.getElementById('reveal-rect-cortisol');
+            const revealTesto = document.getElementById('reveal-rect-testo');
             const analysisText = document.getElementById('hormones-analysis-text');
             const gender = userProfile.gender || 'male';
 
-            // Injeta copy dinâmica "Pé na Porta"
+            generateCortisolTowers();
+            generateTestoTowers();
+
             if (analysisText) {
                 const baseText = '¿Entrenas y no ves cambios? Tu <strong>Cortisol</strong> está bloqueando la quema de grasa. El <strong>Protocolo 21D</strong> reprograma tu metabolismo para ';
                 const maleEnding = 'definir y ganar fuerza real.';
@@ -768,7 +771,8 @@
 
             if (!fill) return;
             fill.style.width = '0%';
-            if (revealRect) revealRect.setAttribute('width', '0');
+            if (revealCortisol) revealCortisol.setAttribute('width', '0');
+            if (revealTesto) revealTesto.setAttribute('width', '0');
 
             let progress = 0;
             const duration = 5000; 
@@ -785,8 +789,57 @@
                     }, 500);
                 }
                 fill.style.width = progress + '%';
-                if (revealRect) revealRect.setAttribute('width', (progress / 100) * 400);
+                if (revealCortisol) revealCortisol.setAttribute('width', (progress / 100) * 400);
+                if (revealTesto) revealTesto.setAttribute('width', (progress / 100) * 400);
             }, intervalTime);
+        }
+
+        
+        function generateCortisolTowers() {
+            const group = document.getElementById('cortisol-towers-group');
+            if (!group) return;
+            group.innerHTML = '';
+            const towerCount = 30;
+            const width = 400 / towerCount;
+            function getBezierY(t) {
+                const P0 = 10, P1 = 15, P2 = 105, P3 = 115;
+                return Math.pow(1-t,3)*P0 + 3*Math.pow(1-t,2)*t*P1 + 3*(1-t)*t*t*P2 + Math.pow(t,3)*P3;
+            }
+            for (let i = 0; i < towerCount; i++) {
+                const t = i / (towerCount - 1);
+                const y = getBezierY(t);
+                const h = 120 - y;
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', i * width + 1);
+                rect.setAttribute('y', y);
+                rect.setAttribute('width', width - 2);
+                rect.setAttribute('height', h);
+                rect.setAttribute('fill', 'url(#bar-grad-cortisol)');
+                group.appendChild(rect);
+            }
+        }
+        function generateTestoTowers() {
+            const group = document.getElementById('testo-towers-group');
+            if (!group) return;
+            group.innerHTML = '';
+            const towerCount = 30;
+            const width = 400 / towerCount;
+            function getBezierY(t) {
+                const P0 = 110, P1 = 100, P2 = 25, P3 = 15;
+                return Math.pow(1-t,3)*P0 + 3*Math.pow(1-t,2)*t*P1 + 3*(1-t)*t*t*P2 + Math.pow(t,3)*P3;
+            }
+            for (let i = 0; i < towerCount; i++) {
+                const t = i / (towerCount - 1);
+                const y = getBezierY(t);
+                const h = 120 - y;
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', i * width + 1);
+                rect.setAttribute('y', y);
+                rect.setAttribute('width', width - 2);
+                rect.setAttribute('height', h);
+                rect.setAttribute('fill', 'url(#bar-grad-testo-v2)');
+                group.appendChild(rect);
+            }
         }
 
         function validateName(val) {
