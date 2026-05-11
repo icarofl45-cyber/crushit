@@ -587,13 +587,13 @@ z-index: 5;
 mix-blend-mode: hard-light;}
 .body-highlight.active{opacity: 1;
 transform: scale(1.05);}
-/* Highlights Masculinos v2 - Ajustados para 170px */
-.highlight-male-pecho { width: 70%; height: 16%; top: 15%; left: 15%; border-radius: 40%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 60%, transparent 80%); }
-.highlight-male-brazos-l { width: 22%; height: 28%; top: 22%; left: 2%; border-radius: 50%; }
-.highlight-male-brazos-r { width: 22%; height: 28%; top: 22%; right: 2%; border-radius: 50%; }
-.highlight-male-abdomen { width: 35%; height: 18%; top: 29%; left: 32.5%; border-radius: 30%; }
-.highlight-male-piernas-l { width: 30%; height: 42%; top: 48%; left: 18%; border-radius: 40%; }
-.highlight-male-piernas-r { width: 30%; height: 42%; top: 48%; right: 18%; border-radius: 40%; }
+/* Highlights Masculinos v2 - Ajustados para a nova escala compacta */
+.highlight-male-pecho { width: 40%; height: 10%; top: 18%; left: 30%; border-radius: 40%; background: radial-gradient(ellipse at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 60%, transparent 80%); }
+.highlight-male-brazos-l { width: 12%; height: 26%; top: 25%; left: 22%; border-radius: 50%; }
+.highlight-male-brazos-r { width: 12%; height: 26%; top: 25%; right: 22%; border-radius: 50%; }
+.highlight-male-abdomen { width: 28%; height: 16%; top: 29%; left: 36%; border-radius: 30%; }
+.highlight-male-piernas-l { width: 22%; height: 42%; top: 48%; left: 26%; border-radius: 40%; }
+.highlight-male-piernas-r { width: 22%; height: 42%; top: 48%; right: 26%; border-radius: 40%; }
 
 /* Highlights Femininos v2 - PrecisÃ£o CirÃºrgica */
 .highlight-female-superiores { width: 60%; height: 20%; top: 22%; left: 20%; border-radius: 40%; }
