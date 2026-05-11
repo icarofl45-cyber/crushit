@@ -1313,9 +1313,9 @@ font-family: 'Inter', sans-serif;}
     transition: all 0.3s ease;
 }
 .chk-item-v2.active-now {
-    background: rgba(34, 197, 94, 0.05);
-    border-color: rgba(34, 197, 94, 0.2);
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.05);
+    background: rgba(255, 107, 0, 0.05);
+    border-color: rgba(255, 107, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.05);
 }
 .ring-wrap {
     position: relative;
@@ -1329,7 +1329,7 @@ font-family: 'Inter', sans-serif;}
     transition: stroke-dashoffset 0.1s linear;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
-    filter: drop-shadow(0 0 5px var(--cta-green));
+    filter: drop-shadow(0 0 5px #ff6b00);
 }
 .chk-check {
     position: absolute;
