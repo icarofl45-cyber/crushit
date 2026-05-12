@@ -1091,6 +1091,17 @@
                 imgGoal.src = `imagens_webp_crush_it/${goalFile}${sfx}.webp`;
             }
 
+            // 4.1. BARRAS DE MUSCULATURA DINÂMICAS
+            const muscNow = document.getElementById('off-musc-now');
+            const muscGoal = document.getElementById('off-musc-goal');
+            if (isFem) {
+                if (muscNow) muscNow.setAttribute('data-filled', '1');
+                if (muscGoal) muscGoal.setAttribute('data-filled', '4');
+            } else {
+                if (muscNow) muscNow.setAttribute('data-filled', '2');
+                if (muscGoal) muscGoal.setAttribute('data-filled', '5');
+            }
+
             // 5. MEDIDORES (Gauges Premium)
             // Calorias
             let kcal = imcNum >= 25 ? 2000 : 2400;
