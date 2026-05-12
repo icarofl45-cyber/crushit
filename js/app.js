@@ -1335,7 +1335,7 @@
 
 
 // ==========================================
-// ROULETTE LOGIC
+// ROULETTE LOGIC - PREMIUM PURPLE
 // ==========================================
 let rouletteTimer;
 let rouletteSpun = false;
@@ -1350,14 +1350,16 @@ function startOfferTimer() {
     }, 15000);
 }
 
-// Draw the roulette wheel
+// 8 segments - alternating purple/dark
 const segments = [
-    { label: "10% OFF", color: "#1a1a1a" },
-    { label: "20% OFF", color: "#1a1a1a" },
-    { label: "50% OFF", color: "#1a1a1a" },
-    { label: "75% OFF", color: "#6a00ff" }, // Fixed purple color
-    { label: "15% OFF", color: "#1a1a1a" },
-    { label: "5% OFF", color: "#1a1a1a" }
+    { label: "15%", color: "#2a1a4a" },
+    { label: "20%", color: "#4c1d95" },
+    { label: "30%", color: "#2a1a4a" },
+    { label: "15%", color: "#4c1d95" },
+    { label: "50%", color: "#2a1a4a" },
+    { label: "5%",  color: "#4c1d95" },
+    { label: "25%", color: "#2a1a4a" },
+    { label: "75%", color: "#7b2ff7" }  // Target - brighter purple
 ];
 
 let currentRotation = 0;
@@ -1368,11 +1370,11 @@ function drawRoulette() {
     const ctx = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const radius = centerX - 10;
+    const radius = centerX - 8;
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    const arc = Math.PI / (segments.length / 2);
+    const arc = (Math.PI * 2) / segments.length;
     
     ctx.save();
     ctx.translate(centerX, centerY);
@@ -1381,19 +1383,33 @@ function drawRoulette() {
     segments.forEach((seg, i) => {
         const angle = i * arc;
         
+        // Draw segment
         ctx.beginPath();
         ctx.fillStyle = seg.color;
         ctx.moveTo(0, 0);
         ctx.arc(0, 0, radius, angle, angle + arc);
+        ctx.closePath();
         ctx.fill();
+        
+        // Segment border
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.lineWidth = 1;
         ctx.stroke();
         
+        // Draw text
         ctx.save();
-        ctx.fillStyle = "white";
-        ctx.font = "bold 16px 'Inter'";
-        ctx.translate(Math.cos(angle + arc / 2) * (radius * 0.7), Math.sin(angle + arc / 2) * (radius * 0.7));
-        ctx.rotate(angle + arc / 2 + Math.PI / 2);
-        ctx.fillText(seg.label, -ctx.measureText(seg.label).width / 2, 0);
+        ctx.fillStyle = "rgba(255,255,255,0.85)";
+        ctx.font = "bold 14px 'Inter', sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        const textAngle = angle + arc / 2;
+        const textRadius = radius * 0.65;
+        ctx.translate(
+            Math.cos(textAngle) * textRadius,
+            Math.sin(textAngle) * textRadius
+        );
+        ctx.rotate(textAngle + Math.PI / 2);
+        ctx.fillText(seg.label, 0, 0);
         ctx.restore();
     });
     
@@ -1405,28 +1421,31 @@ function spinRoulette() {
     rouletteSpun = true;
     
     const btn = document.getElementById('btn-spin');
+    const centerBtn = document.querySelector('.roulette-center-btn');
     btn.innerText = "GIRANDO...";
     btn.disabled = true;
+    if (centerBtn) centerBtn.style.pointerEvents = 'none';
     
-    // We want to land on "75% OFF" which is index 3
-    const targetSegment = 3; 
+    // Target: "75%" which is index 7
+    const targetSegment = 7; 
     const arc = (Math.PI * 2) / segments.length;
-    // Calculate the angle to land on the 75% segment (adjusting for pointer position)
-    const targetAngle = (segments.length - targetSegment) * arc - (arc / 2) - (Math.PI / 2);
+    // Calculate angle to land pointer (top) on target segment
+    const targetAngle = -(targetSegment * arc + arc / 2) - (Math.PI / 2);
     
-    // Spin 5 full times plus the target angle
-    const totalRotation = currentRotation + (Math.PI * 2 * 5) + targetAngle;
+    // Spin 6 full rotations plus target
+    const totalRotation = (Math.PI * 2 * 6) + targetAngle;
     
-    const duration = 4000;
-    const start = performance.now();
+    const duration = 5000;
+    const startTime = performance.now();
+    const startRotation = currentRotation;
     
     function animate(time) {
-        const elapsed = time - start;
+        const elapsed = time - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        // Easing out function
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        currentRotation = totalRotation * easeOut;
+        // Cubic ease-out for realistic deceleration
+        const easeOut = 1 - Math.pow(1 - progress, 4);
+        currentRotation = startRotation + totalRotation * easeOut;
         
         drawRoulette();
         
@@ -1442,12 +1461,18 @@ function spinRoulette() {
 
 function finishSpin() {
     setTimeout(() => {
-        // Highlight 75%
-        document.querySelector('.price-old-v2').classList.add('crossed-out');
-        document.querySelector('.discount-balloon').classList.add('visible');
-        document.querySelector('.price-new-v2').innerText = "$9,90";
-        document.querySelector('.price-new-v2').classList.add('discounted');
+        // Apply 75% discount
+        const oldPrice = document.querySelector('.price-old-v2');
+        const newPrice = document.querySelector('.price-new-v2');
+        const balloon = document.querySelector('.discount-balloon');
+        
+        if (oldPrice) oldPrice.classList.add('crossed-out');
+        if (balloon) balloon.classList.add('visible');
+        if (newPrice) {
+            newPrice.innerText = "$9,90";
+            newPrice.classList.add('discounted');
+        }
         
         document.getElementById('roulette-modal').classList.remove('active');
-    }, 1000);
+    }, 1200);
 }

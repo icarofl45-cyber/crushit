@@ -1859,17 +1859,20 @@
     <!-- ROULETTE MODAL -->
     <div id="roulette-modal" class="roulette-modal">
         <div class="roulette-content">
-            <h2>¡GIRA Y GANA!</h2>
-            <p>Descuento exclusivo para nuevos alumnos.</p>
+            <div class="roulette-slot-icon">🎰</div>
+            <h2>¡ESPERA!</h2>
+            <p>Tienes una oportunidad exclusiva.<br>Gira la ruleta y descubre tu descuento.</p>
             
             <div class="roulette-container">
                 <!-- Seta indicadora -->
                 <div class="roulette-pointer"></div>
                 <!-- Roda (canvas) -->
                 <canvas id="roulette-canvas" width="300" height="300"></canvas>
+                <!-- Botão central GIRAR -->
+                <div class="roulette-center-btn" onclick="spinRoulette()">GIRAR</div>
             </div>
 
-            <button id="btn-spin" onclick="spinRoulette()">GIRAR AHORA</button>
+            <button id="btn-spin" onclick="spinRoulette()">¡GIRAR AHORA!</button>
             <p class="roulette-disclaimer">Válido por 10 minutos.</p>
         </div>
     </div>
