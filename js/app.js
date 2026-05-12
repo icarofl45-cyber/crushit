@@ -1061,7 +1061,7 @@
             } else {
                 stHeadline.innerText = 'Ventana de Oportunidad Metabólica';
                 stSubtext.innerText = 'Análisis de composición detectado: Tu metabolismo está en el punto óptimo para la quema de grasa subcutánea.';
-                stProtocol.innerText = 'Calistenia de definición con circuitos de alta intensidad — 4-5 días/semana, máxima quema de grasa.';
+                stProtocol.innerText = 'Estrategia Recomendada: Activación de Ciclos de Quema Rápida (CQR) — Sistema de reajuste metabólico optimizado para resultados en 21 días.';
             }
 
             // 4. IMAGENS DE COMPARAÇÃO
