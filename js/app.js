@@ -1330,6 +1330,7 @@
             if (typeof originalPopulate === 'function') originalPopulate();
             startSocialProofCarousel();
             startTestimonialsCarousel();
+            startOfferTimer();
         };
 
 
@@ -1341,6 +1342,9 @@ let rouletteTimer;
 let rouletteSpun = false;
 
 function startOfferTimer() {
+    // Clear any existing timer to prevent duplicates
+    if (rouletteTimer) clearTimeout(rouletteTimer);
+    
     // Show roulette after 15 seconds on offer page
     rouletteTimer = setTimeout(() => {
         if (!rouletteSpun) {
