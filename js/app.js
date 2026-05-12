@@ -1272,12 +1272,26 @@
         // SOCIAL PROOF CAROUSEL - REFINADO (PORTUGUÊS)
         let currentProofIndex = 0;
         const proofs = [
-            { name: 'Carlos*', gender: 'male' },
-            { name: 'Jorge*', gender: 'male' },
-            { name: 'Ana*', gender: 'female' },
-            { name: 'Laura*', gender: 'female' },
             { name: 'Mateo*', gender: 'male' },
-            { name: 'Sofia*', gender: 'female' }
+            { name: 'Valentina*', gender: 'female' },
+            { name: 'Javier*', gender: 'male' },
+            { name: 'Sofia*', gender: 'female' },
+            { name: 'Andrés*', gender: 'male' },
+            { name: 'Isabella*', gender: 'female' },
+            { name: 'Diego*', gender: 'male' },
+            { name: 'Camila*', gender: 'female' },
+            { name: 'Ricardo*', gender: 'male' },
+            { name: 'Martina*', gender: 'female' },
+            { name: 'Fernando*', gender: 'male' },
+            { name: 'Lucía*', gender: 'female' },
+            { name: 'Gabriel*', gender: 'male' },
+            { name: 'Elena*', gender: 'female' },
+            { name: 'Sergio*', gender: 'male' },
+            { name: 'Paula*', gender: 'female' },
+            { name: 'Pablo*', gender: 'male' },
+            { name: 'Natalia*', gender: 'female' },
+            { name: 'Luis*', gender: 'male' },
+            { name: 'Daniela*', gender: 'female' }
         ];
 
         function startSocialProofCarousel() {
