@@ -1341,7 +1341,29 @@
             if (typeof originalPopulate === 'function') originalPopulate();
             startSocialProofCarousel();
             startTestimonialsCarousel();
+            startPeopleCounter();
         };
+
+        function startPeopleCounter() {
+            const el = document.getElementById('people-joined-count');
+            if (!el) return;
+            
+            let count = 320;
+            setInterval(() => {
+                // Incremento aleatório de 1 a 2
+                count += Math.floor(Math.random() * 2) + 1;
+                el.innerText = count;
+                
+                // Efeito visual de destaque rápido
+                el.style.transition = 'all 0.3s ease';
+                el.style.color = '#fff';
+                el.style.textShadow = '0 0 10px #fff';
+                setTimeout(() => {
+                    el.style.color = '';
+                    el.style.textShadow = '';
+                }, 500);
+            }, 4000);
+        }
 
 
 
