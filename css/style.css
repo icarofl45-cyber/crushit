@@ -2953,18 +2953,27 @@ input[type=range]::-moz-range-thumb {
 }
 
 .offer-header-bubble {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 12px 10px;
+    background: transparent;
+    border: none;
+    padding: 0;
     text-align: center !important;
-    margin: 0 auto 10px !important;
+    margin: 0 auto 25px !important;
     display: block !important;
-    max-width: 320px;
-    width: 90%;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+.bubble-subtitle {
+    font-size: 16px;
+    color: #fff;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.bubble-ready {
+    font-size: 14px;
+    color: var(--text-gray);
+    font-weight: 500;
 }
 
 .glow-beam {
