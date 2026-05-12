@@ -1059,8 +1059,8 @@
                 stSubtext.innerText = 'Hemos identificado el bloqueo que impedía tu pérdida de peso. El sistema ha configurado tu protocolo para forzar la quema inmediata.';
                 stProtocol.innerText = 'Protocolo HIIT metabólico con enfoque en movilización de grasas — 5-6 días/semana, déficit nutricional optimizado.';
             } else {
-                stHeadline.innerText = 'ESTADO DE DEFINICIÓN TÁCTICA';
-                stSubtext.innerText = 'Tu cuerpo ha entrado en la ventana de oportunidad para eliminar grasa subcutánea sin perder músculo. Es el momento de la verdad.';
+                stHeadline.innerText = 'Ventana de Oportunidad Metabólica';
+                stSubtext.innerText = 'Análisis de composición detectado: Tu metabolismo está en el punto óptimo para la quema de grasa subcutánea.';
                 stProtocol.innerText = 'Calistenia de definición con circuitos de alta intensidad — 4-5 días/semana, máxima quema de grasa.';
             }
 
