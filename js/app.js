@@ -1348,20 +1348,35 @@
             const el = document.getElementById('people-joined-count');
             if (!el) return;
             
-            let count = 320;
+            // Tenta recuperar o valor salvo, senão começa em 320
+            let savedCount = localStorage.getItem('crushit_people_count');
+            let count = savedCount ? parseInt(savedCount) : 320;
+            
+            // Se já passou de 999 por algum motivo, reseta para um valor alto mas crível
+            if (count >= 999) count = 980;
+            
+            el.innerText = count;
+            
             setInterval(() => {
-                // Incremento aleatório de 1 a 2
-                count += Math.floor(Math.random() * 2) + 1;
-                el.innerText = count;
-                
-                // Efeito visual de destaque rápido
-                el.style.transition = 'all 0.3s ease';
-                el.style.color = '#fff';
-                el.style.textShadow = '0 0 10px #fff';
-                setTimeout(() => {
-                    el.style.color = '';
-                    el.style.textShadow = '';
-                }, 500);
+                if (count < 999) {
+                    // Incremento aleatório de 1 a 2
+                    count += Math.floor(Math.random() * 2) + 1;
+                    
+                    // Garante que não passe de 999
+                    if (count > 999) count = 999;
+                    
+                    el.innerText = count;
+                    localStorage.setItem('crushit_people_count', count);
+                    
+                    // Efeito visual de destaque rápido
+                    el.style.transition = 'all 0.3s ease';
+                    el.style.color = '#fff';
+                    el.style.textShadow = '0 0 10px #fff';
+                    setTimeout(() => {
+                        el.style.color = '';
+                        el.style.textShadow = '';
+                    }, 500);
+                }
             }, 4000);
         }
 
