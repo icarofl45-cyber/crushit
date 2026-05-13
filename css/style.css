@@ -112,48 +112,49 @@ body {
 .goal-list { display: flex; flex-direction: column; gap: 16px; width: 100%; margin-top: 20px; }
 .goal-card {
     background-color: var(--card-bg);
-    border-radius: 20px;
-    padding: 16px;
+    border-radius: 28px;
+    padding: 10px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     cursor: pointer;
     border: 1px solid #222;
     transition: all 0.2s;
-    height: 120px; /* Fixed height for consistency */
+    height: 140px; /* Original Height */
 }
 .goal-card:hover { border-color: var(--brand-purple); background-color: #1e1e1e; transform: scale(1.02); }
-.goal-img-box { width: 80px; height: 100%; background: #000; border-radius: 12px; flex-shrink: 0; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
-.goal-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.goal-info { flex-grow: 1; text-align: left; }
-.goal-title { font-size: 18px; font-weight: 900; text-transform: uppercase; color: var(--text-white); line-height: 1.1; margin-bottom: 4px; }
-.goal-subtitle { font-size: 12px; color: var(--text-gray); line-height: 1.3; }
+.goal-img-box { width: 110px; height: 100%; background: #000; border-radius: 20px; flex-shrink: 0; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+.goal-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.goal-info { flex-grow: 1; text-align: left; padding-right: 10px; }
+.goal-title { font-size: 20px; font-weight: 900; text-transform: uppercase; color: var(--text-white); line-height: 1; margin-bottom: 6px; }
+.goal-subtitle { font-size: 11px; color: var(--text-gray); line-height: 1.2; font-weight: 400; opacity: 0.8; }
 
 /* Hex Grid & Bodytype Layout */
-.hex-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; margin-top: 24px; }
-.hex-card { background: var(--card-bg); border-radius: 24px; padding: 15px; text-align: center; border: 1px solid #222; transition: all 0.3s; }
+.hex-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; margin-top: 20px; }
+.hex-card { background: var(--card-bg); border-radius: 30px; padding: 10px; text-align: center; border: 1px solid #222; transition: all 0.3s; }
 .hex-card:hover { border-color: var(--cta-green); transform: translateY(-5px); }
-.hex-image-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; margin-bottom: 12px; border-radius: 16px; background: #000; }
-.hex-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
-.hex-label { font-size: 14px; font-weight: 900; color: var(--text-white); letter-spacing: 1px; }
+.hex-image-wrap { width: 100%; height: 220px; overflow: hidden; margin-bottom: 12px; border-radius: 20px; background: #000; }
+.hex-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.hex-label { font-size: 13px; font-weight: 950; color: var(--text-white); letter-spacing: 1px; text-transform: uppercase; }
 
 /* Horizontal List & Desire Screens */
-.horizontal-list { display: flex; flex-direction: column; gap: 15px; width: 100%; margin-top: 24px; }
+.horizontal-list { display: flex; flex-direction: column; gap: 15px; width: 100%; margin-top: 20px; }
 .horizontal-card {
     background: #111;
     border: 1px solid #222;
-    border-radius: 20px;
-    padding: 15px;
+    border-radius: 30px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     transition: all 0.3s;
+    height: 120px;
 }
 .horizontal-card:hover { border-color: var(--cta-green); background: #181818; }
-.horizontal-label { font-size: 18px; font-weight: 900; color: var(--text-white); text-transform: uppercase; }
-.horizontal-img-box { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.05); flex-shrink: 0; }
-.horizontal-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.horizontal-label { font-size: 18px; font-weight: 950; color: var(--text-white); text-transform: uppercase; text-align: left; max-width: 60%; }
+.horizontal-img-box { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.1); flex-shrink: 0; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.horizontal-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
 /* Bodyfat Screen Layout */
 .fat-image-display { width: 100%; display: flex; justify-content: center; margin: 30px 0; }
