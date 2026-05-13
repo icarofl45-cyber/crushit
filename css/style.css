@@ -40,6 +40,23 @@ body {
 .progress-container { width: 100%; height: 100%; background: transparent; position: relative; overflow: visible; }
 .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--brand-purple), var(--cta-green)); transition: width .6s cubic-bezier(.34,1.56,.64,1); border-radius: 2px; }
 
+/* Quiz Grid & Age Cards */
+.quiz-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; margin-top: 20px; }
+.age-card { background-color: var(--card-bg); border-radius: 28px; overflow: hidden; cursor: pointer; transition: all .25s cubic-bezier(.175,.885,.32,1.275); display: flex; flex-direction: column; align-items: center; padding-bottom: 18px; position: relative; border: 1px solid #222; }
+.age-card img { width: 100%; height: 240px; display: block; margin-bottom: -18px; object-fit: cover; object-position: top; }
+.age-button { background-color: var(--cta-green); color: #000; font-weight: 800; font-size: 16px; padding: 12px 0; width: 90%; text-align: center; border-radius: 50px; z-index: 2; box-shadow: 0 6px 20px rgba(34, 197, 94, .3); position: relative; }
+.step-counter { font-size: 13px; font-weight: 800; color: var(--brand-purple); letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase; text-align: center; }
+.step-percentage { font-size: 14px; font-weight: 900; color: var(--cta-green); margin-left: 12px; text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+
+/* Clean Header (For Offer/Results) */
+.main-header.clean-header .logo-container { justify-content: center; padding: 20px 0; }
+.main-header.clean-header .logo-img { max-width: 160px; }
+.main-header.clean-header .nav-controls, .main-header.clean-header .top-nav { display: none !important; }
+
+/* Laurel & Trust Elements */
+.laurel { width: 155px !important; height: auto; opacity: 0.8; transition: transform 0.3s ease; }
+.trust-section { padding: 40px 0; text-align: center; width: 100%; }
+
 /* Training & Start Date Components */
 .training-list-v2 { width: 100%; display: flex; flex-direction: column; gap: 12px; }
 .training-card-v2 { background: #121212; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 20px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 20px; }
