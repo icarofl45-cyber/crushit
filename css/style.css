@@ -109,22 +109,105 @@ body {
 .gender-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .gender-label { font-size: 16px; font-weight: 800; text-transform: uppercase; color: var(--text-white); padding: 12px 8px; }
 
-.goal-list { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+.goal-list { display: flex; flex-direction: column; gap: 16px; width: 100%; margin-top: 20px; }
 .goal-card {
     background-color: var(--card-bg);
     border-radius: 20px;
-    padding: 20px;
+    padding: 16px;
     display: flex;
     align-items: center;
     gap: 20px;
     cursor: pointer;
     border: 1px solid #222;
     transition: all 0.2s;
+    height: 120px; /* Fixed height for consistency */
 }
 .goal-card:hover { border-color: var(--brand-purple); background-color: #1e1e1e; transform: scale(1.02); }
-.goal-img-box { width: 85px; height: 110px; background: #252525; border-radius: 16px; flex-shrink: 0; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
-.goal-img-box img { width: 100%; height: 100%; object-fit: cover; }
-.goal-title { font-size: 22px; font-weight: 800; text-transform: uppercase; color: var(--text-white); line-height: 1; }
+.goal-img-box { width: 80px; height: 100%; background: #000; border-radius: 12px; flex-shrink: 0; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+.goal-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.goal-info { flex-grow: 1; text-align: left; }
+.goal-title { font-size: 18px; font-weight: 900; text-transform: uppercase; color: var(--text-white); line-height: 1.1; margin-bottom: 4px; }
+.goal-subtitle { font-size: 12px; color: var(--text-gray); line-height: 1.3; }
+
+/* Hex Grid & Bodytype Layout */
+.hex-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; margin-top: 24px; }
+.hex-card { background: var(--card-bg); border-radius: 24px; padding: 15px; text-align: center; border: 1px solid #222; transition: all 0.3s; }
+.hex-card:hover { border-color: var(--cta-green); transform: translateY(-5px); }
+.hex-image-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; margin-bottom: 12px; border-radius: 16px; background: #000; }
+.hex-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.hex-label { font-size: 14px; font-weight: 900; color: var(--text-white); letter-spacing: 1px; }
+
+/* Horizontal List & Desire Screens */
+.horizontal-list { display: flex; flex-direction: column; gap: 15px; width: 100%; margin-top: 24px; }
+.horizontal-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.horizontal-card:hover { border-color: var(--cta-green); background: #181818; }
+.horizontal-label { font-size: 18px; font-weight: 900; color: var(--text-white); text-transform: uppercase; }
+.horizontal-img-box { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.05); flex-shrink: 0; }
+.horizontal-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Bodyfat Screen Layout */
+.fat-image-display { width: 100%; display: flex; justify-content: center; margin: 30px 0; }
+.fat-avatar-box { position: relative; width: 180px; height: 260px; background: #000; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; }
+.fat-img { width: 100%; height: 100%; object-fit: cover; }
+.box-corners span { position: absolute; width: 15px; height: 15px; border-color: var(--cta-green); border-style: solid; border-width: 0; }
+.box-corners span:nth-child(1) { top: 10px; left: 10px; border-top-width: 2px; border-left-width: 2px; }
+.box-corners span:nth-child(2) { top: 10px; right: 10px; border-top-width: 2px; border-right-width: 2px; }
+.box-corners span:nth-child(3) { bottom: 10px; left: 10px; border-bottom-width: 2px; border-left-width: 2px; }
+.box-corners span:nth-child(4) { bottom: 10px; right: 10px; border-bottom-width: 2px; border-right-width: 2px; }
+
+.fat-slider-container { width: 100%; margin: 20px 0 40px; padding: 0 10px; }
+.slider-wrap { position: relative; width: 100%; height: 60px; display: flex; align-items: center; }
+.fat-value-bubble { position: absolute; top: -25px; left: 50%; transform: translateX(-50%); background: var(--cta-green); color: #000; padding: 4px 12px; border-radius: 50px; font-weight: 950; font-size: 14px; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
+.slider-track-dots { position: absolute; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; pointer-events: none; }
+.track-dot { width: 4px; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; }
+#fat-slider { width: 100%; -webkit-appearance: none; background: transparent; cursor: pointer; z-index: 2; }
+#fat-slider::-webkit-slider-runnable-track { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+#fat-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; background: #fff; border: 4px solid var(--brand-purple); border-radius: 50%; margin-top: -9px; box-shadow: 0 0 15px rgba(123, 47, 247, 0.5); }
+.slider-labels { display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; color: #444; text-transform: uppercase; margin-top: 10px; }
+
+.btn-continue { background: var(--cta-green); color: #000; border: none; padding: 18px; width: 100%; border-radius: 50px; font-weight: 900; font-size: 16px; letter-spacing: 1px; cursor: pointer; box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3); }
+
+/* Focus Area Layout */
+.areas-screen { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.areas-headline { font-size: 26px; font-weight: 900; text-align: center; margin-bottom: 5px; text-transform: uppercase; color: #fff; }
+.areas-headline span { color: var(--cta-green); display: block; }
+.areas-body { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+.areas-avatar-v2 { position: relative; width: 160px; height: 320px; flex-shrink: 0; }
+.avatar-img-v2 { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8)); }
+
+.body-highlight { position: absolute; background: rgba(34, 197, 94, 0); border: 2px solid transparent; border-radius: 50%; pointer-events: none; transition: all 0.3s ease; }
+.body-highlight.active { background: rgba(34, 197, 94, 0.3); border-color: var(--cta-green); box-shadow: 0 0 20px var(--cta-green); }
+
+/* Highlights Positioning (Female) */
+.highlight-female-superiores { top: 25%; left: 25%; width: 50%; height: 15%; border-radius: 40px; }
+.highlight-female-abdomen { top: 42%; left: 30%; width: 40%; height: 12%; border-radius: 30px; }
+.highlight-female-gluteos { top: 55%; left: 25%; width: 50%; height: 15%; border-radius: 40px; }
+.highlight-female-muslos { top: 72%; left: 20%; width: 60%; height: 18%; border-radius: 50px; }
+
+/* Highlights Positioning (Male) */
+.highlight-male-pecho { top: 22%; left: 25%; width: 50%; height: 12%; border-radius: 40px; }
+.highlight-male-brazos-l { top: 25%; left: 5%; width: 20%; height: 25%; border-radius: 20px; }
+.highlight-male-brazos-r { top: 25%; right: 5%; width: 20%; height: 25%; border-radius: 20px; }
+.highlight-male-abdomen { top: 40%; left: 30%; width: 40%; height: 15%; border-radius: 30px; }
+.highlight-male-piernas-l { top: 65%; left: 20%; width: 25%; height: 25%; border-radius: 40px; }
+.highlight-male-piernas-r { top: 65%; right: 20%; width: 25%; height: 25%; border-radius: 40px; }
+
+.areas-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+.area-option { background: #111; border: 1.5px solid #222; border-radius: 20px; padding: 12px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s; }
+.area-option.selected { border-color: var(--cta-green); background: rgba(34, 197, 94, 0.05); }
+.area-hex-icon { width: 45px; height: 45px; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+.area-hex-icon img { width: 100%; height: 100%; object-fit: cover; }
+.area-option-label { font-size: 13px; font-weight: 800; color: #fff; text-transform: uppercase; }
 
 /* --- ANALYSIS & LOADING (Premium) --- */
 .analysis-screen { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 0; }
