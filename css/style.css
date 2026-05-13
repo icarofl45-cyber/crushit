@@ -153,7 +153,7 @@ body {
 }
 .horizontal-card:hover { border-color: var(--cta-green); background: #181818; }
 .horizontal-label { font-size: 18px; font-weight: 950; color: var(--text-white); text-transform: uppercase; text-align: left; max-width: 60%; }
-.horizontal-img-box { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.1); flex-shrink: 0; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.horizontal-img-box { width: 100px; height: 100px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.1); flex-shrink: 0; box-shadow: 0 0 20px rgba(0,0,0,0.5); background: #121212; }
 .horizontal-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
 /* Bodyfat Screen Layout */
