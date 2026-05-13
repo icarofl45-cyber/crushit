@@ -85,6 +85,34 @@
         .start-info-v2 { text-align: left; }
         .start-title-v2 { font-size: 18px; font-weight: 800; color: #fff; text-transform: uppercase; margin-bottom: 4px; }
         .start-sub-v2 { font-size: 13px; color: var(--text-gray); line-height: 1.4; }
+
+        /* Estilos Restaurados para Checklist V3/V4 */
+        .checklist-container-v3{width: 100%; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 20px;}
+        .chk-headline-v3{font-size: 24px; font-weight: 900; line-height: 1.2; text-align: center; text-transform: uppercase; margin-bottom: 5px;}
+        .chk-timer-badge-v4{background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; padding: 6px 16px; border-radius: 50px; margin-bottom: 25px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);}
+        .chk-timer-v3{font-size: 10px; font-weight: 800; color: #ef4444; text-transform: uppercase; letter-spacing: 1px; margin: 0;}
+        .chk-authority-v3{background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px 20px; border-radius: 12px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%;}
+        .chk-auth-icon{font-size: 20px;}
+        .chk-authority-v3 p{font-size: 12px; opacity: 0.8; font-weight: 600; margin: 0;}
+        .chk-loading-box-v3{width: 100%; margin-bottom: 40px;}
+        .chk-loading-header-v3{display: flex; justify-content: space-between; margin-bottom: 10px;}
+        .chk-loading-header-v3 span{font-size: 11px; font-weight: 900; letter-spacing: 1px;}
+        .chk-progress-track-v3{height: 10px; background: #000; border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; overflow: visible; position: relative;}
+        .chk-progress-fill-v3{height: 100%; width: 0%; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, transparent 50%), linear-gradient(90deg, var(--brand-purple), var(--cta-green)); box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); transition: width 0.3s ease; position: relative; border-radius: 50px;}
+        .chk-progress-fill-v3::after { content: ''; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; background: #fff; clip-path: polygon(20% 0%, 100% 50%, 20% 100%, 0% 50%); box-shadow: 0 0 10px #fff; filter: drop-shadow(0 0 8px var(--cta-green)); z-index: 3; }
+        .chk-list-v3{width: 100%; display: flex; flex-direction: column; gap: 20px;}
+        .chk-row-v3{display: flex; align-items: center; gap: 15px; opacity: 0.3; transition: all 0.4s ease; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; width: 100%;}
+        .chk-row-v3.active-now{opacity: 1; background: rgba(255, 159, 67, 0.05); border-color: #ff9f43; box-shadow: 0 0 20px rgba(255, 159, 67, 0.15); transform: scale(1.02);}
+        .chk-row-v3.completed{opacity: 1; background: rgba(34, 197, 94, 0.05); border-color: var(--cta-green); box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);}
+        .chk-ring-wrap-v3{position: relative; width: 40px; height: 40px; flex-shrink: 0;}
+        .chk-ring-v3{transform: rotate(-90deg);}
+        .chk-ring-bg-v3{fill: transparent; stroke: rgba(255,255,255,0.05); stroke-width: 3;}
+        .chk-ring-fill-v3{fill: transparent; stroke: var(--cta-green); stroke-width: 3; stroke-dasharray: 107; stroke-dashoffset: 107; transition: stroke-dashoffset 0.1s linear;}
+        .chk-mark-v3{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--cta-green); font-weight: 900; font-size: 16px; opacity: 0;}
+        .chk-row-v3.completed .chk-mark-v3{opacity: 1;}
+        .chk-info-v3{text-align: left;}
+        .chk-label-v3{font-size: 11px; font-weight: 800; color: #fff; margin-bottom: 2px; line-height: 1.3;}
+        .chk-status-v3{font-size: 10px; font-weight: 700; color: #666;}
     </style>
     
     <!-- Google Fonts -->
