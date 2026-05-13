@@ -5797,15 +5797,14 @@ width: 100%;
 
 .card-header {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    justify-content: flex-start;
     margin-bottom: 15px;
 }
 
 /* Novos Estilos de TransformaÃ§Ã£o */
 .transformation-container {
     width: 100%;
-    height: 180px;
+    height: 280px;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 15px;
@@ -5817,6 +5816,7 @@ width: 100%;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
     transition: transform 0.5s ease;
 }
 
