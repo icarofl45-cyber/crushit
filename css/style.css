@@ -182,33 +182,33 @@ body {
 .areas-screen { width: 100%; display: flex; flex-direction: column; align-items: center; }
 .areas-headline { font-size: 26px; font-weight: 900; text-align: center; margin-bottom: 5px; text-transform: uppercase; color: #fff; }
 .areas-headline span { color: var(--cta-green); display: block; }
-.areas-body { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 30px; }
-.areas-avatar-v2 { position: relative; width: 160px; height: 320px; flex-shrink: 0; }
+.areas-body { width: 100%; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 10px; margin-top: 20px; }
+.areas-avatar-v2 { position: relative; width: 45%; height: 380px; flex-shrink: 0; }
 .avatar-img-v2 { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8)); }
 
-.body-highlight { position: absolute; background: rgba(34, 197, 94, 0); border: 2px solid transparent; border-radius: 50%; pointer-events: none; transition: all 0.3s ease; }
-.body-highlight.active { background: rgba(34, 197, 94, 0.3); border-color: var(--cta-green); box-shadow: 0 0 20px var(--cta-green); }
+.body-highlight { position: absolute; background: rgba(255, 107, 0, 0); border: 2px solid transparent; border-radius: 50%; pointer-events: none; transition: all 0.3s ease; z-index: 10; }
+.body-highlight.active { background: rgba(255, 107, 0, 0.3); border-color: #FF6B00; box-shadow: 0 0 25px #FF6B00; animation: highlight-pulse 1.5s infinite; }
+@keyframes highlight-pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
 
-/* Highlights Positioning (Female) */
-.highlight-female-superiores { top: 25%; left: 25%; width: 50%; height: 15%; border-radius: 40px; }
-.highlight-female-abdomen { top: 42%; left: 30%; width: 40%; height: 12%; border-radius: 30px; }
-.highlight-female-gluteos { top: 55%; left: 25%; width: 50%; height: 15%; border-radius: 40px; }
-.highlight-female-muslos { top: 72%; left: 20%; width: 60%; height: 18%; border-radius: 50px; }
+/* Highlights Positioning (Improved) */
+.highlight-female-superiores { top: 22%; left: 15%; width: 70%; height: 12%; border-radius: 40px; }
+.highlight-female-abdomen { top: 40%; left: 25%; width: 50%; height: 12%; border-radius: 30px; }
+.highlight-female-gluteos { top: 52%; left: 20%; width: 60%; height: 15%; border-radius: 40px; }
+.highlight-female-muslos { top: 70%; left: 15%; width: 70%; height: 18%; border-radius: 50px; }
 
-/* Highlights Positioning (Male) */
-.highlight-male-pecho { top: 22%; left: 25%; width: 50%; height: 12%; border-radius: 40px; }
-.highlight-male-brazos-l { top: 25%; left: 5%; width: 20%; height: 25%; border-radius: 20px; }
-.highlight-male-brazos-r { top: 25%; right: 5%; width: 20%; height: 25%; border-radius: 20px; }
-.highlight-male-abdomen { top: 40%; left: 30%; width: 40%; height: 15%; border-radius: 30px; }
-.highlight-male-piernas-l { top: 65%; left: 20%; width: 25%; height: 25%; border-radius: 40px; }
-.highlight-male-piernas-r { top: 65%; right: 20%; width: 25%; height: 25%; border-radius: 40px; }
+.highlight-male-pecho { top: 20%; left: 20%; width: 60%; height: 12%; border-radius: 40px; }
+.highlight-male-brazos-l { top: 25%; left: 0%; width: 25%; height: 25%; border-radius: 20px; }
+.highlight-male-brazos-r { top: 25%; right: 0%; width: 25%; height: 25%; border-radius: 20px; }
+.highlight-male-abdomen { top: 38%; left: 28%; width: 44%; height: 15%; border-radius: 30px; }
+.highlight-male-piernas-l { top: 65%; left: 15%; width: 30%; height: 25%; border-radius: 40px; }
+.highlight-male-piernas-r { top: 65%; right: 15%; width: 30%; height: 25%; border-radius: 40px; }
 
-.areas-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
-.area-option { background: #111; border: 1.5px solid #222; border-radius: 20px; padding: 12px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s; }
-.area-option.selected { border-color: var(--cta-green); background: rgba(34, 197, 94, 0.05); }
-.area-hex-icon { width: 45px; height: 45px; background: #121212; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+.areas-options { width: 52%; display: flex; flex-direction: column; gap: 10px; }
+.area-option { background: #111; border: 1.5px solid #222; border-radius: 16px; padding: 10px 8px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; width: 100%; }
+.area-option.selected { border-color: #FF6B00; background: rgba(255, 107, 0, 0.05); }
+.area-hex-icon { width: 40px; height: 40px; background: #121212; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); flex-shrink: 0; }
 .area-hex-icon img { width: 100%; height: 100%; object-fit: cover; }
-.area-option-label { font-size: 13px; font-weight: 800; color: #fff; text-transform: uppercase; }
+.area-option-label { font-size: 11px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* --- ANALYSIS & LOADING (Premium) --- */
 .analysis-screen { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 0; }
