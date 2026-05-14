@@ -167,7 +167,7 @@
             if (claimEl) {
                 const isFem = userProfile.gender === 'Femenino';
                 const genderTerm = isFem ? 'LAS MUJERES' : 'LOS HOMBRES';
-                claimEl.innerHTML = `EL <span style="color:var(--cta-green);">${percentage}%</span> DE ${genderTerm} CON TU PERFIL QUE ELIGEN <span style="color:var(--cta-green);">${areasText}</span> PRESENTAN UNA RESISTENCIA METABÓLICA A LA QUEMA DE GRASA LOCALIZADA.`;
+                claimEl.innerHTML = `EL ${percentage}% DE ${genderTerm} CON TU PERFIL QUE ELIGEN ${areasText} PRESENTAN UNA RESISTENCIA METABÓLICA A LA QUEMA DE GRASA LOCALIZADA.`;
             }
 
             let perc = 0;
