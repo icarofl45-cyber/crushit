@@ -92,6 +92,10 @@
                 const slider = document.getElementById('fat-slider');
                 if (slider) updateFatSlider(slider.value);
             }
+            if (stepId === 'targetweight') {
+                const input = document.getElementById('input-target-weight');
+                if (input) updateTargetWeightDisplay(input.value || 70);
+            }
             
             if (stepId === 'offer') {
                 populateOfferScreen();
@@ -515,6 +519,8 @@
             const h = parseFloat(userProfile.height);
             const currentW = parseFloat(userProfile.weight);
             const targetW = parseFloat(String(val).replace(',', '.'));
+            const container = document.querySelector('.target-weight-container');
+            const imcValueEl = document.getElementById('target-imc-value');
 
             if (h > 0 && currentW > 0) {
                 const elCurrent = document.getElementById('comp-weight-current');
@@ -529,13 +535,28 @@
 
                 if (targetW > 0) {
                     const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
+                    if (imcValueEl) imcValueEl.innerText = targetImc.toFixed(1);
+
                     let tarPerc = ((targetImc - 15) / (35 - 15)) * 100;
                     if (tarPerc < 5) tarPerc = 5; if (tarPerc > 95) tarPerc = 95;
                     const pinTarget = document.getElementById('target-gauge-pin-target');
                     pinTarget.style.left = tarPerc + '%';
                     pinTarget.style.opacity = '1';
+
+                    // Dynamic Border Logic
+                    let colorClass = "";
+                    if (targetImc < 18.5) colorClass = "imc-blue";
+                    else if (targetImc < 25) colorClass = "imc-green";
+                    else if (targetImc < 30) colorClass = "imc-orange";
+                    else colorClass = "imc-red";
+
+                    if (container) {
+                        container.className = "target-weight-container " + colorClass;
+                    }
                 } else {
                     document.getElementById('target-gauge-pin-target').style.opacity = '0';
+                    if (imcValueEl) imcValueEl.innerText = '--';
+                    if (container) container.className = "target-weight-container";
                 }
             }
         }

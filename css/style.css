@@ -538,13 +538,19 @@ body {
     width: 100%;
     max-width: 420px;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
     padding: 30px 20px;
     margin: 20px 0;
     text-align: center;
     backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
 }
+
+.target-weight-container.imc-blue { border-color: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+.target-weight-container.imc-green { border-color: #22c55e; box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+.target-weight-container.imc-orange { border-color: #f97316; box-shadow: 0 0 20px rgba(249, 115, 22, 0.2); }
+.target-weight-container.imc-red { border-color: #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.2); }
 
 .target-weight-label {
     font-size: 11px;
@@ -603,9 +609,10 @@ body {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 900;
     color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
 }
 
 .comp-arrow {
@@ -619,6 +626,30 @@ body {
 .bmi-gauge-wrap {
     width: 100%;
     margin-top: 30px;
+}
+
+.target-imc-display {
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.target-imc-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.target-imc-val {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
 }
 
 /* --- PREDICTION & PERFORMANCE (Premium Restoration) --- */
