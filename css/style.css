@@ -215,7 +215,7 @@ body {
 .areas-options .area-option:nth-child(2) { left: 5px; top: 30%; } /* Abdomen (Left) */
 .areas-options .area-option:nth-child(3) { right: 5px; top: 42%; } /* Gluteos (Right) */
 .areas-options .area-option:nth-child(4) { left: 5px; top: 63%; } /* Muslos (Left) */
-.areas-options .area-option:nth-child(5) { left: 50%; bottom: 0px; transform: translateX(-50%); width: 100px; } /* Todo el cuerpo (Bottom) */
+.areas-options .area-option:nth-child(5) { right: 5px; top: 72%; width: 85px; } /* Todo el cuerpo (Right Bottom) */
 
 .area-hex-icon { 
     width: 65px; 
