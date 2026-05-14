@@ -582,9 +582,9 @@
             if (!group) return;
             group.innerHTML = '';
             
-            const numTowers = 40;
+            const numTowers = 50;
             const width = 400;
-            const barWidth = 4;
+            const barWidth = 6;
             const gap = (width / numTowers);
 
             // Função para pegar Y na curva Bezier M 0,10 C 50,15 150,105 400,115
@@ -623,9 +623,9 @@
             if (!group) return;
             group.innerHTML = '';
             
-            const numTowers = 40;
+            const numTowers = 50;
             const width = 400;
-            const barWidth = 4;
+            const barWidth = 6;
             const gap = (width / numTowers);
 
             // Função para pegar Y na curva Bezier M 0,110 C 150,100 300,25 400,15
