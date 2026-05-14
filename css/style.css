@@ -317,6 +317,123 @@ body {
 #areas-content-male .area-option:nth-child(3) { top: 38%; } /* Abdomen (Right) - Baixar para y1=45 */
 #areas-content-male .area-option:nth-child(4) { top: 45%; } /* Piernas (Left) - Subir para y1=52 */
 
+/* --- BIOMETRICS STEP (Premium) --- */
+.unit-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 auto 25px;
+    width: fit-content;
+}
+
+.unit-btn {
+    background: transparent;
+    border: none;
+    color: #555;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.unit-btn.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--cta-green);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.biometrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; width: 100%; }
+
+.bio-field { 
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    padding: 24px 15px; 
+    border-radius: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    transition: all 0.3s ease;
+}
+
+.bio-label { font-size: 11px; font-weight: 900; color: var(--cta-green); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; }
+
+.bio-input-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+
+.bio-value-input { 
+    background: transparent; 
+    border: none; 
+    color: #fff; 
+    font-size: 48px; 
+    font-weight: 800; 
+    width: 100%; 
+    text-align: center; 
+    margin-bottom: 5px; 
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.bio-unit { font-size: 13px; color: #666; font-weight: 600; text-transform: lowercase; }
+
+.error-message { 
+    display: none; /* Escondido por padrão */
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 15px; 
+    color: #ff4444; 
+    text-align: center; 
+}
+
+.error-message svg { width: 24px; height: 24px; fill: #ff4444; margin-bottom: 5px; }
+.error-message span { font-size: 11px; font-weight: 700; line-height: 1.3; }
+
+/* IMC Box */
+.imc-box { 
+    background: rgba(255, 255, 255, 0.02); 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    border-radius: 20px; 
+    padding: 20px; 
+    width: 100%; 
+    margin-bottom: 25px;
+}
+
+.imc-box-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; padding: 0 5px; }
+.imc-box-label { font-size: 12px; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+.imc-value { font-size: 32px; font-weight: 900; color: #fff; line-height: 1; }
+
+.imc-gauge-container { width: 100%; margin-top: 10px; }
+
+.imc-gauge-track { 
+    height: 6px; 
+    background: linear-gradient(90deg, #3b82f6 0%, #22c55e 30%, #f97316 60%, #ef4444 100%); 
+    border-radius: 10px; 
+    position: relative; 
+    margin-bottom: 12px;
+}
+
+.imc-gauge-pin { 
+    width: 14px; 
+    height: 14px; 
+    background: #fff; 
+    border: 3px solid #000; 
+    border-radius: 50%; 
+    position: absolute; 
+    top: 50%; 
+    transform: translate(-50%, -50%); 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.imc-gauge-labels { display: flex; justify-content: space-between; padding: 0 2px; }
+.imc-gauge-labels span { font-size: 9px; font-weight: 800; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.imc-category { text-align: center; margin-top: 15px; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+
 /* --- ANALYSIS & LOADING (Premium) --- */
 .analysis-screen { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 0; background: radial-gradient(circle at center, rgba(123, 47, 247, 0.05) 0%, transparent 70%); }
 
