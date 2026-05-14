@@ -485,12 +485,14 @@
             const imcDisplay = document.getElementById('imc-display');
             const imcCat = document.getElementById('imc-category');
             const imcBox = document.getElementById('imc-box');
+            const continueBtn = document.getElementById('btn-biometrics-continue');
             
             let h = parseFloat(hInput.value.replace(',', '.'));
             let w = parseFloat(wInput.value.replace(',', '.'));
             
             if (isNaN(h) || isNaN(w)) {
                 imcDisplay.innerText = '--';
+                if (continueBtn) continueBtn.classList.remove('active-btn');
                 return;
             }
 
@@ -506,7 +508,9 @@
             // Height Validation
             const hMin = isMetric ? 140 : 4.6;
             const hMax = isMetric ? 220 : 7.2;
-            if (hInput.value && (h < hMin || h > hMax)) {
+            const isHeightValid = h >= hMin && h <= hMax;
+            
+            if (hInput.value && !isHeightValid) {
                 document.getElementById('error-height').classList.add('active');
             } else {
                 document.getElementById('error-height').classList.remove('active');
@@ -515,51 +519,43 @@
             // Weight Validation
             const wMin = isMetric ? 40 : 88;
             const wMax = isMetric ? 140 : 308;
-            if (wInput.value && (w < wMin || w > wMax)) {
+            const isWeightValid = w >= wMin && w <= wMax;
+            
+            if (wInput.value && !isWeightValid) {
                 document.getElementById('error-weight').classList.add('active');
             } else {
                 document.getElementById('error-weight').classList.remove('active');
             }
 
-            if (hMetric >= 140 && hMetric <= 220 && wMetric >= 40 && wMetric <= 140) {
+            if (isHeightValid && isWeightValid) {
                 const imc = parseFloat((wMetric / ((hMetric/100)**2)).toFixed(1));
                 imcDisplay.innerText = imc;
                 
                 let category = "";
                 let colorClass = "";
                 
-                if (imc < 18.5) {
-                    category = "Bajo peso";
-                    colorClass = "imc-blue";
-                } else if (imc < 25) {
-                    category = "Peso normal";
-                    colorClass = "imc-green";
-                } else if (imc < 30) {
-                    category = "Sobrepeso";
-                    colorClass = "imc-orange";
-                } else {
-                    category = "Obeso";
-                    colorClass = "imc-red";
-                }
+                if (imc < 18.5) { category = "Bajo peso"; colorClass = "imc-blue"; }
+                else if (imc < 25) { category = "Peso normal"; colorClass = "imc-green"; }
+                else if (imc < 30) { category = "Sobrepeso"; colorClass = "imc-orange"; }
+                else { category = "Obeso"; colorClass = "imc-red"; }
                 
                 imcCat.innerText = category;
                 imcCat.className = "imc-category " + colorClass;
                 imcCat.style.display = "block";
-                
-                // Update Box
                 imcBox.className = "imc-box " + colorClass;
 
-                // Update Gauge Pin
-                // Range: 15 (Bajo) to 35 (Obeso)
                 let perc = ((imc - 15) / (35 - 15)) * 100;
                 if (perc < 5) perc = 5;
                 if (perc > 95) perc = 95;
                 document.getElementById('imc-gauge-pin').style.left = perc + '%';
+                
+                if (continueBtn) continueBtn.classList.add('active-btn');
             } else {
                 imcDisplay.innerText = '--';
                 imcCat.style.display = "none";
                 imcBox.className = "imc-box";
                 document.getElementById('imc-gauge-pin').style.left = '50%';
+                if (continueBtn) continueBtn.classList.remove('active-btn');
             }
         }
 
