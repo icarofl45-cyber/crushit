@@ -8,7 +8,8 @@
 
             if (area === 'todo') {
                 document.querySelectorAll('.area-option').forEach(opt => {
-                    if (opt !== element) opt.classList.remove('selected');
+                    if (isSelected) opt.classList.add('selected');
+                    else opt.classList.remove('selected');
                 });
                 document.querySelectorAll('.body-highlight').forEach(h => {
                     if (isSelected) h.classList.add('active');
