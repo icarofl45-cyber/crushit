@@ -702,6 +702,12 @@ body {
     align-items: center;
     width: 100%;
 }
+#screen-targetweight.screen.active {
+    display: flex !important;
+}
+#screen-prediction.screen.active {
+    display: flex !important;
+}
 
 .target-weight-container {
     width: 100%;
