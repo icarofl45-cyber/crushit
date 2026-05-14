@@ -178,7 +178,7 @@
                     clearInterval(interval);
                     setTimeout(() => goToStep('biometrics'), 500);
                 }
-            }, 30);
+            }, 50);
         }
 
         function submitAreas() {
