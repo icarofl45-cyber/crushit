@@ -203,12 +203,35 @@ body {
 .highlight-male-piernas-l { top: 65%; left: 15%; width: 30%; height: 25%; border-radius: 40px; }
 .highlight-male-piernas-r { top: 65%; right: 15%; width: 30%; height: 25%; border-radius: 40px; }
 
-.areas-options { width: 55%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; align-content: start; }
-.area-option { background: #111; border: 1.5px solid #222; border-radius: 16px; padding: 12px 5px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; cursor: pointer; transition: all 0.2s; }
-.area-option.selected { border-color: #FF6B00; background: rgba(255, 107, 0, 0.05); }
-.area-hex-icon { width: 48px; height: 48px; background: #121212; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); flex-shrink: 0; }
-.area-hex-icon img { width: 100%; height: 100%; object-fit: cover; }
-.area-option-label { font-size: 10px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+.areas-options { width: 55%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; align-content: center; }
+.area-option { 
+    background: #111; 
+    border: 1px solid #222; 
+    padding: 15px 5px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    gap: 5px; 
+    cursor: pointer; 
+    transition: all 0.3s;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    width: 100%;
+    min-height: 100px;
+    justify-content: center;
+}
+.area-option.selected { border-color: #FF6B00; background: rgba(255, 107, 0, 0.15); box-shadow: 0 0 20px rgba(255, 107, 0, 0.2); transform: scale(1.05); }
+
+/* X Layout Positioning */
+.areas-options .area-option:nth-child(1) { grid-column: 1; }
+.areas-options .area-option:nth-child(2) { grid-column: 2; }
+.areas-options .area-option:nth-child(5) { grid-column: 1 / span 2; width: 60%; justify-self: center; margin: -10px 0; } /* Center 'Todo el cuerpo' */
+.areas-options .area-option:nth-child(3) { grid-column: 1; }
+.areas-options .area-option:nth-child(4) { grid-column: 2; }
+
+.area-hex-icon { width: 35px; height: 35px; background: transparent; overflow: hidden; flex-shrink: 0; }
+.area-hex-icon img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+.area-option-label { font-size: 9px; font-weight: 950; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; max-width: 80%; }
 
 /* --- ANALYSIS & LOADING (Premium) --- */
 .analysis-screen { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 0; }
