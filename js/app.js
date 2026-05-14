@@ -519,15 +519,10 @@
             const h = parseFloat(userProfile.height);
             const currentW = parseFloat(userProfile.weight);
             const targetW = parseFloat(String(val).replace(',', '.'));
-            const container = document.querySelector('.target-weight-container');
+            const container = document.getElementById('target-imc-container');
             const imcValueEl = document.getElementById('target-imc-value');
 
             if (h > 0 && currentW > 0) {
-                const elCurrent = document.getElementById('comp-weight-current');
-                const elTarget = document.getElementById('comp-weight-target');
-                if (elCurrent) elCurrent.innerText = `${currentW.toFixed(1)} kg`;
-                if (elTarget) elTarget.innerText = targetW > 0 ? `${targetW.toFixed(1)} kg` : '--';
-
                 const currentImc = parseFloat((currentW / ((h/100)**2)).toFixed(1));
                 let curPerc = ((currentImc - 15) / (35 - 15)) * 100;
                 if (curPerc < 5) curPerc = 5; if (curPerc > 95) curPerc = 95;
@@ -551,12 +546,12 @@
                     else colorClass = "imc-red";
 
                     if (container) {
-                        container.className = "target-weight-container " + colorClass;
+                        container.className = "target-imc-container " + colorClass;
                     }
                 } else {
                     document.getElementById('target-gauge-pin-target').style.opacity = '0';
                     if (imcValueEl) imcValueEl.innerText = '--';
-                    if (container) container.className = "target-weight-container";
+                    if (container) container.className = "target-imc-container";
                 }
             }
         }

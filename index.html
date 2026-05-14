@@ -34,7 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=3.6">
+    <link rel="stylesheet" href="css/style.css?v=3.7">
 </head>
 <body>
 
@@ -452,23 +452,16 @@
         <h1 class="headline">DEFINE TU <span style="color:var(--cta-green)">META DE TRANSFORMACIÓN</span></h1>
         <p class="subheadline">Calcularemos el déficit calórico y el balance de macronutrientes para alcanzar tu objetivo.</p>
 
-        <div class="target-weight-container">
+        <div class="target-weight-input-card">
             <div class="target-weight-label">PESO OBJETIVO</div>
             <div class="weight-input-wrapper">
                 <input type="text" id="input-target-weight" class="weight-input-v2" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
                 <span class="weight-unit-label">kilogramos</span>
             </div>
+        </div>
 
-            <div class="weight-comparison">
-                <div class="comp-title">TU PROGRESO ESTIMADO</div>
-                <div class="comp-values">
-                    <span id="comp-weight-current">--</span>
-                    <span class="comp-arrow">→</span>
-                    <span id="comp-weight-target" class="comp-target">--</span>
-                </div>
-            </div>
-
-            <div id="target-imc-box" class="target-imc-display">
+        <div id="target-imc-container" class="target-imc-container">
+            <div class="target-imc-header">
                 <span class="target-imc-label">IMC ESTIMADO:</span>
                 <span id="target-imc-value" class="target-imc-val">--</span>
             </div>
@@ -1793,7 +1786,7 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=3.6" defer></script>
+    <script src="js/app.js?v=3.7" defer></script>
 </body>
 </html>
 
