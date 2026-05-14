@@ -694,3 +694,154 @@ body {
     .large-weight-display { font-size: 50px; }
     .testimonial-card { min-width: 260px; }
 }
+
+/* --- TARGET WEIGHT SCREEN (Premium Restoration) --- */
+#screen-targetweight.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.target-weight-container {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 30px 20px;
+    margin: 20px 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.target-weight-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--cta-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.weight-input-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.weight-input-v2 {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 82px;
+    font-weight: 950;
+    width: 220px;
+    text-align: center;
+    outline: none;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.weight-unit-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    font-weight: 700;
+    margin-top: -10px;
+}
+
+.weight-comparison {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    text-align: center;
+}
+
+.comp-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.comp-values {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.comp-arrow {
+    color: var(--cta-green);
+}
+
+.comp-target {
+    color: var(--cta-green);
+}
+
+.bmi-gauge-wrap {
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* --- PREDICTION & PERFORMANCE (Premium Restoration) --- */
+.prediction-screen { width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 20px; }
+.prediction-headline { font-size: 32px; color: #fff; text-align: center; margin-bottom: 5px; font-family: 'Barlow Condensed', sans-serif; }
+.prediction-status-label { font-size: 11px; font-weight: 800; color: var(--cta-green); letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase; }
+.prediction-sub { font-size: 15px; color: #aaa; text-align: center; margin-bottom: 5px; }
+.prediction-date { font-size: 38px; font-weight: 950; color: #fff; margin-bottom: 30px; font-family: 'Barlow Condensed', sans-serif; }
+
+.prediction-graph-container {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.graph-block { margin-bottom: 25px; }
+.graph-block:last-child { margin-bottom: 0; }
+.graph-header-v2 { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.graph-tag { font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 4px; letter-spacing: 1px; }
+.tag-fat { background: rgba(249, 115, 22, 0.1); color: #f97316; }
+.tag-muscle { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+.graph-val-now { font-size: 11px; font-weight: 700; color: #888; }
+.graph-visual-box { width: 100%; height: 60px; background: rgba(255,255,255,0.02); border-radius: 12px; position: relative; overflow: hidden; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05); }
+.graph-labels-v2 { display: flex; justify-content: space-between; padding: 0 5px; }
+.graph-labels-v2 span { font-size: 9px; font-weight: 800; color: #555; }
+
+/* Pushups Grid Premium */
+.pushups-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-top: 25px; }
+.pushup-hex-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pushup-hex-card:hover { background: rgba(34, 197, 94, 0.05); border-color: var(--cta-green); transform: translateY(-5px); }
+.pushup-hex-wrap {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin-bottom: 5px;
+}
+.pushup-label { font-size: 11px; font-weight: 800; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+
+@keyframes pulseOpacity {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}

@@ -560,8 +560,10 @@
         }
 
         function submitBiometrics() {
-            userProfile.height = document.getElementById('input-height').value;
-            userProfile.weight = document.getElementById('input-weight').value;
+            const hRaw = document.getElementById('input-height').value.replace(',', '.');
+            const wRaw = document.getElementById('input-weight').value.replace(',', '.');
+            userProfile.height = parseFloat(hRaw);
+            userProfile.weight = parseFloat(wRaw);
             saveProfile();
             goToStep('targetweight');
         }
@@ -586,36 +588,41 @@
         }
 
         function updateTargetWeightDisplay(val) {
-            // A lógica de exibição agora é automática pelo campo de input e estilo bio-field
-            
-
-
-            // Update Comparison Gauge
             const h = parseFloat(userProfile.height);
             const currentW = parseFloat(userProfile.weight);
-            const targetW = parseFloat(val);
+            const targetW = parseFloat(String(val).replace(',', '.'));
+
+            const unit = userProfile.units === 'imperial' ? 'lb' : 'kg';
 
             if (h > 0 && currentW > 0) {
+                // Update text display
+                const elCurrent = document.getElementById('comp-weight-current');
+                const elTarget = document.getElementById('comp-weight-target');
+                if (elCurrent) elCurrent.innerText = `${currentW} ${unit}`;
+                if (elTarget) elTarget.innerText = targetW > 0 ? `${targetW} ${unit}` : '--';
+
                 const currentImc = parseFloat((currentW / ((h/100)**2)).toFixed(1));
-                document.getElementById('comp-imc-current').innerText = currentImc;
                 
                 // Position current pin
                 let curPerc = ((currentImc - 15) / (35 - 15)) * 100;
                 if (curPerc < 5) curPerc = 5; if (curPerc > 95) curPerc = 95;
-                document.getElementById('target-gauge-pin-current').style.left = curPerc + '%';
+                const pinCurrent = document.getElementById('target-gauge-pin-current');
+                if (pinCurrent) pinCurrent.style.left = curPerc + '%';
 
                 if (targetW > 0) {
                     const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
-                    document.getElementById('comp-imc-target').innerText = targetImc;
                     
                     // Position target pin
                     let tarPerc = ((targetImc - 15) / (35 - 15)) * 100;
                     if (tarPerc < 5) tarPerc = 5; if (tarPerc > 95) tarPerc = 95;
-                    document.getElementById('target-gauge-pin-target').style.left = tarPerc + '%';
-                    document.getElementById('target-gauge-pin-target').style.opacity = '1';
+                    const pinTarget = document.getElementById('target-gauge-pin-target');
+                    if (pinTarget) {
+                        pinTarget.style.left = tarPerc + '%';
+                        pinTarget.style.opacity = '1';
+                    }
                 } else {
-                    document.getElementById('comp-imc-target').innerText = '--';
-                    document.getElementById('target-gauge-pin-target').style.opacity = '0';
+                    const pinTarget = document.getElementById('target-gauge-pin-target');
+                    if (pinTarget) pinTarget.style.opacity = '0';
                 }
             }
         }

@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=2.0">
+    <link rel="stylesheet" href="css/style.css?v=2.1">
 </head>
 <body>
 
@@ -459,47 +459,31 @@
         </div>
     </div>
 
-    <!-- ETAPA 10: PESO DESEJADO -->
     <div id="screen-targetweight" class="screen">
+        <h1 class="headline">DEFINE TU <span style="color:var(--cta-green)">META DE TRANSFORMACIÓN</span></h1>
+        <p class="subheadline">Calcularemos el déficit calórico y el balance de macronutrientes para alcanzar tu objetivo.</p>
+
         <div class="target-weight-container">
-            <h1 class="headline" style="font-size:32px; color: #fff;">DEFINE TU <span style="color:var(--cta-green)">META DE TRANSFORMACIÓN</span></h1>
-            <p class="subheadline" style="font-size:15px; margin-top: 10px;">Calcularemos el déficit calórico y el balance de macronutrientes para alcanzar tu objetivo.</p>
-            
+            <div class="target-weight-label">PESO OBJETIVO</div>
+            <div class="weight-input-wrapper">
+                <input type="number" id="input-target-weight" class="weight-input-v2" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
+                <span class="weight-unit-label" id="label-target-weight">kilogramos</span>
+            </div>
 
-
-            <div class="biometrics-grid" style="margin-top: 30px; grid-template-columns: 1fr; display: flex; justify-content: center;">
-                <div class="bio-field" style="width: 100%; max-width: 320px;">
-                    <label for="input-target-weight" class="bio-label">Peso Objetivo</label>
-                    <div class="bio-input-wrap">
-                        <input type="number" id="input-target-weight" class="bio-value-input" value="" placeholder="70" oninput="updateTargetWeightDisplay(this.value)" aria-describedby="label-target-weight">
-                        <span class="bio-unit" id="label-target-weight">kilogramos</span>
-                    </div>
+            <div class="weight-comparison">
+                <div class="comp-title">TU PROGRESO ESTIMADO</div>
+                <div class="comp-values">
+                    <span id="comp-weight-current">--</span>
+                    <span class="comp-arrow">→</span>
+                    <span id="comp-weight-target" class="comp-target">--</span>
                 </div>
             </div>
 
-            <!-- COMPARISON GAUGE RESTORED -->
-            <div class="imc-comparison-box bio-input-wrap">
-                <div class="comparison-header">
-                    <span>TU PROGRESO ESTIMADO</span>
-                    <div class="comparison-values">
-                        <div class="comp-val-item">
-                            <span class="comp-label">ACTUAL</span>
-                            <span id="comp-imc-current" class="comp-number">--</span>
-                        </div>
-                        <div class="comp-val-arrow">→</div>
-                        <div class="comp-val-item">
-                            <span class="comp-label">OBJETIVO</span>
-                            <span id="comp-imc-target" class="comp-number" style="color:var(--cta-green);">--</span>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="bmi-gauge-wrap">
                 <div class="imc-gauge-container">
                     <div class="imc-gauge-track">
-                        <!-- Current Pin -->
                         <div id="target-gauge-pin-current" class="imc-gauge-pin current-pin" style="left: 50%;"></div>
-                        <!-- Target Pin -->
-                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin" style="left: 50%;"></div>
+                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin" style="left: 50%; opacity:0;"></div>
                     </div>
                     <div class="imc-gauge-labels">
                         <span>BAJO</span>
@@ -509,10 +493,10 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="areas-footer">
-                <button class="btn-areas-continue active-btn" onclick="submitTargetWeight()">CONTINUAR →</button>
-            </div>
+        <div class="areas-footer">
+            <button class="btn-areas-continue active-btn" onclick="submitTargetWeight()">CONTINUAR →</button>
         </div>
     </div>
 
@@ -1818,7 +1802,7 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=2.0" defer></script>
+    <script src="js/app.js?v=2.1" defer></script>
 </body>
 </html>
 
