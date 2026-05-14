@@ -182,9 +182,9 @@ body {
 .areas-screen { width: 100%; display: flex; flex-direction: column; align-items: center; }
 .areas-headline { font-size: 26px; font-weight: 900; text-align: center; margin-bottom: 5px; text-transform: uppercase; color: #fff; }
 .areas-headline span { color: var(--cta-green); display: inline; }
-.areas-body { width: 100%; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 10px; margin-top: 20px; }
-.areas-avatar-v2 { position: relative; width: 60%; height: 420px; flex-shrink: 0; }
-.avatar-img-v2 { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8)); }
+.areas-body { width: 100%; display: flex; flex-direction: row; align-items: flex-start; justify-content: flex-start; gap: 15px; margin-top: 20px; }
+.areas-avatar-v2 { position: relative; width: 35%; height: 420px; flex-shrink: 0; }
+.avatar-img-v2 { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8)); object-position: left; }
 
 .body-highlight { position: absolute; background: rgba(255, 107, 0, 0); border: 2px solid transparent; border-radius: 50%; pointer-events: none; transition: all 0.3s ease; z-index: 10; }
 .body-highlight.active { background: rgba(255, 107, 0, 0.3); border-color: #FF6B00; box-shadow: 0 0 25px #FF6B00; animation: highlight-pulse 1.5s infinite; }
@@ -203,7 +203,7 @@ body {
 .highlight-male-piernas-l { top: 65%; left: 15%; width: 30%; height: 25%; border-radius: 40px; }
 .highlight-male-piernas-r { top: 65%; right: 15%; width: 30%; height: 25%; border-radius: 40px; }
 
-.areas-options { width: 35%; display: flex; flex-direction: column; gap: 8px; }
+.areas-options { width: 60%; display: flex; flex-direction: column; gap: 8px; }
 .area-option { background: #111; border: 1.5px solid #222; border-radius: 16px; padding: 10px 8px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; width: 100%; }
 .area-option.selected { border-color: #FF6B00; background: rgba(255, 107, 0, 0.05); }
 .area-hex-icon { width: 40px; height: 40px; background: #121212; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); flex-shrink: 0; }
