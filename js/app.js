@@ -202,8 +202,7 @@
             pushups: '',
             training: '',
             startDate: '',
-            name: '',
-            units: 'metric'
+            name: ''
         };
 
         function saveProfile() {
