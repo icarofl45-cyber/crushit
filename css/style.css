@@ -239,12 +239,12 @@ body {
 .area-option.selected .area-hex-icon img { opacity: 1; transform: scale(1.1); }
 .area-option.selected .area-option-label { color: #FF6B00; font-weight: 950; }
 
-/* X Layout Positioning */
-.areas-options .area-option:nth-child(1) { grid-column: 1; }
-.areas-options .area-option:nth-child(2) { grid-column: 2; }
-.areas-options .area-option:nth-child(5) { grid-column: 1 / span 2; justify-self: center; margin-top: -10px; margin-bottom: -10px; } 
-.areas-options .area-option:nth-child(3) { grid-column: 1; }
-.areas-options .area-option:nth-child(4) { grid-column: 2; }
+/* X Layout Positioning (Tight Honeycomb) */
+.areas-options .area-option:nth-child(1) { grid-column: 1; margin-bottom: -20px; }
+.areas-options .area-option:nth-child(2) { grid-column: 2; margin-bottom: -20px; }
+.areas-options .area-option:nth-child(5) { grid-column: 1 / span 2; justify-self: center; z-index: 15; margin-top: -15px; margin-bottom: -15px; } 
+.areas-options .area-option:nth-child(3) { grid-column: 1; margin-top: -20px; }
+.areas-options .area-option:nth-child(4) { grid-column: 2; margin-top: -20px; }
 
 .area-option-label { font-size: 10px; font-weight: 800; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; max-width: 90%; transition: all 0.3s; }
 
