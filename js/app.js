@@ -101,6 +101,14 @@
                 populateOfferScreen();
             }
 
+            if (stepId === 'pushups') {
+                const gender = userProfile.gender || 'Masculino';
+                const exerciseName = document.getElementById('perf-exercise-name');
+                if (exerciseName) {
+                    exerciseName.innerText = (gender === 'Femenino') ? 'SENTADILLAS' : 'FLEXIONES';
+                }
+            }
+            
             const footer = document.querySelector('.site-footer');
             if (footer) {
                 if (stepId === 'offer') {
@@ -658,10 +666,10 @@
             const revealRectMuscle = document.getElementById('reveal-rect-muscle');
             
             // Ajuste dinâmico da tela de Flexões/Agachamentos baseado no gênero
-            const gender = userProfile.gender || 'male';
+            const gender = userProfile.gender || 'Masculino';
             const exerciseName = document.getElementById('perf-exercise-name');
             if (exerciseName) {
-                exerciseName.innerText = (gender === 'female') ? 'SENTADILLAS' : 'FLEXIONES';
+                exerciseName.innerText = (gender === 'Femenino') ? 'SENTADILLAS' : 'FLEXIONES';
             }
 
             if (!fill) return;
