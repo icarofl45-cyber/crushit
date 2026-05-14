@@ -211,9 +211,9 @@ body {
 }
 
 /* Tactical Positioning Around the Body (Inverted) */
-.areas-options .area-option:nth-child(1) { right: 5px; top: 15%; } /* Superiores (Right) */
+.areas-options .area-option:nth-child(1) { right: 5px; top: 8%; } /* Superiores (Right) */
 .areas-options .area-option:nth-child(2) { left: 5px; top: 30%; } /* Abdomen (Left) */
-.areas-options .area-option:nth-child(3) { right: 5px; top: 50%; } /* Gluteos (Right) */
+.areas-options .area-option:nth-child(3) { right: 5px; top: 42%; } /* Gluteos (Right) */
 .areas-options .area-option:nth-child(4) { left: 5px; top: 55%; } /* Muslos (Left) */
 .areas-options .area-option:nth-child(5) { left: 50%; bottom: 0px; transform: translateX(-50%); width: 100px; } /* Todo el cuerpo (Bottom) */
 
