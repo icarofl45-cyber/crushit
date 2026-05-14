@@ -106,16 +106,9 @@
                 }
             }
         }
-
         function updateProgressBar(stepId) {
-            const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'unit-select', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final', 'offer'];
-            
-            // Normalize bifurcated screens for progress calculation
-            let logicalStepId = stepId;
-            if (stepId.startsWith('biometrics-')) logicalStepId = 'biometrics';
-            if (stepId.startsWith('targetweight-')) logicalStepId = 'targetweight';
-
-            const currentIdx = steps.indexOf(logicalStepId);
+            const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final', 'offer'];
+            const currentIdx = steps.indexOf(stepId);
             if (currentIdx !== -1) {
                 const pbPerc = ((currentIdx + 1) / steps.length) * 100;
                 const pb = document.getElementById('progress-bar');
@@ -123,12 +116,10 @@
 
                 const pt = document.getElementById('step-percentage');
                 if (pt) {
-                    // Esconde na primeira tela, na oferta e em telas de transição técnica
                     if (stepId === 'age' || stepId === 'offer' || stepId === 'checklist' || stepId === 'summary') {
                         pt.style.display = 'none';
                     } else {
                         pt.style.display = 'block';
-                        // Cálculo para começar em ~13% e terminar em 98% no 'final' (index 18 now)
                         let displayPerc = Math.floor(13 + (currentIdx / 18) * 85);
                         if (displayPerc > 98) displayPerc = 98;
                         pt.innerText = displayPerc + '%';
@@ -182,7 +173,7 @@
                 if (fill) fill.style.width = perc + '%';
                 if (perc >= 100) {
                     clearInterval(interval);
-                    setTimeout(() => goToStep('unit-select'), 500);
+                    setTimeout(() => goToStep('biometrics'), 500);
                 }
             }, 50);
         }
@@ -196,8 +187,6 @@
             saveProfile();
             goToStep('analysis');
         }
-
-
 
         // CORE QUIZ LOGIC
         let userProfile = {
@@ -216,7 +205,6 @@
             name: '',
             units: 'metric'
         };
-
 
         function saveProfile() {
             localStorage.setItem('crushit_profile', JSON.stringify(userProfile));
@@ -303,7 +291,7 @@
             if (txtMost) {
                 txtMost.innerText = isFemale
                     ? "La mayoría de las mujeres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listas - El protocolo fue diseñado para cuando no te sientes lista - Ese es exactamente el punto de entrada."
-                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.";
+                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para quando no te sientes listo - Ese es exactamente el punto de entrada.";
             }
 
             // Text 4: Men/women who use it
@@ -461,29 +449,17 @@
             img.src = `imagens_webp_crush_it/${fileName}${suffix}.webp`;
         }
 
-        // ===== UNIT SELECTION =====
-        function selectUnits(system) {
-            userProfile.units = system;
-            saveProfile();
-            if (system === 'metric') {
-                goToStep('biometrics-metric');
-            } else {
-                goToStep('biometrics-imperial');
-            }
-        }
-
-        // ===== METRIC BIOMETRICS (CM/KG) =====
-        function calcIMCMetric() {
-            const hInput = document.getElementById('input-height-m');
-            const wInput = document.getElementById('input-weight-m');
-            const imcDisplay = document.getElementById('imc-display-m');
-            const imcCat = document.getElementById('imc-category-m');
-            const imcBox = document.getElementById('imc-box-m');
-            const continueBtn = document.getElementById('btn-bio-continue-m');
-
+        function calcIMC() {
+            const hInput = document.getElementById('input-height');
+            const wInput = document.getElementById('input-weight');
+            const imcDisplay = document.getElementById('imc-display');
+            const imcCat = document.getElementById('imc-category');
+            const imcBox = document.getElementById('imc-box');
+            const continueBtn = document.getElementById('btn-bio-continue');
+            
             let h = parseFloat(hInput.value.replace(',', '.'));
             let w = parseFloat(wInput.value.replace(',', '.'));
-
+            
             if (isNaN(h) || isNaN(w)) {
                 imcDisplay.innerText = '--';
                 if (continueBtn) continueBtn.classList.remove('active-btn');
@@ -492,186 +468,88 @@
 
             const isHeightValid = h >= 140 && h <= 220;
             const isWeightValid = w >= 40 && w <= 200;
-
-            document.getElementById('error-height-m').classList.toggle('active', hInput.value && !isHeightValid);
-            document.getElementById('error-weight-m').classList.toggle('active', wInput.value && !isWeightValid);
+            
+            document.getElementById('error-height').classList.toggle('active', hInput.value && !isHeightValid);
+            document.getElementById('error-weight').classList.toggle('active', wInput.value && !isWeightValid);
 
             if (isHeightValid && isWeightValid) {
-                const imc = parseFloat((w / ((h / 100) ** 2)).toFixed(1));
+                const imc = parseFloat((w / ((h/100)**2)).toFixed(1));
                 imcDisplay.innerText = imc;
-                applyIMCStyle(imc, imcCat, imcBox, 'imc-gauge-pin-m');
+                
+                let category = "";
+                let colorClass = "";
+                if (imc < 18.5) { category = "Bajo peso"; colorClass = "imc-blue"; }
+                else if (imc < 25) { category = "Peso normal"; colorClass = "imc-green"; }
+                else if (imc < 30) { category = "Sobrepeso"; colorClass = "imc-orange"; }
+                else { category = "Obeso"; colorClass = "imc-red"; }
+                
+                imcCat.innerText = category;
+                imcCat.className = "imc-category " + colorClass;
+                imcCat.style.display = "block";
+                imcBox.className = "imc-box " + colorClass;
+
+                let perc = ((imc - 15) / (35 - 15)) * 100;
+                if (perc < 5) perc = 5; if (perc > 95) perc = 95;
+                document.getElementById('imc-gauge-pin').style.left = perc + '%';
+                
                 if (continueBtn) continueBtn.classList.add('active-btn');
             } else {
                 imcDisplay.innerText = '--';
-                imcCat.style.display = 'none';
-                imcBox.className = 'imc-box';
-                document.getElementById('imc-gauge-pin-m').style.left = '50%';
+                imcCat.style.display = "none";
+                imcBox.className = "imc-box";
+                document.getElementById('imc-gauge-pin').style.left = '50%';
                 if (continueBtn) continueBtn.classList.remove('active-btn');
             }
         }
 
-        function submitBiometricsMetric() {
-            const hRaw = document.getElementById('input-height-m').value.replace(',', '.');
-            const wRaw = document.getElementById('input-weight-m').value.replace(',', '.');
-            const h = parseFloat(hRaw);
-            const w = parseFloat(wRaw);
+        function submitBiometrics() {
+            const h = parseFloat(document.getElementById('input-height').value.replace(',', '.'));
+            const w = parseFloat(document.getElementById('input-weight').value.replace(',', '.'));
             if (isNaN(h) || isNaN(w) || h < 140 || h > 220 || w < 40 || w > 200) return;
-            userProfile.height = h;       // stored in CM
-            userProfile.weight = w;       // stored in KG
+            userProfile.height = h;
+            userProfile.weight = w;
             saveProfile();
-            goToStep('targetweight-metric');
+            goToStep('targetweight');
         }
 
-        // ===== IMPERIAL BIOMETRICS (FT/LB) =====
-        function calcIMCImperial() {
-            const hInput = document.getElementById('input-height-i');
-            const wInput = document.getElementById('input-weight-i');
-            const imcDisplay = document.getElementById('imc-display-i');
-            const imcCat = document.getElementById('imc-category-i');
-            const imcBox = document.getElementById('imc-box-i');
-            const continueBtn = document.getElementById('btn-bio-continue-i');
+        function updateTargetWeightDisplay(val) {
+            const h = parseFloat(userProfile.height);
+            const currentW = parseFloat(userProfile.weight);
+            const targetW = parseFloat(String(val).replace(',', '.'));
 
-            let hFt = parseFloat(hInput.value.replace(',', '.'));
-            let wLb = parseFloat(wInput.value.replace(',', '.'));
+            if (h > 0 && currentW > 0) {
+                const elCurrent = document.getElementById('comp-weight-current');
+                const elTarget = document.getElementById('comp-weight-target');
+                if (elCurrent) elCurrent.innerText = `${currentW.toFixed(1)} kg`;
+                if (elTarget) elTarget.innerText = targetW > 0 ? `${targetW.toFixed(1)} kg` : '--';
 
-            if (isNaN(hFt) || isNaN(wLb)) {
-                imcDisplay.innerText = '--';
-                if (continueBtn) continueBtn.classList.remove('active-btn');
-                return;
-            }
+                const currentImc = parseFloat((currentW / ((h/100)**2)).toFixed(1));
+                let curPerc = ((currentImc - 15) / (35 - 15)) * 100;
+                if (curPerc < 5) curPerc = 5; if (curPerc > 95) curPerc = 95;
+                document.getElementById('target-gauge-pin-current').style.left = curPerc + '%';
 
-            const isHeightValid = hFt >= 4.7 && hFt <= 7.2;
-            const isWeightValid = wLb >= 88 && wLb <= 440;
-
-            document.getElementById('error-height-i').classList.toggle('active', hInput.value && !isHeightValid);
-            document.getElementById('error-weight-i').classList.toggle('active', wInput.value && !isWeightValid);
-
-            if (isHeightValid && isWeightValid) {
-                // Convert to metric for BMI calculation
-                const hCm = hFt * 30.48;
-                const wKg = wLb * 0.453592;
-                const imc = parseFloat((wKg / ((hCm / 100) ** 2)).toFixed(1));
-                imcDisplay.innerText = imc;
-                applyIMCStyle(imc, imcCat, imcBox, 'imc-gauge-pin-i');
-                if (continueBtn) continueBtn.classList.add('active-btn');
-            } else {
-                imcDisplay.innerText = '--';
-                imcCat.style.display = 'none';
-                imcBox.className = 'imc-box';
-                document.getElementById('imc-gauge-pin-i').style.left = '50%';
-                if (continueBtn) continueBtn.classList.remove('active-btn');
+                if (targetW > 0) {
+                    const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
+                    let tarPerc = ((targetImc - 15) / (35 - 15)) * 100;
+                    if (tarPerc < 5) tarPerc = 5; if (tarPerc > 95) tarPerc = 95;
+                    const pinTarget = document.getElementById('target-gauge-pin-target');
+                    pinTarget.style.left = tarPerc + '%';
+                    pinTarget.style.opacity = '1';
+                } else {
+                    document.getElementById('target-gauge-pin-target').style.opacity = '0';
+                }
             }
         }
 
-        function submitBiometricsImperial() {
-            const hRaw = document.getElementById('input-height-i').value.replace(',', '.');
-            const wRaw = document.getElementById('input-weight-i').value.replace(',', '.');
-            const hFt = parseFloat(hRaw);
-            const wLb = parseFloat(wRaw);
-            if (isNaN(hFt) || isNaN(wLb) || hFt < 4.7 || hFt > 7.2 || wLb < 88 || wLb > 440) return;
-            // Always store in metric internally for consistent IMC calculations
-            userProfile.height = hFt * 30.48;     // CM
-            userProfile.weight = wLb * 0.453592;   // KG
-            saveProfile();
-            goToStep('targetweight-imperial');
-        }
-
-        // ===== SHARED IMC STYLING =====
-        function applyIMCStyle(imc, catEl, boxEl, pinId) {
-            let category = '';
-            let colorClass = '';
-            if (imc < 18.5) { category = 'Bajo peso'; colorClass = 'imc-blue'; }
-            else if (imc < 25) { category = 'Peso normal'; colorClass = 'imc-green'; }
-            else if (imc < 30) { category = 'Sobrepeso'; colorClass = 'imc-orange'; }
-            else { category = 'Obeso'; colorClass = 'imc-red'; }
-
-            catEl.innerText = category;
-            catEl.className = 'imc-category ' + colorClass;
-            catEl.style.display = 'block';
-            boxEl.className = 'imc-box ' + colorClass;
-
-            let perc = ((imc - 15) / (35 - 15)) * 100;
-            if (perc < 5) perc = 5;
-            if (perc > 95) perc = 95;
-            document.getElementById(pinId).style.left = perc + '%';
-        }
-
-        // ===== METRIC TARGET WEIGHT (KG) =====
-        function updateTargetMetric(val) {
-            const hCm = parseFloat(userProfile.height);
-            const wKg = parseFloat(userProfile.weight);
-            const targetKg = parseFloat(String(val).replace(',', '.'));
-
-            if (hCm > 0 && wKg > 0) {
-                const elC = document.getElementById('comp-current-m');
-                const elT = document.getElementById('comp-target-m');
-                if (elC) elC.innerText = `${wKg.toFixed(1)} kg`;
-                if (elT) elT.innerText = targetKg > 0 ? `${targetKg} kg` : '--';
-
-                positionGaugePins(hCm, wKg, targetKg, 'tw-pin-current-m', 'tw-pin-target-m');
-            }
-        }
-
-        function submitTargetWeightMetric() {
-            const val = parseFloat(document.getElementById('input-target-weight-m').value.replace(',', '.'));
+        function submitTargetWeight() {
+            const val = parseFloat(document.getElementById('input-target-weight').value.replace(',', '.'));
             if (isNaN(val) || val <= 0) return;
             userProfile.targetWeight = val;
             saveProfile();
-            finishTargetWeight(val, 'kg');
-        }
-
-        // ===== IMPERIAL TARGET WEIGHT (LB) =====
-        function updateTargetImperial(val) {
-            const hCm = parseFloat(userProfile.height);
-            const wKg = parseFloat(userProfile.weight);
-            const targetLb = parseFloat(String(val).replace(',', '.'));
-            const wLb = wKg * 2.20462;
-
-            if (hCm > 0 && wKg > 0) {
-                const elC = document.getElementById('comp-current-i');
-                const elT = document.getElementById('comp-target-i');
-                if (elC) elC.innerText = `${wLb.toFixed(0)} lb`;
-                if (elT) elT.innerText = targetLb > 0 ? `${targetLb} lb` : '--';
-
-                const targetKg = targetLb > 0 ? targetLb * 0.453592 : 0;
-                positionGaugePins(hCm, wKg, targetKg, 'tw-pin-current-i', 'tw-pin-target-i');
-            }
-        }
-
-        function submitTargetWeightImperial() {
-            const val = parseFloat(document.getElementById('input-target-weight-i').value.replace(',', '.'));
-            if (isNaN(val) || val <= 0) return;
-            userProfile.targetWeight = val * 0.453592; // store as KG internally
-            saveProfile();
-            finishTargetWeight(val, 'lb');
-        }
-
-        // ===== SHARED GAUGE POSITIONING =====
-        function positionGaugePins(hCm, wKg, targetKg, pinCurrentId, pinTargetId) {
-            const currentImc = parseFloat((wKg / ((hCm / 100) ** 2)).toFixed(1));
-            let curPerc = ((currentImc - 15) / (35 - 15)) * 100;
-            if (curPerc < 5) curPerc = 5; if (curPerc > 95) curPerc = 95;
-            const pinC = document.getElementById(pinCurrentId);
-            if (pinC) pinC.style.left = curPerc + '%';
-
-            const pinT = document.getElementById(pinTargetId);
-            if (targetKg > 0) {
-                const targetImc = parseFloat((targetKg / ((hCm / 100) ** 2)).toFixed(1));
-                let tarPerc = ((targetImc - 15) / (35 - 15)) * 100;
-                if (tarPerc < 5) tarPerc = 5; if (tarPerc > 95) tarPerc = 95;
-                if (pinT) { pinT.style.left = tarPerc + '%'; pinT.style.opacity = '1'; }
-            } else {
-                if (pinT) pinT.style.opacity = '0';
-            }
-        }
-
-        // ===== SHARED FINISH TARGET WEIGHT =====
-        function finishTargetWeight(displayVal, unitLabel) {
-            // Update prediction screen
+            
             const predW = document.getElementById('pred-weight-display');
-            if (predW) predW.innerText = displayVal + ' ' + unitLabel;
-
-            // Data dinâmica: hoje + 21 dias
+            if (predW) predW.innerText = val + ' kg';
+            
             const targetDate = new Date();
             targetDate.setDate(targetDate.getDate() + 21);
             const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
@@ -1015,10 +893,6 @@
             // 2. CÁLCULO DE IMC
             let h = parseFloat(userProfile.height) || 170;
             let w = parseFloat(userProfile.weight) || 70;
-            if (userProfile.units === 'imperial') {
-                h = h * 30.48; 
-                w = w * 0.453592;
-            }
             const imcVal = (w / ((h / 100) ** 2));
             const imc = isNaN(imcVal) ? '22.0' : imcVal.toFixed(1);
             
@@ -1034,7 +908,6 @@
 
             const targetW = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? (parseFloat(userProfile.weight) || 70) + 5 : (parseFloat(userProfile.weight) || 70) - 5);
             h = parseFloat(userProfile.height) || 170;
-            if (userProfile.units === 'imperial') h = h * 30.48; 
             const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
             const offImcGoal = document.getElementById('off-imc-goal-val');
             if (offImcGoal) offImcGoal.innerText = targetImc;
@@ -1080,10 +953,9 @@
             }
             
             // Lógica de pesos e unidades
-            const isMetricUnit = userProfile.units !== 'imperial';
-            const unitSuffix = isMetricUnit ? 'kg' : 'lb';
-            const currentWeight = parseFloat(userProfile.weight) || (isMetricUnit ? 70 : 155);
-            const targetWeightVal = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? currentWeight + (isMetricUnit ? 5 : 11) : currentWeight - (isMetricUnit ? 5 : 11));
+            const unitSuffix = 'kg';
+            const currentWeight = parseFloat(userProfile.weight) || 70;
+            const targetWeightVal = parseFloat(userProfile.targetWeight) || (userProfile.goal === 'Ganar músculo' ? currentWeight + 5 : currentWeight - 5);
             
             if (stWeightNow) stWeightNow.innerText = `${currentWeight} ${unitSuffix}`;
             if (stWeightGoal) stWeightGoal.innerText = `${targetWeightVal} ${unitSuffix}`;

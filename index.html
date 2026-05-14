@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=3.1">
+    <link rel="stylesheet" href="css/style.css?v=3.2">
 </head>
 <body>
 
@@ -397,70 +397,40 @@
                 <div class="loading-label">Analizando tu perfil...</div>
                 <div class="loading-track">
                     <div id="loading-fill" class="loading-fill"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 9: SELECCIÓN DE UNIDADES -->
-    <div id="screen-unit-select" class="screen">
-        <h1 class="headline" style="font-size:32px">¿EN QUÉ UNIDADES <span style="color:var(--cta-green)">MEDIRTE</span>?</h1>
-        <p class="subheadline" style="font-size:15px">Selecciona tu sistema de medición para calibrar el protocolo con máxima precisión.</p>
-
-        <div class="training-list-v2" style="margin-top: 25px;">
-            <div class="training-card-v2" onclick="selectUnits('metric')">
-                <div class="training-icon-v2">📏</div>
-                <div class="training-info-v2">
-                    <div class="training-title-v2">CENTÍMETROS / KILOGRAMOS</div>
-                    <div class="training-subtitle-v2">Sistema métrico internacional</div>
-                </div>
-                <div class="training-arrow-v2">→</div>
-            </div>
-            <div class="training-card-v2" onclick="selectUnits('imperial')">
-                <div class="training-icon-v2">📐</div>
-                <div class="training-info-v2">
-                    <div class="training-title-v2">FEET / POUNDS</div>
-                    <div class="training-subtitle-v2">Sistema imperial (US/UK)</div>
-                </div>
-                <div class="training-arrow-v2">→</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ETAPA 9-A: BIOMÉTRICOS (MÉTRICO - CM/KG) -->
-    <div id="screen-biometrics-metric" class="screen">
+      <!-- ETAPA 9: PARÁMETROS BIOMÉTRICOS (CM/KG) -->
+    <div id="screen-biometrics" class="screen">
         <h1 class="headline" style="font-size:32px">INGRESA TUS <span style="color:var(--cta-green)">PARÁMETROS BIOMÉTRICOS</span></h1>
         <p class="subheadline" style="font-size:15px">Estos datos son fundamentales para calibrar la <strong style="color:var(--cta-green)">carga metabólica</strong> y la intensidad de tu protocolo personalizado.</p>
 
         <div class="biometrics-grid">
-            <div class="bio-field"><label for="input-height-m" class="bio-label">Altura</label><div class="bio-input-wrap"><input type="text" id="input-height-m" class="bio-value-input" placeholder="175" oninput="calcIMCMetric()"><span class="bio-unit">centímetros</span></div>
-                <div id="error-height-m" class="error-message">
+            <div class="bio-field"><label for="input-height" class="bio-label">Altura</label><div class="bio-input-wrap"><input type="text" id="input-height" class="bio-value-input" placeholder="175" oninput="calcIMC()"><span class="bio-unit">centímetros</span></div>
+                <div id="error-height" class="error-message">
                     <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
                     <span>Mínimo 140cm / Máximo 220cm</span>
                 </div>
             </div>
-            <div class="bio-field"><label for="input-weight-m" class="bio-label">Peso</label><div class="bio-input-wrap"><input type="text" id="input-weight-m" class="bio-value-input" placeholder="80" oninput="calcIMCMetric()"><span class="bio-unit">kilogramos</span></div>
-                <div id="error-weight-m" class="error-message">
+            <div class="bio-field"><label for="input-weight" class="bio-label">Peso</label><div class="bio-input-wrap"><input type="text" id="input-weight" class="bio-value-input" placeholder="80" oninput="calcIMC()"><span class="bio-unit">kilogramos</span></div>
+                <div id="error-weight" class="error-message">
                     <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
                     <span>Mínimo 40kg / Máximo 200kg</span>
                 </div>
             </div>
         </div>
 
-        <div id="imc-box-m" class="imc-box">
+        <div id="imc-box" class="imc-box">
             <div class="imc-box-header">
                 <div class="imc-box-label">IMC CALCULADO:</div>
-                <div class="imc-value" id="imc-display-m">--</div>
+                <div class="imc-value" id="imc-display">--</div>
             </div>
             <div class="imc-gauge-container">
                 <div class="imc-gauge-track">
-                    <div id="imc-gauge-pin-m" class="imc-gauge-pin" style="left: 50%;"></div>
+                    <div id="imc-gauge-pin" class="imc-gauge-pin" style="left: 50%;"></div>
                 </div>
                 <div class="imc-gauge-labels">
                     <span>BAJO</span><span>NORMAL</span><span>SOBREPESO</span><span>OBESO</span>
                 </div>
             </div>
-            <div id="imc-category-m" class="imc-category"></div>
+            <div id="imc-category" class="imc-category"></div>
         </div>
 
         <div class="security-badge">
@@ -469,82 +439,36 @@
         </div>
 
         <div class="areas-footer">
-            <button id="btn-bio-continue-m" class="btn-areas-continue" onclick="submitBiometricsMetric()">CONTINUAR →</button>
+            <button id="btn-bio-continue" class="btn-areas-continue" onclick="submitBiometrics()">CONTINUAR →</button>
         </div>
     </div>
 
-    <!-- ETAPA 9-B: BIOMÉTRICOS (IMPERIAL - FT/LB) -->
-    <div id="screen-biometrics-imperial" class="screen">
-        <h1 class="headline" style="font-size:32px">ENTER YOUR <span style="color:var(--cta-green)">BIOMETRIC DATA</span></h1>
-        <p class="subheadline" style="font-size:15px">This data is essential to calibrate your <strong style="color:var(--cta-green)">metabolic load</strong> and protocol intensity.</p>
-
-        <div class="biometrics-grid">
-            <div class="bio-field"><label for="input-height-i" class="bio-label">Height</label><div class="bio-input-wrap"><input type="text" id="input-height-i" class="bio-value-input" placeholder="5.9" oninput="calcIMCImperial()"><span class="bio-unit">feet (e.g. 5.9)</span></div>
-                <div id="error-height-i" class="error-message">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
-                    <span>Min 4.7 ft / Max 7.2 ft</span>
-                </div>
-            </div>
-            <div class="bio-field"><label for="input-weight-i" class="bio-label">Weight</label><div class="bio-input-wrap"><input type="text" id="input-weight-i" class="bio-value-input" placeholder="175" oninput="calcIMCImperial()"><span class="bio-unit">pounds</span></div>
-                <div id="error-weight-i" class="error-message">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
-                    <span>Min 88 lb / Max 440 lb</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="imc-box-i" class="imc-box">
-            <div class="imc-box-header">
-                <div class="imc-box-label">BMI CALCULATED:</div>
-                <div class="imc-value" id="imc-display-i">--</div>
-            </div>
-            <div class="imc-gauge-container">
-                <div class="imc-gauge-track">
-                    <div id="imc-gauge-pin-i" class="imc-gauge-pin" style="left: 50%;"></div>
-                </div>
-                <div class="imc-gauge-labels">
-                    <span>LOW</span><span>NORMAL</span><span>OVERWEIGHT</span><span>OBESE</span>
-                </div>
-            </div>
-            <div id="imc-category-i" class="imc-category"></div>
-        </div>
-
-        <div class="security-badge">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-            Your data is secure and encrypted
-        </div>
-
-        <div class="areas-footer">
-            <button id="btn-bio-continue-i" class="btn-areas-continue" onclick="submitBiometricsImperial()">CONTINUE →</button>
-        </div>
-    </div>
-
-    <!-- ETAPA 10-A: PESO OBJETIVO (MÉTRICO - KG) -->
-    <div id="screen-targetweight-metric" class="screen">
+    <!-- ETAPA 10: PESO OBJETIVO (KG) -->
+    <div id="screen-targetweight" class="screen">
         <h1 class="headline">DEFINE TU <span style="color:var(--cta-green)">META DE TRANSFORMACIÓN</span></h1>
         <p class="subheadline">Calcularemos el déficit calórico y el balance de macronutrientes para alcanzar tu objetivo.</p>
 
         <div class="target-weight-container">
             <div class="target-weight-label">PESO OBJETIVO</div>
             <div class="weight-input-wrapper">
-                <input type="text" id="input-target-weight-m" class="weight-input-v2" placeholder="70" oninput="updateTargetMetric(this.value)">
+                <input type="text" id="input-target-weight" class="weight-input-v2" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
                 <span class="weight-unit-label">kilogramos</span>
             </div>
 
             <div class="weight-comparison">
                 <div class="comp-title">TU PROGRESO ESTIMADO</div>
                 <div class="comp-values">
-                    <span id="comp-current-m">--</span>
+                    <span id="comp-weight-current">--</span>
                     <span class="comp-arrow">→</span>
-                    <span id="comp-target-m" class="comp-target">--</span>
+                    <span id="comp-weight-target" class="comp-target">--</span>
                 </div>
             </div>
 
             <div class="bmi-gauge-wrap">
                 <div class="imc-gauge-container">
                     <div class="imc-gauge-track">
-                        <div id="tw-pin-current-m" class="imc-gauge-pin current-pin" style="left: 50%;"></div>
-                        <div id="tw-pin-target-m" class="imc-gauge-pin target-pin" style="left: 50%; opacity:0;"></div>
+                        <div id="target-gauge-pin-current" class="imc-gauge-pin current-pin" style="left: 50%;"></div>
+                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin" style="left: 50%; opacity:0;"></div>
                     </div>
                     <div class="imc-gauge-labels">
                         <span>BAJO</span><span>NORMAL</span><span>SOBREPESO</span><span>OBESO</span>
@@ -554,46 +478,7 @@
         </div>
 
         <div class="areas-footer">
-            <button class="btn-areas-continue active-btn" onclick="submitTargetWeightMetric()">CONTINUAR →</button>
-        </div>
-    </div>
-
-    <!-- ETAPA 10-B: PESO OBJETIVO (IMPERIAL - LB) -->
-    <div id="screen-targetweight-imperial" class="screen">
-        <h1 class="headline">DEFINE YOUR <span style="color:var(--cta-green)">TRANSFORMATION GOAL</span></h1>
-        <p class="subheadline">We'll calculate the caloric deficit and macronutrient balance to reach your goal.</p>
-
-        <div class="target-weight-container">
-            <div class="target-weight-label">TARGET WEIGHT</div>
-            <div class="weight-input-wrapper">
-                <input type="text" id="input-target-weight-i" class="weight-input-v2" placeholder="155" oninput="updateTargetImperial(this.value)">
-                <span class="weight-unit-label">pounds</span>
-            </div>
-
-            <div class="weight-comparison">
-                <div class="comp-title">YOUR ESTIMATED PROGRESS</div>
-                <div class="comp-values">
-                    <span id="comp-current-i">--</span>
-                    <span class="comp-arrow">→</span>
-                    <span id="comp-target-i" class="comp-target">--</span>
-                </div>
-            </div>
-
-            <div class="bmi-gauge-wrap">
-                <div class="imc-gauge-container">
-                    <div class="imc-gauge-track">
-                        <div id="tw-pin-current-i" class="imc-gauge-pin current-pin" style="left: 50%;"></div>
-                        <div id="tw-pin-target-i" class="imc-gauge-pin target-pin" style="left: 50%; opacity:0;"></div>
-                    </div>
-                    <div class="imc-gauge-labels">
-                        <span>LOW</span><span>NORMAL</span><span>OVERWEIGHT</span><span>OBESE</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="areas-footer">
-            <button class="btn-areas-continue active-btn" onclick="submitTargetWeightImperial()">CONTINUE →</button>
+            <button class="btn-areas-continue active-btn" onclick="submitTargetWeight()">CONTINUAR →</button>
         </div>
     </div>
 
@@ -1899,7 +1784,7 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=3.1" defer></script>
+    <script src="js/app.js?v=3.2" defer></script>
 </body>
 </html>
 
