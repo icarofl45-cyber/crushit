@@ -137,10 +137,16 @@
             const claimEl = document.getElementById('analysis-claim');
 
             let areas = userProfile.focusAreas && userProfile.focusAreas.length > 0 ? userProfile.focusAreas : ['Abdomen'];
-            let areasText = areas.map(a => a.toUpperCase()).join(', ');
-            if (areas.length > 1) {
-                const lastComma = areasText.lastIndexOf(', ');
-                areasText = areasText.substring(0, lastComma) + ' Y ' + areasText.substring(lastComma + 2);
+            let areasText = "";
+            
+            if (areas.includes('todo') || areas.length > 2) {
+                areasText = "TU CUERPO COMPLETO";
+            } else {
+                areasText = areas.map(a => a.toUpperCase()).join(', ');
+                if (areas.length > 1) {
+                    const lastComma = areasText.lastIndexOf(', ');
+                    areasText = areasText.substring(0, lastComma) + ' Y ' + areasText.substring(lastComma + 2);
+                }
             }
 
             let percentage = 85;
