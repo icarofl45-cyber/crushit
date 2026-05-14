@@ -133,7 +133,7 @@ body {
 .hex-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; margin-top: 20px; }
 .hex-card { background: var(--card-bg); border-radius: 30px; padding: 10px; text-align: center; border: 1px solid #222; transition: all 0.3s; }
 .hex-card:hover { border-color: var(--cta-green); transform: translateY(-5px); }
-.hex-image-wrap { width: 100%; height: 220px; overflow: hidden; margin-bottom: 12px; border-radius: 20px; background: #121212; }
+.hex-image-wrap { width: 100%; height: 285px; overflow: hidden; margin-bottom: 12px; border-radius: 20px; background: #121212; }
 .hex-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .hex-label { font-size: 13px; font-weight: 950; color: var(--text-white); letter-spacing: 1px; text-transform: uppercase; }
 
