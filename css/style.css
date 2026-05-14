@@ -313,8 +313,9 @@ body {
     text-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
 }
 
-#areas-content-male .area-option:nth-child(2) { top: 40%; } /* Brazos (Left) */
-#areas-content-male .area-option:nth-child(3) { top: 32%; } /* Abdomen (Right) - Mais encima */
+#areas-content-male .area-option:nth-child(2) { top: 22%; } /* Brazos (Left) - Subir */
+#areas-content-male .area-option:nth-child(3) { top: 32%; } /* Abdomen (Right) */
+#areas-content-male .area-option:nth-child(4) { top: 55%; } /* Piernas (Left) - Subir */
 
 /* --- ANALYSIS & LOADING (Premium) --- */
 .analysis-screen { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 0; }
