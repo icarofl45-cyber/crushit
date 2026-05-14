@@ -708,25 +708,49 @@ body {
     transform: translateY(-8px);
 }
 .pushup-hex-wrap {
-    width: 120px;
-    height: 100px;
-    background: rgba(123, 47, 247, 0.1);
-    border: 1px solid rgba(123, 47, 247, 0.3);
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    position: relative;
+    width: 110px;
+    height: 64px;
+    background: rgba(123, 47, 247, 0.15);
+    margin: 32px 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s;
+    z-index: 2;
+    border-radius: 8px; /* Arredondamento suave */
+}
+.pushup-hex-wrap::before,
+.pushup-hex-wrap::after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+    transition: all 0.3s;
+}
+.pushup-hex-wrap::before { transform: rotate(60deg); }
+.pushup-hex-wrap::after { transform: rotate(-60deg); }
+
+.pushup-hex-wrap span {
     font-size: 32px;
     font-weight: 950;
     color: #fff;
     font-family: 'Barlow Condensed', sans-serif;
     text-shadow: 0 0 15px rgba(123, 47, 247, 0.8);
-    transition: all 0.3s;
+    z-index: 3;
+    position: relative;
 }
+
 .pushup-hex-card:hover .pushup-hex-wrap {
     background: var(--brand-purple);
     transform: scale(1.05);
-    box-shadow: 0 0 30px var(--brand-purple);
+}
+.pushup-hex-card:hover .pushup-hex-wrap::before,
+.pushup-hex-card:hover .pushup-hex-wrap::after {
+    background: var(--brand-purple);
 }
 .pushup-info-v3 {
     display: flex;
