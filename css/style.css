@@ -189,14 +189,8 @@ body {
 .female-v2 { transform: translateX(-50%) scale(1.15); } /* Equilibrando tamanho com o masculino */
 .avatar-img-v2 { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8)); }
 
-.body-highlight { position: absolute; background: rgba(123, 47, 247, 0); border: 2px solid transparent; border-radius: 50%; pointer-events: none; transition: all 0.3s ease; z-index: 10; }
-.body-highlight.active { background: rgba(123, 47, 247, 0.3); border-color: #7b2ff7; box-shadow: 0 0 25px #7b2ff7; animation: highlight-pulse-purple 1.5s infinite; }
+.avatar-img-v2 { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8)); }
 
-@keyframes highlight-pulse-purple {
-    0% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 10px #7b2ff7; }
-    50% { transform: scale(1.05); opacity: 0.5; box-shadow: 0 0 30px #7b2ff7; }
-    100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 10px #7b2ff7; }
-}
 @keyframes highlight-pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
 
 .areas-options { position: static; width: 100%; height: 100%; }

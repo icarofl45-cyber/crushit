@@ -11,10 +11,6 @@
                     if (isSelected) opt.classList.add('selected');
                     else opt.classList.remove('selected');
                 });
-                document.querySelectorAll('.body-highlight').forEach(h => {
-                    if (isSelected) h.classList.add('active');
-                    else h.classList.remove('active');
-                });
                 document.querySelectorAll('.connector-line').forEach(l => {
                     if (isSelected) l.classList.add('active');
                     else l.classList.remove('active');
@@ -23,21 +19,15 @@
                 const todoBtn = document.querySelector('.area-option[onclick*="todo"]');
                 if (todoBtn) todoBtn.classList.remove('selected');
 
-                // Find all highlights and lines starting with the targetId
-                const highlights = document.querySelectorAll(`[id^="highlight-${targetId}"]`);
+                // Find all lines starting with the targetId
                 const lines = document.querySelectorAll(`[id^="line-${targetId}"]`);
                 
-                highlights.forEach(h => {
-                    if (isSelected) h.classList.add('active');
-                    else h.classList.remove('active');
-                });
                 lines.forEach(l => {
                     if (isSelected) l.classList.add('active');
                     else l.classList.remove('active');
                 });
                 
                 if (!document.querySelector('.area-option.selected')) {
-                    document.querySelectorAll('.body-highlight').forEach(h => h.classList.remove('active'));
                     document.querySelectorAll('.connector-line').forEach(l => l.classList.remove('active'));
                 }
             }
