@@ -704,7 +704,7 @@
             const revealCortisol = document.getElementById('reveal-rect-cortisol');
             const revealTesto = document.getElementById('reveal-rect-testo');
             const analysisText = document.getElementById('hormones-analysis-text');
-            const gender = userProfile.gender || 'male';
+            const gender = userProfile.gender || 'Masculino';
 
             generateCortisolTowers();
             generateTestoTowers();
@@ -713,7 +713,7 @@
                 const baseText = '¿Entrenas y no ves cambios? Tu <strong>Cortisol</strong> está bloqueando la quema de grasa. El <strong>Protocolo 21D</strong> reprograma tu metabolismo para ';
                 const maleEnding = 'definir y ganar fuerza real.';
                 const femaleEnding = 'eliminar retención y tonificar.';
-                analysisText.innerHTML = baseText + (gender === 'female' ? femaleEnding : maleEnding);
+                analysisText.innerHTML = baseText + (gender === 'Femenino' ? femaleEnding : maleEnding);
             }
 
             if (!fill) return;

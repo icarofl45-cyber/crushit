@@ -599,41 +599,7 @@ body {
     margin-top: -10px;
 }
 
-.weight-comparison {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    width: 100%;
-    text-align: center;
-}
-
-.comp-title {
-    font-size: 10px;
-    font-weight: 800;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.comp-values {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-size: 22px;
-    font-weight: 900;
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-}
-
-.comp-arrow {
-    color: var(--cta-green);
-}
-
-.comp-target {
-    color: var(--cta-green);
-}
+/* --- SUMMARY & CHECKLIST --- */
 
 .bmi-gauge-wrap {
     width: 100%;
@@ -648,20 +614,6 @@ body {
     padding: 0 10px;
 }
 
-.target-imc-label {
-    font-size: 11px;
-    font-weight: 800;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.target-imc-val {
-    font-size: 24px;
-    font-weight: 900;
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-}
 
 /* --- PREDICTION & PERFORMANCE (Premium Restoration) --- */
 .prediction-screen { width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 20px; }
