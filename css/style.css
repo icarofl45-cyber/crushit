@@ -417,9 +417,9 @@ body {
 .imc-category.imc-orange { color: #f97316; }
 .imc-category.imc-red { color: #ef4444; }
 
-.imc-box-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; padding: 0 5px; }
-.imc-box-label { font-size: 12px; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-.imc-value { font-size: 32px; font-weight: 900; color: #fff; line-height: 1; }
+.imc-box-header { display: flex; justify-content: flex-start; align-items: baseline; gap: 8px; margin-bottom: 20px; padding: 0 5px; }
+.imc-box-label { font-size: 13px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+.imc-value { font-size: 28px; font-weight: 950; color: #fff; line-height: 1; }
 
 .imc-gauge-container { width: 100%; margin-top: 10px; }
 
