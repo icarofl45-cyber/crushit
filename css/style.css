@@ -835,10 +835,10 @@ body {
     letter-spacing: 1px;
 }
 
-.summary-check-list {
+.summary-check-list-v4 {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
     width: 100%;
 }
 
