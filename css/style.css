@@ -87,8 +87,29 @@ body {
     margin-left: auto; /* Empurra só a seta para a direita */
 }
 .training-card-v2:hover .training-arrow-v2 { color: var(--cta-green); transform: translateX(5px); }
-.start-card-v2 { background: #121212; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 25px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 20px; position: relative; }
-.featured-start { border: 2px solid var(--cta-green); background: rgba(34, 197, 94, 0.05); }
+.start-list-v3 { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
+.start-card-v3 {
+    background: #121212;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 20px 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    justify-content: flex-start;
+}
+.start-card-v3:hover { border-color: var(--cta-green); }
+.featured-start { border: 2.5px solid var(--cta-green); background: rgba(34, 197, 94, 0.05); box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1); }
+.start-icon-v3 { font-size: 24px; min-width: 40px; text-align: center; }
+.start-info-v3 { display: flex; flex-direction: column; gap: 4px; flex-grow: 1; text-align: left; }
+.priority-tag { font-size: 9px; font-weight: 900; color: #fff; background: var(--cta-green); padding: 3px 10px; border-radius: 50px; width: max-content; margin-bottom: 5px; letter-spacing: 1px; color: #000; }
+.start-title-v3 { font-size: 16px; font-weight: 950; color: #fff; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; }
+.start-sub-v3 { font-size: 12px; color: #888; line-height: 1.4; font-weight: 500; }
+.start-arrow-v3 { font-size: 22px; color: #333; transition: all 0.3s; margin-left: auto; }
+.start-card-v3:hover .start-arrow-v3 { color: var(--cta-green); transform: translateX(5px); }
 
 /* Checklist Component */
 .checklist-container-v3 { width: 100%; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
