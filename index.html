@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=6.0">
+    <link rel="stylesheet" href="css/style.css?v=6.1">
 </head>
 <body>
 
@@ -977,70 +977,69 @@
 
     <!-- ETAPA 18: RESUMO / DIAGNÓSTICO -->
     <div id="screen-summary" class="screen">
-        <div class="summary-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-
-            <h1 class="headline" style="font-size:28px; margin-top:20px;">¡BUENAS NOTICIAS!</h1>
+        <div class="summary-screen">
+            <h1 class="headline">¡BUENAS NOTICIAS!</h1>
             <p class="subheadline">Encontramos el protocolo exacto para <strong id="summary-name" style="color:var(--cta-green)">[Nome]</strong>.</p>
             
             <div class="chk-timer-badge-v4">
                 <span class="chk-timer-v3">Válido por los próximos 10 minutos</span>
             </div>
 
-            <div class="diagnostic-card" style="margin-top:10px; width: 100%;">
-                <div style="display:flex; justify-content:center; align-items:center; margin-bottom:15px; opacity: 0.5;">
-                    <span style="font-size:12px; font-weight:800; letter-spacing: 1px;">ID DE PROTOCOLO: #E285</span>
+            <div class="summary-content-v4">
+                <div class="protocol-id-badge">
+                    <span class="protocol-label">PROTOCOLO GENERADO</span>
+                    <span class="protocol-number">ID: #CRUSH-E285</span>
                 </div>
 
-                <div class="summary-check-list">
-                    <div class="summary-check-item">
-                        <div class="summary-check-icon">✓</div>
-                        <div class="summary-check-info">
-                            <h4 class="summary-check-title">ACCESO A ÁREA DE MIEMBROS SINCRONIZADO</h4>
-                            <p class="summary-check-sub">Tu portal exclusivo ha sido liberado y está listo para recibirte.</p>
+                <div class="summary-check-list-v4">
+                    <div class="summary-item-v4">
+                        <div class="summary-icon-v4">✓</div>
+                        <div class="summary-info-v4">
+                            <h4 class="summary-title-v4">ACCESO A ÁREA DE MIEMBROS SINCRONIZADO</h4>
+                            <p class="summary-sub-v4">Tu portal exclusivo ha sido liberado y está listo para recibirte.</p>
                         </div>
                     </div>
 
-                    <div class="summary-check-item">
-                        <div class="summary-check-icon">✓</div>
-                        <div class="summary-check-info">
-                            <h4 class="summary-check-title">PLAN NUTRICIONAL OPTIMIZADO</h4>
-                            <p class="summary-check-sub">Macronutrientes calibrados para resultados máximos en tiempo récord.</p>
+                    <div class="summary-item-v4">
+                        <div class="summary-icon-v4">✓</div>
+                        <div class="summary-info-v4">
+                            <h4 class="summary-title-v4">PLAN NUTRICIONAL OPTIMIZADO</h4>
+                            <p class="summary-sub-v4">Macronutrientes calibrados para resultados máximos en tiempo récord.</p>
                         </div>
                     </div>
 
-                    <div class="summary-check-item">
-                        <div class="summary-check-icon">✓</div>
-                        <div class="summary-check-info">
-                            <h4 class="summary-check-title">PLAN DE ENTRENAMIENTO FINALIZADO</h4>
-                            <p class="summary-check-sub">Tu rutina estratégica ha sido organizada para maximizar cada ganancia.</p>
+                    <div class="summary-item-v4">
+                        <div class="summary-icon-v4">✓</div>
+                        <div class="summary-info-v4">
+                            <h4 class="summary-title-v4">PLAN DE ENTRENAMIENTO FINALIZADO</h4>
+                            <p class="summary-sub-v4">Tu rutina estratégica ha sido organizada para maximizar cada ganancia.</p>
                         </div>
                     </div>
 
-                    <div class="summary-check-item">
-                        <div class="summary-check-icon">✓</div>
-                        <div class="summary-check-info">
-                            <h4 class="summary-check-title">BIBLIOTECA DE VIDEOS PERSONALIZADA</h4>
-                            <p class="summary-check-sub">Tus videos de entrenamiento ya han sido cargados y están listos para comenzar.</p>
+                    <div class="summary-item-v4">
+                        <div class="summary-icon-v4">✓</div>
+                        <div class="summary-info-v4">
+                            <h4 class="summary-title-v4">BIBLIOTECA DE VIDEOS PERSONALIZADA</h4>
+                            <p class="summary-sub-v4">Tus videos de entrenamiento ya han sido cargados y están listos para comenzar.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Alerta Agressiva de Conclusão -->
-                <div style="margin-top: 25px; background: rgba(255, 107, 0, 0.1); border: 1px solid rgba(255, 107, 0, 0.3); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px;">
-                    <div style="flex-shrink: 0; width: 40px; height: 40px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);">
+                <!-- Alerta Premium de Conclusão -->
+                <div class="final-status-box-v4">
+                    <div class="status-circle-v4">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
                             <line x1="12" y1="9" x2="12" y2="13"></line>
                             <line x1="12" y1="17" x2="12.01" y2="17"></line>
                         </svg>
                     </div>
-                    <p style="font-size: 13px; color: #fff; line-height: 1.4; margin: 0;">
-                        <strong style="color: #ff6b00; text-transform: uppercase;">¡TODO LISTO!</strong> Todo tu ecosistema ha sido añadido a tu área de miembros y está pronto para ser desfrutado.
-                    </p>
+                    <div class="status-text-v4">
+                        <p><strong>¡TODO LISTO!</strong> Todo tu ecosistema ha sido añadido a tu área de miembros y está pronto para ser desfrutado.</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- SELOS PRATEADOS TAMBÉM NO SUMÁRIO -->
+            
             <div class="guarantee-badges-v2 anim-fade delay-1" style="margin-top: 20px; background: transparent; border: none; padding: 0;">
                 <div class="badge-v2-item">
                     <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso Vitalício" class="badge-v2-img" style="width: 50px; height: 50px;">
@@ -1813,6 +1812,6 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=6.0" defer></script>
+    <script src="js/app.js?v=6.1" defer></script>
 </body>
 </html>
