@@ -186,8 +186,6 @@ body {
 .chk-row-v3.active-now { opacity: 1; border-color: #ff9f43; box-shadow: 0 0 20px rgba(255, 159, 67, 0.15); }
 .chk-row-v3.completed { opacity: 1; border-color: var(--cta-green); }
 
-/* --- Rest of animations and premium styles --- */
-
 /* Animations System */
 .anim-fade { opacity: 1; animation: animFade 0.6s ease both; }
 .anim-left { opacity: 1; animation: animLeft 0.6s ease both; }
@@ -200,6 +198,75 @@ body {
 @keyframes animRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes animUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes animDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+
+@keyframes arrowPulse { 0%, 100% { transform: translateY(-50%) scale(1); } 50% { transform: translateY(-50%) scale(1.1); } }
+
+/* Name Screen (Premium Final Step) */
+.name-input-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 35px 25px;
+    margin-top: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.name-input-field {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px 20px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+.name-input-field:focus {
+    border-color: var(--brand-purple);
+    background: rgba(123, 47, 247, 0.05);
+    box-shadow: 0 0 20px rgba(123, 47, 247, 0.2);
+}
+
+.name-input-field::placeholder { color: #444; }
+
+.btn-final-step {
+    width: 100%;
+    background: var(--cta-green);
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+}
+
+.btn-final-step:disabled {
+    background: #222;
+    color: #444;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+.btn-final-step:not(:disabled):hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4);
+}
 
 .delay-1 { animation-delay: 0.1s !important; }
 .delay-2 { animation-delay: 0.2s !important; }
