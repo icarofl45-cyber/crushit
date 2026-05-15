@@ -994,10 +994,248 @@ body {
 .bonus-card:nth-child(odd) .bonus-price { justify-content: flex-end; }
 .gratis-badge { background: var(--cta-green); color: #000; font-size: 10px; font-weight: 950; padding: 2px 8px; border-radius: 4px; }
 
-/* --- OFFER SECTION --- */
-#screen-offer.screen { display: none; width: 100%; max-width: 500px; margin: 0 auto; }
-#screen-offer.screen.active { display: flex; flex-direction: column; }
-.pricing-card-v2 { background: linear-gradient(145deg, #1a1a1a, #0d0d0d); border: 1.5px solid var(--cta-green); border-radius: 24px; padding: 35px 25px; text-align: center; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); }
+/* --- OFFER SECTION (Premium Restoration) --- */
+#screen-offer.screen { 
+    display: none; 
+    width: 100%; 
+    max-width: 500px; 
+    margin: 0 auto; 
+    padding: 0 15px 100px;
+}
+#screen-offer.screen.active { 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.offer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Header Bubble */
+.offer-header-bubble {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.bubble-subtitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #eee;
+    margin: 0;
+}
+
+.bubble-ready {
+    font-size: 12px;
+    color: var(--cta-green);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Status Card */
+.summary-status-card {
+    background: #181818;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-status-card.status-green { border-left: 5px solid var(--cta-green); }
+.summary-status-card.status-orange { border-left: 5px solid #f97316; }
+.summary-status-card.status-red { border-left: 5px solid #ef4444; }
+.summary-status-card.status-blue { border-left: 5px solid #3b82f6; }
+
+.status-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    font-size: 10px;
+    font-weight: 900;
+    background: rgba(255,255,255,0.05);
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: #888;
+}
+
+.status-imc {
+    font-size: 11px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.status-headline {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.status-subtext {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.status-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-val {
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.stat-val.highlight { color: var(--cta-green); }
+.stat-val.orange { color: #f97316; }
+
+.stat-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #666;
+    margin-top: 2px;
+}
+
+.stat-arrow {
+    color: #333;
+    font-weight: 900;
+}
+
+.status-protocol-box {
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+.protocol-text {
+    font-size: 11px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+/* Comparison Cards */
+.comparison-cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.comparison-card {
+    background: #181818;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comparison-card-label {
+    font-size: 10px;
+    font-weight: 900;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.comparison-card-img-wrap {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.comparison-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.comparison-card-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comp-imc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comp-imc-lbl { font-size: 9px; font-weight: 800; color: #888; }
+.comp-imc-val { font-size: 14px; font-weight: 900; color: #fff; }
+
+.comp-musculatura-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #888;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.progress-segments {
+    display: flex;
+    gap: 3px;
+    width: 100%;
+}
+
+.progress-segments span {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+}
+
+[data-filled="1"] span:nth-child(1) { background: #ef4444; }
+[data-filled="2"] span:nth-child(1), [data-filled="2"] span:nth-child(2) { background: #f97316; }
+[data-filled="3"] span:nth-child(1), [data-filled="3"] span:nth-child(2), [data-filled="3"] span:nth-child(3) { background: #eab308; }
+[data-filled="4"] span:nth-child(1), [data-filled="4"] span:nth-child(2), [data-filled="4"] span:nth-child(3), [data-filled="4"] span:nth-child(4) { background: #84cc16; }
+[data-filled="5"] span:nth-child(n) { background: var(--cta-green); }
+
+/* Pricing & FAQ */
+.pricing-card-v2 { 
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d); 
+    border: 1.5px solid var(--cta-green); 
+    border-radius: 24px; 
+    padding: 35px 25px; 
+    text-align: center; 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); 
+}
 .new-price-v2 { font-size: 48px; font-weight: 950; color: var(--text-white); }
 .cta-pulse-button { background: var(--cta-green); color: #000; border: none; padding: 20px; font-size: 18px; font-weight: 950; border-radius: 50px; width: 100%; text-transform: uppercase; animation: cta-main-pulse 2s infinite; cursor: pointer; }
 @keyframes cta-main-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); } 70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
