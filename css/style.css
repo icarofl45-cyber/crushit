@@ -797,9 +797,144 @@ body {
 
 /* --- PREDICTION & DASHBOARD (Consolidated) --- */
 
-/* --- SUMMARY & CHECKLIST --- */
-.summary-check-list { display: flex; flex-direction: column; gap: 15px; }
-.summary-check-item { display: flex; gap: 15px; align-items: center; padding: 12px 15px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; }
+/* Summary Screen (Premium Restoration) */
+.summary-screen {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.summary-screen .headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 950;
+    letter-spacing: -0.5px;
+}
+
+.protocol-id-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+.protocol-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #888;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+}
+
+.protocol-number {
+    font-size: 14px;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 1px;
+}
+
+.summary-check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.summary-check-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 18px 22px;
+    transition: all 0.3s;
+}
+
+.summary-check-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.summary-check-icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cta-green);
+    font-size: 12px;
+    font-weight: 900;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+}
+
+.summary-check-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.summary-check-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.summary-check-sub {
+    font-size: 12px;
+    color: #aaa;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.final-status-box-v4 {
+    margin-top: 30px;
+    background: rgba(249, 115, 22, 0.05);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.status-circle-v4 {
+    width: 44px;
+    height: 44px;
+    background: #f97316;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+.status-text-v4 p {
+    font-size: 13px;
+    color: #eee;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.status-text-v4 strong {
+    color: #f97316;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 /* --- BONUS VINE LAYOUT (Premium) --- */
 .bonus-container { position: relative; width: 100%; max-width: 600px; margin: 40px auto; padding: 20px 0; display: flex; flex-direction: column; gap: 40px; }
