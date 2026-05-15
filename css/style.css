@@ -365,6 +365,41 @@ body {
 
 @keyframes arrowPulse { 0%, 100% { transform: translateY(-50%) scale(1); } 50% { transform: translateY(-50%) scale(1.1); } }
 
+/* Guarantee Badges (Premium Summary Footer) */
+.guarantee-badges-v2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto 0;
+    padding: 0 10px;
+}
+
+.badge-v2-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.3s;
+}
+
+.badge-v2-item:hover {
+    transform: translateY(-5px);
+}
+
+.badge-v2-img {
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.badge-v2-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 /* Name Screen (Premium Final Step) */
 .name-input-card {
     width: 100%;
