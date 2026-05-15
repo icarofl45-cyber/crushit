@@ -65,16 +65,27 @@ body {
     background: #121212; 
     border: 1px solid rgba(255,255,255,0.08); 
     border-radius: 20px; 
-    padding: 20px; 
+    padding: 18px 25px; 
     cursor: pointer; 
     transition: all 0.3s; 
     display: flex; 
     align-items: center; 
-    justify-content: space-between; 
-    gap: 20px; 
+    justify-content: flex-start; /* Alinha tudo ao início */
+    gap: 15px; /* Espaço reduzido entre ícone e texto */
 }
 .training-card-v2:hover { border-color: var(--cta-green); }
-.training-arrow-v2 { font-size: 20px; color: #444; transition: all 0.3s; }
+.training-info-v2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left; /* Garante alinhamento à esquerda */
+}
+.training-arrow-v2 { 
+    font-size: 20px; 
+    color: #333; 
+    transition: all 0.3s; 
+    margin-left: auto; /* Empurra só a seta para a direita */
+}
 .training-card-v2:hover .training-arrow-v2 { color: var(--cta-green); transform: translateX(5px); }
 .start-card-v2 { background: #121212; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 25px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 20px; position: relative; }
 .featured-start { border: 2px solid var(--cta-green); background: rgba(34, 197, 94, 0.05); }
