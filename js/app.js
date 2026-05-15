@@ -1102,14 +1102,18 @@
             userProfile.startDate = choice;
             saveProfile();
             const warning = document.getElementById('start-warning');
+            const laterCard = document.getElementById('card-start-later');
             
             if (choice === 'No estoy listo') {
+                if (laterCard) laterCard.classList.add('orange-glow');
                 if (warning) warning.style.display = 'flex';
+                
                 setTimeout(() => {
                     goToStep('hormones');
                     startHormonesTimer();
                 }, 4000);
             } else {
+                if (laterCard) laterCard.classList.remove('orange-glow');
                 goToStep('hormones');
                 startHormonesTimer();
             }

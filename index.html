@@ -34,7 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=5.0">
+    <link rel="stylesheet" href="css/style.css?v=5.1">
 </head>
 <body>
 
@@ -702,7 +702,7 @@
         <p class="subheadline" style="opacity: 0.8;">Tu transformación depende de tu compromiso hoy. ¿Cuál es tu nivel de prioridad?</p>
         
         <div class="start-list-v3">
-            <div class="start-card-v3 featured-start" onclick="handleStartDate('Hoy')">
+            <div id="card-start-hoy" class="start-card-v3 featured-start" onclick="handleStartDate('Hoy')">
                 <div class="start-icon-v3">⚡</div>
                 <div class="start-info-v3">
                     <div class="priority-tag">MÁXIMA PRIORIDAD</div>
@@ -712,7 +712,7 @@
                 <div class="start-arrow-v3">→</div>
             </div>
 
-            <div class="start-card-v3" onclick="handleStartDate('Mañana')">
+            <div id="card-start-manana" class="start-card-v3" onclick="handleStartDate('Mañana')">
                 <div class="start-icon-v3">📅</div>
                 <div class="start-info-v3">
                     <div class="start-title-v3">MAÑANA SIN FALTA</div>
@@ -721,7 +721,7 @@
                 <div class="start-arrow-v3">→</div>
             </div>
 
-            <div class="start-card-v3" onclick="handleStartDate('No estoy listo')">
+            <div id="card-start-later" class="start-card-v3" onclick="handleStartDate('No estoy listo')">
                 <div class="start-icon-v3">⌛</div>
                 <div class="start-info-v3">
                     <div class="start-title-v3">PRÓXIMO LUNES / DESPUÉS</div>
@@ -731,9 +731,13 @@
             </div>
         </div>
 
-        <div id="start-warning" class="start-warning-box" style="display: none; margin-top: 20px;">
-            <div class="start-warning-icon">⚠️</div>
-            <p id="txt-most-men">La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.</p>
+        <div id="start-warning" class="start-warning-v4" style="display: none;">
+            <div class="warning-circle">
+                <div class="warning-triangle">⚠️</div>
+            </div>
+            <div class="warning-text-v4">
+                <p id="txt-most-men">La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.</p>
+            </div>
         </div>
     </div>
 
@@ -1807,7 +1811,7 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=5.0" defer></script>
+    <script src="js/app.js?v=5.1" defer></script>
 </body>
 </html>
 

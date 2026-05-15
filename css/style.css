@@ -102,7 +102,11 @@ body {
     justify-content: flex-start;
 }
 .start-card-v3:hover { border-color: var(--cta-green); }
-.featured-start { border: 2.5px solid var(--cta-green); background: rgba(34, 197, 94, 0.05); box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1); }
+.featured-start { 
+    border: 2.5px solid var(--cta-green); 
+    background: rgba(34, 197, 94, 0.05); 
+    box-shadow: 0 5px 20px rgba(34, 197, 94, 0.15); /* Brilho suavizado */
+}
 .start-icon-v3 { font-size: 24px; min-width: 40px; text-align: center; }
 .start-info-v3 { display: flex; flex-direction: column; gap: 4px; flex-grow: 1; text-align: left; }
 .priority-tag { 
@@ -122,6 +126,59 @@ body {
 .start-sub-v3 { font-size: 12px; color: #888; line-height: 1.4; font-weight: 500; }
 .start-arrow-v3 { font-size: 22px; color: #333; transition: all 0.3s; margin-left: auto; }
 .start-card-v3:hover .start-arrow-v3 { color: var(--cta-green); transform: translateX(5px); }
+
+/* Orange Glow for Warning Option */
+.start-card-v3.orange-glow {
+    border-color: #f97316 !important;
+    background: rgba(249, 115, 22, 0.05) !important;
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.2) !important;
+}
+.start-card-v3.orange-glow .start-arrow-v3 {
+    color: #f97316 !important;
+}
+
+/* Warning V4 Container */
+.start-warning-v4 {
+    margin-top: 25px;
+    background: rgba(249, 115, 22, 0.03);
+    border: 1px solid rgba(249, 115, 22, 0.15);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    animation: slideUpFade 0.5s ease both;
+}
+
+.warning-circle {
+    width: 60px;
+    height: 60px;
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.warning-triangle {
+    font-size: 24px;
+    filter: drop-shadow(0 0 5px rgba(249, 115, 22, 0.5));
+}
+
+.warning-text-v4 p {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 600;
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* Checklist Component */
 .checklist-container-v3 { width: 100%; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
