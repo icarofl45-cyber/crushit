@@ -559,8 +559,6 @@ body {
 /* --- SUMMARY & CHECKLIST --- */
 .summary-check-list { display: flex; flex-direction: column; gap: 15px; }
 .summary-check-item { display: flex; gap: 15px; align-items: center; padding: 12px 15px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; }
-.chk-item-v2 { display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; margin-bottom: 10px; }
-.chk-item-v2.active-now { border: 1px solid var(--brand-purple); background: rgba(123, 47, 247, 0.05); }
 
 /* --- BONUS VINE LAYOUT (Premium) --- */
 .bonus-container { position: relative; width: 100%; max-width: 600px; margin: 40px auto; padding: 20px 0; display: flex; flex-direction: column; gap: 40px; }
@@ -704,8 +702,6 @@ body {
     font-weight: 700;
     margin-top: -10px;
 }
-
-/* --- SUMMARY & CHECKLIST --- */
 
 .bmi-gauge-wrap {
     width: 100%;
