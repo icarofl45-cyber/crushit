@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=6.5">
+    <link rel="stylesheet" href="css/style.css?v=7.2">
 </head>
 <body>
 
@@ -336,10 +336,10 @@
                 </div>
                 <!-- SVG Connectors Overlay Masculino -->
                 <svg class="areas-connectors" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <line id="line-pecho" class="connector-line" x1="82" y1="18" x2="55" y2="20" />
-                    <line id="line-brazos" class="connector-line" x1="18" y1="30" x2="35" y2="30" />
-                    <line id="line-abdomen-m" class="connector-line" x1="82" y1="45" x2="55" y2="35" />
-                    <line id="line-piernas" class="connector-line" x1="18" y1="52" x2="45" y2="58" />
+                    <line id="line-pecho" class="connector-line" x1="82" y1="14" x2="55" y2="18" />
+                    <line id="line-brazos" class="connector-line" x1="18" y1="34" x2="35" y2="26" />
+                    <line id="line-abdomen-m" class="connector-line" x1="82" y1="36" x2="55" y2="30" />
+                    <line id="line-piernas" class="connector-line" x1="18" y1="64" x2="45" y2="50" />
                 </svg>
                 <!-- Opções Masculinas -->
                 <div class="areas-options">
@@ -388,10 +388,9 @@
             <div class="analysis-claim" id="analysis-claim">ANALIZANDO PERFIL BIOMÉTRICO...</div>
 
             <div class="analysis-box">
-                <p>El 84% de las personas con tu perfil fallan por culpa de métodos mediocres. <strong>No es falta de voluntad. Es falta de un protocolo táctico.</strong> Tu plan fue diseñado para romper este bloqueo metabólico.</p>
+                <p>El 85% de las personas con tu perfil fallan por culpa de métodos mediocres. <strong>No es falta de voluntad. Es falta de un protocolo táctico.</strong> Tu plan atacará tus zonas críticas con precisión, eliminando el estancamiento metabólico.</p>
             </div>
 
-            <p class="analysis-note">No es falta de voluntad. Es falta del protocolo correcto.<br>Tu plan atacará esa zona con precisión táctica, no con ejercicios genéricos de YouTube que solo te hacen perder tiempo.</p>
 
             <div class="loading-bar-wrap">
                 <div class="loading-label">Analizando tu perfil...</div>
@@ -404,21 +403,25 @@
 
     <!-- ETAPA 9: PARÁMETROS BIOMÉTRICOS (CM/KG) -->
     <div id="screen-biometrics" class="screen">
-        <h1 class="headline" style="font-size:32px">INGRESA TUS <span style="color:var(--cta-green)">PARÁMETROS BIOMÉTRICOS</span></h1>
-        <p class="subheadline" style="font-size:15px">Estos datos son fundamentales para calibrar la <strong style="color:var(--cta-green)">carga metabólica</strong> y la intensidad de tu protocolo personalizado.</p>
+        <h1 class="headline">INGRESA TUS <span style="color:var(--cta-green)">PARÁMETROS BIOMÉTRICOS</span></h1>
+        <p class="subheadline">Estos datos son fundamentales para calibrar la <strong style="color:var(--cta-green)">carga metabólica</strong> y la intensidad de tu protocolo personalizado.</p>
 
         <div class="biometrics-grid">
-            <div class="bio-field"><label for="input-height" class="bio-label">Altura</label><div class="bio-input-wrap"><input type="text" id="input-height" class="bio-value-input" placeholder="175" oninput="calcIMC()"><span class="bio-unit">centímetros</span></div>
-                <div id="error-height" class="error-message">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
-                    <span>Mínimo 140cm / Máximo 220cm</span>
+            <div class="bio-field">
+                <label for="input-height" class="bio-label">Altura</label>
+                <div class="bio-input-wrap">
+                    <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-height" class="bio-value-input" placeholder="175" oninput="calcIMC()">
+                    <span class="bio-unit">centímetros</span>
                 </div>
+                <div id="error-height" class="error-message">Mínimo 140cm / Máximo 220cm</div>
             </div>
-            <div class="bio-field"><label for="input-weight" class="bio-label">Peso</label><div class="bio-input-wrap"><input type="text" id="input-weight" class="bio-value-input" placeholder="80" oninput="calcIMC()"><span class="bio-unit">kilogramos</span></div>
-                <div id="error-weight" class="error-message">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
-                    <span>Mínimo 40kg / Máximo 200kg</span>
+            <div class="bio-field">
+                <label for="input-weight" class="bio-label">Peso</label>
+                <div class="bio-input-wrap">
+                    <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-weight" class="bio-value-input" placeholder="80" oninput="calcIMC()">
+                    <span class="bio-unit">kilogramos</span>
                 </div>
+                <div id="error-weight" class="error-message">Mínimo 40kg / Máximo 200kg</div>
             </div>
         </div>
 
@@ -456,15 +459,22 @@
         <div class="target-weight-input-card">
             <div class="target-weight-label">PESO OBJETIVO</div>
             <div class="weight-input-wrapper">
-                <input type="text" id="input-target-weight" class="weight-input-v2" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
+                <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-target-weight" class="weight-input-v2" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
                 <span class="weight-unit-label">kilogramos</span>
             </div>
         </div>
 
         <div id="target-imc-container" class="target-imc-container">
             <div class="target-imc-header">
-                <span class="target-imc-label">IMC ESTIMADO:</span>
-                <span id="target-imc-value" class="target-imc-val">--</span>
+                <div class="target-imc-item">
+                    <span class="target-imc-label">IMC ACTUAL:</span>
+                    <span id="current-imc-display" class="target-imc-val current">--</span>
+                </div>
+                <div class="target-imc-divider"></div>
+                <div class="target-imc-item">
+                    <span class="target-imc-label">IMC ESTIMADO:</span>
+                    <span id="target-imc-value" class="target-imc-val">--</span>
+                </div>
             </div>
 
             <div class="bmi-gauge-wrap">
@@ -488,14 +498,14 @@
     <!-- ETAPA 11: GRÁFICO PREDIÇÃO -->
     <div id="screen-prediction" class="screen">
         <div class="prediction-screen">
-            <h1 class="prediction-headline" style="text-transform: uppercase; font-weight: 900; line-height: 1.1;">
+            <h1 class="prediction-headline">
                 EL ÚLTIMO PLAN QUE NECESITARÁS<br>
-                <span id="txt-gender-difference" style="color:var(--cta-green); font-size: 0.6em; display: block; margin-top: 10px; text-transform: none;">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
+                <span id="txt-gender-difference" class="gender-diff-subtitle">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
             </h1>
             
 
 
-            <div class="prediction-status-label" style="font-size: 11px; font-weight: 800; color: var(--cta-green); letter-spacing: 2px; margin-bottom: 25px; animation: pulseOpacity 1.5s infinite;">CALIBRANDO TRAYECTORIA METABÓLICA...</div>
+            <div class="prediction-status-label">CALIBRANDO TRAYECTORIA METABÓLICA...</div>
             
             <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong id="pred-weight-display">70 kg</strong> para el</p>
             
@@ -524,13 +534,22 @@
                             
                             <g clip-path="url(#reveal-fat-graph)">
                                 <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
-                                    <line x1="0" y1="30" x2="400" y2="30" />
+                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
+                                    <!-- Horizontais -->
+                                    <line x1="0" y1="20" x2="400" y2="20" />
+                                    <line x1="0" y1="40" x2="400" y2="40" />
                                     <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="90" x2="400" y2="90" />
+                                    <line x1="0" y1="80" x2="400" y2="80" />
+                                    <line x1="0" y1="100" x2="400" y2="100" />
+                                    
+                                    <!-- Verticales -->
+                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
                                     <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
+                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
                                     <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
+                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
                                     <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
+                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
                                 </g>
 
                                 <!-- Torres de Gordura (Geradas via CSS/SVG) -->
@@ -569,13 +588,22 @@
                             
                             <g clip-path="url(#reveal-muscle-graph)">
                                 <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
-                                    <line x1="0" y1="30" x2="400" y2="30" />
+                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
+                                    <!-- Horizontais -->
+                                    <line x1="0" y1="20" x2="400" y2="20" />
+                                    <line x1="0" y1="40" x2="400" y2="40" />
                                     <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="90" x2="400" y2="90" />
+                                    <line x1="0" y1="80" x2="400" y2="80" />
+                                    <line x1="0" y1="100" x2="400" y2="100" />
+                                    
+                                    <!-- Verticales -->
+                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
                                     <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
+                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
                                     <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
+                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
                                     <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
+                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
                                 </g>
 
                                 <!-- Torres de Músculo -->
@@ -604,59 +632,41 @@
 
     <!-- ETAPA 12: FLEXÕES -->
     <div id="screen-pushups" class="screen">
-        <h1 class="headline" style="text-transform: uppercase; font-weight: 900;">¿CUÁNTAS <span id="perf-exercise-name" style="color:var(--cta-green)">FLEXIONES</span> PUEDES HACER?</h1>
-        <p class="subheadline" style="opacity: 0.8;" id="perf-exercise-sub">Sin descanso, en un solo intento. Tu honestidad determina el volumen de carga metabólica de tu protocolo inicial.</p>
+        <h1 class="headline">¿CUÁNTAS <span id="perf-exercise-name" style="color:var(--cta-green)">FLEXIONES</span> PUEDES HACER?</h1>
+        <p class="subheadline" id="perf-exercise-sub">Sin descanso, en un solo intento. Tu honestidad determina el volumen de carga metabólica de tu protocolo inicial.</p>
 
         <div class="pushups-grid">
             <div class="pushup-hex-card" onclick="goToStep('training', '0')">
                 <div class="pushup-hex-wrap"><span>0</span></div>
-                <div class="pushup-info-v3">
-                    <div class="pushup-label">NINGUNA</div>
-                    <div class="pushup-accent-bar"></div>
-                </div>
+                <div class="pushup-label">NINGUNA</div>
             </div>
             <div class="pushup-hex-card" onclick="goToStep('training', '1-5')">
                 <div class="pushup-hex-wrap"><span>1-5</span></div>
-                <div class="pushup-info-v3">
-                    <div class="pushup-label">PRINCIPIANTE</div>
-                    <div class="pushup-accent-bar"></div>
-                </div>
+                <div class="pushup-label">PRINCIPIANTE</div>
             </div>
             <div class="pushup-hex-card" onclick="goToStep('training', '6-15')">
                 <div class="pushup-hex-wrap"><span>6-15</span></div>
-                <div class="pushup-info-v3">
-                    <div class="pushup-label">BÁSICO</div>
-                    <div class="pushup-accent-bar"></div>
-                </div>
+                <div class="pushup-label">BÁSICO</div>
             </div>
             <div class="pushup-hex-card" onclick="goToStep('training', '16-30')">
                 <div class="pushup-hex-wrap"><span>16-30</span></div>
-                <div class="pushup-info-v3">
-                    <div class="pushup-label">INTERMEDIO</div>
-                    <div class="pushup-accent-bar"></div>
-                </div>
+                <div class="pushup-label">INTERMEDIO</div>
             </div>
             <div class="pushup-hex-card" onclick="goToStep('training', '31-50')">
                 <div class="pushup-hex-wrap"><span>31-50</span></div>
-                <div class="pushup-info-v3">
-                    <div class="pushup-label">AVANZADO</div>
-                    <div class="pushup-accent-bar"></div>
-                </div>
+                <div class="pushup-label">AVANZADO</div>
             </div>
             <div class="pushup-hex-card" onclick="goToStep('training', '50+')">
                 <div class="pushup-hex-wrap"><span>50+</span></div>
-                <div class="pushup-info-v3">
-                    <div class="pushup-label">ELITE</div>
-                    <div class="pushup-accent-bar"></div>
-                </div>
+                <div class="pushup-label">ELITE</div>
             </div>
         </div>
     </div>
 
     <!-- ETAPA 13: FREQUÊNCIA DE TREINO -->
     <div id="screen-training" class="screen">
-        <h1 class="headline" style="text-transform: uppercase; font-weight: 900;">NIVEL DE <span style="color:var(--cta-green)">ACTIVIDAD</span></h1>
-        <p class="subheadline" style="opacity: 0.8;">Esto determina el volumen de carga e intensidad necesaria para tu protocolo inicial.</p>
+        <h1 class="headline">NIVEL DE <span style="color:var(--cta-green)">ACTIVIDAD</span></h1>
+        <p class="subheadline">Esto determina el volumen de carga e intensidad necesaria para tu protocolo inicial.</p>
 
         <div class="training-list-v2">
             <div class="training-card-v2" onclick="goToStep('startdate', 'Sedentario')">
@@ -699,8 +709,8 @@
 
     <!-- ETAPA 14: DATA DE INÍCIO -->
     <div id="screen-startdate" class="screen">
-        <h1 class="headline" style="text-transform: uppercase; font-weight: 900;">EL MOMENTO DE LA <span style="color:var(--cta-green)">DECISIÓN</span></h1>
-        <p class="subheadline" style="opacity: 0.8;">Tu transformación depende de tu compromiso hoy. ¿Cuál es tu nivel de prioridad?</p>
+        <h1 class="headline">EL MOMENTO DE LA <span style="color:var(--cta-green)">DECISIÓN</span></h1>
+        <p class="subheadline">Tu transformación depende de tu compromiso hoy. ¿Cuál es tu nivel de prioridad?</p>
         
         <div class="start-list-v3">
             <div id="card-start-hoy" class="start-card-v3 featured-start" onclick="handleStartDate('Hoy')">
@@ -737,7 +747,7 @@
                 <div class="warning-triangle">⚠️</div>
             </div>
             <div class="warning-text-v4">
-                <p id="txt-most-men">La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el ponto de entrada.</p>
+                <p id="txt-most-men">La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.</p>
             </div>
         </div>
     </div>
@@ -754,17 +764,17 @@
                 <!-- BLOCO CORTISOL -->
                 <div class="graph-block fat-block">
                     <div class="graph-header-v2">
-                        <span class="graph-tag" style="background: rgba(255,255,255,0.1); color: #fff;">ESTRÉS Y CORTISOL</span>
-                        <div class="graph-val-now">TASA: <span style="color:#fff">REDUCIDA</span></div>
+                        <span class="graph-tag" style="background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3);">ESTRÉS Y CORTISOL</span>
+                        <div class="graph-val-now">TASA: <span style="color:#ef4444">REDUCIDA</span></div>
                     </div>
                     
                     <div class="graph-visual-box">
                         <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
                             <defs>
                                 <linearGradient id="bar-grad-cortisol" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#fff;stop-opacity:1.0" />
-                                    <stop offset="70%" style="stop-color:#fff;stop-opacity:0.7" />
-                                    <stop offset="100%" style="stop-color:#fff;stop-opacity:0.1" />
+                                    <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1.0" />
+                                    <stop offset="70%" style="stop-color:#ef4444;stop-opacity:0.7" />
+                                    <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.1" />
                                 </linearGradient>
                                 <clipPath id="reveal-cortisol-graph">
                                     <rect id="reveal-rect-cortisol" x="0" y="0" width="0" height="120" />
@@ -773,10 +783,19 @@
                             
                             <g clip-path="url(#reveal-cortisol-graph)">
                                 <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
-                                    <line x1="0" y1="30" x2="400" y2="30" />
+                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
+                                    <line x1="0" y1="20" x2="400" y2="20" />
+                                    <line x1="0" y1="40" x2="400" y2="40" />
                                     <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="90" x2="400" y2="90" />
+                                    <line x1="0" y1="80" x2="400" y2="80" />
+                                    <line x1="0" y1="100" x2="400" y2="100" />
+                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
+                                    <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
+                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
+                                    <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
+                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
+                                    <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
+                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
                                 </g>
 
                                 <!-- Torres de Cortisol -->
@@ -814,10 +833,19 @@
                             
                             <g clip-path="url(#reveal-testo-graph)">
                                 <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
-                                    <line x1="0" y1="30" x2="400" y2="30" />
+                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
+                                    <line x1="0" y1="20" x2="400" y2="20" />
+                                    <line x1="0" y1="40" x2="400" y2="40" />
                                     <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="90" x2="400" y2="90" />
+                                    <line x1="0" y1="80" x2="400" y2="80" />
+                                    <line x1="0" y1="100" x2="400" y2="100" />
+                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
+                                    <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
+                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
+                                    <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
+                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
+                                    <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
+                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
                                 </g>
 
                                 <!-- Torres de Testo -->
@@ -854,7 +882,7 @@
     <!-- ETAPA 16: NOMBRE -->
     <div id="screen-final" class="screen">
         <h1 class="headline anim-fade">ÚLTIMO PASO</h1>
-        <p class="subheadline anim-fade delay-1">¿A quién debemos liberar el acceso a la Área de Miembros?</p>
+        <p class="subheadline anim-fade delay-1">¿A quién debemos liberar el acceso al área de miembros?</p>
 
         <div class="step-counter anim-fade delay-2" style="margin-top: 20px; color: var(--cta-green);">TU PRIMER NOMBRE</div>
         
@@ -888,7 +916,7 @@
 
             <div class="chk-loading-box-v3">
                 <div class="chk-loading-header-v3">
-                    <span>PROCESANDO ESTRUCUTRA...</span>
+                    <span>PROCESANDO ESTRUCTURA...</span>
                     <span id="checklist-perc">0%</span>
                 </div>
                 <div class="chk-progress-track-v3">
@@ -1035,15 +1063,15 @@
                         </svg>
                     </div>
                     <div class="status-text-v4">
-                        <p><strong>¡TODO LISTO!</strong> Todo tu ecosistema ha sido añadido a tu área de miembros y está pronto para ser desfrutado.</p>
+                        <p><strong>¡TODO LISTO!</strong> Todo tu ecosistema ha sido añadido a tu área de miembros y está listo para ser disfrutado.</p>
                     </div>
                 </div>
             </div>
             
-            <div class="guarantee-badges-v2 anim-fade delay-1" style="margin-top: 20px; background: transparent; border: none; padding: 0;">
+            <div class="guarantee-badges-v2 anim-fade delay-1">
                 <div class="badge-v2-item">
-                    <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso Vitalício" class="badge-v2-img" style="width: 50px; height: 50px;">
-                    <span class="badge-v2-label" style="font-size: 8px;">ACCESO VITALÍCIO</span>
+                    <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img" style="width: 50px; height: 50px;">
+                    <span class="badge-v2-label" style="font-size: 8px;">ACCESO VITALICIO</span>
                 </div>
                 <div class="badge-v2-item">
                     <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img" style="width: 50px; height: 50px;">
@@ -1052,7 +1080,7 @@
             </div>
 
 
-            <div style="text-align:center; margin-top:30px;">
+            <div class="summary-redirect-area">
                 <p style="font-size:14px; color:var(--text-gray);">Redirigiendo a tu protocolo en <span id="summary-timer" style="color:var(--cta-green); font-weight:900;">4s</span>...</p>
                 <div class="spinner" style="margin: 20px auto;"></div>
             </div>
@@ -1127,6 +1155,8 @@
                         </div>
                     </div>
 
+                    <div class="comparison-vs">VS</div>
+
                     <!-- CARD OBJETIVO -->
                     <div class="comparison-card card-goal">
                         <span class="comparison-card-label">TU OBJETIVO</span>
@@ -1147,7 +1177,7 @@
                         </div>
                     </div>
                 </div>
-                <p style="font-size: 10px; color: rgba(255,255,255,0.3); line-height: 1.3; text-align: center; margin: 15px 20px 0; font-style: italic;">
+                <p class="disclaimer-text">
                     *Los resultados mostrados son ilustrativos y no están garantizados. Los logros individuales pueden variar según factores como la dieta, el ejercicio y el metabolismo personal. Las imágenes son solo para fines motivacionales y no representan los resultados típicos ni prometidos.
                 </p>
             </div>
@@ -1217,7 +1247,7 @@
                 <button class="cta-pulse-button" onclick="scrollToPrice()">LIBERAR MI ÁREA DE MIEMBROS</button>
             </div>
 
-            <div class="glow-beam anim-fade delay-3" style="margin: 40px auto 30px !important;"></div>
+            <div class="glow-beam anim-fade delay-3" style="margin: 40px auto 30px;"></div>
 
             <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">TODO LO QUE <span style="color:var(--cta-green)">OBTIENES</span></h2>
 
@@ -1248,7 +1278,7 @@
             <div class="benefit-item anim-fade">
                 <div class="benefit-icon">📱</div>
                 <div class="benefit-info">
-                    <h5>Acceso Inmediato a la Área de Miembros</h5>
+                    <h5>Acceso Inmediato al área de miembros</h5>
                     <p>Tu portal personalizado listo para usar ahora mismo.</p>
                 </div>
             </div>
@@ -1275,20 +1305,20 @@
                 </div>
             </div>
 
-            <div class="calendar-preview anim-fade" style="background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 0 12px 12px 12px; margin-top: 25px; text-align: center; position: relative; overflow: visible !important; width: 90%; margin-left: auto; margin-right: auto;">
+            <div class="calendar-preview calendar-preview-card anim-fade">
                 <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--brand-purple); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(123, 47, 247, 0.4); z-index: 10;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
                 </div>
-                <p style="font-size:11px; font-weight:700; color:#fff; margin-top: 25px; margin-bottom: 5px; opacity: 0.8;">Get a printable bonus in addition to the main program</p>
-                <h4 style="font-size:18px; font-weight:900; color:#fff; margin-bottom: 15px;">Printable plan for 2026</h4>
+                <p style="font-size:11px; font-weight:700; color:#fff; margin-top: 25px; margin-bottom: 5px; opacity: 0.8;">Obtén un bono imprimible además do programa principal</p>
+                <h4 style="font-size:18px; font-weight:900; color:#fff; margin-bottom: 15px;">Plan imprimible para 2026</h4>
                 <div style="position:relative; display:inline-block; width:100%; max-width:260px; -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, black 85%, transparent 100%);">
                     <img loading="lazy" src="imagens_webp_crush_it/oferta-2.webp" alt="Guía Básica de Fitness - Vista Previa" style="width: 100%; height: auto; border-radius: 8px; display: block;">
                 </div>
             </div>
 
                 <!-- SECTION: BONUSES (POSICIONADO PARA EMPILHAMENTO DE VALOR) -->
-                <div class="bonus-section-wrapper" style="width: 100%; max-width: 100%; margin: 30px 0 0; padding: 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <div class="offer-header-bubble anim-fade" style="background: rgba(255, 107, 0, 0.1); border: 1px solid rgba(255, 107, 0, 0.3); color: #ff6b00; margin-bottom: 20px !important;">
+                <div class="bonus-section-wrapper">
+                    <div class="offer-header-bubble bonus-alert-bubble anim-fade">
                         🎁 SI ENTRAS HOY, RECIBES ESTO TAMBIÉN
                     </div>
 
@@ -1307,7 +1337,6 @@
                             <div class="bonus-info">
                                 <p>No te detengas si no encuentras un ingrediente. Aprende a intercambiar alimentos sin arruinar tus macros ni tu progreso.</p>
                                 <div class="bonus-price">
-                                    <span class="old-price">$14.90 USD</span>
                                     <span class="gratis-badge">GRATIS</span>
                                 </div>
                             </div>
@@ -1322,7 +1351,6 @@
                             <div class="bonus-info">
                                 <p>Rutinas ultra-rápidas de 7 minutos para mantener tu metabolismo acelerado incluso si estás fuera de casa o sin equipo.</p>
                                 <div class="bonus-price">
-                                    <span class="old-price">$24.90 USD</span>
                                     <span class="gratis-badge">GRATIS</span>
                                 </div>
                             </div>
@@ -1337,7 +1365,6 @@
                             <div class="bonus-info">
                                 <p>La lista exacta para llenar tu refrigerador con alimentos de alto rendimiento gastando lo mínimo posible. Comer bien no es caro.</p>
                                 <div class="bonus-price">
-                                    <span class="old-price">$12.00 USD</span>
                                     <span class="gratis-badge">GRATIS</span>
                                 </div>
                             </div>
@@ -1352,7 +1379,6 @@
                             <div class="bonus-info">
                                 <p>Aprende a preparar comidas de alta densidad nutricional en menos tiempo del que tardas en pedir un delivery. Sin complicaciones, sin desorden.</p>
                                 <div class="bonus-price">
-                                    <span class="old-price">$19.90 USD</span>
                                     <span class="gratis-badge">GRATIS</span>
                                 </div>
                             </div>
@@ -1362,143 +1388,142 @@
                     <!-- Novo Card de Valor Total Centralizado -->
                     <div class="bonus-summary-badge anim-up">
                         <span class="summary-label">VALOR TOTAL DE LOS BONOS</span>
-                        <div class="summary-value">$71.70 USD — <strong>tuyo hoy sin costo</strong></div>
+                        <div class="summary-value"><strong>tuyo hoy sin costo</strong></div>
                     </div>
                 </div>
-            <!-- Continue inside screen-offer -->
 
-            <div class="program-objectives-section anim-up" style="margin: 25px 0; text-align: left;">
-                <h3 style="font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 20px; line-height: 1.4; opacity: 0.9;">BENEFICIOS ADICIONALES DE CRUSH IT:</h3>
-                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
-                    <li style="display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 100px; width: 100%;">
-                        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--cta-green); border-radius: 50%; color: #fff; font-size: 12px; margin-right: 15px; flex-shrink: 0; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);">✓</span>
-                        <span style="font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.3px;">Regulación del Cortisol (Menos Estrés)</span>
+            <div class="program-objectives-section anim-up">
+                <h3 class="program-objectives-title">BENEFICIOS ADICIONALES DE CRUSH IT:</h3>
+                <ul class="benefits-checklist">
+                    <li>
+                        <span class="benefit-check-icon">✓</span>
+                        <span class="benefit-check-text">Regulación del Cortisol (Menos Estrés)</span>
                     </li>
-                    <li style="display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 100px; width: 100%;">
-                        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--cta-green); border-radius: 50%; color: #fff; font-size: 12px; margin-right: 15px; flex-shrink: 0; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);">✓</span>
-                        <span style="font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.3px;">Aumento de la Vitalidad y Energía</span>
+                    <li>
+                        <span class="benefit-check-icon">✓</span>
+                        <span class="benefit-check-text">Aumento de la Vitalidad y Energía</span>
                     </li>
-                    <li style="display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 100px; width: 100%;">
-                        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--cta-green); border-radius: 50%; color: #fff; font-size: 12px; margin-right: 15px; flex-shrink: 0; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);">✓</span>
-                        <span style="font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.3px;">Forja de Disciplina Inquebrantable</span>
+                    <li>
+                        <span class="benefit-check-icon">✓</span>
+                        <span class="benefit-check-text">Forja de Disciplina Inquebrantable</span>
                     </li>
-                    <li style="display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 100px; width: 100%;">
-                        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--cta-green); border-radius: 50%; color: #fff; font-size: 12px; margin-right: 15px; flex-shrink: 0; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);">✓</span>
-                        <span style="font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.3px;">Programación de Hábitos Ganadores</span>
+                    <li>
+                        <span class="benefit-check-icon">✓</span>
+                        <span class="benefit-check-text">Programación de Hábitos Ganadores</span>
                     </li>
-                    <li style="display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 20px; border-radius: 100px; width: 100%;">
-                        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--cta-green); border-radius: 50%; color: #fff; font-size: 12px; margin-right: 15px; flex-shrink: 0; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);">✓</span>
-                        <span style="font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.3px;">Optimización del Ciclo Circadiano</span>
+                    <li>
+                        <span class="benefit-check-icon">✓</span>
+                        <span class="benefit-check-text">Optimización del Ciclo Circadiano</span>
                     </li>
                 </ul>
             </div>
 
-            <div class="pricing-card anim-up" style="background: rgba(20, 20, 20, 1); border: 1.5px solid rgba(255, 255, 255, 0.1); border-radius: 24px; margin: 15px 0; overflow: hidden; text-align: center;">
+            <div class="pricing-card pricing-card-shell anim-up">
                 <div class="comp-social-proof-top">
                     <span class="proof-dot"></span>
                     <span class="proof-text">+<span id="people-joined-count">320</span> personas se unieron al protocolo esta semana</span>
                 </div>
                 <!-- Social Proof Carousel (Moved up for better flow) -->
-                <div style="padding: 10px 20px 0; background: rgba(255, 255, 255, 0.02);">
-                    <div id="social-proof-carousel" style="display: flex; justify-content: center; height: 50px; align-items: center; overflow: hidden; position: relative;">
-                        <div class="proof-badge" id="proof-badge-el" style="transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; transform: translateY(0);">
+                <div class="pricing-social-area">
+                    <div id="social-proof-carousel">
+                        <div class="proof-badge" id="proof-badge-el">
                             <span class="proof-dot male"></span>
                             <span class="proof-text">carlos* validó su acceso al protocolo</span>
                         </div>
                     </div>
                 </div>
 
-                <div style="padding: 10px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(255, 255, 255, 0.02);">
-                    <div style="margin-bottom: 15px;">
-                        <h2 style="font-size: 32px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 8px; text-transform: uppercase;">LIBERAR MI ACCESO</h2>
-                        <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 12px; font-weight: 500;">Tu acceso será enviado de forma instantánea tras la confirmación del pago.</p>
-                        <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid var(--cta-green); color: var(--cta-green); padding: 8px 18px; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase;">
-                            <span style="width: 6px; height: 6px; background: var(--cta-green); border-radius: 50%;"></span>
+                <div class="pricing-header-area">
+                    <div class="pricing-header-inner">
+                        <h2 class="pricing-main-title">LIBERAR MI ACCESO</h2>
+                        <p class="pricing-access-note">Tu acceso será enviado de forma instantánea tras la confirmación del pago.</p>
+                        <div class="pricing-launch-badge">
+                            <span class="pricing-launch-dot"></span>
                             Oferta de Lanzamiento • Sin Mensualidades
                         </div>
                     </div>
                 </div>
 
-                <div style="padding: 10px 20px 30px;">
+                <div class="pricing-body-area">
                     <!-- CARD DE PREÇO SIMPLIFICADO -->
-                    <div class="pricing-card-v2 anim-up" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 30px 20px; border-radius: 24px; text-align: center; margin-bottom: 25px; margin-top: 5px;">
-                        <p style="font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">PAGO DE TASA = ACCESO VITALICIO</p>
-                        <div style="display: flex; align-items: flex-end; justify-content: center; gap: 10px;">
-                            <span style="font-size: 72px; font-weight: 900; color: #fff; line-height: 1;"><span class="price-new-v2">$37.99</span></span>
-                            <span style="font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 12px; opacity: 0.6;">USD</span>
+                    <div class="pricing-card-v2 pricing-card-v2-inner anim-up">
+                        <p class="pricing-fee-label">PAGO DE TASA = ACCESO VITALICIO</p>
+                        <div class="pricing-value-row">
+                            <span class="pricing-value-big"><span class="price-new-v2">$37.99</span></span>
+                            <span class="pricing-currency">USD</span>
                         </div>
                     </div>
 
-                    <button onclick="window.location.href='https://pay.hotmart.com/YOUR_LINK_HERE'" style="width: 100%; background: var(--cta-green); color: #000; border: none; padding: 22px; border-radius: 16px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    <button class="btn-offer-cta" onclick="window.location.href='https://pay.hotmart.com/YOUR_LINK_HERE'">
                         GARANTIZAR MI ACCESO AL PROTOCOLO
                     </button>
 
                     <!-- SELOS DE CONFIANÇA MARCADOS -->
-                    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
-                        <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 10px 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); flex: 1; max-width: 160px;">
-                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso Vitalício" style="width: 32px; height: 32px; filter: brightness(0) invert(1);">
-                            <div style="text-align: left; line-height: 1.2;">
-                                <div style="font-size: 10px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">ACCESO</div>
-                                <div style="font-size: 10px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">VITALÍCIO</div>
+                    <div class="trust-seals-row">
+                        <div class="trust-seal-item">
+                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="trust-seal-img">
+                            <div class="trust-seal-text">
+                                <div class="trust-seal-line">ACCESO</div>
+                                <div class="trust-seal-line">VITALICIO</div>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 10px 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); flex: 1; max-width: 160px;">
-                            <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" style="width: 32px; height: 32px; filter: brightness(0) invert(1);">
-                            <div style="text-align: left; line-height: 1.2;">
-                                <div style="font-size: 10px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">30 DÍAS DE</div>
-                                <div style="font-size: 10px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">GARANTÍA</div>
+                        <div class="trust-seal-item">
+                            <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="trust-seal-img">
+                            <div class="trust-seal-text">
+                                <div class="trust-seal-line">30 DÍAS DE</div>
+                                <div class="trust-seal-line">GARANTÍA</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="glow-beam anim-fade delay-5" style="margin: 0 auto 5px !important;"></div>
+            <div class="glow-beam anim-fade delay-5" style="margin: 0 auto 5px;"></div>
 
             <!-- SECTION: NEW PREMIUM GUARANTEE -->
-            <div class="guarantee-card-premium anim-up" style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 25px; margin: 20px 0; text-align: center; position: relative; overflow: hidden;">
+            <div class="guarantee-card-premium anim-up">
                 <!-- Decorative Glow behind badge -->
-                <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 100px; height: 100px; background: rgba(34, 197, 94, 0.1); filter: blur(30px); border-radius: 50%; z-index: 1;"></div>
+                <div class="guarantee-glow"></div>
                 
-                <div class="guarantee-header" style="position: relative; z-index: 2; margin-bottom: 20px;">
-                    <div class="guarantee-badge-wrap" style="margin-bottom: 15px;">
-                        <img src="imagens_webp_crush_it/reembolso.webp" alt="Garantía de 30 días" style="width: 80px; height: auto; filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));">
+                <div class="guarantee-header">
+                    <div class="guarantee-badge-wrap">
+                        <img src="imagens_webp_crush_it/reembolso.webp" alt="Garantía de 30 días" class="guarantee-badge-img">
                     </div>
-                    <h2 class="guarantee-title" style="font-size: 20px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Garantía de satisfacción</h2>
+                    <h2 class="guarantee-title">Garantía de satisfacción</h2>
                 </div>
                 
-                <div class="guarantee-body" style="position: relative; z-index: 2; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 15px; font-weight: 500;">
+                <div class="guarantee-body">
                     ¡Creemos que nuestro plan funcionará para ti! Estamos tan seguros que ofrecemos un <strong>reembolso completo dentro de los 30 días</strong> posteriores a la compra si no consigues resultados visibles y puedes demostrar que has seguido el protocolo.
                 </div>
                 
-                <div class="guarantee-footer" style="position: relative; z-index: 2; font-size: 11px; opacity: 0.4;">
-                    Obtén más información en nuestra <a href="#" style="color: #fff; text-decoration: underline;">política de reembolso</a>
+                <div class="guarantee-footer">
+                    Obtén más información en nuestra <a href="#">política de reembolso</a>
                 </div>
             </div>
 
             <!-- SECTION: TRUST & SOCIAL PROOF -->
-            <div class="trust-section" style="overflow: hidden; padding: 40px 0; position: relative; display: flex; justify-content: center; align-items: center;">
-                    <img src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel laurel-left" alt="Laurel" style="width: 180px !important; opacity: 0.12; position: absolute; left: -10px;">
+            <div class="trust-section">
+                    <img src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel laurel-left" alt="Laurel">
                     
-                    <div class="trust-content" style="text-align: center; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                        <h2 class="trust-number" style="font-size: 52px; font-weight: 950; color: #fff; margin-bottom: 2px; letter-spacing: -2px; line-height: 1;">+1.5 MILLONES</h2>
+                    <div class="trust-content">
+                        <h2 class="trust-number">+1.5 MILLONES</h2>
                         <p style="font-size: 13px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; max-width: 280px; line-height: 1.3;">VIDAS TRANSFORMADAS POR EL <span style="color: var(--brand-purple);">CRUSHIT</span></p>
                         
-                        <div class="trust-stars" style="color: #FFD700; font-size: 24px; margin-bottom: 12px; display: flex; gap: 6px; text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);">
+                        <div class="trust-stars">
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                         </div>
                         
-                        <div class="trust-rating-badge" style="background: rgba(255, 255, 255, 0.03); border: 1.5px solid rgba(255,255,255,0.1); padding: 12px 35px; border-radius: 14px; font-size: 20px; font-weight: 900; margin-bottom: 18px; color: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">4.7 de 5</div>
+                        <div class="trust-rating-badge">4.7 de 5</div>
 
                         <p style="font-size: 17px; color: #fff; font-weight: 700; line-height: 1.5; max-width: 320px; opacity: 0.9;">
                             Más de 200.000 valoraciones de 5 estrellas de nuestra <span style="color: var(--cta-green);">comunidad global</span>
                         </p>
                     </div>
 
-                    <img src="imagens_webp_crush_it/ramo-direito.webp" class="laurel laurel-right" alt="Laurel" style="width: 180px !important; opacity: 0.12; position: absolute; right: -10px;">
+                    <img src="imagens_webp_crush_it/ramo-direito.webp" class="laurel laurel-right" alt="Laurel">
             </div>
 
-            <div class="glow-beam anim-fade delay-5" style="margin: -5px auto 10px !important;"></div>
+            <div class="glow-beam anim-fade delay-5" style="margin: -5px auto 10px;"></div>
 
             <!-- SECTION: FAQ -->
             <div class="faq-section">
@@ -1585,7 +1610,7 @@
                         <div class="testimonial-card" id="card-1">
                             <div class="card-header">
                                 <h4 class="user-name">Carlos M.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps3m.webp" alt="Transformación" class="transformation-img">
@@ -1600,7 +1625,7 @@
                         <div class="testimonial-card" id="card-2">
                             <div class="card-header">
                                 <h4 class="user-name">Elena R.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps2.webp" alt="Transformación" class="transformation-img">
@@ -1615,7 +1640,7 @@
                         <div class="testimonial-card" id="card-3">
                             <div class="card-header">
                                 <h4 class="user-name">Roberto V.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps4m.webp" alt="Transformación" class="transformation-img">
@@ -1630,7 +1655,7 @@
                         <div class="testimonial-card" id="card-4">
                             <div class="card-header">
                                 <h4 class="user-name">Daniela S.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps1.webp" alt="Transformación" class="transformation-img">
@@ -1644,7 +1669,7 @@
                         <div class="testimonial-card" id="card-5">
                             <div class="card-header">
                                 <h4 class="user-name">Marcos T.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps5m.webp" alt="Transformación" class="transformation-img">
@@ -1659,7 +1684,7 @@
                         <div class="testimonial-card" id="card-6">
                             <div class="card-header">
                                 <h4 class="user-name">Miguel R.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps6m.webp" alt="Transformación" class="transformation-img">
@@ -1674,7 +1699,7 @@
                         <div class="testimonial-card" id="card-7">
                             <div class="card-header">
                                 <h4 class="user-name">Lucía S.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps3.webp" alt="Transformación" class="transformation-img">
@@ -1689,7 +1714,7 @@
                         <div class="testimonial-card" id="card-8">
                             <div class="card-header">
                                 <h4 class="user-name">Carla B.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps4.webp" alt="Transformación" class="transformation-img">
@@ -1703,7 +1728,7 @@
                         <div class="testimonial-card" id="card-9">
                             <div class="card-header">
                                 <h4 class="user-name">Andrés P.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps2m.webp" alt="Transformación" class="transformation-img">
@@ -1718,7 +1743,7 @@
                         <div class="testimonial-card" id="card-10">
                             <div class="card-header">
                                 <h4 class="user-name">Fernando H.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps1m.webp" alt="Transformación" class="transformation-img">
@@ -1733,7 +1758,7 @@
                         <div class="testimonial-card" id="card-11">
                             <div class="card-header">
                                 <h4 class="user-name">Laura D.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps5.webp" alt="Transformación" class="transformation-img">
@@ -1748,7 +1773,7 @@
                         <div class="testimonial-card" id="card-12">
                             <div class="card-header">
                                 <h4 class="user-name">Patricia G.</h4>
-                                <div class="stars" style="color: #FFD700;">★★★★★</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
                                 <img src="imagens_webp_crush_it/ps6.webp" alt="Transformación" class="transformation-img">
@@ -1785,33 +1810,13 @@
                 <div class="footer-disclaimer">
                     <p>*Los resultados mostrados son ilustrativos y no están garantizados. Los logros individuales pueden variar según factores como la dieta, el ejercicio y el metabolismo personal. Este sitio no es parte de Facebook™ ni de Facebook Inc. Además, este sitio no está respaldado por Facebook de ninguna manera. FACEBOOK™ é una marca registrada de FACEBOOK, Inc.</p>
                 </div>
-                
                 <div class="footer-copyright">
                     <p>&copy; 2026 Crush It - Todos los derechos reservados.</p>
-                    <p>Todos los materiales, contenidos y métodos presentes en este sitio están protegidos por derechos de autor.</p>
-                    <p>Queda prohibida su reproducción total o parcial sin autorización escrita.</p>
-                </div>
-                
-                <!-- Footer badges removed for re-addition -->
-                <div class="footer-trust-container">
-                    <img src="imagens_webp_crush_it/pagamentos.webp" alt="Métodos de Pago" class="trust-badge-payments" style="height: 50px; width: auto; margin-bottom: 10px;">
-                    <div class="trust-row-bottom" style="display: flex; gap: 25px; align-items: center; justify-content: center;">
-                        <img src="imagens_webp_crush_it/ssl.webp" alt="SSL Certificado Seguro" class="trust-badge-small" style="height: 40px; width: auto; opacity: 0.5;">
-                        <img src="imagens_webp_crush_it/30d.webp" alt="Garantía 30 Días" class="trust-badge-small" style="height: 40px; width: auto; opacity: 0.5;">
-                    </div>
-
-
-
-
-
-
-
-
                 </div>
             </footer>
         </div>
     </div>
 
-    <script src="js/app.js?v=6.5" defer></script>
+    <script src="js/app.js?v=7.2" defer></script>
 </body>
 </html>

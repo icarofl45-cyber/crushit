@@ -232,7 +232,7 @@
                     applyGenderSpecifics(userProfile.gender);
                     updateGenderUI();
                 } catch(e) {
-                    console.error("Erro ao carregar perfil:", e);
+                    console.error("Error al cargar perfil:", e);
                 }
             }
             if (savedHistory) {
@@ -240,7 +240,7 @@
                     const hist = JSON.parse(savedHistory);
                     navigationHistory = hist;
                 } catch(e) {
-                    console.error("Erro ao carregar histórico:", e);
+                    console.error("Error al cargar historial:", e);
                 }
             }
         }
@@ -283,6 +283,15 @@
         function updateGenderUI() {
             const isFemale = userProfile.gender === 'Femenino';
             
+            // Apply body classes for CSS overrides
+            if (isFemale) {
+                document.body.classList.add('gender-female');
+                document.body.classList.remove('gender-male');
+            } else {
+                document.body.classList.add('gender-male');
+                document.body.classList.remove('gender-female');
+            }
+            
             // Text 1: The difference...
             const txtDiff = document.getElementById('txt-gender-difference');
             if (txtDiff) {
@@ -302,7 +311,7 @@
             if (txtMost) {
                 txtMost.innerText = isFemale
                     ? "La mayoría de las mujeres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listas - El protocolo fue diseñado para cuando no te sientes lista - Ese es exactamente el punto de entrada."
-                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para quando no te sientes listo - Ese es exactamente el punto de entrada.";
+                    : "La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.";
             }
 
             // Text 4: Men/women who use it
@@ -313,6 +322,19 @@
                     : "El papel donde marcas cada día completado. Simple. Pero los hombres que lo usan tienen 3 veces más probabilidades de terminar el reto.";
             }
 
+            // Areas Screen Content Toggle
+            const areasFemale = document.getElementById('areas-content-female');
+            const areasMale = document.getElementById('areas-content-male');
+            if (areasFemale && areasMale) {
+                if (isFemale) {
+                    areasFemale.style.display = 'block';
+                    areasMale.style.display = 'none';
+                } else {
+                    areasFemale.style.display = 'none';
+                    areasMale.style.display = 'block';
+                }
+            }
+
             // Goal Subtitles
             const subPerder = document.getElementById('goal-sub-perder');
             const subGanar = document.getElementById('goal-sub-ganar');
@@ -320,7 +342,7 @@
             
             if (subPerder) {
                 subPerder.innerText = isFemale 
-                    ? "Recuperar mi confianza y sentirme poderosa en qualquer ropa"
+                    ? "Recuperar mi confianza y sentirme poderosa en cualquier ropa"
                     : "Dejar de sentir vergüenza al mirarme al espejo";
             }
             if (subGanar) {
@@ -365,7 +387,7 @@
             }
             if (fatSub) {
                 fatSub.innerText = isFemale
-                    ? "Identifica tu estado actual para desbloquear tu tasa metabólica e eliminar adiposidad localizada."
+                    ? "Identifica tu estado actual para desbloquear tu tasa metabólica y eliminar adiposidad localizada."
                     : "Identifica tu punto de partida para calibrar la eliminación de grasa visceral.";
             }
 
@@ -532,6 +554,8 @@
 
             if (h > 0 && currentW > 0) {
                 const currentImc = parseFloat((currentW / ((h/100)**2)).toFixed(1));
+                document.getElementById('current-imc-display').innerText = currentImc;
+                
                 let curPerc = ((currentImc - 15) / (35 - 15)) * 100;
                 if (curPerc < 5) curPerc = 5; if (curPerc > 95) curPerc = 95;
                 document.getElementById('target-gauge-pin-current').style.left = curPerc + '%';
@@ -585,6 +609,11 @@
             startPredictionTimer();
         }
 
+        // Helper reutilizável para curva Bezier cúbica
+        function getBezierY(t, p0, p1, p2, p3) {
+            return Math.pow(1-t, 3)*p0 + 3*Math.pow(1-t, 2)*t*p1 + 3*(1-t)*Math.pow(t, 2)*p2 + Math.pow(t, 3)*p3;
+        }
+
         function generateFatTowers() {
             const group = document.getElementById('fat-towers-group');
             if (!group) return;
@@ -595,16 +624,12 @@
             const barWidth = 6;
             const gap = (width / numTowers);
 
-            // Função para pegar Y na curva Bezier M 0,10 C 50,15 150,105 400,115
-            function getBezierY(t) {
-                const p0 = 10, p1 = 15, p2 = 105, p3 = 115;
-                return Math.pow(1-t, 3)*p0 + 3*Math.pow(1-t, 2)*t*p1 + 3*(1-t)*Math.pow(t, 2)*p2 + Math.pow(t, 3)*p3;
-            }
+
 
             for (let i = 0; i < numTowers; i++) {
                 const t = i / (numTowers - 1);
                 const x = i * gap;
-                const y = getBezierY(t);
+                const y = getBezierY(t, 10, 15, 105, 115);
                 const height = 120 - y;
 
                 const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -636,16 +661,12 @@
             const barWidth = 6;
             const gap = (width / numTowers);
 
-            // Função para pegar Y na curva Bezier M 0,110 C 150,100 300,25 400,15
-            function getBezierY(t) {
-                const p0 = 110, p1 = 100, p2 = 25, p3 = 15;
-                return Math.pow(1-t, 3)*p0 + 3*Math.pow(1-t, 2)*t*p1 + 3*(1-t)*Math.pow(t, 2)*p2 + Math.pow(t, 3)*p3;
-            }
+
 
             for (let i = 0; i < numTowers; i++) {
                 const t = i / (numTowers - 1);
                 const x = i * gap;
-                const y = getBezierY(t);
+                const y = getBezierY(t, 110, 100, 25, 15);
                 const height = 120 - y;
 
                 const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -748,13 +769,10 @@
             group.innerHTML = '';
             const towerCount = 60;
             const width = 400 / towerCount;
-            function getBezierY(t) {
-                const P0 = 10, P1 = 15, P2 = 105, P3 = 115;
-                return Math.pow(1-t,3)*P0 + 3*Math.pow(1-t,2)*t*P1 + 3*(1-t)*t*t*P2 + Math.pow(t,3)*P3;
-            }
+
             for (let i = 0; i < towerCount; i++) {
                 const t = i / (towerCount - 1);
-                const y = getBezierY(t);
+                const y = getBezierY(t, 10, 15, 105, 115);
                 const h = 120 - y;
                 const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 rect.setAttribute('x', i * width + 1);
@@ -771,13 +789,10 @@
             group.innerHTML = '';
             const towerCount = 60;
             const width = 400 / towerCount;
-            function getBezierY(t) {
-                const P0 = 110, P1 = 100, P2 = 25, P3 = 15;
-                return Math.pow(1-t,3)*P0 + 3*Math.pow(1-t,2)*t*P1 + 3*(1-t)*t*t*P2 + Math.pow(t,3)*P3;
-            }
+
             for (let i = 0; i < towerCount; i++) {
                 const t = i / (towerCount - 1);
-                const y = getBezierY(t);
+                const y = getBezierY(t, 110, 100, 25, 15);
                 const h = 120 - y;
                 const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 rect.setAttribute('x', i * width + 1);
@@ -1087,6 +1102,11 @@
             else if (imcNum < 25) document.getElementById('lbl-normal')?.classList.add('active');
             else if (imcNum < 30) document.getElementById('lbl-sobre')?.classList.add('active');
             else document.getElementById('lbl-obeso')?.classList.add('active');
+
+            // Initialize social proof elements
+            if (typeof startSocialProofCarousel === 'function') startSocialProofCarousel();
+            if (typeof startTestimonialsCarousel === 'function') startTestimonialsCarousel();
+            if (typeof startPeopleCounter === 'function') startPeopleCounter();
         }
 
         function toggleFAQ(el) {
@@ -1206,13 +1226,8 @@
                     balloons[currentBalloon].classList.add('active');
                 }, 3000);
             }
-
-            checkAppliedDiscount();
-        });
-
-        function checkAppliedDiscount() {
-            // Logic for pre-applied discounts if needed
-        }
+            /* Legacy discount check removed */
+            });
 
         // SOCIAL PROOF CAROUSEL - REFINADO (PORTUGUÊS)
         let currentProofIndex = 0;
@@ -1294,40 +1309,23 @@
             animate();
         }
 
-        // Hook into offer screen population
-        const originalPopulate = populateOfferScreen;
-        populateOfferScreen = function() {
-            if (typeof originalPopulate === 'function') originalPopulate();
-            startSocialProofCarousel();
-            startTestimonialsCarousel();
-            startPeopleCounter();
-        };
-
         function startPeopleCounter() {
             const el = document.getElementById('people-joined-count');
             if (!el) return;
             
-            // Tenta recuperar o valor salvo, senão começa em 320
             let savedCount = localStorage.getItem('crushit_people_count');
             let count = savedCount ? parseInt(savedCount) : 320;
-            
-            // Se já passou de 999 por algum motivo, reseta para um valor alto mas crível
             if (count >= 999) count = 980;
             
             el.innerText = count;
             
             setInterval(() => {
                 if (count < 999) {
-                    // Incremento aleatório de 1 a 2
                     count += Math.floor(Math.random() * 2) + 1;
-                    
-                    // Garante que não passe de 999
                     if (count > 999) count = 999;
-                    
                     el.innerText = count;
                     localStorage.setItem('crushit_people_count', count);
                     
-                    // Efeito visual de destaque rápido
                     el.style.transition = 'all 0.3s ease';
                     el.style.color = '#fff';
                     el.style.textShadow = '0 0 10px #fff';
