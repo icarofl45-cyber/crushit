@@ -2481,6 +2481,11 @@ body.gender-female .gender-diff-subtitle {
 
 
 
+.old-price {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.4);
+}
+
 .gratis-badge {
     background: var(--cta-green);
     color: #000;
