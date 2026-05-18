@@ -1,49 +1,87 @@
-// JS LOGIC FOR FOCUS AREAS
-        function toggleArea(area, element) {
-            element.classList.toggle('selected');
-            const isSelected = element.classList.contains('selected');
+/**
+ * ==========================================
+ * CRUSH IT - CORE APPLICATION SCRIPT
+ * Version: 7.3 (Structured Screen-by-Screen)
+ * ==========================================
+ */
 
-            // Use the area name directly as targetId (e.g., pecho, brazos, abdomen, piernas)
-            const targetId = area;
+/* ==========================================
+   0. CONFIGURACIÓN Y ESTADO GLOBAL
+   ========================================== */
 
-            if (area === 'todo') {
-                document.querySelectorAll('.area-option').forEach(opt => {
-                    if (isSelected) opt.classList.add('selected');
-                    else opt.classList.remove('selected');
-                });
-                document.querySelectorAll('.connector-line').forEach(l => {
-                    if (isSelected) l.classList.add('active');
-                    else l.classList.remove('active');
-                });
-            } else {
-                const todoBtn = document.querySelector('.area-option[onclick*="todo"]');
-                if (todoBtn) todoBtn.classList.remove('selected');
+        // CORE QUIZ LOGIC
+        let userProfile = {
+            age: '',
+            gender: 'Masculino',
+            bodyType: '',
+            goal: '',
+            bodyFat: '',
+            areas: [],
+            height: '',
+            weight: '',
+            targetWeight: '',
+            pushups: '',
+            training: '',
+            startDate: '',
+            name: ''
+        };
 
-                // Find all lines starting with the targetId
-                const lines = document.querySelectorAll(`[id^="line-${targetId}"]`);
-                
-                lines.forEach(l => {
-                    if (isSelected) l.classList.add('active');
-                    else l.classList.remove('active');
-                });
-                
-                if (!document.querySelector('.area-option.selected')) {
-                    document.querySelectorAll('.connector-line').forEach(l => l.classList.remove('active'));
+        // Dedicated Gender Failsafe (Immediate execution)
+        (function() {
+            const savedGender = localStorage.getItem('crushit_gender');
+            if (savedGender) {
+                userProfile.gender = savedGender;
+                if (savedGender === 'Femenino') {
+                    document.body.classList.add('gender-female');
+                    document.body.classList.remove('gender-male');
+                } else {
+                    document.body.classList.add('gender-male');
+                    document.body.classList.remove('gender-female');
                 }
             }
+        })();
 
-            // Ativa/Desativa botão de continuar
-            const btn = document.getElementById('btn-areas-continue');
-            const hasSelection = document.querySelectorAll('.area-option.selected').length > 0;
-            if (hasSelection) {
-                btn.classList.add('active-btn');
-            } else {
-                btn.classList.remove('active-btn');
+
+        function saveProfile() {
+            localStorage.setItem('crushit_profile', JSON.stringify(userProfile));
+            localStorage.setItem('crushit_history', JSON.stringify(navigationHistory));
+        }
+
+
+        function loadProfile() {
+            const savedGender = localStorage.getItem('crushit_gender');
+            if (savedGender) {
+                userProfile.gender = savedGender;
+            }
+            const saved = localStorage.getItem('crushit_profile');
+            const savedHistory = localStorage.getItem('crushit_history');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    Object.assign(userProfile, data);
+                    if (savedGender) {
+                        userProfile.gender = savedGender;
+                    }
+                    applyGenderSpecifics(userProfile.gender);
+                    updateGenderUI();
+                } catch(e) {
+                    console.error("Error al cargar perfil:", e);
+                }
+            }
+            if (savedHistory) {
+                try {
+                    const hist = JSON.parse(savedHistory);
+                    navigationHistory = hist;
+                } catch(e) {
+                    console.error("Error al cargar historial:", e);
+                }
             }
         }
 
-        let navigationHistory = [];
 
+/* ==========================================
+   1. NAVEGACIÓN Y COMPONENTES GLOBALES
+   ========================================== */
         function goToStep(stepId, value) {
             const currentActive = document.querySelector('.screen.active');
             const currentStepId = currentActive ? currentActive.id.replace('screen-', '') : null;
@@ -121,6 +159,41 @@
                 }
             }
         }
+
+        function goBack() {
+            if (navigationHistory.length > 0) {
+                const lastStep = navigationHistory.pop();
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                const prev = document.getElementById(lastStep);
+                if (prev) prev.classList.add('active');
+                window.scrollTo(0,0);
+                
+                // Atualiza a URL ao voltar
+                const prevStepId = lastStep.replace('screen-', '');
+                if (history.replaceState) {
+                    history.replaceState(null, null, '#' + prevStepId);
+                } else {
+                    window.location.hash = prevStepId;
+                }
+                
+                updateBackBtnVisibility();
+            }
+        }
+
+        function updateBackBtnVisibility() {
+            const current = document.querySelector('.screen.active');
+            const btn = document.getElementById('global-back-btn');
+            if (current && (current.id === 'screen-welcome' || current.id === 'screen-age')) {
+                btn.style.display = 'none';
+                navigationHistory.length = 0;
+            } else {
+                btn.style.display = 'flex';
+            }
+        }
+
+
+
+
         function updateProgressBar(stepId) {
             const steps = ['age', 'gender', 'bodytype', 'goal', 'desired-perder', 'desired-ganar', 'desired-definir', 'bodyfat', 'focusarea', 'analysis', 'biometrics', 'targetweight', 'prediction', 'pushups', 'training', 'startdate', 'hormones', 'final', 'offer'];
             const currentIdx = steps.indexOf(stepId);
@@ -143,132 +216,19 @@
             }
         }
 
-        function startAnalysis() {
-            const fill = document.getElementById('loading-fill');
-            const percEl = document.querySelector('.analysis-percent');
-            const claimEl = document.getElementById('analysis-claim');
 
-            let areas = userProfile.focusAreas && userProfile.focusAreas.length > 0 ? userProfile.focusAreas : ['Abdomen'];
-            let areasText = "";
-            
-            if (areas.includes('todo') || areas.length > 2) {
-                areasText = "TU CUERPO COMPLETO";
-            } else {
-                areasText = areas.map(a => a.toUpperCase()).join(', ');
-                if (areas.length > 1) {
-                    const lastComma = areasText.lastIndexOf(', ');
-                    areasText = areasText.substring(0, lastComma) + ' Y ' + areasText.substring(lastComma + 2);
-                }
-            }
-
-            let percentage = 85;
-            if (areas.length === 1) {
-                const map = {
-                    'Pecho': 86,
-                    'Brazos': 82,
-                    'Abdomen': 85,
-                    'Piernas': 78,
-                    'Todo el Cuerpo': 93
-                };
-                percentage = map[areas[0]] || 85;
-            } else {
-                percentage = 88 + (areas.length % 5);
-            }
-
-            if (percEl) percEl.innerText = percentage + '%';
-            if (claimEl) {
-                const isFem = userProfile.gender === 'Femenino';
-                const genderTerm = isFem ? 'LAS MUJERES' : 'LOS HOMBRES';
-                claimEl.innerHTML = `EL ${percentage}% DE ${genderTerm} CON TU PERFIL QUE ELIGEN ${areasText} PRESENTAN UNA RESISTENCIA METABÓLICA A LA QUEMA DE GRASA LOCALIZADA.`;
-            }
-
-            let perc = 0;
-            const interval = setInterval(() => {
-                perc += 1;
-                if (fill) fill.style.width = perc + '%';
-                if (perc >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => goToStep('biometrics'), 500);
-                }
-            }, 50);
-        }
-
-        function submitAreas() {
-            const selected = document.querySelectorAll('.area-option.selected');
-            if (selected.length === 0) return;
-            
-            const areas = Array.from(selected).map(el => el.querySelector('.area-option-label').innerText);
-            userProfile.focusAreas = areas;
+/* ==========================================
+   TELA 2 - GÉNERO
+   ========================================== */
+        function handleGender(gender) {
+            userProfile.gender = gender;
+            localStorage.setItem('crushit_gender', gender);
+            applyGenderSpecifics(gender);
+            updateGenderUI();
             saveProfile();
-            goToStep('analysis');
+            goToStep('bodytype');
         }
 
-        // CORE QUIZ LOGIC
-        let userProfile = {
-            age: '',
-            gender: 'Masculino',
-            bodyType: '',
-            goal: '',
-            bodyFat: '',
-            areas: [],
-            height: '',
-            weight: '',
-            targetWeight: '',
-            pushups: '',
-            training: '',
-            startDate: '',
-            name: ''
-        };
-
-        // Dedicated Gender Failsafe (Immediate execution)
-        (function() {
-            const savedGender = localStorage.getItem('crushit_gender');
-            if (savedGender) {
-                userProfile.gender = savedGender;
-                if (savedGender === 'Femenino') {
-                    document.body.classList.add('gender-female');
-                    document.body.classList.remove('gender-male');
-                } else {
-                    document.body.classList.add('gender-male');
-                    document.body.classList.remove('gender-female');
-                }
-            }
-        })();
-
-        function saveProfile() {
-            localStorage.setItem('crushit_profile', JSON.stringify(userProfile));
-            localStorage.setItem('crushit_history', JSON.stringify(navigationHistory));
-        }
-
-        function loadProfile() {
-            const savedGender = localStorage.getItem('crushit_gender');
-            if (savedGender) {
-                userProfile.gender = savedGender;
-            }
-            const saved = localStorage.getItem('crushit_profile');
-            const savedHistory = localStorage.getItem('crushit_history');
-            if (saved) {
-                try {
-                    const data = JSON.parse(saved);
-                    Object.assign(userProfile, data);
-                    if (savedGender) {
-                        userProfile.gender = savedGender;
-                    }
-                    applyGenderSpecifics(userProfile.gender);
-                    updateGenderUI();
-                } catch(e) {
-                    console.error("Error al cargar perfil:", e);
-                }
-            }
-            if (savedHistory) {
-                try {
-                    const hist = JSON.parse(savedHistory);
-                    navigationHistory = hist;
-                } catch(e) {
-                    console.error("Error al cargar historial:", e);
-                }
-            }
-        }
 
         function applyGenderSpecifics(gender) {
             const isFemale = gender === 'Femenino';
@@ -297,14 +257,6 @@
             }
         }
 
-        function handleGender(gender) {
-            userProfile.gender = gender;
-            localStorage.setItem('crushit_gender', gender);
-            applyGenderSpecifics(gender);
-            updateGenderUI();
-            saveProfile();
-            goToStep('bodytype');
-        }
 
         function updateGenderUI() {
             const isFemale = userProfile.gender === 'Femenino';
@@ -467,6 +419,10 @@
             }
         }
 
+
+/* ==========================================
+   TELA 4 - META
+   ========================================== */
         function handleGoal(goal) {
             userProfile.goal = goal;
             saveProfile();
@@ -487,6 +443,10 @@
             });
         })();
 
+
+/* ==========================================
+   TELA 6 - GRASA CORPORAL (SLIDER)
+   ========================================== */
         function updateFatSlider(val) {
             const bubble = document.getElementById('bubble');
             const img = document.getElementById('fat-body-img');
@@ -508,6 +468,10 @@
             img.src = `imagens_webp_crush_it/${fileName}${suffix}.webp`;
         }
 
+
+/* ==========================================
+   TELA 7 - PARÁMETROS BIOMÉTRICOS
+   ========================================== */
         function calcIMC() {
             const hInput = document.getElementById('input-height');
             const wInput = document.getElementById('input-weight');
@@ -561,6 +525,7 @@
             }
         }
 
+
         function submitBiometrics() {
             const h = parseFloat(document.getElementById('input-height').value.replace(',', '.'));
             const w = parseFloat(document.getElementById('input-weight').value.replace(',', '.'));
@@ -571,6 +536,123 @@
             goToStep('targetweight');
         }
 
+
+/* ==========================================
+   TELA 8 - ÁREAS DE ENFOQUE (AVATAR INTERACTIVO)
+   ========================================== */
+        function toggleArea(area, element) {
+            element.classList.toggle('selected');
+            const isSelected = element.classList.contains('selected');
+
+            // Use the area name directly as targetId (e.g., pecho, brazos, abdomen, piernas)
+            const targetId = area;
+
+            if (area === 'todo') {
+                document.querySelectorAll('.area-option').forEach(opt => {
+                    if (isSelected) opt.classList.add('selected');
+                    else opt.classList.remove('selected');
+                });
+                document.querySelectorAll('.connector-line').forEach(l => {
+                    if (isSelected) l.classList.add('active');
+                    else l.classList.remove('active');
+                });
+            } else {
+                const todoBtn = document.querySelector('.area-option[onclick*="todo"]');
+                if (todoBtn) todoBtn.classList.remove('selected');
+
+                // Find all lines starting with the targetId
+                const lines = document.querySelectorAll(`[id^="line-${targetId}"]`);
+                
+                lines.forEach(l => {
+                    if (isSelected) l.classList.add('active');
+                    else l.classList.remove('active');
+                });
+                
+                if (!document.querySelector('.area-option.selected')) {
+                    document.querySelectorAll('.connector-line').forEach(l => l.classList.remove('active'));
+                }
+            }
+
+            // Ativa/Desativa botão de continuar
+            const btn = document.getElementById('btn-areas-continue');
+            const hasSelection = document.querySelectorAll('.area-option.selected').length > 0;
+            if (hasSelection) {
+                btn.classList.add('active-btn');
+            } else {
+                btn.classList.remove('active-btn');
+            }
+        }
+
+        let navigationHistory = [];
+
+
+        function submitAreas() {
+            const selected = document.querySelectorAll('.area-option.selected');
+            if (selected.length === 0) return;
+            
+            const areas = Array.from(selected).map(el => el.querySelector('.area-option-label').innerText);
+            userProfile.focusAreas = areas;
+            saveProfile();
+            goToStep('analysis');
+        }
+
+/* ==========================================
+   TELA 9 - PANTALLA DE CARGA / ANÁLISIS
+   ========================================== */
+        function startAnalysis() {
+            const fill = document.getElementById('loading-fill');
+            const percEl = document.querySelector('.analysis-percent');
+            const claimEl = document.getElementById('analysis-claim');
+
+            let areas = userProfile.focusAreas && userProfile.focusAreas.length > 0 ? userProfile.focusAreas : ['Abdomen'];
+            let areasText = "";
+            
+            if (areas.includes('todo') || areas.length > 2) {
+                areasText = "TU CUERPO COMPLETO";
+            } else {
+                areasText = areas.map(a => a.toUpperCase()).join(', ');
+                if (areas.length > 1) {
+                    const lastComma = areasText.lastIndexOf(', ');
+                    areasText = areasText.substring(0, lastComma) + ' Y ' + areasText.substring(lastComma + 2);
+                }
+            }
+
+            let percentage = 85;
+            if (areas.length === 1) {
+                const map = {
+                    'Pecho': 86,
+                    'Brazos': 82,
+                    'Abdomen': 85,
+                    'Piernas': 78,
+                    'Todo el Cuerpo': 93
+                };
+                percentage = map[areas[0]] || 85;
+            } else {
+                percentage = 88 + (areas.length % 5);
+            }
+
+            if (percEl) percEl.innerText = percentage + '%';
+            if (claimEl) {
+                const isFem = userProfile.gender === 'Femenino';
+                const genderTerm = isFem ? 'LAS MUJERES' : 'LOS HOMBRES';
+                claimEl.innerHTML = `EL ${percentage}% DE ${genderTerm} CON TU PERFIL QUE ELIGEN ${areasText} PRESENTAN UNA RESISTENCIA METABÓLICA A LA QUEMA DE GRASA LOCALIZADA.`;
+            }
+
+            let perc = 0;
+            const interval = setInterval(() => {
+                perc += 1;
+                if (fill) fill.style.width = perc + '%';
+                if (perc >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => goToStep('biometrics'), 500);
+                }
+            }, 50);
+        }
+
+
+/* ==========================================
+   TELA 10 - PESO OBJETIVO
+   ========================================== */
         function updateTargetWeightDisplay(val) {
             const h = parseFloat(userProfile.height);
             const currentW = parseFloat(userProfile.weight);
@@ -619,6 +701,7 @@
             }
         }
 
+
         function submitTargetWeight() {
             const val = parseFloat(document.getElementById('input-target-weight').value.replace(',', '.'));
             if (isNaN(val) || val <= 0) return;
@@ -641,6 +724,10 @@
         }
 
         // Helper reutilizável para curva Bezier cúbica
+
+/* ==========================================
+   TELA 11 - PREDICCIÓN DE PESO (GRÁFICOS)
+   ========================================== */
         function getBezierY(t, p0, p1, p2, p3) {
             return Math.pow(1-t, 3)*p0 + 3*Math.pow(1-t, 2)*t*p1 + 3*(1-t)*Math.pow(t, 2)*p2 + Math.pow(t, 3)*p3;
         }
@@ -751,6 +838,10 @@
             }, intervalTime);
         }
 
+
+/* ==========================================
+   TELA 12 - ANÁLISIS HORMONAL
+   ========================================== */
         function startHormonesTimer() {
             const fill = document.getElementById('hormones-loading-fill');
             const revealCortisol = document.getElementById('reveal-rect-cortisol');
@@ -835,6 +926,37 @@
             }
         }
 
+
+/* ==========================================
+   TELA 15 - FECHA DE INICIO
+   ========================================== */
+        function handleStartDate(choice) {
+            userProfile.startDate = choice;
+            saveProfile();
+            const warning = document.getElementById('start-warning');
+            const laterCard = document.getElementById('card-start-later');
+            
+            if (choice === 'No estoy listo') {
+                if (laterCard) laterCard.classList.add('orange-glow');
+                if (warning) warning.style.display = 'flex';
+                
+                setTimeout(() => {
+                    goToStep('hormones');
+                    startHormonesTimer();
+                }, 4000);
+            } else {
+                if (laterCard) laterCard.classList.remove('orange-glow');
+                goToStep('hormones');
+                startHormonesTimer();
+            }
+        }
+
+
+
+
+/* ==========================================
+   TELA 16 - TU NOMBRE / FINISH
+   ========================================== */
         function validateName(val) {
             document.getElementById('btn-final-continue').disabled = val.length < 2;
         }
@@ -851,6 +973,10 @@
             startChecklist();
         }
 
+
+/* ==========================================
+   TELA 17 - CHECKLIST DE CREACIÓN
+   ========================================== */
         function startChecklist() {
             const circle1 = document.getElementById('circle-1');
             const circle2 = document.getElementById('circle-2');
@@ -936,6 +1062,10 @@
             });
         }
 
+
+/* ==========================================
+   TELA 18 - SUMMARY (RESUMEN FINAL)
+   ========================================== */
         function startSummaryTimer() {
             let time = 4;
             const interval = setInterval(() => {
@@ -948,6 +1078,10 @@
                 }
             }, 1000);
         }
+
+/* ==========================================
+   TELA 20 - PANTALLA DE OFERTA & LIVE FEATURES
+   ========================================== */
         function populateOfferScreen() {
             // 1. DADOS BÁSICOS
             const isFemale = userProfile.gender === 'Femenino';
@@ -1140,6 +1274,7 @@
             if (typeof startPeopleCounter === 'function') startPeopleCounter();
         }
 
+
         function toggleFAQ(el) {
             const item = el.parentElement;
             item.classList.toggle('active');
@@ -1149,116 +1284,6 @@
             document.getElementById('price-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function handleStartDate(choice) {
-            userProfile.startDate = choice;
-            saveProfile();
-            const warning = document.getElementById('start-warning');
-            const laterCard = document.getElementById('card-start-later');
-            
-            if (choice === 'No estoy listo') {
-                if (laterCard) laterCard.classList.add('orange-glow');
-                if (warning) warning.style.display = 'flex';
-                
-                setTimeout(() => {
-                    goToStep('hormones');
-                    startHormonesTimer();
-                }, 4000);
-            } else {
-                if (laterCard) laterCard.classList.remove('orange-glow');
-                goToStep('hormones');
-                startHormonesTimer();
-            }
-        }
-
-
-
-        function goBack() {
-            if (navigationHistory.length > 0) {
-                const lastStep = navigationHistory.pop();
-                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-                const prev = document.getElementById(lastStep);
-                if (prev) prev.classList.add('active');
-                window.scrollTo(0,0);
-                
-                // Atualiza a URL ao voltar
-                const prevStepId = lastStep.replace('screen-', '');
-                if (history.replaceState) {
-                    history.replaceState(null, null, '#' + prevStepId);
-                } else {
-                    window.location.hash = prevStepId;
-                }
-                
-                updateBackBtnVisibility();
-            }
-        }
-
-        function updateBackBtnVisibility() {
-            const current = document.querySelector('.screen.active');
-            const btn = document.getElementById('global-back-btn');
-            if (current && (current.id === 'screen-welcome' || current.id === 'screen-age')) {
-                btn.style.display = 'none';
-                navigationHistory.length = 0;
-            } else {
-                btn.style.display = 'flex';
-            }
-        }
-
-
-
-        // Recupera a etapa da URL ao carregar a página
-        window.addEventListener('DOMContentLoaded', () => {
-            loadProfile();
-
-            // Testimonials Slider Logic
-            const track = document.querySelector('.testimonials-track');
-            const dots = document.querySelectorAll('.dot');
-            
-            if (track && dots.length > 0) {
-                track.addEventListener('scroll', () => {
-                    const index = Math.round(track.scrollLeft / (track.clientWidth * 0.8));
-                    dots.forEach((dot, i) => {
-                        dot.classList.toggle('active', i === index);
-                    });
-                });
-            }
-
-            const hash = window.location.hash.substring(1);
-            if (hash && document.getElementById('screen-' + hash)) {
-                // Navega direto para a etapa salva no hash
-                // Mas não salva histórico do welcome
-                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-                document.getElementById('screen-' + hash).classList.add('active');
-                updateBackBtnVisibility();
-                updateProgressBar(hash);
-                
-                // Se for a tela de oferta, esconde o header
-                if (hash === 'offer') {
-                    document.getElementById('main-header').classList.add('clean-header');
-                    document.getElementById('global-back-btn').style.display = 'none';
-                    populateOfferScreen();
-                }
-                
-                // Se for a tela de bodyfat, atualiza a imagem
-                if (hash === 'bodyfat') {
-                    const slider = document.getElementById('fat-slider');
-                    if (slider) updateFatSlider(slider.value);
-                }
-
-                // Se for a tela de focusarea, atualiza a imagem
-            }
-
-            // Social Proof Balloons Rotation
-            const balloons = document.querySelectorAll('.balloon-item');
-            if (balloons.length > 0) {
-                let currentBalloon = 0;
-                setInterval(() => {
-                    balloons[currentBalloon].classList.remove('active');
-                    currentBalloon = (currentBalloon + 1) % balloons.length;
-                    balloons[currentBalloon].classList.add('active');
-                }, 3000);
-            }
-            /* Legacy discount check removed */
-            });
 
         // SOCIAL PROOF CAROUSEL - REFINADO (PORTUGUÊS)
         let currentProofIndex = 0;
@@ -1370,4 +1395,64 @@
 
 
 
+
+
+
+/* ==========================================
+   INITIALIZER (DOMContentLoaded EVENT)
+   ========================================== */
+        // Recupera a etapa da URL ao carregar a página
+        window.addEventListener('DOMContentLoaded', () => {
+            loadProfile();
+
+            // Testimonials Slider Logic
+            const track = document.querySelector('.testimonials-track');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (track && dots.length > 0) {
+                track.addEventListener('scroll', () => {
+                    const index = Math.round(track.scrollLeft / (track.clientWidth * 0.8));
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                });
+            }
+
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById('screen-' + hash)) {
+                // Navega direto para a etapa salva no hash
+                // Mas não salva histórico do welcome
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                document.getElementById('screen-' + hash).classList.add('active');
+                updateBackBtnVisibility();
+                updateProgressBar(hash);
+                
+                // Se for a tela de oferta, esconde o header
+                if (hash === 'offer') {
+                    document.getElementById('main-header').classList.add('clean-header');
+                    document.getElementById('global-back-btn').style.display = 'none';
+                    populateOfferScreen();
+                }
+                
+                // Se for a tela de bodyfat, atualiza a imagem
+                if (hash === 'bodyfat') {
+                    const slider = document.getElementById('fat-slider');
+                    if (slider) updateFatSlider(slider.value);
+                }
+
+                // Se for a tela de focusarea, atualiza a imagem
+            }
+
+            // Social Proof Balloons Rotation
+            const balloons = document.querySelectorAll('.balloon-item');
+            if (balloons.length > 0) {
+                let currentBalloon = 0;
+                setInterval(() => {
+                    balloons[currentBalloon].classList.remove('active');
+                    currentBalloon = (currentBalloon + 1) % balloons.length;
+                    balloons[currentBalloon].classList.add('active');
+                }, 3000);
+            }
+            /* Legacy discount check removed */
+            });
 
