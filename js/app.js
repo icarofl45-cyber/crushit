@@ -220,18 +220,40 @@
             name: ''
         };
 
+        // Dedicated Gender Failsafe (Immediate execution)
+        (function() {
+            const savedGender = localStorage.getItem('crushit_gender');
+            if (savedGender) {
+                userProfile.gender = savedGender;
+                if (savedGender === 'Femenino') {
+                    document.body.classList.add('gender-female');
+                    document.body.classList.remove('gender-male');
+                } else {
+                    document.body.classList.add('gender-male');
+                    document.body.classList.remove('gender-female');
+                }
+            }
+        })();
+
         function saveProfile() {
             localStorage.setItem('crushit_profile', JSON.stringify(userProfile));
             localStorage.setItem('crushit_history', JSON.stringify(navigationHistory));
         }
 
         function loadProfile() {
+            const savedGender = localStorage.getItem('crushit_gender');
+            if (savedGender) {
+                userProfile.gender = savedGender;
+            }
             const saved = localStorage.getItem('crushit_profile');
             const savedHistory = localStorage.getItem('crushit_history');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
                     Object.assign(userProfile, data);
+                    if (savedGender) {
+                        userProfile.gender = savedGender;
+                    }
                     applyGenderSpecifics(userProfile.gender);
                     updateGenderUI();
                 } catch(e) {
@@ -277,6 +299,7 @@
 
         function handleGender(gender) {
             userProfile.gender = gender;
+            localStorage.setItem('crushit_gender', gender);
             applyGenderSpecifics(gender);
             updateGenderUI();
             saveProfile();
