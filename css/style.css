@@ -2265,31 +2265,103 @@ body.gender-female .gender-diff-subtitle {
 
 
 
-.bonus-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
+/* --- Offer: Bonus Tree Section --- */
+.bonus-tree-container {
+    position: relative;
     width: 100%;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 0 10px;
-}
-
-
-
-.bonus-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 18px;
-    padding: 20px;
+    max-width: 900px;
+    margin: 40px auto 30px;
     display: flex;
     flex-direction: column;
-    /* Empilhamento Vertical */
+    gap: 45px;
+    padding: 20px 0;
+}
+
+/* Vertical stem trunk */
+.bonus-tree-stem {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--cta-green) 0%, #16a34a 60%, rgba(34, 197, 94, 0.1) 100%);
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.7);
+    z-index: 1;
+}
+
+/* Tree items containing branch and card */
+.bonus-tree-item {
+    position: relative;
+    width: 50%;
+    display: flex;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+/* Left item styling */
+.bonus-tree-item.left {
+    align-self: flex-start;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+
+/* Right item styling */
+.bonus-tree-item.right {
+    align-self: flex-end;
+    justify-content: flex-start;
+    padding-left: 50px;
+}
+
+/* Diagonal branching lines */
+.bonus-tree-branch {
+    position: absolute;
+    height: 3px;
+    background: var(--cta-green);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Diagonal line going UP-LEFT from stem to left card */
+.bonus-tree-item.left .bonus-tree-branch {
+    right: 0;
+    width: 50px;
+    transform: rotate(-15deg) translateY(-50%);
+    transform-origin: right center;
+}
+
+/* Diagonal line going UP-RIGHT from stem to right card */
+.bonus-tree-item.right .bonus-tree-branch {
+    left: 0;
+    width: 50px;
+    transform: rotate(15deg) translateY(-50%);
+    transform-origin: left center;
+}
+
+/* Card visual premium polish */
+.bonus-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(34, 197, 94, 0.18); /* Premium green borders */
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
     text-align: left;
-    transition: all 0.3s ease;
-    min-height: 200px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 180px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.bonus-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cta-green);
+    box-shadow: 0 15px 35px rgba(34, 197, 94, 0.25);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 
@@ -2366,10 +2438,43 @@ body.gender-female .gender-diff-subtitle {
 
 
 
-@media (max-width: 650px) {
-    .bonus-container {
-        grid-template-columns: 1fr;
-        max-width: 450px;
+/* Responsive tree adjustment for mobile screens */
+@media (max-width: 768px) {
+    .bonus-tree-stem {
+        left: 25px;
+        transform: none;
+    }
+    
+    .bonus-tree-item {
+        width: 100%;
+    }
+    
+    .bonus-tree-item.left {
+        align-self: flex-start;
+        justify-content: flex-start;
+        padding-right: 15px;
+        padding-left: 55px;
+    }
+    
+    .bonus-tree-item.right {
+        align-self: flex-start;
+        justify-content: flex-start;
+        padding-left: 55px;
+        padding-right: 15px;
+    }
+    
+    /* On mobile, all branches point UP-RIGHT or horizontal from left stem to the right card */
+    .bonus-tree-item.left .bonus-tree-branch,
+    .bonus-tree-item.right .bonus-tree-branch {
+        left: 0;
+        right: auto;
+        width: 30px;
+        transform: rotate(10deg) translateY(-50%);
+        transform-origin: left center;
+    }
+    
+    .bonus-card {
+        max-width: 100%;
     }
 }
 
