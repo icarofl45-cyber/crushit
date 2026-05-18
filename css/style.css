@@ -3945,7 +3945,7 @@ body.gender-male .btn-areas-continue {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    padding:  0px 20px 5px 20px ;
+    padding: 8px 20px 5px 20px;
 }
 
 .nav-controls {
