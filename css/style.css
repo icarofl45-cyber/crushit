@@ -413,6 +413,7 @@ body.gender-male .weight-input-v2:focus { border-bottom-color: #FF6B00; text-sha
 .target-imc-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .target-imc-val { font-size: 24px; font-weight: 900; color: var(--cta-green); }
 .target-imc-val.current { color: #ff4d4d; opacity: 1; font-size: 24px; text-shadow: 0 0 10px rgba(255, 77, 77, 0.3); }
+.target-imc-label { color: #fff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
 .current-pin { background: #444; border: 2px solid #666; width: 10px; height: 10px; z-index: 1; opacity: 0.7; }
 .target-pin { background: var(--cta-green); border: 2px solid #fff; width: 18px; height: 18px; z-index: 3; box-shadow: 0 0 15px var(--cta-green); animation: pulseGreen 2s infinite; }
