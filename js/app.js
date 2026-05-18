@@ -94,7 +94,10 @@
             }
             if (stepId === 'targetweight') {
                 const input = document.getElementById('input-target-weight');
-                if (input) updateTargetWeightDisplay(input.value || 70);
+                if (input) {
+                    input.value = '';
+                    updateTargetWeightDisplay('');
+                }
             }
             
             if (stepId === 'offer') {
@@ -560,15 +563,19 @@
                 if (curPerc < 5) curPerc = 5; if (curPerc > 95) curPerc = 95;
                 document.getElementById('target-gauge-pin-current').style.left = curPerc + '%';
 
-                if (targetW > 0) {
+                const rawVal = String(val !== undefined && val !== null ? val : '').trim();
+
+                if (targetW > 0 && rawVal.length >= 2) {
                     const targetImc = parseFloat((targetW / ((h/100)**2)).toFixed(1));
                     if (imcValueEl) imcValueEl.innerText = targetImc.toFixed(1);
 
                     let tarPerc = ((targetImc - 15) / (35 - 15)) * 100;
                     if (tarPerc < 5) tarPerc = 5; if (tarPerc > 95) tarPerc = 95;
                     const pinTarget = document.getElementById('target-gauge-pin-target');
-                    pinTarget.style.left = tarPerc + '%';
-                    pinTarget.style.opacity = '1';
+                    if (pinTarget) {
+                        pinTarget.style.left = tarPerc + '%';
+                        pinTarget.style.opacity = '1';
+                    }
 
                     // Dynamic Border Logic
                     let colorClass = "";
@@ -581,7 +588,8 @@
                         container.className = "target-imc-container " + colorClass;
                     }
                 } else {
-                    document.getElementById('target-gauge-pin-target').style.opacity = '0';
+                    const pinTarget = document.getElementById('target-gauge-pin-target');
+                    if (pinTarget) pinTarget.style.opacity = '0';
                     if (imcValueEl) imcValueEl.innerText = '--';
                     if (container) container.className = "target-imc-container";
                 }
