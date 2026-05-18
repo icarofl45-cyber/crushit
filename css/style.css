@@ -2440,41 +2440,91 @@ body.gender-female .gender-diff-subtitle {
 
 /* Responsive tree adjustment for mobile screens */
 @media (max-width: 768px) {
+    /* Keep stem in the center! */
     .bonus-tree-stem {
-        left: 25px;
-        transform: none;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
     
+    .bonus-tree-container {
+        gap: 25px !important; /* Tighter gap on mobile */
+        padding: 10px 0 !important;
+    }
+
     .bonus-tree-item {
-        width: 100%;
+        width: 50% !important; /* Force alternate columns on mobile */
     }
     
     .bonus-tree-item.left {
-        align-self: flex-start;
-        justify-content: flex-start;
-        padding-right: 15px;
-        padding-left: 55px;
+        align-self: flex-start !important;
+        justify-content: flex-end !important;
+        padding-right: 22px !important;
+        padding-left: 0 !important;
     }
     
     .bonus-tree-item.right {
-        align-self: flex-start;
-        justify-content: flex-start;
-        padding-left: 55px;
-        padding-right: 15px;
+        align-self: flex-end !important;
+        justify-content: flex-start !important;
+        padding-left: 22px !important;
+        padding-right: 0 !important;
     }
     
-    /* On mobile, all branches point UP-RIGHT or horizontal from left stem to the right card */
-    .bonus-tree-item.left .bonus-tree-branch,
+    /* Alternating branches for left and right */
+    .bonus-tree-item.left .bonus-tree-branch {
+        right: 0 !important;
+        left: auto !important;
+        width: 22px !important;
+        transform: rotate(-15deg) translateY(-50%) !important;
+        transform-origin: right center !important;
+    }
+    
     .bonus-tree-item.right .bonus-tree-branch {
-        left: 0;
-        right: auto;
-        width: 30px;
-        transform: rotate(10deg) translateY(-50%);
-        transform-origin: left center;
+        left: 0 !important;
+        right: auto !important;
+        width: 22px !important;
+        transform: rotate(15deg) translateY(-50%) !important;
+        transform-origin: left center !important;
     }
     
+    /* Micro-cards on mobile */
     .bonus-card {
-        max-width: 100%;
+        padding: 12px !important;
+        border-radius: 12px !important;
+        min-height: 140px !important;
+        max-width: 165px !important;
+        gap: 8px !important;
+    }
+    
+    .bonus-header {
+        gap: 6px !important;
+        align-items: center !important;
+    }
+    
+    .bonus-icon {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 14px !important;
+        border-radius: 8px !important;
+    }
+    
+    .bonus-info h3 {
+        font-size: 10px !important;
+        font-weight: 900 !important;
+    }
+    
+    .bonus-info p {
+        font-size: 9px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .gratis-badge {
+        font-size: 8px !important;
+        padding: 2px 6px !important;
+        border-radius: 3px !important;
+    }
+    
+    .bonus-price {
+        margin-top: 2px !important;
     }
 }
 
