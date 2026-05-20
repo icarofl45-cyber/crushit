@@ -43,21 +43,7 @@
 
 <body>
 
-    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <clipPath id="hex-clip" clipPathUnits="objectBoundingBox">
-                <path d="M0.5,0 L0.933,0.25 L0.933,0.75 L0.5,1 L0.067,0.75 L0.067,0.25 Z" />
-            </clipPath>
-            <clipPath id="hex-clip-rounded" clipPathUnits="objectBoundingBox">
-                <path d="M0.5,0 L0.933,0.25 L0.933,0.75 L0.5,1 L0.067,0.75 L0.067,0.25 Z" />
-            </clipPath>
-            <!-- Versão com bordas realmente arredondadas (estilo iOS/Premium) -->
-            <clipPath id="hex-clip-smooth" clipPathUnits="objectBoundingBox">
-                <path
-                    d="M0.5,0 C0.54,0,0.57,0.01,0.61,0.03 L0.91,0.21 C0.96,0.24,1,0.29,1,0.35 L1,0.65 C1,0.71,0.96,0.76,0.91,0.79 L0.61,0.97 C0.57,0.99,0.54,1,0.5,1 C0.46,1,0.43,0.99,0.39,0.97 L0.09,0.79 C0.04,0.76,0,0.71,0,0.65 L0,0.35 C0,0.29,0.04,0.24,0.09,0.21 L0.39,0.03 C0.43,0.01,0.46,0,0.5,0 Z" />
-            </clipPath>
-        </defs>
-    </svg>
+
 
     <header class="main-header" id="main-header">
         <div class="logo-container">
@@ -601,12 +587,9 @@
                                     <stop offset="70%" style="stop-color:#f97316;stop-opacity:0.7" />
                                     <stop offset="100%" style="stop-color:#f97316;stop-opacity:0.1" />
                                 </linearGradient>
-                                <clipPath id="reveal-fat-graph">
-                                    <rect id="reveal-rect-fat" x="0" y="0" width="0" height="120" />
-                                </clipPath>
                             </defs>
 
-                            <g clip-path="url(#reveal-fat-graph)">
+                            <g id="graph-g-fat" style="clip-path: inset(0 100% 0 0); -webkit-clip-path: inset(0 100% 0 0);">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
                                     <!-- Horizontais -->
@@ -655,12 +638,9 @@
                                     <stop offset="70%" style="stop-color:#22c55e;stop-opacity:0.7" />
                                     <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.1" />
                                 </linearGradient>
-                                <clipPath id="reveal-muscle-graph">
-                                    <rect id="reveal-rect-muscle" x="0" y="0" width="0" height="120" />
-                                </clipPath>
                             </defs>
 
-                            <g clip-path="url(#reveal-muscle-graph)">
+                            <g id="graph-g-muscle" style="clip-path: inset(0 100% 0 0); -webkit-clip-path: inset(0 100% 0 0);">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
                                     <!-- Horizontais -->
@@ -856,12 +836,9 @@
                                     <stop offset="70%" style="stop-color:#ef4444;stop-opacity:0.7" />
                                     <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.1" />
                                 </linearGradient>
-                                <clipPath id="reveal-cortisol-graph">
-                                    <rect id="reveal-rect-cortisol" x="0" y="0" width="0" height="120" />
-                                </clipPath>
                             </defs>
 
-                            <g clip-path="url(#reveal-cortisol-graph)">
+                            <g id="graph-g-cortisol" style="clip-path: inset(0 100% 0 0); -webkit-clip-path: inset(0 100% 0 0);">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
                                     <line x1="0" y1="20" x2="400" y2="20" />
@@ -906,12 +883,9 @@
                                     <stop offset="70%" style="stop-color:#22c55e;stop-opacity:0.7" />
                                     <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.1" />
                                 </linearGradient>
-                                <clipPath id="reveal-testo-graph">
-                                    <rect id="reveal-rect-testo" x="0" y="0" width="0" height="120" />
-                                </clipPath>
                             </defs>
 
-                            <g clip-path="url(#reveal-testo-graph)">
+                            <g id="graph-g-testo" style="clip-path: inset(0 100% 0 0); -webkit-clip-path: inset(0 100% 0 0);">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
                                     <line x1="0" y1="20" x2="400" y2="20" />

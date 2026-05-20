@@ -817,8 +817,8 @@ function generateMuscleTowers() {
 
 function startPredictionTimer() {
     const fill = document.getElementById('pred-loading-fill');
-    const revealRectFat = document.getElementById('reveal-rect-fat');
-    const revealRectMuscle = document.getElementById('reveal-rect-muscle');
+    const gFat = document.getElementById('graph-g-fat');
+    const gMuscle = document.getElementById('graph-g-muscle');
 
     // Ajuste dinâmico da tela de Flexões/Agachamentos baseado no gênero
     const gender = userProfile.gender || 'Masculino';
@@ -830,8 +830,8 @@ function startPredictionTimer() {
     if (!fill) return;
 
     fill.style.width = '0%';
-    if (revealRectFat) revealRectFat.setAttribute('width', '0');
-    if (revealRectMuscle) revealRectMuscle.setAttribute('width', '0');
+    if (gFat) { gFat.style.clipPath = 'inset(0 100% 0 0)'; gFat.style.webkitClipPath = 'inset(0 100% 0 0)'; }
+    if (gMuscle) { gMuscle.style.clipPath = 'inset(0 100% 0 0)'; gMuscle.style.webkitClipPath = 'inset(0 100% 0 0)'; }
 
     let progress = 0;
     const duration = 5000;
@@ -849,8 +849,14 @@ function startPredictionTimer() {
         }
 
         fill.style.width = progress + '%';
-        if (revealRectFat) revealRectFat.setAttribute('width', (progress / 100) * 400);
-        if (revealRectMuscle) revealRectMuscle.setAttribute('width', (progress / 100) * 400);
+        if (gFat) {
+            gFat.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
+            gFat.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        }
+        if (gMuscle) {
+            gMuscle.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
+            gMuscle.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        }
     }, intervalTime);
 }
 
@@ -860,8 +866,8 @@ function startPredictionTimer() {
    ========================================== */
 function startHormonesTimer() {
     const fill = document.getElementById('hormones-loading-fill');
-    const revealCortisol = document.getElementById('reveal-rect-cortisol');
-    const revealTesto = document.getElementById('reveal-rect-testo');
+    const gCortisol = document.getElementById('graph-g-cortisol');
+    const gTesto = document.getElementById('graph-g-testo');
     const analysisText = document.getElementById('hormones-analysis-text');
     const gender = userProfile.gender || 'Masculino';
 
@@ -877,8 +883,8 @@ function startHormonesTimer() {
 
     if (!fill) return;
     fill.style.width = '0%';
-    if (revealCortisol) revealCortisol.setAttribute('width', '0');
-    if (revealTesto) revealTesto.setAttribute('width', '0');
+    if (gCortisol) { gCortisol.style.clipPath = 'inset(0 100% 0 0)'; gCortisol.style.webkitClipPath = 'inset(0 100% 0 0)'; }
+    if (gTesto) { gTesto.style.clipPath = 'inset(0 100% 0 0)'; gTesto.style.webkitClipPath = 'inset(0 100% 0 0)'; }
 
     let progress = 0;
     const duration = 5000;
@@ -895,8 +901,14 @@ function startHormonesTimer() {
             }, 500);
         }
         fill.style.width = progress + '%';
-        if (revealCortisol) revealCortisol.setAttribute('width', (progress / 100) * 400);
-        if (revealTesto) revealTesto.setAttribute('width', (progress / 100) * 400);
+        if (gCortisol) {
+            gCortisol.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
+            gCortisol.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        }
+        if (gTesto) {
+            gTesto.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
+            gTesto.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        }
     }, intervalTime);
 }
 
