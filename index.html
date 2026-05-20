@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
@@ -13,30 +14,33 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://crushit.com/">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="Crush It - Protocolo de 21 Días">
     <meta property="og:description" content="Transforma tu cuerpo con el protocolo más riguroso y efectivo.">
     <meta property="og:type" content="website">
-    
+
     <!-- DNS Prefetch & Preconnect (antes de tudo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <!-- Preload LCP images -->
     <link rel="preload" href="imagens_webp_crush_it/edad-18-29.webp" as="image" fetchpriority="high">
     <link rel="preload" href="imagens_webp_crush_it/logo.png" as="image">
-    
+
     <!-- CRITICAL CSS INLINE - Primeira tela renderiza instantaneamente -->
 
-    
+
     <!-- Google Fonts -->
     <!-- Fonts: Barlow Condensed (Headers), Inter (Body), Outfit (Tech/Labels) -->
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=7.8">
+    <link rel="stylesheet" href="css/style.css?v=8.5">
 </head>
+
 <body>
 
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
@@ -49,19 +53,24 @@
             </clipPath>
             <!-- Versão com bordas realmente arredondadas (estilo iOS/Premium) -->
             <clipPath id="hex-clip-smooth" clipPathUnits="objectBoundingBox">
-                <path d="M0.5,0 C0.54,0,0.57,0.01,0.61,0.03 L0.91,0.21 C0.96,0.24,1,0.29,1,0.35 L1,0.65 C1,0.71,0.96,0.76,0.91,0.79 L0.61,0.97 C0.57,0.99,0.54,1,0.5,1 C0.46,1,0.43,0.99,0.39,0.97 L0.09,0.79 C0.04,0.76,0,0.71,0,0.65 L0,0.35 C0,0.29,0.04,0.24,0.09,0.21 L0.39,0.03 C0.43,0.01,0.46,0,0.5,0 Z" />
+                <path
+                    d="M0.5,0 C0.54,0,0.57,0.01,0.61,0.03 L0.91,0.21 C0.96,0.24,1,0.29,1,0.35 L1,0.65 C1,0.71,0.96,0.76,0.91,0.79 L0.61,0.97 C0.57,0.99,0.54,1,0.5,1 C0.46,1,0.43,0.99,0.39,0.97 L0.09,0.79 C0.04,0.76,0,0.71,0,0.65 L0,0.35 C0,0.29,0.04,0.24,0.09,0.21 L0.39,0.03 C0.43,0.01,0.46,0,0.5,0 Z" />
             </clipPath>
         </defs>
     </svg>
 
     <header class="main-header" id="main-header">
         <div class="logo-container">
-            <img src="imagens_webp_crush_it/logo.png" alt="Crush It - Logotipo Oficial" class="logo-img" fetchpriority="high" width="120">
+            <img src="imagens_webp_crush_it/logo.png" alt="Crush It - Logotipo Oficial" class="logo-img"
+                fetchpriority="high" width="120">
         </div>
 
         <div class="nav-controls" id="nav-controls">
-            <button id="global-back-btn" class="btn-back-global" onclick="goBack()" aria-label="Volver a la etapa anterior">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <button id="global-back-btn" class="btn-back-global" onclick="goBack()"
+                aria-label="Volver a la etapa anterior">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
                 <span>VOLVER</span>
             </button>
             <div id="step-percentage" class="step-percentage"></div>
@@ -79,12 +88,14 @@
 
     <!-- ETAPA 1: EDAD -->
     <div id="screen-age" class="screen active">
-        <h1 class="headline">DESCUBRE TU POTENCIAL OCULTO Y <span style="color:var(--cta-green)">CÓMO LLEGAR ALLÍ</span></h1>
+        <h1 class="headline">DESCUBRE TU POTENCIAL OCULTO Y <span style="color:var(--cta-green)">CÓMO LLEGAR ALLÍ</span>
+        </h1>
         <p class="subheadline">DIAGNÓSTICO BIOMÉTRICO 2026 SEGÚN TU EDAD E IMC</p>
 
         <div class="quiz-grid">
             <div class="age-card delay-1" onclick="goToStep('gender', '18-29')">
-                <img src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29" fetchpriority="high" width="160" height="240">
+                <img src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29" fetchpriority="high" width="160"
+                    height="240">
                 <div class="age-button">Edad: 18-29</div>
             </div>
             <div class="age-card delay-2" onclick="goToStep('gender', '30-39')">
@@ -105,7 +116,8 @@
     <!-- ETAPA 2: GÊNERO -->
     <div id="screen-gender" class="screen">
         <h1 class="headline anim-fade">IDENTIFICA TU BIOLOGÍA: SELECCIONA TU GÉNERO</h1>
-        <p class="subheadline anim-fade delay-1">El algoritmo ajustará el protocolo según tus marcadores hormonales y metabólicos.</p>
+        <p class="subheadline anim-fade delay-1">El algoritmo ajustará el protocolo según tus marcadores hormonales y
+            metabólicos.</p>
 
         <div class="gender-list">
             <div class="gender-card anim-left delay-2" onclick="handleGender('Masculino')">
@@ -125,8 +137,10 @@
 
     <!-- ETAPA 3: TIPO DE CUERPO -->
     <div id="screen-bodytype" class="screen">
-        <h1 class="headline anim-fade">SÉ SINCERO: ¿CÓMO SE VE TU CUERPO <span style="color:var(--cta-green)">HOY</span>?</h1>
-        <p class="subheadline anim-fade delay-1">El sistema detecta inconsistencias. La verdad es el único camino para tu transformación.</p>
+        <h1 class="headline anim-fade">SÉ SINCERO: ¿CÓMO SE VE TU CUERPO <span
+                style="color:var(--cta-green)">HOY</span>?</h1>
+        <p class="subheadline anim-fade delay-1">El sistema detecta inconsistencias. La verdad es el único camino para
+            tu transformación.</p>
 
         <div class="hex-grid">
             <div class="hex-card anim-down delay-2" onclick="goToStep('goal', 'Delgado')">
@@ -164,7 +178,8 @@
         <div class="goal-list">
             <div class="goal-card" onclick="handleGoal('Perder Peso')">
                 <div class="goal-img-box">
-                    <img loading="lazy" src="imagens_webp_crush_it/perder-peso.webp" alt="Objetivo: Perder Peso" id="img-perder" style="width:100%; height:100%; object-fit:cover;">
+                    <img loading="lazy" src="imagens_webp_crush_it/perder-peso.webp" alt="Objetivo: Perder Peso"
+                        id="img-perder" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="goal-info">
                     <div class="goal-title">PERDER GRASA</div>
@@ -173,16 +188,20 @@
             </div>
             <div class="goal-card" onclick="handleGoal('Ganar Músculo')">
                 <div class="goal-img-box">
-                    <img loading="lazy" src="imagens_webp_crush_it/ganar-musculo.webp" alt="Objetivo: Ganar Músculo" id="img-ganar" style="width:100%; height:100%; object-fit:cover;">
+                    <img loading="lazy" src="imagens_webp_crush_it/ganar-musculo.webp" alt="Objetivo: Ganar Músculo"
+                        id="img-ganar" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="goal-info">
                     <div class="goal-title">GANAR MÚSCULO</div>
-                    <div id="goal-sub-ganar" class="goal-subtitle">Ser el hombre más respetado e imponente de la sala</div>
+                    <div id="goal-sub-ganar" class="goal-subtitle">Ser el hombre más respetado e imponente de la sala
+                    </div>
                 </div>
             </div>
             <div class="goal-card" onclick="handleGoal('Definir tu Cuerpo')">
                 <div class="goal-img-box">
-                    <img loading="lazy" src="imagens_webp_crush_it/definir-tu-cuerpo.webp" alt="Objetivo: Definir Cuerpo" id="img-definir" style="width:100%; height:100%; object-fit:cover;">
+                    <img loading="lazy" src="imagens_webp_crush_it/definir-tu-cuerpo.webp"
+                        alt="Objetivo: Definir Cuerpo" id="img-definir"
+                        style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="goal-info">
                     <div class="goal-title">DEFINIR TU CUERPO</div>
@@ -194,55 +213,71 @@
 
     <!-- ETAPA 5-A: CORPO DESEJADO (PERDER PESO) -->
     <div id="screen-desired-perder" class="screen">
-        <h1 id="desired-perder-headline" class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <h1 id="desired-perder-headline" class="headline">ELIGE TU CUERPO <span
+                style="color:var(--cta-green)">DESEADO</span></h1>
         <p id="desired-perder-sub" class="subheadline">Configuraremos tus macros para este resultado</p>
 
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado')">
                 <span class="horizontal-label">Delgado</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/delgado.webp" id="img-desired-delgado" alt="Cuerpo Delgado" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/delgado.webp" id="img-desired-delgado"
+                        alt="Cuerpo Delgado" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado y Tonificado')">
                 <span class="horizontal-label" style="font-size:18px;">Delgado y Tonificado</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/delgado-y-tonificado-pergunta-4.webp" id="img-delgado-ton" alt="Cuerpo Delgado y Tonificado" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy"
+                        src="imagens_webp_crush_it/delgado-y-tonificado-pergunta-4.webp" id="img-delgado-ton"
+                        alt="Cuerpo Delgado y Tonificado" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
         </div>
     </div>
 
     <!-- ETAPA 5-B: CORPO DESEJADO (GANAR MÚSCULO) -->
     <div id="screen-desired-ganar" class="screen">
-        <h1 id="desired-ganar-headline" class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <h1 id="desired-ganar-headline" class="headline">ELIGE TU CUERPO <span
+                style="color:var(--cta-green)">DESEADO</span></h1>
         <p id="desired-ganar-sub" class="subheadline">Tu plan de hipertrofia se basará en esta elección</p>
 
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Atleta')">
                 <span class="horizontal-label">Atleta</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/atleta-pergunta-4.webp" id="img-desired-atleta" alt="Cuerpo Atleta" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/atleta-pergunta-4.webp"
+                        id="img-desired-atleta" alt="Cuerpo Atleta" style="width:100%; height:100%; object-fit:cover;">
+                </div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Culturista')">
                 <span class="horizontal-label">Culturista</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/culturista-pergunta-4.webp" id="img-desired-culturista" alt="Cuerpo Culturista" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy"
+                        src="imagens_webp_crush_it/culturista-pergunta-4.webp" id="img-desired-culturista"
+                        alt="Cuerpo Culturista" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
         </div>
     </div>
 
     <!-- ETAPA 5-C: CORPO DESEJADO (DEFINIR) -->
     <div id="screen-desired-definir" class="screen">
-        <h1 id="desired-definir-headline" class="headline">ELIGE TU CUERPO <span style="color:var(--cta-green)">DESEADO</span></h1>
+        <h1 id="desired-definir-headline" class="headline">ELIGE TU CUERPO <span
+                style="color:var(--cta-green)">DESEADO</span></h1>
         <p id="desired-definir-sub" class="subheadline">Ajustaremos tu déficit para máxima definición</p>
 
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Playa')">
                 <span class="horizontal-label">De Playa</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/de-playa-pergunta-4.webp" id="img-desired-playa" alt="Cuerpo de Playa" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/de-playa-pergunta-4.webp"
+                        id="img-desired-playa" alt="Cuerpo de Playa" style="width:100%; height:100%; object-fit:cover;">
+                </div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'De CrossFit')">
                 <span class="horizontal-label">De CrossFit</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/de-crossfit-pergunta-4.webp" id="img-desired-crossfit" alt="Cuerpo de CrossFit" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy"
+                        src="imagens_webp_crush_it/de-crossfit-pergunta-4.webp" id="img-desired-crossfit"
+                        alt="Cuerpo de CrossFit" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Héroe')">
                 <span class="horizontal-label">Héroe</span>
-                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/heroe-pergunta-4.webp" id="img-desired-heroe" alt="Cuerpo de Héroe" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="horizontal-img-box"><img loading="lazy" src="imagens_webp_crush_it/heroe-pergunta-4.webp"
+                        id="img-desired-heroe" alt="Cuerpo de Héroe" style="width:100%; height:100%; object-fit:cover;">
+                </div>
             </div>
         </div>
     </div>
@@ -254,7 +289,8 @@
 
         <div class="fat-image-display anim-fade">
             <div class="fat-avatar-box">
-                <img src="imagens_webp_crush_it/15-19.webp" id="fat-body-img" class="fat-img" loading="eager" decoding="async" fetchpriority="high">
+                <img src="imagens_webp_crush_it/15-19.webp" id="fat-body-img" class="fat-img" loading="eager"
+                    decoding="async" fetchpriority="high">
                 <div class="box-corners">
                     <span></span><span></span><span></span><span></span>
                 </div>
@@ -274,7 +310,8 @@
                     <span class="track-dot"></span>
                     <span class="track-dot"></span>
                 </div>
-                <input type="range" id="fat-slider" min="1" max="8" step="1" value="3" oninput="updateFatSlider(this.value)">
+                <input type="range" id="fat-slider" min="1" max="8" step="1" value="3"
+                    oninput="updateFatSlider(this.value)">
             </div>
             <div class="slider-labels">
                 <span>5-9%</span>
@@ -282,20 +319,24 @@
             </div>
         </div>
 
-        <button class="btn-continue" onclick="goToStep('focusarea', document.getElementById('bubble').innerText)">CONTINUAR</button>
+        <button class="btn-continue"
+            onclick="goToStep('focusarea', document.getElementById('bubble').innerText)">CONTINUAR</button>
     </div>
 
     <!-- ETAPA 7: ÁREAS PROBLEMÁTICAS -->
     <div id="screen-focusarea" class="screen">
         <div class="areas-screen">
             <h1 id="areas-headline" class="areas-headline">ELIGE TUS <span>ZONAS CRÍTICAS</span></h1>
-            <p id="areas-sub" style="color: var(--text-gray); text-align: center; margin-bottom: 25px; font-size: 15px; opacity: 0.9; max-width: 90%; line-height: 1.4;"></p>
+            <p id="areas-sub"
+                style="color: var(--text-gray); text-align: center; margin-bottom: 25px; font-size: 15px; opacity: 0.9; max-width: 90%; line-height: 1.4;">
+            </p>
 
             <!-- Conteúdo Dinâmico por Gênero -->
             <div id="areas-content-female" class="areas-body" style="display: none;">
                 <!-- Avatar Feminino (Versão Customizada Otimizada) -->
                 <div class="areas-avatar-v2 female-v2">
-                    <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6w.webp" alt="Avatar Femenino" class="avatar-img-v2">
+                    <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6w.webp" alt="Avatar Femenino"
+                        class="avatar-img-v2">
                 </div>
                 <!-- SVG Connectors Overlay -->
                 <svg class="areas-connectors" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -307,23 +348,28 @@
                 <!-- Opções Femininas -->
                 <div class="areas-options">
                     <div class="area-option" onclick="toggleArea('superiores', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/female-upper-realistic.webp" alt="Superiores"></div>
+                        <div class="area-hex-icon"><img loading="lazy"
+                                src="imagens_webp_crush_it/female-upper-realistic.webp" alt="Superiores"></div>
                         <span class="area-option-label">Superiores</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('abdomen', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/female-abdomen-realistic.webp" alt="Abdomen"></div>
+                        <div class="area-hex-icon"><img loading="lazy"
+                                src="imagens_webp_crush_it/female-abdomen-realistic.webp" alt="Abdomen"></div>
                         <span class="area-option-label">Abdomen</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('gluteos', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/female-glutes-realistic.webp" alt="Glúteos"></div>
+                        <div class="area-hex-icon"><img loading="lazy"
+                                src="imagens_webp_crush_it/female-glutes-realistic.webp" alt="Glúteos"></div>
                         <span class="area-option-label">Glúteos</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('muslos', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/female-thighs-realistic.webp" alt="Muslos"></div>
+                        <div class="area-hex-icon"><img loading="lazy"
+                                src="imagens_webp_crush_it/female-thighs-realistic.webp" alt="Muslos"></div>
                         <span class="area-option-label">Muslos</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('todo', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/female-full-realistic.webp" alt="Todo el cuerpo"></div>
+                        <div class="area-hex-icon"><img loading="lazy"
+                                src="imagens_webp_crush_it/female-full-realistic.webp" alt="Todo el cuerpo"></div>
                         <span class="area-option-label">Todo el Cuerpo</span>
                     </div>
                 </div>
@@ -332,7 +378,8 @@
             <div id="areas-content-male" class="areas-body" style="display: none;">
                 <!-- Avatar Masculino -->
                 <div class="areas-avatar-v2">
-                    <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6.webp" alt="Avatar Masculino" class="avatar-img-v2">
+                    <img loading="lazy" src="imagens_webp_crush_it/avatar-pergunta-6.webp" alt="Avatar Masculino"
+                        class="avatar-img-v2">
                 </div>
                 <!-- SVG Connectors Overlay Masculino -->
                 <svg class="areas-connectors" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -344,23 +391,28 @@
                 <!-- Opções Masculinas -->
                 <div class="areas-options">
                     <div class="area-option" onclick="toggleArea('pecho', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/pectoral.webp" alt="Pecho"></div>
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/pectoral.webp"
+                                alt="Pecho"></div>
                         <span class="area-option-label">Pecho</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('brazos', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-brazos.webp" alt="Brazos"></div>
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-brazos.webp"
+                                alt="Brazos"></div>
                         <span class="area-option-label">Brazos</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('abdomen', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-abs.webp" alt="Abdomen"></div>
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-abs.webp"
+                                alt="Abdomen"></div>
                         <span class="area-option-label">Abdomen</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('piernas', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp" alt="Piernas"></div>
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/area-piernas.webp"
+                                alt="Piernas"></div>
                         <span class="area-option-label">Piernas</span>
                     </div>
                     <div class="area-option" onclick="toggleArea('todo', this)">
-                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp" alt="Todo el cuerpo"></div>
+                        <div class="area-hex-icon"><img loading="lazy" src="imagens_webp_crush_it/cuerpo.webp"
+                                alt="Todo el cuerpo"></div>
                         <span class="area-option-label">Todo el Cuerpo</span>
                     </div>
                 </div>
@@ -380,7 +432,8 @@
             <div class="analysis-icon">
                 <!-- Ícone de raio: precisão e energia -->
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="var(--brand-purple)" stroke="var(--cta-green)" stroke-width="1" stroke-linejoin="round"/>
+                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="var(--brand-purple)"
+                        stroke="var(--cta-green)" stroke-width="1" stroke-linejoin="round" />
                 </svg>
             </div>
 
@@ -388,7 +441,9 @@
             <div class="analysis-claim" id="analysis-claim">ANALIZANDO PERFIL BIOMÉTRICO...</div>
 
             <div class="analysis-box">
-                <p>El 85% de las personas con tu perfil fallan por culpa de métodos mediocres. <strong>No es falta de voluntad. Es falta de un protocolo táctico.</strong> Tu plan atacará tus zonas críticas con precisión, eliminando el estancamiento metabólico.</p>
+                <p>El 85% de las personas con tu perfil fallan por culpa de métodos mediocres. <strong>No es falta de
+                        voluntad. Es falta de un protocolo táctico.</strong> Tu plan atacará tus zonas críticas con
+                    precisión, eliminando el estancamiento metabólico.</p>
             </div>
 
 
@@ -404,13 +459,16 @@
     <!-- ETAPA 9: PARÁMETROS BIOMÉTRICOS (CM/KG) -->
     <div id="screen-biometrics" class="screen">
         <h1 class="headline">INGRESA TUS <span style="color:var(--cta-green)">PARÁMETROS BIOMÉTRICOS</span></h1>
-        <p class="subheadline">Estos datos son fundamentales para calibrar la <strong style="color:var(--cta-green)">carga metabólica</strong> y la intensidad de tu protocolo personalizado.</p>
+        <p class="subheadline">Estos datos son fundamentales para calibrar la <strong
+                style="color:var(--cta-green)">carga metabólica</strong> y la intensidad de tu protocolo personalizado.
+        </p>
 
         <div class="biometrics-grid">
             <div class="bio-field">
                 <label for="input-height" class="bio-label">Altura</label>
                 <div class="bio-input-wrap">
-                    <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-height" class="bio-value-input" placeholder="175" oninput="calcIMC()">
+                    <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-height" class="bio-value-input"
+                        placeholder="175" oninput="calcIMC()">
                     <span class="bio-unit">centímetros</span>
                 </div>
                 <div id="error-height" class="error-message">Mínimo 140cm / Máximo 220cm</div>
@@ -418,7 +476,8 @@
             <div class="bio-field">
                 <label for="input-weight" class="bio-label">Peso</label>
                 <div class="bio-input-wrap">
-                    <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-weight" class="bio-value-input" placeholder="80" oninput="calcIMC()">
+                    <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-weight" class="bio-value-input"
+                        placeholder="80" oninput="calcIMC()">
                     <span class="bio-unit">kilogramos</span>
                 </div>
                 <div id="error-weight" class="error-message">Mínimo 40kg / Máximo 200kg</div>
@@ -435,14 +494,20 @@
                     <div id="imc-gauge-pin" class="imc-gauge-pin" style="left: 50%;"></div>
                 </div>
                 <div class="imc-gauge-labels">
-                    <span>BAJO</span><span>NORMAL</span><span>SOBREPESO</span><span>OBESO</span>
+                    <span id="bio-lbl-bajo">BAJO</span>
+                    <span id="bio-lbl-normal">NORMAL</span>
+                    <span id="bio-lbl-sobre">SOBREPESO</span>
+                    <span id="bio-lbl-obeso">OBESO</span>
                 </div>
             </div>
             <div id="imc-category" class="imc-category"></div>
         </div>
 
         <div class="security-badge">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+            </svg>
             Tus datos están seguros y encriptados
         </div>
 
@@ -454,12 +519,14 @@
     <!-- ETAPA 10: PESO OBJETIVO (KG) -->
     <div id="screen-targetweight" class="screen">
         <h1 class="headline">DEFINE TU <span style="color:var(--cta-green)">META DE TRANSFORMACIÓN</span></h1>
-        <p class="subheadline">Calcularemos el déficit calórico y el balance de macronutrientes para alcanzar tu objetivo.</p>
+        <p class="subheadline">Calcularemos el déficit calórico y el balance de macronutrientes para alcanzar tu
+            objetivo.</p>
 
         <div class="target-weight-input-card">
             <div class="target-weight-label">PESO OBJETIVO</div>
             <div class="weight-input-wrapper">
-                <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-target-weight" class="weight-input-v2" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
+                <input type="number" inputmode="numeric" pattern="[0-9]*" id="input-target-weight"
+                    class="weight-input-v2" placeholder="70" oninput="updateTargetWeightDisplay(this.value)">
                 <span class="weight-unit-label">kilogramos</span>
             </div>
         </div>
@@ -483,7 +550,8 @@
                         <div id="target-gauge-pin-current" class="imc-gauge-pin current-pin" style="left: 50%;">
                             <span class="pin-label">TÚ AHORA</span>
                         </div>
-                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin" style="left: 50%; opacity:0;">
+                        <div id="target-gauge-pin-target" class="imc-gauge-pin target-pin"
+                            style="left: 50%; opacity:0;">
                             <span class="pin-label">TÚ EN 21 DÍAS</span>
                         </div>
                     </div>
@@ -504,15 +572,17 @@
         <div class="prediction-screen">
             <h1 class="prediction-headline">
                 EL ÚLTIMO PLAN QUE NECESITARÁS<br>
-                <span id="txt-gender-difference" class="gender-diff-subtitle">La diferencia entre el hombre que eres y el que podrías ser son exactamente 21 días.</span>
+                <span id="txt-gender-difference" class="gender-diff-subtitle">La diferencia entre el hombre que eres y
+                    el que podrías ser son exactamente 21 días.</span>
             </h1>
-            
+
 
 
             <div class="prediction-status-label">CALIBRANDO TRAYECTORIA METABÓLICA...</div>
-            
-            <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong id="pred-weight-display">70 kg</strong> para el</p>
-            
+
+            <p class="prediction-sub">Según nuestros cálculos, podrías alcanzar tu objetivo de peso de <strong
+                    id="pred-weight-display">70 kg</strong> para el</p>
+
             <div class="prediction-date" id="pred-date-display">17 may 2026</div>
 
             <div class="prediction-graph-container">
@@ -522,7 +592,7 @@
                         <span class="graph-tag tag-fat">% GRASA CORPORAL</span>
                         <div class="graph-val-now">INICIAL: <span id="pred-fat-now">--%</span></div>
                     </div>
-                    
+
                     <div class="graph-visual-box">
                         <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
                             <defs>
@@ -535,7 +605,7 @@
                                     <rect id="reveal-rect-fat" x="0" y="0" width="0" height="120" />
                                 </clipPath>
                             </defs>
-                            
+
                             <g clip-path="url(#reveal-fat-graph)">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
@@ -545,7 +615,7 @@
                                     <line x1="0" y1="60" x2="400" y2="60" />
                                     <line x1="0" y1="80" x2="400" y2="80" />
                                     <line x1="0" y1="100" x2="400" y2="100" />
-                                    
+
                                     <!-- Verticales -->
                                     <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
                                     <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
@@ -560,7 +630,7 @@
                                 <g id="fat-towers-group"></g>
                             </g>
                         </svg>
-                        
+
                         <div class="graph-labels-v2">
                             <span>AHORA</span>
                             <span>DÍA 7</span>
@@ -576,7 +646,7 @@
                         <span class="graph-tag tag-muscle">MASA MUSCULAR MAGRA</span>
                         <div class="graph-val-now">POTENCIAL: <span style="color:#22c55e">MAXIMIZADO</span></div>
                     </div>
-                    
+
                     <div class="graph-visual-box">
                         <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
                             <defs>
@@ -589,7 +659,7 @@
                                     <rect id="reveal-rect-muscle" x="0" y="0" width="0" height="120" />
                                 </clipPath>
                             </defs>
-                            
+
                             <g clip-path="url(#reveal-muscle-graph)">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
@@ -599,7 +669,7 @@
                                     <line x1="0" y1="60" x2="400" y2="60" />
                                     <line x1="0" y1="80" x2="400" y2="80" />
                                     <line x1="0" y1="100" x2="400" y2="100" />
-                                    
+
                                     <!-- Verticales -->
                                     <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
                                     <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
@@ -614,7 +684,7 @@
                                 <g id="muscle-towers-group"></g>
                             </g>
                         </svg>
-                        
+
                         <div class="graph-labels-v2">
                             <span>AHORA</span>
                             <span>DÍA 7</span>
@@ -624,8 +694,8 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <div class="loading-bar-wrap" style="margin-top: 20px;">
                 <div class="loading-track">
                     <div id="pred-loading-fill" class="loading-fill"></div>
@@ -636,8 +706,10 @@
 
     <!-- ETAPA 12: FLEXÕES -->
     <div id="screen-pushups" class="screen">
-        <h1 class="headline">¿CUÁNTAS <span id="perf-exercise-name" style="color:var(--cta-green)">FLEXIONES</span> PUEDES HACER?</h1>
-        <p class="subheadline" id="perf-exercise-sub">Sin descanso, en un solo intento. Tu honestidad determina el volumen de carga metabólica de tu protocolo inicial.</p>
+        <h1 class="headline">¿CUÁNTAS <span id="perf-exercise-name" style="color:var(--cta-green)">FLEXIONES</span>
+            PUEDES HACER?</h1>
+        <p class="subheadline" id="perf-exercise-sub">Sin descanso, en un solo intento. Tu honestidad determina el
+            volumen de carga metabólica de tu protocolo inicial.</p>
 
         <div class="pushups-grid">
             <div class="pushup-hex-card" onclick="goToStep('training', '0')">
@@ -681,7 +753,7 @@
                 </div>
                 <div class="training-arrow-v2">→</div>
             </div>
-            
+
             <div class="training-card-v2" onclick="goToStep('startdate', 'Activo Ocasional')">
                 <div class="training-icon-v2">🏃</div>
                 <div class="training-info-v2">
@@ -690,7 +762,7 @@
                 </div>
                 <div class="training-arrow-v2">→</div>
             </div>
-            
+
             <div class="training-card-v2" onclick="goToStep('startdate', 'Atleta Constante')">
                 <div class="training-icon-v2">💪</div>
                 <div class="training-info-v2">
@@ -699,7 +771,7 @@
                 </div>
                 <div class="training-arrow-v2">→</div>
             </div>
-            
+
             <div class="training-card-v2" onclick="goToStep('startdate', 'Elite')">
                 <div class="training-icon-v2">⚡</div>
                 <div class="training-info-v2">
@@ -715,7 +787,7 @@
     <div id="screen-startdate" class="screen">
         <h1 class="headline">EL MOMENTO DE LA <span style="color:var(--cta-green)">DECISIÓN</span></h1>
         <p class="subheadline">Tu transformación depende de tu compromiso hoy. ¿Cuál es tu nivel de prioridad?</p>
-        
+
         <div class="start-list-v3">
             <div id="card-start-hoy" class="start-card-v3 featured-start" onclick="handleStartDate('Hoy')">
                 <div class="start-icon-v3">⚡</div>
@@ -751,7 +823,9 @@
                 <div class="warning-triangle">⚠️</div>
             </div>
             <div class="warning-text-v4">
-                <p id="txt-most-men">La mayoría de los hombres que esperan el momento correcto no empiezan - No porque les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando no te sientes listo - Ese es exactamente el punto de entrada.</p>
+                <p id="txt-most-men">La mayoría de los hombres que esperan el momento correcto no empiezan - No porque
+                    les falte tiempo - Porque siguen esperando sentirse listos - El protocolo fue diseñado para cuando
+                    no te sientes listo - Ese es exactamente el punto de entrada.</p>
             </div>
         </div>
     </div>
@@ -768,10 +842,12 @@
                 <!-- BLOCO CORTISOL -->
                 <div class="graph-block fat-block">
                     <div class="graph-header-v2">
-                        <span class="graph-tag" style="background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3);">ESTRÉS Y CORTISOL</span>
+                        <span class="graph-tag"
+                            style="background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3);">ESTRÉS
+                            Y CORTISOL</span>
                         <div class="graph-val-now">TASA: <span style="color:#ef4444">REDUCIDA</span></div>
                     </div>
-                    
+
                     <div class="graph-visual-box">
                         <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
                             <defs>
@@ -784,7 +860,7 @@
                                     <rect id="reveal-rect-cortisol" x="0" y="0" width="0" height="120" />
                                 </clipPath>
                             </defs>
-                            
+
                             <g clip-path="url(#reveal-cortisol-graph)">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
@@ -821,7 +897,7 @@
                         <span class="graph-tag tag-muscle">TESTOSTERONA LIBRE</span>
                         <div class="graph-val-now">POTENCIAL: <span style="color:#22c55e">MÁXIMO</span></div>
                     </div>
-                    
+
                     <div class="graph-visual-box">
                         <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
                             <defs>
@@ -834,7 +910,7 @@
                                     <rect id="reveal-rect-testo" x="0" y="0" width="0" height="120" />
                                 </clipPath>
                             </defs>
-                            
+
                             <g clip-path="url(#reveal-testo-graph)">
                                 <!-- Grade Técnica (Fundo) -->
                                 <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
@@ -872,7 +948,7 @@
                     Analizando tu perfil hormonal...
                 </p>
             </div>
-            
+
             <p class="graph-note" style="margin-top:5px;">*Basado en datos de más de 1.3 millones de entrenamientos</p>
 
             <div class="loading-bar-wrap" style="margin-top: 20px;">
@@ -888,11 +964,13 @@
         <h1 class="headline anim-fade">ÚLTIMO PASO</h1>
         <p class="subheadline anim-fade delay-1">¿A quién debemos liberar el acceso al área de miembros?</p>
 
-        <div class="step-counter anim-fade delay-2" style="margin-top: 20px; color: var(--cta-green);">TU PRIMER NOMBRE</div>
-        
+        <div class="step-counter anim-fade delay-2" style="margin-top: 20px; color: var(--cta-green);">TU PRIMER NOMBRE
+        </div>
+
         <div class="name-input-card anim-up delay-3">
             <div class="name-field-wrap">
-                <input type="text" id="input-name" class="name-input-field" placeholder="Ej: Dani" oninput="validateName(this.value)">
+                <input type="text" id="input-name" class="name-input-field" placeholder="Ej: Dani"
+                    oninput="validateName(this.value)">
             </div>
 
             <button id="btn-final-continue" class="btn-final-step cta-pulse-v4" onclick="finishQuiz()" disabled>
@@ -908,11 +986,12 @@
     <!-- ETAPA 17: CHECKLIST / ANALIZANDO PERFIL -->
     <div id="screen-checklist" class="screen">
         <div class="checklist-container-v3">
-            <h1 class="chk-headline-v3">GENERANDO TU <span style="color:var(--cta-green)">PROTOCOLO ÚNICO Y EXCLUSIVO</span></h1>
+            <h1 class="chk-headline-v3">GENERANDO TU <span style="color:var(--cta-green)">PROTOCOLO ÚNICO Y
+                    EXCLUSIVO</span></h1>
             <div class="chk-timer-badge-v4">
                 <span class="chk-timer-v3">Válido por los próximos 10 minutos</span>
             </div>
-            
+
             <div class="chk-authority-v3">
                 <span class="chk-auth-icon">📊</span>
                 <p>Perfil Validado | Basado en 1.3M de Casos de Éxito</p>
@@ -933,13 +1012,14 @@
                 <div class="chk-row-v3" id="chk-v3-1">
                     <div class="chk-ring-wrap-v3">
                         <svg class="chk-ring-v3" width="40" height="40">
-                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20"/>
-                            <circle class="chk-ring-fill-v3" id="circle-1" r="17" cx="20" cy="20"/>
+                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20" />
+                            <circle class="chk-ring-fill-v3" id="circle-1" r="17" cx="20" cy="20" />
                         </svg>
                         <div class="chk-mark-v3" id="check-1">✓</div>
                     </div>
                     <div class="chk-info-v3">
-                        <p class="chk-label-v3">CALIBRANDO PLAN NUTRICIONAL PARA MAXIMIZAR TUS RESULTADOS EN EL MENOR TIEMPO POSIBLE</p>
+                        <p class="chk-label-v3">CALIBRANDO PLAN NUTRICIONAL PARA MAXIMIZAR TUS RESULTADOS EN EL MENOR
+                            TIEMPO POSIBLE</p>
                         <p class="chk-status-v3" id="status-1">0%</p>
                     </div>
                 </div>
@@ -948,8 +1028,8 @@
                 <div class="chk-row-v3" id="chk-v3-2">
                     <div class="chk-ring-wrap-v3">
                         <svg class="chk-ring-v3" width="40" height="40">
-                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20"/>
-                            <circle class="chk-ring-fill-v3" id="circle-2" r="17" cx="20" cy="20"/>
+                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20" />
+                            <circle class="chk-ring-fill-v3" id="circle-2" r="17" cx="20" cy="20" />
                         </svg>
                         <div class="chk-mark-v3" id="check-2">✓</div>
                     </div>
@@ -963,8 +1043,8 @@
                 <div class="chk-row-v3" id="chk-v3-3">
                     <div class="chk-ring-wrap-v3">
                         <svg class="chk-ring-v3" width="40" height="40">
-                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20"/>
-                            <circle class="chk-ring-fill-v3" id="circle-3" r="17" cx="20" cy="20"/>
+                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20" />
+                            <circle class="chk-ring-fill-v3" id="circle-3" r="17" cx="20" cy="20" />
                         </svg>
                         <div class="chk-mark-v3" id="check-3">✓</div>
                     </div>
@@ -978,8 +1058,8 @@
                 <div class="chk-row-v3" id="chk-v3-4">
                     <div class="chk-ring-wrap-v3">
                         <svg class="chk-ring-v3" width="40" height="40">
-                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20"/>
-                            <circle class="chk-ring-fill-v3" id="circle-4" r="17" cx="20" cy="20"/>
+                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20" />
+                            <circle class="chk-ring-fill-v3" id="circle-4" r="17" cx="20" cy="20" />
                         </svg>
                         <div class="chk-mark-v3" id="check-4">✓</div>
                     </div>
@@ -993,8 +1073,8 @@
                 <div class="chk-row-v3" id="chk-v3-5">
                     <div class="chk-ring-wrap-v3">
                         <svg class="chk-ring-v3" width="40" height="40">
-                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20"/>
-                            <circle class="chk-ring-fill-v3" id="circle-5" r="17" cx="20" cy="20"/>
+                            <circle class="chk-ring-bg-v3" r="17" cx="20" cy="20" />
+                            <circle class="chk-ring-fill-v3" id="circle-5" r="17" cx="20" cy="20" />
                         </svg>
                         <div class="chk-mark-v3" id="check-5">✓</div>
                     </div>
@@ -1004,6 +1084,19 @@
                     </div>
                 </div>
             </div>
+
+            <div class="guarantee-badges-v2 anim-fade delay-1">
+                <div class="badge-v2-item">
+                    <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
+                        style="width: 50px; height: 50px;">
+                    <span class="badge-v2-label" style="font-size: 8px;">ACCESO VITALICIO</span>
+                </div>
+                <div class="badge-v2-item">
+                    <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
+                        style="width: 50px; height: 50px;">
+                    <span class="badge-v2-label" style="font-size: 8px;">30 DÍAS DE GARANTÍA</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1011,8 +1104,9 @@
     <div id="screen-summary" class="screen">
         <div class="summary-screen">
             <h1 class="headline">¡BUENAS NOTICIAS!</h1>
-            <p class="subheadline">Encontramos el protocolo exacto para <strong id="summary-name" style="color:var(--cta-green)">[Nome]</strong>.</p>
-            
+            <p class="subheadline">Encontramos el protocolo exacto para <strong id="summary-name"
+                    style="color:var(--cta-green)">[Nome]</strong>.</p>
+
             <div class="chk-timer-badge-v4">
                 <span class="chk-timer-v3">Válido por los próximos 10 minutos</span>
             </div>
@@ -1028,7 +1122,8 @@
                         <div class="summary-icon-v4">✓</div>
                         <div class="summary-info-v4">
                             <h4 class="summary-title-v4">ACCESO A ÁREA DE MIEMBROS SINCRONIZADO</h4>
-                            <p class="summary-sub-v4">Tu portal exclusivo ha sido liberado y está listo para recibirte.</p>
+                            <p class="summary-sub-v4">Tu portal exclusivo ha sido liberado y está listo para recibirte.
+                            </p>
                         </div>
                     </div>
 
@@ -1036,7 +1131,8 @@
                         <div class="summary-icon-v4">✓</div>
                         <div class="summary-info-v4">
                             <h4 class="summary-title-v4">PLAN NUTRICIONAL OPTIMIZADO</h4>
-                            <p class="summary-sub-v4">Macronutrientes calibrados para resultados máximos en tiempo récord.</p>
+                            <p class="summary-sub-v4">Macronutrientes calibrados para resultados máximos en tiempo
+                                récord.</p>
                         </div>
                     </div>
 
@@ -1044,7 +1140,8 @@
                         <div class="summary-icon-v4">✓</div>
                         <div class="summary-info-v4">
                             <h4 class="summary-title-v4">PLAN DE ENTRENAMIENTO FINALIZADO</h4>
-                            <p class="summary-sub-v4">Tu rutina estratégica ha sido organizada para maximizar cada ganancia.</p>
+                            <p class="summary-sub-v4">Tu rutina estratégica ha sido organizada para maximizar cada
+                                ganancia.</p>
                         </div>
                     </div>
 
@@ -1052,7 +1149,8 @@
                         <div class="summary-icon-v4">✓</div>
                         <div class="summary-info-v4">
                             <h4 class="summary-title-v4">BIBLIOTECA DE VIDEOS PERSONALIZADA</h4>
-                            <p class="summary-sub-v4">Tus videos de entrenamiento ya han sido cargados y están listos para comenzar.</p>
+                            <p class="summary-sub-v4">Tus videos de entrenamiento ya han sido cargados y están listos
+                                para comenzar.</p>
                         </div>
                     </div>
                 </div>
@@ -1060,32 +1158,39 @@
                 <!-- Alerta Premium de Conclusão -->
                 <div class="final-status-box-v4">
                     <div class="status-circle-v4">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
                             <line x1="12" y1="9" x2="12" y2="13"></line>
                             <line x1="12" y1="17" x2="12.01" y2="17"></line>
                         </svg>
                     </div>
                     <div class="status-text-v4">
-                        <p><strong>¡TODO LISTO!</strong> Todo tu ecosistema ha sido añadido a tu área de miembros y está listo para ser disfrutado.</p>
+                        <p><strong>¡TODO LISTO!</strong> Todo tu ecosistema ha sido añadido a tu área de miembros y está
+                            listo para ser disfrutado.</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="guarantee-badges-v2 anim-fade delay-1">
                 <div class="badge-v2-item">
-                    <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img" style="width: 50px; height: 50px;">
+                    <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
+                        style="width: 50px; height: 50px;">
                     <span class="badge-v2-label" style="font-size: 8px;">ACCESO VITALICIO</span>
                 </div>
                 <div class="badge-v2-item">
-                    <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img" style="width: 50px; height: 50px;">
+                    <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
+                        style="width: 50px; height: 50px;">
                     <span class="badge-v2-label" style="font-size: 8px;">30 DÍAS DE GARANTÍA</span>
                 </div>
             </div>
 
 
             <div class="summary-redirect-area">
-                <p style="font-size:14px; color:var(--text-gray);">Redirigiendo a tu protocolo en <span id="summary-timer" style="color:var(--cta-green); font-weight:900;">4s</span>...</p>
+                <p style="font-size:14px; color:var(--text-gray);">Redirigiendo a tu protocolo en <span
+                        id="summary-timer" style="color:var(--cta-green); font-weight:900;">4s</span>...</p>
                 <div class="spinner" style="margin: 20px auto;"></div>
             </div>
         </div>
@@ -1099,7 +1204,8 @@
                 <div class="glow-beam anim-fade delay-1"></div>
 
                 <div class="offer-header-bubble anim-up">
-                    <p class="bubble-subtitle">Continúa con tu análisis aquí abajo, <strong id="header-name" style="color:var(--cta-green)">[Nome]</strong></p>
+                    <p class="bubble-subtitle">Continúa con tu análisis aquí abajo, <strong id="header-name"
+                            style="color:var(--cta-green)">[Nome]</strong></p>
                     <div style="height: 12px;"></div>
                     <p class="bubble-ready">Tu área de miembros está lista para ser usada.</p>
                 </div>
@@ -1111,8 +1217,9 @@
                         <span class="status-imc" id="status-bmi-val">IMC: 20.8</span>
                     </div>
                     <h2 class="status-headline" id="status-headline">Ventana de Oportunidad Metabólica</h2>
-                    <p class="status-subtext" id="status-subtext">Análisis de composición detectado: Tu metabolismo está en el punto óptimo para la quema de grasa subcutánea.</p>
-                    
+                    <p class="status-subtext" id="status-subtext">Análisis de composición detectado: Tu metabolismo está
+                        en el punto óptimo para la quema de grasa subcutánea.</p>
+
                     <div class="status-stats-row">
                         <div class="stat-box">
                             <span class="stat-val" id="status-weight-now">-- kg</span>
@@ -1132,7 +1239,8 @@
 
                     <div class="status-protocol-box">
                         <div class="protocol-text">
-                            <span id="status-protocol-desc" style="font-weight: 500;">Cargando estrategia recomendada...</span>
+                            <span id="status-protocol-desc" style="font-weight: 500;">Cargando estrategia
+                                recomendada...</span>
                         </div>
                     </div>
                 </div>
@@ -1165,7 +1273,8 @@
                     <div class="comparison-card card-goal">
                         <span class="comparison-card-label">TU OBJETIVO</span>
                         <div class="comparison-card-img-wrap">
-                            <img id="off-img-goal" src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Estado Objetivo">
+                            <img id="off-img-goal" src="imagens_webp_crush_it/atleta-pergunta-4.webp"
+                                alt="Estado Objetivo">
                         </div>
                         <div class="comparison-card-footer">
                             <div class="comp-imc">
@@ -1182,12 +1291,22 @@
                     </div>
                 </div>
                 <p class="disclaimer-text">
-                    *Los resultados mostrados son ilustrativos y no están garantizados. Los logros individuales pueden variar según factores como la dieta, el ejercicio y el metabolismo personal. Las imágenes son solo para fines motivacionales y no representan los resultados típicos ni prometidos.
+                    *Los resultados mostrados son ilustrativos y no están garantizados. Los logros individuales pueden
+                    variar según factores como la dieta, el ejercicio y el metabolismo personal. Las imágenes son solo
+                    para fines motivacionales y no representan los resultados típicos ni prometidos.
                 </p>
             </div>
 
+            <div id="offer-timer-wrapper" style="min-height: 48px; margin-top: 25px; margin-bottom: 25px; display: flex; justify-content: center; align-items: center; width: 100%;">
+                <div id="offer-timer-badge" class="chk-timer-badge-v4">
+                    <span class="chk-timer-v3">Válido por los próximos <span id="offer-countdown">10:00</span></span>
+                </div>
+            </div>
+
             <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">RESUMEN PERSONAL</h2>
-            <p style="color:var(--text-gray); font-size:14px; font-weight:700; text-transform:uppercase; margin-top:-15px; margin-bottom: 25px;">PARÁMETROS BIOMÉTRICOS DETECTADOS</p>
+            <p
+                style="color:var(--text-gray); font-size:14px; font-weight:700; text-transform:uppercase; margin-top:-15px; margin-bottom: 25px;">
+                PARÁMETROS BIOMÉTRICOS DETECTADOS</p>
 
             <div class="personal-summary-grid">
                 <!-- IMC CARD -->
@@ -1241,7 +1360,16 @@
                         </div>
                         <div class="card-main-val" id="g-water-val">-- litros</div>
                         <div class="water-glasses-container" id="water-glasses-track">
-                            <div class="glass"></div><div class="glass"></div><div class="glass"></div><div class="glass"></div><div class="glass"></div><div class="glass"></div><div class="glass"></div><div class="glass"></div><div class="glass"></div><div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
+                            <div class="glass"></div>
                         </div>
                     </div>
                 </div>
@@ -1253,7 +1381,8 @@
 
             <div class="glow-beam anim-fade delay-3" style="margin: 40px auto 30px;"></div>
 
-            <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">TODO LO QUE <span style="color:var(--cta-green)">OBTIENES</span></h2>
+            <h2 class="headline" style="text-align:left; font-size:24px; margin-top:20px;">TODO LO QUE <span
+                    style="color:var(--cta-green)">OBTIENES</span></h2>
 
             <div class="benefit-item anim-fade">
                 <div class="benefit-icon">🥗</div>
@@ -1303,133 +1432,465 @@
                 </div>
             </div>
 
-            <div class="gift-box anim-fade" style="text-align: center; background:transparent; border:none; padding:0; margin-bottom:40px;">
-                <div style="position:relative; display:inline-block; width:100%; max-width:400px; -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 75%, transparent 100%);">
-                    <img loading="lazy" src="imagens_webp_crush_it/oferta-1.webp" alt="Visualización del Plan Imprimible 2026" style="width: 100%; border-radius: 12px; display: block;">
+            <div class="gift-box anim-fade"
+                style="text-align: center; background:transparent; border:none; padding:0; margin-bottom:40px;">
+                <div
+                    style="position:relative; display:inline-block; width:100%; max-width:400px; -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 75%, transparent 100%);">
+                    <img loading="lazy" src="imagens_webp_crush_it/oferta-1.webp"
+                        alt="Visualización del Plan Imprimible 2026"
+                        style="width: 100%; border-radius: 12px; display: block;">
                 </div>
             </div>
 
             <div class="calendar-preview calendar-preview-card anim-fade">
-                <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--brand-purple); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(123, 47, 247, 0.4); z-index: 10;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+                <div
+                    style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--brand-purple); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(123, 47, 247, 0.4); z-index: 10;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                        <rect x="2" y="7" width="20" height="5"></rect>
+                        <line x1="12" y1="22" x2="12" y2="7"></line>
+                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                    </svg>
                 </div>
-                <p style="font-size:11px; font-weight:700; color:#fff; margin-top: 25px; margin-bottom: 5px; opacity: 0.8;">Obtén un bono imprimible además do programa principal</p>
-                <h4 style="font-size:18px; font-weight:900; color:#fff; margin-bottom: 15px;">Plan imprimible para 2026</h4>
-                <div style="position:relative; display:inline-block; width:100%; max-width:260px; -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, black 85%, transparent 100%);">
-                    <img loading="lazy" src="imagens_webp_crush_it/oferta-2.webp" alt="Guía Básica de Fitness - Vista Previa" style="width: 100%; height: auto; border-radius: 8px; display: block;">
+                <p
+                    style="font-size:11px; font-weight:700; color:#fff; margin-top: 25px; margin-bottom: 5px; opacity: 0.8;">
+                    Obtén un bono imprimible además do programa principal</p>
+                <h4 style="font-size:18px; font-weight:900; color:#fff; margin-bottom: 15px;">Plan imprimible para 2026
+                </h4>
+                <div
+                    style="position:relative; display:inline-block; width:100%; max-width:260px; -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, black 85%, transparent 100%);">
+                    <img loading="lazy" src="imagens_webp_crush_it/oferta-2.webp"
+                        alt="Guía Básica de Fitness - Vista Previa"
+                        style="width: 100%; height: auto; border-radius: 8px; display: block;">
                 </div>
             </div>
 
-                <!-- SECTION: BONUSES (POSICIONADO PARA EMPILHAMENTO DE VALOR) -->
-                <div class="bonus-section-wrapper">
-                    <div class="offer-header-bubble bonus-alert-bubble anim-fade">
-                        🎁 SI ENTRAS HOY, RECIBES ESTO TAMBIÉN
+            <!-- SECTION: BONUSES (POSICIONADO PARA EMPILHAMENTO DE VALOR) -->
+            <div class="bonus-section-wrapper">
+                <div class="offer-header-bubble bonus-alert-bubble anim-fade">
+                    🎁 SI ENTRAS HOY, RECIBES ESTO TAMBIÉN
+                </div>
+
+                <h2 class="bonus-headline anim-up">
+                    SIN COSTO ADICIONAL:<br>
+                    <span style="color:var(--cta-green)">5 BONOS EXCLUSIVOS</span>
+                </h2>
+
+                <div class="bonus-tree-container">
+                    <!-- O caule central (vertical stem line) -->
+                    <div class="bonus-tree-stem"></div>
+
+                    <!-- Bonus 1 (Esquerda) -->
+                    <div class="bonus-tree-item left anim-left">
+                        <div class="bonus-tree-branch"></div>
+                        <div class="bonus-card">
+                            <div class="bonus-header">
+                                <h3>GUÍA DE SUSTITUTOS INTELIGENTES</h3>
+                            </div>
+                            <div class="bonus-info">
+                                <p>No te detengas si no encuentras un ingrediente. Aprende a intercambiar alimentos sin
+                                    arruinar tus macros ni tu progreso.</p>
+                                <div class="bonus-price">
+                                    <span class="old-price">$19.00 USD</span>
+                                    <span class="gratis-badge">GRATIS</span>
+                                </div>
+                            </div>
+                            <!-- Novo ramo roxo e caixa de emoji abaixo -->
+                            <div class="bonus-emoji-connector-wrapper bottom">
+                                <div class="bonus-emoji-connector-line"></div>
+                                <div class="bonus-emoji-floating-box">🔄</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <h2 class="bonus-headline anim-up">
-                        SIN COSTO ADICIONAL:<br>
-                        <span style="color:var(--cta-green)">4 BONOS EXCLUSIVOS</span>
-                    </h2>
-                    
-                    <div class="bonus-tree-container">
-                        <!-- O caule central (vertical stem line) -->
-                        <div class="bonus-tree-stem"></div>
-                        
-                        <!-- Bonus 1 (Esquerda) -->
-                        <div class="bonus-tree-item left anim-left">
-                            <div class="bonus-tree-branch"></div>
-                            <div class="bonus-card">
-                                <div class="bonus-header">
-                                    <h3>GUÍA DE SUSTITUTOS INTELIGENTES</h3>
-                                </div>
-                                <div class="bonus-info">
-                                    <p>No te detengas si no encuentras un ingrediente. Aprende a intercambiar alimentos sin arruinar tus macros ni tu progreso.</p>
-                                    <div class="bonus-price">
-                                        <span class="old-price">$19.00 USD</span>
-                                        <span class="gratis-badge">GRATIS</span>
-                                    </div>
-                                </div>
-                                <!-- Novo ramo roxo e caixa de emoji abaixo -->
-                                <div class="bonus-emoji-connector-wrapper bottom">
-                                    <div class="bonus-emoji-connector-line"></div>
-                                    <div class="bonus-emoji-floating-box">🔄</div>
-                                </div>
+                    <!-- Bonus 2 (Direita) -->
+                    <div class="bonus-tree-item right anim-right">
+                        <div class="bonus-tree-branch"></div>
+                        <div class="bonus-card">
+                            <!-- Novo ramo roxo e caixa de emoji acima -->
+                            <div class="bonus-emoji-connector-wrapper top">
+                                <div class="bonus-emoji-floating-box">✈️</div>
+                                <div class="bonus-emoji-connector-line"></div>
                             </div>
-                        </div>
-
-                        <!-- Bonus 2 (Direita) -->
-                        <div class="bonus-tree-item right anim-right">
-                            <div class="bonus-tree-branch"></div>
-                            <div class="bonus-card">
-                                <!-- Novo ramo roxo e caixa de emoji acima -->
-                                <div class="bonus-emoji-connector-wrapper top">
-                                    <div class="bonus-emoji-floating-box">✈️</div>
-                                    <div class="bonus-emoji-connector-line"></div>
-                                </div>
-                                <div class="bonus-header">
-                                    <h3>PROTOCOLO DE VIAJE Y VACACIONES</h3>
-                                </div>
-                                <div class="bonus-info">
-                                    <p>Rutinas ultra-rápidas de 7 minutos para mantener tu metabolismo acelerado incluso si estás fuera de casa o sin equipo.</p>
-                                    <div class="bonus-price">
-                                        <span class="old-price">$29.00 USD</span>
-                                        <span class="gratis-badge">GRATIS</span>
-                                    </div>
-                                </div>
+                            <div class="bonus-header">
+                                <h3>PROTOCOLO DE VIAJE Y VACACIONES</h3>
                             </div>
-                        </div>
-
-                        <!-- Bonus 3 (Esquerda) -->
-                        <div class="bonus-tree-item left anim-left">
-                            <div class="bonus-tree-branch"></div>
-                            <div class="bonus-card">
-                                <div class="bonus-header">
-                                    <h3>LISTA DE COMPRAS "AHORRO MÁXIMO"</h3>
-                                </div>
-                                <div class="bonus-info">
-                                    <p>La lista exacta para llenar tu refrigerador con alimentos de alto rendimiento gastando lo mínimo posible. Comer bien no es caro.</p>
-                                    <div class="bonus-price">
-                                        <span class="old-price">$15.00 USD</span>
-                                        <span class="gratis-badge">GRATIS</span>
-                                    </div>
-                                </div>
-                                <!-- Novo ramo roxo e caixa de emoji abaixo -->
-                                <div class="bonus-emoji-connector-wrapper bottom">
-                                    <div class="bonus-emoji-connector-line"></div>
-                                    <div class="bonus-emoji-floating-box">🛒</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bonus 4 (Direita) -->
-                        <div class="bonus-tree-item right anim-right">
-                            <div class="bonus-tree-branch"></div>
-                            <div class="bonus-card">
-                                <!-- Novo ramo roxo e caixa de emoji acima -->
-                                <div class="bonus-emoji-connector-wrapper top">
-                                    <div class="bonus-emoji-floating-box">⏱️</div>
-                                    <div class="bonus-emoji-connector-line"></div>
-                                </div>
-                                <div class="bonus-header">
-                                    <h3>RECETARIO "EXPRESS" DE 5 MINUTOS</h3>
-                                </div>
-                                <div class="bonus-info">
-                                    <p>Aprende a preparar comidas de alta densidad nutricional en menos tiempo del que tardas en pedir un delivery. Sin complicaciones, sin desorden.</p>
-                                    <div class="bonus-price">
-                                        <span class="old-price">$24.00 USD</span>
-                                        <span class="gratis-badge">GRATIS</span>
-                                    </div>
+                            <div class="bonus-info">
+                                <p>Rutinas ultra-rápidas de 7 minutos para mantener tu metabolismo acelerado incluso si
+                                    estás fuera de casa o sin equipo.</p>
+                                <div class="bonus-price">
+                                    <span class="old-price">$29.00 USD</span>
+                                    <span class="gratis-badge">GRATIS</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Novo Card de Valor Total Centralizado -->
-                    <div class="bonus-summary-badge anim-up">
-                        <span class="summary-label">VALOR TOTAL DE LOS BONOS</span>
-                        <div class="summary-value"><span class="old-price" style="opacity: 0.6; margin-right: 6px;">$87.00 USD</span> — <strong style="color: var(--cta-green);">gratis solo por hoy</strong></div>
+                    <!-- Bonus 3 (Esquerda) -->
+                    <div class="bonus-tree-item left anim-left">
+                        <div class="bonus-tree-branch"></div>
+                        <div class="bonus-card">
+                            <div class="bonus-header">
+                                <h3>LISTA DE COMPRAS "AHORRO MÁXIMO"</h3>
+                            </div>
+                            <div class="bonus-info">
+                                <p>La lista exacta para llenar tu refrigerador con alimentos de alto rendimiento
+                                    gastando lo mínimo posible. Comer bien no es caro.</p>
+                                <div class="bonus-price">
+                                    <span class="old-price">$15.00 USD</span>
+                                    <span class="gratis-badge">GRATIS</span>
+                                </div>
+                            </div>
+                            <!-- Novo ramo roxo e caixa de emoji abaixo -->
+                            <div class="bonus-emoji-connector-wrapper bottom">
+                                <div class="bonus-emoji-connector-line"></div>
+                                <div class="bonus-emoji-floating-box">🛒</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bonus 4 (Direita) -->
+                    <div class="bonus-tree-item right anim-right">
+                        <div class="bonus-tree-branch"></div>
+                        <div class="bonus-card">
+                            <!-- Novo ramo roxo e caixa de emoji acima -->
+                            <div class="bonus-emoji-connector-wrapper top">
+                                <div class="bonus-emoji-floating-box">⏱️</div>
+                                <div class="bonus-emoji-connector-line"></div>
+                            </div>
+                            <div class="bonus-header">
+                                <h3>RECETARIO "EXPRESS" DE 5 MINUTOS</h3>
+                            </div>
+                            <div class="bonus-info">
+                                <p>Aprende a preparar comidas de alta densidad nutricional en menos tiempo del que
+                                    tardas en pedir un delivery. Sin complicaciones, sin desorden.</p>
+                                <div class="bonus-price">
+                                    <span class="old-price">$24.00 USD</span>
+                                    <span class="gratis-badge">GRATIS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bonus 5 (Esquerda) -->
+                    <div class="bonus-tree-item left anim-left">
+                        <div class="bonus-tree-branch"></div>
+                        <div class="bonus-card">
+                            <div class="bonus-header">
+                                <h3>PLANILLA "CRUSH IT HABIT TRACKER"</h3>
+                            </div>
+                            <div class="bonus-info">
+                                <p>Un tablero gamificado para imprimir o usar online. Marca tus días de entrenamiento, nutrición y descanso para desbloquear patentes de élite.</p>
+                                <div class="bonus-price">
+                                    <span class="old-price">$37.00 USD</span>
+                                    <span class="gratis-badge">GRATIS</span>
+                                </div>
+                            </div>
+                            <div class="bonus-emoji-connector-wrapper bottom">
+                                <div class="bonus-emoji-connector-line"></div>
+                                <div class="bonus-emoji-floating-box">🏆</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Novo Card de Valor Total Centralizado -->
+                <div class="bonus-summary-badge anim-up">
+                    <span class="summary-label">VALOR TOTAL DE LOS BONOS</span>
+                    <div class="summary-value"><span class="old-price" style="opacity: 0.6; margin-right: 6px;">$124.00
+                            USD</span> — <strong style="color: var(--cta-green);">gratis solo por hoy</strong></div>
+                </div>
+
+                <!-- PREVIA DEL TABLERO DE HÁBITOS ESTÁTICO -->
+                <div class="tracker-demo-container anim-up">
+                    <div class="tracker-demo-header">
+                        <h3 class="tracker-demo-title">📊 VISTA PREVIA: TABLERO DE 21 DÍAS</h3>
+                        <p class="tracker-demo-sub">Marca tu progreso y sube de rango cada 7 días:</p>
+                    </div>
+                    
+                    <div class="tracker-static-board">
+                        
+                        
+                        <!-- Ranks Header -->
+                        <div class="tracker-ranks">
+                            <div class="rank-milestone">
+                                <span class="rank-day">DÍA 7</span>
+                                <div class="tracker-rank-badge rank-guerrero">GUERRERO ⚡</div>
+                            </div>
+                            <div class="rank-milestone">
+                                <span class="rank-day">DÍA 14</span>
+                                <div class="tracker-rank-badge rank-aceleracion">IMPARABLE 🔥</div>
+                            </div>
+                            <div class="rank-milestone">
+                                <span class="rank-day">DÍA 21</span>
+                                <div class="tracker-rank-badge rank-elite">ÉLITE 👑</div>
+                            </div>
+                        </div>
+
+                        <!-- Semana 1 -->
+                        <div class="tracker-week">
+                            <h4 class="week-title">SEMANA 1</h4>
+                            <div class="week-grid">
+                                <div class="wg-row">
+                                    <div class="wg-label">🏋️‍♂️ Entrenamiento</div>
+                                    <div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell missed">✗</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div>
+                                </div>
+                                <div class="wg-row">
+                                    <div class="wg-label">🥗 Nutrición Limpia</div>
+                                    <div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell missed">✗</div><div class="wg-cell checked">✓</div>
+                                </div>
+                                <div class="wg-row">
+                                    <div class="wg-label">😴 Descanso Óptimo</div>
+                                    <div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell missed">✗</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Performance Graph for Semana 1 -->
+                            <div class="tracker-performance-graph integrated">
+                                <div class="perf-graph-header">
+                                    <span class="perf-graph-title">📈 PERFORMANCE SEMANAL</span>
+                                    <span class="perf-graph-perc">86%</span>
+                                </div>
+                                <div class="financial-graph-container">
+                                    <svg class="financial-svg" viewBox="0 0 400 120" preserveAspectRatio="none">
+                                        <defs>
+                                            <pattern id="gridPattern" width="40" height="20" patternUnits="userSpaceOnUse">
+                                                <rect width="40" height="20" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="0.5"/>
+                                            </pattern>
+                                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" stop-color="#0284c7" />
+                                                <stop offset="100%" stop-color="#06b6d4" />
+                                            </linearGradient>
+                                            <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="rgba(6, 182, 212, 0.3)" />
+                                                <stop offset="100%" stop-color="rgba(6, 182, 212, 0.0)" />
+                                            </linearGradient>
+                                            <linearGradient id="candleUp" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="#06b6d4" />
+                                                <stop offset="100%" stop-color="#0284c7" />
+                                            </linearGradient>
+                                            <linearGradient id="candleDown" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="#ef4444" />
+                                                <stop offset="100%" stop-color="#b91c1c" />
+                                            </linearGradient>
+                                        </defs>
+                                        
+                                        <!-- Background Grid -->
+                                        <rect width="100%" height="100%" fill="url(#gridPattern)" />
+                                        
+                                        <!-- Area Fill -->
+                                        <path class="graph-area-path" d="M 29 120 L 29 20 L 86 20 L 143 46.7 L 200 46.7 L 257 20 L 314 46.7 L 371 20 L 371 120 Z" fill="url(#areaGradient)" />
+
+                                        <!-- Main Line -->
+                                        <path class="graph-line-path" d="M 29 20 L 86 20 L 143 46.7 L 200 46.7 L 257 20 L 314 46.7 L 371 20" fill="none" stroke="url(#lineGradient)" stroke-width="2.5" stroke-linecap="round" />
+                                        
+                                        <!-- Moving Average / Dotted Potential Max Line -->
+                                        <path class="graph-ma-path" d="M 20 20 L 380 20" fill="none" stroke="#eab308" stroke-width="1.5" stroke-dasharray="4,4" />
+
+                                        <!-- Candlesticks (Only 7 for Week 1) -->
+                                        <g class="graph-candles">
+                                            <rect x="23" y="20" width="12" height="80" rx="1.5" fill="url(#candleUp)" />
+                                            <rect x="80" y="20" width="12" height="80" rx="1.5" fill="url(#candleUp)" />
+                                            <rect x="137" y="46.7" width="12" height="53.3" rx="1.5" fill="url(#candleDown)" />
+                                            <rect x="194" y="46.7" width="12" height="53.3" rx="1.5" fill="url(#candleDown)" />
+                                            <rect x="251" y="20" width="12" height="80" rx="1.5" fill="url(#candleUp)" />
+                                            <rect x="308" y="46.7" width="12" height="53.3" rx="1.5" fill="url(#candleDown)" />
+                                            <rect x="365" y="20" width="12" height="80" rx="1.5" fill="url(#candleUp)" />
+                                        </g>
+                                        
+                                        <!-- Points & Tooltips -->
+                                        <g class="graph-points">
+                                            <circle cx="29" cy="20" r="3.5" fill="#06b6d4" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="86" cy="20" r="3.5" fill="#06b6d4" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="143" cy="46.7" r="3.5" fill="#ef4444" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="200" cy="46.7" r="3.5" fill="#ef4444" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="257" cy="20" r="3.5" fill="#06b6d4" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="314" cy="46.7" r="3.5" fill="#ef4444" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="371" cy="20" r="4.5" fill="#10b981" stroke="#0a0a0a" stroke-width="2" />
+                                            <text x="335" y="12" fill="#10b981" font-size="10" font-family="var(--font-tech)" font-weight="800">86.0%</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <p class="perf-graph-sub">18 de 21 marcaciones completadas. ¡Crecimiento alcista constante! 🔥</p>
+                            </div>
+                        </div>
+
+                        
+
+                        <!-- Semana 2 (Progreso Actual) -->
+                        <div class="tracker-week current-week">
+                            <h4 class="week-title">SEMANA 2 <span style="color:var(--cta-green);font-size:11px;margin-left:10px;">(Día 11 Actual)</span></h4>
+                            <div class="week-grid">
+                                <div class="wg-row">
+                                    <div class="wg-label">🏋️‍♂️ Entrenamiento</div>
+                                    <div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell current"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div>
+                                </div>
+                                <div class="wg-row">
+                                    <div class="wg-label">🥗 Nutrición Limpia</div>
+                                    <div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell checked">✓</div><div class="wg-cell current"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div>
+                                </div>
+                                <div class="wg-row">
+                                    <div class="wg-label">😴 Descanso Óptimo</div>
+                                    <div class="wg-cell checked">✓</div><div class="wg-cell missed">✗</div><div class="wg-cell checked">✓</div><div class="wg-cell current"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Performance Graph for Semana 2 -->
+                            <div class="tracker-performance-graph integrated">
+                                <div class="perf-graph-header">
+                                    <span class="perf-graph-title">📈 PERFORMANCE SEMANAL (EN PROGRESO)</span>
+                                    <span class="perf-graph-perc">38%</span>
+                                </div>
+                                <div class="financial-graph-container">
+                                    <svg class="financial-svg" viewBox="0 0 400 120" preserveAspectRatio="none">
+                                        <defs>
+                                            <pattern id="gridPattern2" width="40" height="20" patternUnits="userSpaceOnUse">
+                                                <rect width="40" height="20" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="0.5"/>
+                                            </pattern>
+                                            <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" stop-color="#ea580c" />
+                                                <stop offset="100%" stop-color="#fb923c" />
+                                            </linearGradient>
+                                            <linearGradient id="areaGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="rgba(249, 115, 22, 0.35)" />
+                                                <stop offset="100%" stop-color="rgba(249, 115, 22, 0.0)" />
+                                            </linearGradient>
+                                            <linearGradient id="candleUp2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="#fb923c" />
+                                                <stop offset="100%" stop-color="#ea580c" />
+                                            </linearGradient>
+                                            <linearGradient id="candleDown2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="#ef4444" />
+                                                <stop offset="100%" stop-color="#b91c1c" />
+                                            </linearGradient>
+                                        </defs>
+                                        
+                                        <!-- Background Grid -->
+                                        <rect width="100%" height="100%" fill="url(#gridPattern2)" />
+                                        
+                                        <!-- Area Fill (Only up to x=143 for completed days) -->
+                                        <path class="graph-area-path" d="M 29 120 L 29 20 L 86 46.7 L 143 20 L 143 120 Z" fill="url(#areaGradient2)" />
+
+                                        <!-- Main Line (Only up to completed portion) -->
+                                        <path class="graph-line-path" d="M 29 20 L 86 46.7 L 143 20" fill="none" stroke="url(#lineGradient2)" stroke-width="2.5" stroke-linecap="round" />
+                                        
+                                        <!-- Dotted Potential Max Line (100% Potential Target) -->
+                                        <path class="graph-ma-path" d="M 20 20 L 380 20" fill="none" stroke="#eab308" stroke-width="1.5" stroke-dasharray="4,4" />
+
+                                        <!-- Future Projection Path (Dotted, semi-transparent) -->
+                                        <path class="graph-ma-path" d="M 143 20 L 200 46.7 L 257 20 L 314 46.7 L 371 20" fill="none" stroke="#f97316" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.4" />
+
+                                        <!-- Candlesticks (Only completed days + current blinking) -->
+                                        <g class="graph-candles">
+                                            <rect x="23" y="20" width="12" height="80" rx="1.5" fill="url(#candleUp2)" />
+                                            <rect x="80" y="46.7" width="12" height="53.3" rx="1.5" fill="url(#candleDown2)" />
+                                            <rect x="137" y="20" width="12" height="80" rx="1.5" fill="url(#candleUp2)" />
+                                            <!-- Current day blinking candle placeholder at bottom -->
+                                            <rect x="194" y="90" width="12" height="10" rx="1.5" fill="url(#candleUp2)" opacity="0.4" />
+                                        </g>
+                                        
+                                        <!-- Points & Tooltips -->
+                                        <g class="graph-points">
+                                            <circle cx="29" cy="20" r="3.5" fill="#f97316" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="86" cy="46.7" r="3.5" fill="#ef4444" stroke="#0a0a0a" stroke-width="1.5" />
+                                            <circle cx="143" cy="20" r="4.5" fill="#10b981" stroke="#0a0a0a" stroke-width="2" />
+                                            <text x="115" y="12" fill="#10b981" font-size="10" font-family="var(--font-tech)" font-weight="800">38.0%</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <p class="perf-graph-sub">8 de 21 marcaciones. ¡Mantén el ritmo para el rango ÉLITE 👑!</p>
+                            </div>
+                        </div>
+
+                        <!-- Semana 3 (Bloqueada) -->
+                        <div class="tracker-week locked-week">
+                            <div class="locked-overlay">🔒 Completa la Semana 2 para Desbloquear</div>
+                            <h4 class="week-title">SEMANA 3</h4>
+                            <div class="week-grid blurred">
+                                <div class="wg-row">
+                                    <div class="wg-label">🏋️‍♂️ Entrenamiento</div>
+                                    <div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div>
+                                </div>
+                                <div class="wg-row">
+                                    <div class="wg-label">🥗 Nutrición Limpia</div>
+                                    <div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div>
+                                </div>
+                                <div class="wg-row">
+                                    <div class="wg-label">😴 Descanso Óptimo</div>
+                                    <div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div><div class="wg-cell empty"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-card pricing-card-shell anim-up">
+                <div class="comp-social-proof-top">
+                    <span class="proof-dot"></span>
+                    <span class="proof-text">+<span id="people-joined-count">320</span> personas se unieron al protocolo
+                        esta semana</span>
+                </div>
+                <!-- Social Proof Carousel (Moved up for better flow) -->
+                <div class="pricing-social-area">
+                    <div id="social-proof-carousel">
+                        <div class="proof-badge" id="proof-badge-el">
+                            <span class="proof-dot male"></span>
+                            <span class="proof-text">carlos* validó su acceso al protocolo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-header-area">
+                    <div class="pricing-header-inner">
+                        <h2 class="pricing-main-title">LIBERAR MI ACCESO</h2>
+                        <p class="pricing-access-note">Tu acceso será enviado de forma instantánea tras la confirmación
+                            del pago.</p>
+                        <div class="pricing-launch-badge">
+                            <span class="pricing-launch-dot"></span>
+                            Oferta de Lanzamiento • Sin Mensualidades
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-body-area">
+                    <!-- CARD DE PREÇO SIMPLIFICADO -->
+                    <div class="pricing-card-v2 pricing-card-v2-inner anim-up">
+                        <p class="pricing-fee-label">PAGO DE TASA = ACCESO VITALICIO</p>
+                        <div class="pricing-value-row">
+                            <span class="pricing-value-big"><span class="price-new-v2">$37.99</span></span>
+                            <span class="pricing-currency">USD</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-offer-cta"
+                        onclick="window.location.href='https://pay.hotmart.com/YOUR_LINK_HERE'">
+                        GARANTIZAR MI ACCESO AL PROTOCOLO
+                    </button>
+
+                    <!-- SELOS DE CONFIANÇA MARCADOS -->
+                    <div class="trust-seals-row">
+                        <div class="trust-seal-item">
+                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio"
+                                class="trust-seal-img">
+                            <div class="trust-seal-text">
+                                <div class="trust-seal-line">ACCESO</div>
+                                <div class="trust-seal-line">VITALICIO</div>
+                            </div>
+                        </div>
+                        <div class="trust-seal-item">
+                            <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="trust-seal-img">
+                            <div class="trust-seal-text">
+                                <div class="trust-seal-line">30 DÍAS DE</div>
+                                <div class="trust-seal-line">GARANTÍA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="program-objectives-section anim-up">
                 <h3 class="program-objectives-title">BENEFICIOS ADICIONALES DE CRUSH IT:</h3>
@@ -1457,84 +1918,27 @@
                 </ul>
             </div>
 
-            <div class="pricing-card pricing-card-shell anim-up">
-                <div class="comp-social-proof-top">
-                    <span class="proof-dot"></span>
-                    <span class="proof-text">+<span id="people-joined-count">320</span> personas se unieron al protocolo esta semana</span>
-                </div>
-                <!-- Social Proof Carousel (Moved up for better flow) -->
-                <div class="pricing-social-area">
-                    <div id="social-proof-carousel">
-                        <div class="proof-badge" id="proof-badge-el">
-                            <span class="proof-dot male"></span>
-                            <span class="proof-text">carlos* validó su acceso al protocolo</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pricing-header-area">
-                    <div class="pricing-header-inner">
-                        <h2 class="pricing-main-title">LIBERAR MI ACCESO</h2>
-                        <p class="pricing-access-note">Tu acceso será enviado de forma instantánea tras la confirmación del pago.</p>
-                        <div class="pricing-launch-badge">
-                            <span class="pricing-launch-dot"></span>
-                            Oferta de Lanzamiento • Sin Mensualidades
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pricing-body-area">
-                    <!-- CARD DE PREÇO SIMPLIFICADO -->
-                    <div class="pricing-card-v2 pricing-card-v2-inner anim-up">
-                        <p class="pricing-fee-label">PAGO DE TASA = ACCESO VITALICIO</p>
-                        <div class="pricing-value-row">
-                            <span class="pricing-value-big"><span class="price-new-v2">$37.99</span></span>
-                            <span class="pricing-currency">USD</span>
-                        </div>
-                    </div>
-
-                    <button class="btn-offer-cta" onclick="window.location.href='https://pay.hotmart.com/YOUR_LINK_HERE'">
-                        GARANTIZAR MI ACCESO AL PROTOCOLO
-                    </button>
-
-                    <!-- SELOS DE CONFIANÇA MARCADOS -->
-                    <div class="trust-seals-row">
-                        <div class="trust-seal-item">
-                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="trust-seal-img">
-                            <div class="trust-seal-text">
-                                <div class="trust-seal-line">ACCESO</div>
-                                <div class="trust-seal-line">VITALICIO</div>
-                            </div>
-                        </div>
-                        <div class="trust-seal-item">
-                            <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="trust-seal-img">
-                            <div class="trust-seal-text">
-                                <div class="trust-seal-line">30 DÍAS DE</div>
-                                <div class="trust-seal-line">GARANTÍA</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="glow-beam anim-fade delay-5" style="margin: 0 auto 5px;"></div>
 
             <!-- SECTION: NEW PREMIUM GUARANTEE -->
             <div class="guarantee-card-premium anim-up">
                 <!-- Decorative Glow behind badge -->
                 <div class="guarantee-glow"></div>
-                
+
                 <div class="guarantee-header">
                     <div class="guarantee-badge-wrap">
-                        <img src="imagens_webp_crush_it/reembolso.webp" alt="Garantía de 30 días" class="guarantee-badge-img">
+                        <img src="imagens_webp_crush_it/reembolso.webp" alt="Garantía de 30 días"
+                            class="guarantee-badge-img">
                     </div>
                     <h2 class="guarantee-title">Garantía de satisfacción</h2>
                 </div>
-                
+
                 <div class="guarantee-body">
-                    ¡Creemos que nuestro plan funcionará para ti! Estamos tan seguros que ofrecemos un <strong>reembolso completo dentro de los 30 días</strong> posteriores a la compra si no consigues resultados visibles y puedes demostrar que has seguido el protocolo.
+                    ¡Creemos que nuestro plan funcionará para ti! Estamos tan seguros que ofrecemos un <strong>reembolso
+                        completo dentro de los 30 días</strong> posteriores a la compra si no consigues resultados
+                    visibles y puedes demostrar que has seguido el protocolo.
                 </div>
-                
+
                 <div class="guarantee-footer">
                     Obtén más información en nuestra <a href="#">política de reembolso</a>
                 </div>
@@ -1542,99 +1946,31 @@
 
             <!-- SECTION: TRUST & SOCIAL PROOF -->
             <div class="trust-section">
-                    <img src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel laurel-left" alt="Laurel">
-                    
-                    <div class="trust-content">
-                        <h2 class="trust-number">+1.5 MILLONES</h2>
-                        <p style="font-size: 13px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; max-width: 280px; line-height: 1.3;">VIDAS TRANSFORMADAS POR EL <span style="color: var(--brand-purple);">CRUSHIT</span></p>
-                        
-                        <div class="trust-stars">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                        
-                        <div class="trust-rating-badge">4.7 de 5</div>
+                <img src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel laurel-left" alt="Laurel">
 
-                        <p style="font-size: 17px; color: #fff; font-weight: 700; line-height: 1.5; max-width: 320px; opacity: 0.9;">
-                            Más de 200.000 valoraciones de 5 estrellas de nuestra <span style="color: var(--cta-green);">comunidad global</span>
-                        </p>
+                <div class="trust-content">
+                    <h2 class="trust-number">+1.5 MILLONES</h2>
+                    <p
+                        style="font-size: 13px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; max-width: 280px; line-height: 1.3;">
+                        VIDAS TRANSFORMADAS POR EL <span style="color: var(--brand-purple);">CRUSHIT</span></p>
+
+                    <div class="trust-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
 
-                    <img src="imagens_webp_crush_it/ramo-direito.webp" class="laurel laurel-right" alt="Laurel">
+                    <div class="trust-rating-badge">4.7 de 5</div>
+
+                    <p
+                        style="font-size: 17px; color: #fff; font-weight: 700; line-height: 1.5; max-width: 320px; opacity: 0.9;">
+                        Más de 200.000 valoraciones de 5 estrellas de nuestra <span
+                            style="color: var(--cta-green);">comunidad global</span>
+                    </p>
+                </div>
+
+                <img src="imagens_webp_crush_it/ramo-direito.webp" class="laurel laurel-right" alt="Laurel">
             </div>
 
             <div class="glow-beam anim-fade delay-5" style="margin: -5px auto 10px;"></div>
-
-            <!-- SECTION: FAQ -->
-            <div class="faq-section">
-                <h2 class="faq-title">PREGUNTAS FRECUENTES</h2>
-                
-                <div class="faq-container">
-                    <!-- FAQ 1 -->
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>¿NECESITO EQUIPO O GIMNASIO?</h3>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>No. Solo tu cuerpo y un espacio del tamaño de una cama. Puedes hacerlo en casa, en el parque, en un hotel. El protocolo fue diseñado para no necesitar nada externo.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 2 -->
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>¿ES ADECUADO PARA PRINCIPIANTES?</h3>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Sí. Y no te estamos mintiendo para que compres. El sistema empieza donde tú estás, no donde deberías estar. Si nunca has entrenado, arrancas en el nivel base. Si ya entrenas, el protocolo te lleva más lejos.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 3 -->
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>¿CUÁNTO TIEMPO DURA CADA ENTRENAMIENTO?</h3>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Entre 20 y 40 minutos. Diseñado para que no haya excusa válida de "no tengo tiempo". Si tienes tiempo para scrollear 30 minutos, tienes tiempo para esto.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 4 -->
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>¿TIENE GARANTÍA DE REEMBOLSO?</h3>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>30 días. Sin preguntas. Si sigues el protocolo y no ves resultados, te devolvemos cada centavo. No porque tengamos que decirlo. Porque estamos seguros de lo que pasa cuando alguien realmente lo hace.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 5 -->
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>¿ES UN PAGO ÚNICO O HAY SUSCRIPCIÓN?</h3>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Es un pago único. No hay cuotas mensuales, cargos ocultos ni sorpresas en tu tarjeta. Pagas una vez y el acceso al protocolo es tuyo para siempre.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>¿CÓMO RECIBO EL ACCESO A MI PROTOCOLO?</h3>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Inmediatamente después de la confirmación del pago, recibirás un correo electrónico con tus datos de acceso exclusivos a nuestra área de miembros. Podrás empezar hoy mismo sin esperas.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- SECTION: TESTIMONIALS (Step 1: Header) -->
             <div class="testimonials-section">
@@ -1652,9 +1988,12 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps3m.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps3m.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">Fue como un milagro científico. En solo 21 días mi cuerpo se transformó por completo gracias al poder del Crush It. Es simplemente superior a todo lo que existe.</p>
+                            <p class="user-text">Fue como un milagro científico. En solo 21 días mi cuerpo se transformó
+                                por completo gracias al poder del Crush It. Es simplemente superior a todo lo que
+                                existe.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1667,9 +2006,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps2.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps2.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">No es un plan más, es EL PLAN definitivo. Literalmente en 21 días logré lo que no pude en años. Crush It es el estándar de oro del fitness moderno.</p>
+                            <p class="user-text">No es un plan más, es EL PLAN definitivo. Literalmente en 21 días logré
+                                lo que no pude en años. Crush It es el estándar de oro del fitness moderno.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1682,9 +2023,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps4m.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps4m.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">La tecnología hormonal de Crush It es de otro planeta. 21 días exactos para esculpir una versión de mí que no creía posible. Es pura supremacía física.</p>
+                            <p class="user-text">La tecnología hormonal de Crush It es de otro planeta. 21 días exactos
+                                para esculpir una versión de mí que no creía posible. Es pura supremacía física.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1697,9 +2040,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps1.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps1.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">Dudaba que 21 días fueran suficientes, pero Crush It me calló la boca. Mi abdomen es otro. Es simplemente la autoridad máxima en resultados rápidos.</p>
+                            <p class="user-text">Dudaba que 21 días fueran suficientes, pero Crush It me calló la boca.
+                                Mi abdomen es otro. Es simplemente la autoridad máxima en resultados rápidos.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1711,9 +2056,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps5m.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps5m.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">He probado todo, pero nada se compara a la superioridad de Crush It. Resultados definitivos y radicales en el ciclo de 21 días. No hay competencia.</p>
+                            <p class="user-text">He probado todo, pero nada se compara a la superioridad de Crush It.
+                                Resultados definitivos y radicales en el ciclo de 21 días. No hay competencia.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1726,9 +2073,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps6m.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps6m.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">Crush It no solo cambia tu cuerpo, redefine tu destino. 21 días de enfoque y el resultado es una obra de arte física. Es la élite absoluta.</p>
+                            <p class="user-text">Crush It no solo cambia tu cuerpo, redefine tu destino. 21 días de
+                                enfoque y el resultado es una obra de arte física. Es la élite absoluta.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1741,9 +2090,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps3.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps3.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">La eficiencia de este protocolo es aterradora. En solo 21 días logré la definición que tanto soñaba. Es el mejor sistema del mercado, punto.</p>
+                            <p class="user-text">La eficiencia de este protocolo es aterradora. En solo 21 días logré la
+                                definición que tanto soñaba. Es el mejor sistema del mercado, punto.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1756,9 +2107,12 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps4.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps4.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">Sentí el poder desde el primer día, pero al llegar al día 21 la transformación fue total y absoluta. Crush It es la autoridad máxima en el cambio físico.</p>
+                            <p class="user-text">Sentí el poder desde el primer día, pero al llegar al día 21 la
+                                transformación fue total y absoluta. Crush It es la autoridad máxima en el cambio
+                                físico.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1770,9 +2124,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps2m.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps2m.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">Si buscas lo mejor, Crush It es el único camino. 21 días para recuperar una energía y un físico de élite que otros tardan años en conseguir.</p>
+                            <p class="user-text">Si buscas lo mejor, Crush It es el único camino. 21 días para recuperar
+                                una energía y un físico de élite que otros tardan años en conseguir.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1785,9 +2141,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps1m.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps1m.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">No hay nada que se acerque a la precisión de Crush It. 21 días exactos y mi cuerpo es una roca. Es el estándar más alto que he probado jamás.</p>
+                            <p class="user-text">No hay nada que se acerque a la precisión de Crush It. 21 días exactos
+                                y mi cuerpo es una roca. Es el estándar más alto que he probado jamás.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1800,9 +2158,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps5.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps5.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">Simplemente no hay nada en el planeta que se le acerque. En 21 días el cambio fue radical y definitivo. Crush It es la solución absoluta.</p>
+                            <p class="user-text">Simplemente no hay nada en el planeta que se le acerque. En 21 días el
+                                cambio fue radical y definitivo. Crush It es la solución absoluta.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1815,9 +2175,11 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps6.webp" alt="Transformación" class="transformation-img">
+                                <img src="imagens_webp_crush_it/ps6.webp" alt="Transformación"
+                                    class="transformation-img">
                             </div>
-                            <p class="user-text">Lo que Crush It logra en 21 días es lo que otros prometen en meses. Es la élite del fitness y la clave para un cuerpo perfecto.</p>
+                            <p class="user-text">Lo que Crush It logra en 21 días es lo que otros prometen en meses. Es
+                                la élite del fitness y la clave para un cuerpo perfecto.</p>
                             <div class="card-footer">
                                 <span class="verified-badge">✅ VERIFICADO</span>
                             </div>
@@ -1832,30 +2194,126 @@
                 </div>
             </div>
 
-            <div class="glow-beam anim-fade" style="margin: 30px auto 10px !important; opacity: 0.5; width: 500px !important; max-width: 90% !important;"></div>
+            <!-- SECTION: FAQ -->
+            <div class="faq-section">
+                <h2 class="faq-title">PREGUNTAS FRECUENTES</h2>
 
-<footer class="site-footer">
-                <div class="footer-logo">
-                    <img src="imagens_webp_crush_it/logo.png" alt="Crush It Logo" loading="lazy" class="footer-logo-img">
+                <div class="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>¿NECESITO EQUIPO O GIMNASIO?</h3>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No. Solo tu cuerpo y un espacio del tamaño de una cama. Puedes hacerlo en casa, en el
+                                parque, en un hotel. El protocolo fue diseñado para no necesitar nada externo.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>¿ES ADECUADO PARA PRINCIPIANTES?</h3>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí. Y no te estamos mintiendo para que compres. El sistema empieza donde tú estás, no
+                                donde deberías estar. Si nunca has entrenado, arrancas en el nivel base. Si ya entrenas,
+                                el protocolo te lleva más lejos.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>¿CUÁNTO TIEMPO DURA CADA ENTRENAMIENTO?</h3>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Entre 20 y 40 minutos. Diseñado para que no haya excusa válida de "no tengo tiempo". Si
+                                tienes tiempo para scrollear 30 minutos, tienes tiempo para esto.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>¿TIENE GARANTÍA DE REEMBOLSO?</h3>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>30 días. Sin preguntas. Si sigues el protocolo y no ves resultados, te devolvemos cada
+                                centavo. No porque tengamos que decirlo. Porque estamos seguros de lo que pasa cuando
+                                alguien realmente lo hace.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>¿ES UN PAGO ÚNICO O HAY SUSCRIPCIÓN?</h3>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Es un pago único. No hay cuotas mensuales, cargos ocultos ni sorpresas en tu tarjeta.
+                                Pagas una vez y el acceso al protocolo es tuyo para siempre.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>¿CÓMO RECIBO EL ACCESO A MI PROTOCOLO?</h3>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Inmediatamente después de la confirmación del pago, recibirás un correo electrónico con
+                                tus datos de acceso exclusivos a nuestra área de miembros. Podrás empezar hoy mismo sin
+                                esperas.</p>
+                        </div>
+                    </div>
                 </div>
-                
+            </div>
+
+            <div class="glow-beam anim-fade"
+                style="margin: 30px auto 10px !important; opacity: 0.5; width: 500px !important; max-width: 90% !important;">
+            </div>
+
+            <footer class="site-footer">
+                <div class="footer-logo">
+                    <img src="imagens_webp_crush_it/logo.png" alt="Crush It Logo" loading="lazy"
+                        class="footer-logo-img">
+                </div>
+
                 <div class="footer-links">
-                    <a href="#">Política de privacidad</a> · 
-                    <a href="#">Términos y condiciones</a> · 
-                    <a href="#">Política de reembolso</a> · 
+                    <a href="#">Política de privacidad</a> ·
+                    <a href="#">Términos y condiciones</a> ·
+                    <a href="#">Política de reembolso</a> ·
                     <a href="#">Contacto</a>
                 </div>
-                
+
                 <div class="footer-disclaimer">
-                    <p>*Los resultados mostrados son ilustrativos y no están garantizados. Los logros individuales pueden variar según factores como la dieta, el ejercicio y el metabolismo personal. Este sitio no es parte de Facebook™ ni de Facebook Inc. Además, este sitio no está respaldado por Facebook de ninguna manera. FACEBOOK™ é una marca registrada de FACEBOOK, Inc.</p>
+                    <p>*Los resultados mostrados son ilustrativos y no están garantizados. Los logros individuales
+                        pueden variar según factores como la dieta, el ejercicio y el metabolismo personal. Este sitio
+                        no es parte de Facebook™ ni de Facebook Inc. Además, este sitio no está respaldado por Facebook
+                        de ninguna manera. FACEBOOK™ é una marca registrada de FACEBOOK, Inc.</p>
                 </div>
                 <div class="footer-copyright">
                     <p>&copy; 2026 Crush It - Todos los derechos reservados.</p>
+                </div>
+
+                <div class="footer-trust-images" style="margin-top: 30px; text-align: center; padding-bottom: 30px;">
+                    <img src="imagens_webp_crush_it/pagamentos.webp" alt="Pagos Seguros" style="width: 100%; max-width: 600px; display: block; margin: 0 auto 15px;">
+                    <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+                        <img src="imagens_webp_crush_it/ssl.webp" alt="SSL Seguro" style="height: 40px; object-fit: contain;">
+                        <img src="imagens_webp_crush_it/30d.webp" alt="Garantía 30 Días" style="height: 50px; object-fit: contain;">
+                    </div>
                 </div>
             </footer>
         </div>
     </div>
 
-    <script src="js/app.js?v=7.2" defer></script>
+    <script src="js/app.js?v=7.5" defer></script>
 </body>
+
 </html>
