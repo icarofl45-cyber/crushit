@@ -938,8 +938,8 @@
     width: 75px;
     height: 85px;
     background: rgba(255, 255, 255, 0.03);
-    clip-path: url(#hex-clip-smooth);
-    -webkit-clip-path: url(#hex-clip-smooth);
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1863,7 +1863,8 @@ body.gender-female .gender-diff-subtitle {
 .pushup-hex-wrap {
     width: 100px;
     height: 100px;
-    clip-path: url(#hex-clip-smooth);
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     background: #111;
     display: flex;
     align-items: center;
@@ -1886,8 +1887,9 @@ body.gender-female .gender-diff-subtitle {
 .pushup-hex-wrap::after {
     content: '';
     position: absolute;
-    inset: 0;
-    clip-path: url(#hex-clip-smooth);
+    inset: 1px;
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     border: 2px solid rgba(255, 255, 255, 0.1);
     pointer-events: none;
     transition: all 0.3s ease;
