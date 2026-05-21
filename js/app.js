@@ -83,11 +83,17 @@ function loadProfile() {
    1. NAVEGACIÓN Y COMPONENTES GLOBALES
    ========================================== */
 function goToStep(stepId, value) {
-    if (stepId !== 'offer' && offerScrollListener) {
-        window.removeEventListener('scroll', offerScrollListener);
-        offerScrollListener = null;
-        const badge = document.getElementById('offer-timer-badge');
-        if (badge) badge.classList.remove('sticky-timer-badge');
+    if (stepId !== 'offer') {
+        if (offerScrollListener) {
+            window.removeEventListener('scroll', offerScrollListener);
+            offerScrollListener = null;
+            const badge = document.getElementById('offer-timer-badge');
+            if (badge) badge.classList.remove('sticky-timer-badge');
+        }
+        if (rouletteTimerId) {
+            clearTimeout(rouletteTimerId);
+            rouletteTimerId = null;
+        }
     }
 
     const currentActive = document.querySelector('.screen.active');
@@ -148,6 +154,7 @@ function goToStep(stepId, value) {
     if (stepId === 'offer') {
         populateOfferScreen();
         startOfferTimer();
+        startRouletteTimer();
     }
 
     if (stepId === 'pushups') {
@@ -1367,10 +1374,13 @@ function populateOfferScreen() {
         else imcCard.classList.add('status-red');
     }
 
-    // Initialize social proof elements
-    if (typeof startSocialProofCarousel === 'function') startSocialProofCarousel();
-    if (typeof startTestimonialsCarousel === 'function') startTestimonialsCarousel();
-    if (typeof startPeopleCounter === 'function') startPeopleCounter();
+    // Initialize social proof elements (only once to prevent duplicate intervals/animation loops)
+    if (!carouselsInitialized) {
+        carouselsInitialized = true;
+        if (typeof startSocialProofCarousel === 'function') startSocialProofCarousel();
+        if (typeof startTestimonialsCarousel === 'function') startTestimonialsCarousel();
+        if (typeof startPeopleCounter === 'function') startPeopleCounter();
+    }
 }
 
 
@@ -1385,6 +1395,7 @@ function scrollToPrice() {
 
 
 // SOCIAL PROOF CAROUSEL - REFINADO (PORTUGUÊS)
+let carouselsInitialized = false;
 let currentProofIndex = 0;
 const proofs = [
     { name: 'Mateo', gender: 'male' },
@@ -1532,6 +1543,12 @@ window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('global-back-btn').style.display = 'none';
             populateOfferScreen();
             startOfferTimer();
+            startRouletteTimer();
+        }
+
+        // Se for a tela de summary, inicia o timer
+        if (hash === 'summary') {
+            startSummaryTimer();
         }
 
         // Se for a tela de bodyfat, atualiza a imagem
@@ -1556,3 +1573,285 @@ window.addEventListener('DOMContentLoaded', () => {
     /* Legacy discount check removed */
 });
 
+
+/* ============================================================
+   ROLETA DE DESCONTO / DISCOUNT WHEEL
+   ============================================================ */
+let rouletteTimerId = null;
+let rouletteShown = false;
+const ROULETTE_DELAY_SECONDS = 90; // Alterado para 90 segundos conforme solicitação do usuário
+
+// Segments: [label, color1, color2]
+const WHEEL_SEGMENTS = [
+    { label: '75%', color: '#7b2ff7' },
+    { label: '20%', color: '#5a1dbf' },
+    { label: '30%', color: '#7b2ff7' },
+    { label: '10%', color: '#5a1dbf' },
+    { label: '50%', color: '#7b2ff7' },
+    { label: '25%', color: '#5a1dbf' },
+    { label: '5%',  color: '#7b2ff7' },
+    { label: '15%', color: '#5a1dbf' }
+];
+
+function drawWheel() {
+    const canvas = document.getElementById('wheel-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+    const cx = w / 2;
+    const cy = h / 2;
+    const r = (Math.min(w, h) / 2) - 8;
+    const segCount = WHEEL_SEGMENTS.length;
+    const arc = (2 * Math.PI) / segCount;
+
+    ctx.clearRect(0, 0, w, h);
+
+    for (let i = 0; i < segCount; i++) {
+        const angle = i * arc;
+        // Draw segment
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, angle, angle + arc);
+        ctx.closePath();
+        ctx.fillStyle = WHEEL_SEGMENTS[i].color;
+        ctx.fill();
+        // Segment border
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Draw text
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(angle + arc / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 36px Inter, Arial, sans-serif';
+        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+        ctx.shadowBlur = 4;
+        ctx.fillText(WHEEL_SEGMENTS[i].label, r - 20, 12);
+        ctx.restore();
+    }
+
+    // Center circle with GIRAR text
+    ctx.beginPath();
+    ctx.arc(cx, cy, 42, 0, 2 * Math.PI);
+    ctx.fillStyle = '#1a1035';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(123, 47, 247, 0.6)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 18px Inter, Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'transparent';
+    ctx.fillText('GIRAR', cx, cy);
+}
+
+function startRouletteTimer() {
+    if (rouletteShown || rouletteTimerId) return;
+
+    // Capture exit intent by pushing a history state for back button hijacking (Mobile & Desktop)
+    if (window.history && window.history.pushState && sessionStorage.getItem('roulette_discount_applied') !== 'true') {
+        if (!window.history.state || window.history.state.page !== 'offer_intent') {
+            window.history.pushState({ page: 'offer_intent' }, document.title, window.location.href);
+        }
+    }
+
+    // Check if discount was already applied this session
+    if (sessionStorage.getItem('roulette_discount_applied') === 'true') {
+        rouletteShown = true;
+        // Re-apply the discount visuals
+        applyDiscountVisuals();
+        return;
+    }
+
+    rouletteTimerId = setTimeout(() => {
+        rouletteTimerId = null; // Reset pointer when fired
+        const offerScreen = document.getElementById('screen-offer');
+        if (offerScreen && offerScreen.classList.contains('active') && !rouletteShown) {
+            showRoulette();
+        }
+    }, ROULETTE_DELAY_SECONDS * 1000);
+}
+
+// Exit Intent Triggers
+function triggerExitIntent() {
+    const offerScreen = document.getElementById('screen-offer');
+    if (offerScreen && offerScreen.classList.contains('active') && !rouletteShown) {
+        if (sessionStorage.getItem('roulette_discount_applied') === 'true') {
+            return;
+        }
+        if (rouletteTimerId) {
+            clearTimeout(rouletteTimerId);
+            rouletteTimerId = null;
+        }
+        showRoulette();
+    }
+}
+
+// 1. Mouseleave (Desktop exit intent)
+document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 20) {
+        triggerExitIntent();
+    }
+});
+
+// 2. Visibility change (minimize/switch tabs exit intent - Mobile & Desktop)
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+        triggerExitIntent();
+    }
+});
+
+// 3. Scroll up rapidly near top (Mobile exit intent)
+let lastScrollTop = 0;
+window.addEventListener('scroll', () => {
+    const offerScreen = document.getElementById('screen-offer');
+    if (offerScreen && offerScreen.classList.contains('active') && !rouletteShown) {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st < lastScrollTop && lastScrollTop - st > 50 && st < 100) {
+            triggerExitIntent();
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+    }
+}, { passive: true });
+
+// 4. Back button history popstate listener (Mobile back intent)
+window.addEventListener('popstate', (event) => {
+    const offerScreen = document.getElementById('screen-offer');
+    if (offerScreen && offerScreen.classList.contains('active') && !rouletteShown) {
+        if (sessionStorage.getItem('roulette_discount_applied') !== 'true') {
+            triggerExitIntent();
+            window.history.pushState({ page: 'offer_intent' }, document.title, window.location.href);
+        }
+    }
+});
+
+function showRoulette() {
+    rouletteShown = true;
+    drawWheel();
+    const overlay = document.getElementById('roulette-overlay');
+    if (overlay) {
+        overlay.classList.add('active');
+    }
+    // Reset UI state
+    const btnSpin = document.getElementById('btn-spin');
+    const prizeArea = document.getElementById('roulette-prize-area');
+    if (btnSpin) { btnSpin.style.display = 'block'; btnSpin.disabled = false; }
+    if (prizeArea) prizeArea.classList.remove('show');
+}
+
+function spinWheel() {
+    const canvas = document.getElementById('wheel-canvas');
+    const btnSpin = document.getElementById('btn-spin');
+    if (!canvas || !btnSpin) return;
+
+    btnSpin.disabled = true;
+
+    // 75% is segment 0. Pointer is at top (12 o'clock = 270° = 3π/2).
+    // Segment 0 spans from 0° to 45° (0 to π/4).
+    // We need the midpoint of segment 0 to be at 270° from the canvas perspective.
+    // Midpoint of segment 0 = 22.5° (π/8).
+    // We need to rotate so that 22.5° aligns with 270° (top).
+    // Rotation needed: 360° - 22.5° + 270° = 607.5° but we start from 0° at 3 o'clock.
+    // Actually: pointer reads at TOP. Canvas 0° is at 3 o'clock (right).
+    // Segment 0 center is at 22.5° from 3 o'clock.
+    // To bring segment 0 center to top (270° from 3 o'clock):
+    // targetAngle = 270° - 22.5° = 247.5°
+    // Add multiple full rotations for visual spin effect
+    const fullSpins = 5; // 5 full rotations
+    const targetAngle = 247.5;
+    const totalRotation = (fullSpins * 360) + targetAngle;
+
+    canvas.style.transition = 'transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+    canvas.style.transform = `rotate(${totalRotation}deg)`;
+
+    // After spin completes
+    setTimeout(() => {
+        // Show confetti
+        launchConfetti();
+
+        // Show prize area
+        const prizeArea = document.getElementById('roulette-prize-area');
+        if (prizeArea) prizeArea.classList.add('show');
+
+        // Hide spin button
+        btnSpin.style.display = 'none';
+    }, 4200);
+}
+
+function acceptDiscount() {
+    const overlay = document.getElementById('roulette-overlay');
+    if (overlay) overlay.classList.remove('active');
+
+    // Save to session
+    sessionStorage.setItem('roulette_discount_applied', 'true');
+
+    // Apply discount visuals
+    applyDiscountVisuals();
+
+    // Launch another confetti burst
+    launchConfetti();
+}
+
+function applyDiscountVisuals() {
+    // 1. Add strikethrough + shrink to original price
+    const priceRow = document.getElementById('pricing-value-row');
+    if (priceRow) priceRow.classList.add('discounted');
+
+    // 2. Show discount badge container
+    const discountContainer = document.getElementById('discount-badge-container');
+    if (discountContainer) {
+        // Small delay for visual impact
+        setTimeout(() => {
+            discountContainer.classList.add('show');
+        }, 300);
+    }
+
+    // 3. Update CTA button link to discount link
+    const ctaBtn = document.querySelector('.btn-offer-cta');
+    if (ctaBtn) {
+        ctaBtn.onclick = function() {
+            window.location.href = 'https://pay.hotmart.com/YOUR_DISCOUNT_LINK_HERE';
+        };
+    }
+}
+
+function launchConfetti() {
+    const container = document.getElementById('confetti-container');
+    if (!container) return;
+
+    const colors = ['#7b2ff7', '#ff6b00', '#22c55e', '#ff4444', '#ffd700', '#00d4ff', '#ff69b4', '#fff'];
+    const shapes = ['square', 'circle'];
+    const pieceCount = 80;
+
+    for (let i = 0; i < pieceCount; i++) {
+        const piece = document.createElement('div');
+        piece.classList.add('confetti-piece');
+
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const shape = shapes[Math.floor(Math.random() * shapes.length)];
+        const left = Math.random() * 100;
+        const size = Math.random() * 8 + 6;
+        const duration = Math.random() * 2 + 2;
+        const delay = Math.random() * 0.8;
+
+        piece.style.left = left + '%';
+        piece.style.width = size + 'px';
+        piece.style.height = size + 'px';
+        piece.style.backgroundColor = color;
+        piece.style.borderRadius = shape === 'circle' ? '50%' : '2px';
+        piece.style.animationDuration = duration + 's';
+        piece.style.animationDelay = delay + 's';
+
+        container.appendChild(piece);
+    }
+
+    // Clean up confetti after animations complete
+    setTimeout(() => {
+        container.innerHTML = '';
+    }, 4000);
+}
