@@ -655,6 +655,8 @@ function startAnalysis() {
     }
 
     if (percEl) percEl.innerText = percentage + '%';
+    const innerPercEl = document.getElementById('analysis-inner-percent');
+    if (innerPercEl) innerPercEl.innerText = percentage + '%';
     if (claimEl) {
         const isFem = userProfile.gender === 'Femenino';
         const genderTerm = isFem ? 'LAS MUJERES' : 'LOS HOMBRES';
