@@ -837,10 +837,10 @@ function startPredictionTimer() {
     if (!fill) return;
 
     fill.style.width = '0%';
-    const fatOverlay = document.getElementById('fat-overlay');
-    const muscleOverlay = document.getElementById('muscle-overlay');
-    if (fatOverlay) fatOverlay.style.transform = 'scaleX(1)';
-    if (muscleOverlay) muscleOverlay.style.transform = 'scaleX(1)';
+    const fatMask = document.getElementById('fat-mask-rect');
+    const muscleMask = document.getElementById('muscle-mask-rect');
+    if (fatMask) fatMask.setAttribute('x', '0');
+    if (muscleMask) muscleMask.setAttribute('x', '0');
 
     let progress = 0;
     const duration = 5000;
@@ -858,11 +858,11 @@ function startPredictionTimer() {
         }
 
         fill.style.width = progress + '%';
-        if (fatOverlay) {
-            fatOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
+        if (fatMask) {
+            fatMask.setAttribute('x', (progress * 4).toString());
         }
-        if (muscleOverlay) {
-            muscleOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
+        if (muscleMask) {
+            muscleMask.setAttribute('x', (progress * 4).toString());
         }
     }, intervalTime);
 }
@@ -890,10 +890,10 @@ function startHormonesTimer() {
 
     if (!fill) return;
     fill.style.width = '0%';
-    const cortisolOverlay = document.getElementById('cortisol-overlay');
-    const testoOverlay = document.getElementById('testo-overlay');
-    if (cortisolOverlay) cortisolOverlay.style.transform = 'scaleX(1)';
-    if (testoOverlay) testoOverlay.style.transform = 'scaleX(1)';
+    const cortisolMask = document.getElementById('cortisol-mask-rect');
+    const testoMask = document.getElementById('testo-mask-rect');
+    if (cortisolMask) cortisolMask.setAttribute('x', '0');
+    if (testoMask) testoMask.setAttribute('x', '0');
 
     let progress = 0;
     const duration = 5000;
@@ -910,11 +910,11 @@ function startHormonesTimer() {
             }, 500);
         }
         fill.style.width = progress + '%';
-        if (cortisolOverlay) {
-            cortisolOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
+        if (cortisolMask) {
+            cortisolMask.setAttribute('x', (progress * 4).toString());
         }
-        if (testoOverlay) {
-            testoOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
+        if (testoMask) {
+            testoMask.setAttribute('x', (progress * 4).toString());
         }
     }, intervalTime);
 }
