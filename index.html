@@ -1840,7 +1840,7 @@
                     <div class="pricing-card-v2 pricing-card-v2-inner anim-up">
                         <p class="pricing-fee-label">PAGO DE TASA = ACCESO VITALICIO</p>
                         <div class="pricing-value-row" id="pricing-value-row">
-                            <span class="pricing-value-big"><span class="price-new-v2" id="original-price" style="text-decoration: line-through; opacity: 0.5;">$37.90</span></span>
+                            <span class="pricing-value-big"><span class="price-new-v2" id="original-price">$27.90</span></span>
                             <span class="pricing-currency">USD</span>
                         </div>
                         <div class="discount-badge-container" id="discount-badge-container">
@@ -2336,7 +2336,7 @@
             <button class="btn-spin" id="btn-spin" onclick="spinWheel()">¡GIRAR AHORA!</button>
 
             <div class="roulette-prize-area" id="roulette-prize-area">
-                <div class="prize-text">🎉 ¡GANASTE!<span>75% DE DESCUENTO</span></div>
+                <div class="prize-text">🎉 ¡GANASTE!<span>65% DE DESCUENTO</span></div>
                 <button class="btn-accept-discount" id="btn-accept-discount" onclick="acceptDiscount()">ACEPTAR MI DESCUENTO</button>
             </div>
         </div>
@@ -2345,28 +2345,7 @@
     <!-- CONFETTI CONTAINER -->
     <div class="confetti-container" id="confetti-container"></div>
 
-    <script src="js/app.js?v=7.5" defer></script>
-    <!-- MODAL DA ROLETA -->
-    <div id="roulette-modal" class="roulette-modal-overlay" style="display: none;">
-        <div class="roulette-modal-content">
-            <h2 class="roulette-title">¡ESPERA! 🎁</h2>
-            <p class="roulette-subtitle">No te vayas con las manos vacías. Gira la ruleta y gana un descuento adicional para finalizar tu compra ahora mismo.</p>
-            
-            <div class="roulette-container">
-                <div class="roulette-pointer"></div>
-                <div id="roulette-wheel" class="roulette-wheel">
-                    <img src="https://icarofl45-cyber.github.io/crushit/imagens_webp_crush_it/roleta.webp" alt="Ruleta de descuento" onerror="this.src='https://cdn-icons-png.flaticon.com/512/846/846296.png'; this.style.width='200px'; this.style.margin='0 auto';">
-                </div>
-            </div>
-            
-            <div id="roulette-result-msg" style="display:none; color: var(--cta-green); font-weight: 800; font-size: 24px; margin: 15px 0;">
-                ¡GANASTE EL DESCUENTO MAXIMO!
-            </div>
-            
-            <button id="btn-spin-roulette" class="cta-pulse-v4" onclick="spinRoulette()">GIRAR LA RULETA</button>
-            <p class="roulette-terms" onclick="closeRoulette()">No quiero el descuento, prefiero salir.</p>
-        </div>
-    </div>
+    <script src="js/app.js?v=7.6" defer></script>
 </body>
 
 </html>

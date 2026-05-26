@@ -1123,7 +1123,6 @@ function startSummaryTimer() {
 let offerTimerInterval = null;
 let offerScrollListener = null;
 function startOfferTimer() {
-    if (typeof initRouletteTriggers === 'function') initRouletteTriggers();
     if (offerTimerInterval) clearInterval(offerTimerInterval);
     if (offerScrollListener) {
         window.removeEventListener('scroll', offerScrollListener);
@@ -1591,7 +1590,7 @@ const ROULETTE_DELAY_SECONDS = 90; // Alterado para 90 segundos conforme solicit
 
 // Segments: [label, color1, color2]
 const WHEEL_SEGMENTS = [
-    { label: '75%', color: '#7b2ff7' },
+    { label: '65%', color: '#7b2ff7' },
     { label: '20%', color: '#5a1dbf' },
     { label: '30%', color: '#7b2ff7' },
     { label: '10%', color: '#5a1dbf' },
@@ -1759,7 +1758,7 @@ function spinWheel() {
 
     btnSpin.disabled = true;
 
-    // 75% is segment 0. Pointer is at top (12 o'clock = 270° = 3π/2).
+    // 65% is segment 0. Pointer is at top (12 o'clock = 270° = 3π/2).
     // Segment 0 spans from 0° to 45° (0 to π/4).
     // We need the midpoint of segment 0 to be at 270° from the canvas perspective.
     // Midpoint of segment 0 = 22.5° (π/8).
@@ -1810,7 +1809,17 @@ function applyDiscountVisuals() {
     const priceRow = document.getElementById('pricing-value-row');
     if (priceRow) priceRow.classList.add('discounted');
 
-    // 2. Show discount badge container
+    // 2. Update the price values for 65% discount
+    const origPrice = document.getElementById('original-price');
+    if (origPrice) origPrice.innerText = '$27.90';
+
+    const tag = document.getElementById('main-discount-tag');
+    if (tag) tag.innerText = '65% DE DESCUENTO';
+
+    const newPrice = document.getElementById('main-discount-price');
+    if (newPrice) newPrice.innerText = '$9.90';
+
+    // 3. Show discount badge container
     const discountContainer = document.getElementById('discount-badge-container');
     if (discountContainer) {
         // Small delay for visual impact
@@ -1819,12 +1828,30 @@ function applyDiscountVisuals() {
         }, 300);
     }
 
-    // 3. Update CTA button link to discount link
-    const ctaBtn = document.querySelector('.btn-offer-cta');
-    if (ctaBtn) {
-        ctaBtn.onclick = function() {
-            window.location.href = 'https://pay.hotmart.com/YOUR_DISCOUNT_LINK_HERE';
-        };
+    // 4. Reinitialize Hotmart checkout with discount offer
+    const checkoutContainer = document.getElementById('meu_checkout_incorporado');
+    if (checkoutContainer && typeof checkoutElements !== 'undefined') {
+        checkoutContainer.innerHTML = ''; // Clear current iframe
+        let name = '';
+        let email = '';
+        try {
+           const saved = localStorage.getItem('crushit_profile');
+           if(saved) {
+               const profile = JSON.parse(saved);
+               name = profile.name || '';
+               email = profile.email || '';
+           }
+        } catch(e) {}
+        
+        const elements = checkoutElements.init('inlineCheckout', {
+          offer: 'doz9sumg',
+          prefilledInfo: {
+            name: name,
+            email: email
+          }
+        });
+        
+        elements.mount('#meu_checkout_incorporado');
     }
 }
 
@@ -1864,99 +1891,4 @@ function launchConfetti() {
     }, 4000);
 }
 
-/* ==========================================
-   ROULETTE LOGIC
-   ========================================== */
-let rouletteTriggered = false;
-let rouletteTimeout = null;
-
-function initRouletteTriggers() {
-    if (rouletteTriggered) return;
-    
-    // 90 seconds timer
-    rouletteTimeout = setTimeout(() => {
-        showRoulette();
-    }, 90000);
-    
-    // Exit intent (mouse leaves top of viewport)
-    document.addEventListener('mouseleave', function(e) {
-        if (e.clientY < 10) {
-            showRoulette();
-        }
-    });
-}
-
-function showRoulette() {
-    if (rouletteTriggered) return;
-    rouletteTriggered = true;
-    
-    if (rouletteTimeout) clearTimeout(rouletteTimeout);
-    
-    const modal = document.getElementById('roulette-modal');
-    if (modal) modal.style.display = 'flex';
-}
-
-function closeRoulette() {
-    const modal = document.getElementById('roulette-modal');
-    if (modal) modal.style.display = 'none';
-}
-
-function spinRoulette() {
-    const wheel = document.getElementById('roulette-wheel');
-    const btn = document.getElementById('btn-spin-roulette');
-    const msg = document.getElementById('roulette-result-msg');
-    
-    if (btn) btn.disabled = true;
-    if (wheel) {
-        wheel.classList.add('spin-animation');
-        
-        // Wait for animation to finish (4s)
-        setTimeout(() => {
-            if (msg) msg.style.display = 'block';
-            
-            setTimeout(() => {
-                applyDiscountOffer();
-                closeRoulette();
-            }, 2500);
-            
-        }, 4000);
-    }
-}
-
-function applyDiscountOffer() {
-    // 1. Atualizar HTML visual
-    const origPrice = document.getElementById('original-price');
-    const tag = document.getElementById('main-discount-tag');
-    const newPrice = document.getElementById('main-discount-price');
-    
-    if (origPrice) origPrice.innerText = '$27.90';
-    if (tag) tag.innerText = '65% DE DESCUENTO';
-    if (newPrice) newPrice.innerText = '$9.90';
-    
-    // 2. Destruir e recriar o checkout da Hotmart com a nova oferta
-    const checkoutContainer = document.getElementById('meu_checkout_incorporado');
-    if (checkoutContainer) checkoutContainer.innerHTML = ''; // Limpa o iframe atual
-    
-    // Recupera dados do localStorage
-    let name = '';
-    let email = '';
-    try {
-       const saved = localStorage.getItem('crushit_profile');
-       if(saved) {
-           const profile = JSON.parse(saved);
-           name = profile.name || '';
-           email = profile.email || '';
-       }
-    } catch(e) {}
-    
-    // Re-inicia com novo código
-    const elements = checkoutElements.init('inlineCheckout', {
-      offer: 'doz9sumg',
-      prefilledInfo: {
-        name: name,
-        email: email
-      }
-    });
-    
-    elements.mount('#meu_checkout_incorporado');
-}
+/* Duplicate roulette logic removed — using the canvas-based roulette above */
