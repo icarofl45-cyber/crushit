@@ -1123,6 +1123,7 @@ function startSummaryTimer() {
 let offerTimerInterval = null;
 let offerScrollListener = null;
 function startOfferTimer() {
+    if (typeof initRouletteTriggers === 'function') initRouletteTriggers();
     if (offerTimerInterval) clearInterval(offerTimerInterval);
     if (offerScrollListener) {
         window.removeEventListener('scroll', offerScrollListener);
@@ -1861,4 +1862,101 @@ function launchConfetti() {
     setTimeout(() => {
         container.innerHTML = '';
     }, 4000);
+}
+
+/* ==========================================
+   ROULETTE LOGIC
+   ========================================== */
+let rouletteTriggered = false;
+let rouletteTimeout = null;
+
+function initRouletteTriggers() {
+    if (rouletteTriggered) return;
+    
+    // 90 seconds timer
+    rouletteTimeout = setTimeout(() => {
+        showRoulette();
+    }, 90000);
+    
+    // Exit intent (mouse leaves top of viewport)
+    document.addEventListener('mouseleave', function(e) {
+        if (e.clientY < 10) {
+            showRoulette();
+        }
+    });
+}
+
+function showRoulette() {
+    if (rouletteTriggered) return;
+    rouletteTriggered = true;
+    
+    if (rouletteTimeout) clearTimeout(rouletteTimeout);
+    
+    const modal = document.getElementById('roulette-modal');
+    if (modal) modal.style.display = 'flex';
+}
+
+function closeRoulette() {
+    const modal = document.getElementById('roulette-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+function spinRoulette() {
+    const wheel = document.getElementById('roulette-wheel');
+    const btn = document.getElementById('btn-spin-roulette');
+    const msg = document.getElementById('roulette-result-msg');
+    
+    if (btn) btn.disabled = true;
+    if (wheel) {
+        wheel.classList.add('spin-animation');
+        
+        // Wait for animation to finish (4s)
+        setTimeout(() => {
+            if (msg) msg.style.display = 'block';
+            
+            setTimeout(() => {
+                applyDiscountOffer();
+                closeRoulette();
+            }, 2500);
+            
+        }, 4000);
+    }
+}
+
+function applyDiscountOffer() {
+    // 1. Atualizar HTML visual
+    const origPrice = document.getElementById('original-price');
+    const tag = document.getElementById('main-discount-tag');
+    const newPrice = document.getElementById('main-discount-price');
+    
+    if (origPrice) origPrice.innerText = '$27.90';
+    if (tag) tag.innerText = '65% DE DESCUENTO';
+    if (newPrice) newPrice.innerText = '$9.90';
+    
+    // 2. Destruir e recriar o checkout da Hotmart com a nova oferta
+    const checkoutContainer = document.getElementById('meu_checkout_incorporado');
+    if (checkoutContainer) checkoutContainer.innerHTML = ''; // Limpa o iframe atual
+    
+    // Recupera dados do localStorage
+    let name = '';
+    let email = '';
+    try {
+       const saved = localStorage.getItem('crushit_profile');
+       if(saved) {
+           const profile = JSON.parse(saved);
+           name = profile.name || '';
+           email = profile.email || '';
+       }
+    } catch(e) {}
+    
+    // Re-inicia com novo código
+    const elements = checkoutElements.init('inlineCheckout', {
+      offer: 'doz9sumg',
+      prefilledInfo: {
+        name: name,
+        email: email
+      }
+    });
+    
+    elements.mount('#meu_checkout_incorporado');
 }
