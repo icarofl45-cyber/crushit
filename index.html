@@ -26,19 +26,36 @@
 
     <!-- Preload LCP images -->
     <link rel="preload" href="imagens_webp_crush_it/edad-18-29.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="imagens_webp_crush_it/logo.png" as="image">
+    <link rel="preload" href="imagens_webp_crush_it/edad-30-39.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="imagens_webp_crush_it/edad-40-49.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="imagens_webp_crush_it/edad-mas-de-50.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="imagens_webp_crush_it/logo.png" as="image" fetchpriority="high">
 
     <!-- CRITICAL CSS INLINE - Primeira tela renderiza instantaneamente -->
+    <style>
+        body, html { margin: 0; padding: 0; background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; width: 100%; height: 100%; overflow-x: hidden; }
+        .app-container { width: 100%; max-width: 480px; margin: 0 auto; background: #0a0a0a; min-height: 100vh; position: relative; padding-bottom: 30px; }
+        .main-header { position: sticky; top: 0; z-index: 100; padding: 15px 20px; background: rgba(5,5,5,0.95); display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { width: 120px; height: auto; }
+        .screen { display: none; padding: 20px 20px 40px; }
+        .screen.active { display: block; }
+        .headline { text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; margin-top: 10px; margin-bottom: 5px; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; }
+        .subheadline { text-align: center; font-size: 14px; font-weight: 400; color: #a1a1aa; margin-bottom: 25px; max-width: 90%; margin-left: auto; margin-right: auto; line-height: 1.4; }
+        .grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 380px; margin: 0 auto; }
+        .card { background: #111111; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; align-items: center; position: relative; }
+        .card-img-only { padding: 0; }
+        .card img { width: 100%; height: auto; object-fit: cover; display: block; }
+        .age-button { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 700; font-size: 13px; padding: 8px 16px; color: #fff; white-space: nowrap; backdrop-filter: blur(4px); }
+    </style>
 
-
-    <!-- Google Fonts -->
-    <!-- Fonts: Barlow Condensed (Headers), Inter (Body), Outfit (Tech/Labels) -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap"
-        rel="stylesheet">
+    <!-- Google Fonts Async -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap">
+    </noscript>
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=8.5">
+    <link rel="stylesheet" href="css/style.css?v=8.6">
 </head>
 
 <body>
@@ -48,7 +65,7 @@
     <header class="main-header" id="main-header">
         <div class="logo-container">
             <img src="imagens_webp_crush_it/logo.png" alt="Crush It - Logotipo Oficial" class="logo-img"
-                fetchpriority="high" width="120">
+                fetchpriority="high" decoding="sync" width="120" height="40">
         </div>
 
         <div class="nav-controls" id="nav-controls">
@@ -80,20 +97,20 @@
 
         <div class="quiz-grid">
             <div class="age-card delay-1" onclick="goToStep('gender', '18-29')">
-                <img src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29" fetchpriority="high" width="160"
+                <img src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29" fetchpriority="high" decoding="sync" width="160"
                     height="240">
                 <div class="age-button">Edad: 18-29</div>
             </div>
             <div class="age-card delay-2" onclick="goToStep('gender', '30-39')">
-                <img src="imagens_webp_crush_it/edad-30-39.webp" alt="Edad 30-39" width="160" height="240">
+                <img src="imagens_webp_crush_it/edad-30-39.webp" alt="Edad 30-39" fetchpriority="high" decoding="sync" width="160" height="240">
                 <div class="age-button">Edad: 30-39</div>
             </div>
             <div class="age-card delay-3" onclick="goToStep('gender', '40-49')">
-                <img src="imagens_webp_crush_it/edad-40-49.webp" alt="Edad 40-49" width="160" height="240">
+                <img src="imagens_webp_crush_it/edad-40-49.webp" alt="Edad 40-49" fetchpriority="high" decoding="sync" width="160" height="240">
                 <div class="age-button">Edad: 40-49</div>
             </div>
             <div class="age-card delay-4" onclick="goToStep('gender', '50+')">
-                <img src="imagens_webp_crush_it/edad-mas-de-50.webp" alt="Edad más de 50" width="160" height="240">
+                <img src="imagens_webp_crush_it/edad-mas-de-50.webp" alt="Edad más de 50" fetchpriority="high" decoding="sync" width="160" height="240">
                 <div class="age-button">Edad: más de 50</div>
             </div>
         </div>
@@ -206,7 +223,7 @@
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado')">
                 <span class="horizontal-label">Delgado</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/delgado.webp" id="img-desired-delgado"
+                <div class="horizontal-img-box"><img loading="lazy" decoding="async" src="imagens_webp_crush_it/delgado.webp" id="img-desired-delgado"
                         alt="Cuerpo Delgado" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Delgado y Tonificado')">
@@ -227,7 +244,7 @@
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'Atleta')">
                 <span class="horizontal-label">Atleta</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/atleta-pergunta-4.webp"
+                <div class="horizontal-img-box"><img loading="lazy" decoding="async" src="imagens_webp_crush_it/atleta-pergunta-4.webp"
                         id="img-desired-atleta" alt="Cuerpo Atleta" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
@@ -249,7 +266,7 @@
         <div class="horizontal-list">
             <div class="horizontal-card" onclick="goToStep('bodyfat', 'De Playa')">
                 <span class="horizontal-label">De Playa</span>
-                <div class="horizontal-img-box"><img src="imagens_webp_crush_it/de-playa-pergunta-4.webp"
+                <div class="horizontal-img-box"><img loading="lazy" decoding="async" src="imagens_webp_crush_it/de-playa-pergunta-4.webp"
                         id="img-desired-playa" alt="Cuerpo de Playa" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
@@ -1007,12 +1024,12 @@
 
             <div class="guarantee-badges-v2 anim-fade delay-1">
                 <div class="badge-v2-item">
-                    <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
+                    <img loading="lazy" decoding="async" src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
                         style="width: 42px; height: 42px;">
                     <span class="badge-v2-label" style="font-size: 8px;">ACCESO VITALICIO</span>
                 </div>
                 <div class="badge-v2-item">
-                    <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
+                    <img loading="lazy" decoding="async" src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
                         style="width: 42px; height: 42px;">
                     <span class="badge-v2-label" style="font-size: 8px;">30 DÍAS DE GARANTÍA</span>
                 </div>
@@ -1096,12 +1113,12 @@
 
             <div class="guarantee-badges-v2 anim-fade delay-1">
                 <div class="badge-v2-item">
-                    <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
+                    <img loading="lazy" decoding="async" src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
                         style="width: 42px; height: 42px;">
                     <span class="badge-v2-label" style="font-size: 8px;">ACCESO VITALICIO</span>
                 </div>
                 <div class="badge-v2-item">
-                    <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
+                    <img loading="lazy" decoding="async" src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
                         style="width: 42px; height: 42px;">
                     <span class="badge-v2-label" style="font-size: 8px;">30 DÍAS DE GARANTÍA</span>
                 </div>
@@ -1170,7 +1187,7 @@
                     <div class="comparison-card card-now">
                         <span class="comparison-card-label">AHORA</span>
                         <div class="comparison-card-img-wrap">
-                            <img id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Estado Atual">
+                            <img loading="lazy" decoding="async" id="off-img-now" src="imagens_webp_crush_it/delgado.webp" alt="Estado Atual">
                         </div>
                         <div class="comparison-card-footer">
                             <div class="comp-imc">
@@ -1192,7 +1209,7 @@
                     <div class="comparison-card card-goal">
                         <span class="comparison-card-label">TU OBJETIVO</span>
                         <div class="comparison-card-img-wrap">
-                            <img id="off-img-goal" src="imagens_webp_crush_it/atleta-pergunta-4.webp"
+                            <img loading="lazy" decoding="async" id="off-img-goal" src="imagens_webp_crush_it/atleta-pergunta-4.webp"
                                 alt="Estado Objetivo">
                         </div>
                         <div class="comparison-card-footer">
@@ -1795,7 +1812,7 @@
                     </div>
 
                     <!-- Checkout Incorporado Hotmart -->
-                    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+                    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js" defer></script>
 
                     <div id="meu_checkout_incorporado" style="margin-top: 20px; width: 100%;"></div>
 
@@ -1827,12 +1844,12 @@
                     <!-- SELOS DE CONFIANÇA MARCADOS -->
                     <div class="guarantee-badges-v2 anim-fade delay-1" style="margin-top: 20px;">
                         <div class="badge-v2-item">
-                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
+                            <img loading="lazy" decoding="async" src="imagens_webp_crush_it/vitalicio.webp" alt="Acceso vitalicio" class="badge-v2-img"
                                 style="width: 42px; height: 42px;">
                             <span class="badge-v2-label" style="font-size: 8px;">ACCESO VITALICIO</span>
                         </div>
                         <div class="badge-v2-item">
-                            <img src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
+                            <img loading="lazy" decoding="async" src="imagens_webp_crush_it/30d.webp" alt="Garantía de 30 Días" class="badge-v2-img"
                                 style="width: 42px; height: 42px;">
                             <span class="badge-v2-label" style="font-size: 8px;">30 DÍAS DE GARANTÍA</span>
                         </div>
@@ -1877,7 +1894,7 @@
 
                 <div class="guarantee-header">
                     <div class="guarantee-badge-wrap">
-                        <img src="imagens_webp_crush_it/reembolso.webp" alt="Garantía de 30 días"
+                        <img loading="lazy" decoding="async" src="imagens_webp_crush_it/reembolso.webp" alt="Garantía de 30 días"
                             class="guarantee-badge-img">
                     </div>
                     <h2 class="guarantee-title">Garantía de satisfacción</h2>
@@ -1896,7 +1913,7 @@
 
             <!-- SECTION: TRUST & SOCIAL PROOF -->
             <div class="trust-section">
-                <img src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel laurel-left" alt="Laurel">
+                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ramo-esquerdo.webp" class="laurel laurel-left" alt="Laurel">
 
                 <div class="trust-content">
                     <h2 class="trust-number">+1.5 MILLONES</h2>
@@ -1917,7 +1934,7 @@
                     </p>
                 </div>
 
-                <img src="imagens_webp_crush_it/ramo-direito.webp" class="laurel laurel-right" alt="Laurel">
+                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ramo-direito.webp" class="laurel laurel-right" alt="Laurel">
             </div>
 
             <!-- SECTION: TESTIMONIALS (Step 1: Header) -->
@@ -1936,7 +1953,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps3m.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps3m.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">Fue como un milagro científico. En solo 21 días mi cuerpo se transformó
@@ -1954,7 +1971,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps2.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps2.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">No es un plan más, es EL PLAN definitivo. Literalmente en 21 días logré
@@ -1971,7 +1988,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps4m.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps4m.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">La tecnología hormonal de Crush It es de otro planeta. 21 días exactos
@@ -1988,7 +2005,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps1.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps1.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">Dudaba que 21 días fueran suficientes, pero Crush It me calló la boca.
@@ -2004,7 +2021,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps5m.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps5m.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">He probado todo, pero nada se compara a la superioridad de Crush It.
@@ -2021,7 +2038,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps6m.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps6m.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">Crush It no solo cambia tu cuerpo, redefine tu destino. 21 días de
@@ -2038,7 +2055,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps3.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps3.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">La eficiencia de este protocolo es aterradora. En solo 21 días logré la
@@ -2055,7 +2072,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps4.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps4.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">Sentí el poder desde el primer día, pero al llegar al día 21 la
@@ -2072,7 +2089,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps2m.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps2m.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">Si buscas lo mejor, Crush It es el único camino. 21 días para recuperar
@@ -2089,7 +2106,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps1m.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps1m.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">No hay nada que se acerque a la precisión de Crush It. 21 días exactos
@@ -2106,7 +2123,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps5.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps5.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">Simplemente no hay nada en el planeta que se le acerque. En 21 días el
@@ -2123,7 +2140,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="transformation-container">
-                                <img src="imagens_webp_crush_it/ps6.webp" alt="Transformación"
+                                <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ps6.webp" alt="Transformación"
                                     class="transformation-img">
                             </div>
                             <p class="user-text">Lo que Crush It logra en 21 días es lo que otros prometen en meses. Es
@@ -2253,10 +2270,10 @@
                 </div>
 
                 <div class="footer-trust-images" style="margin-top: 30px; text-align: center; padding-bottom: 30px;">
-                    <img src="imagens_webp_crush_it/pagamentos.webp" alt="Pagos Seguros" style="width: 100%; max-width: 600px; display: block; margin: 0 auto 15px;">
+                    <img loading="lazy" decoding="async" src="imagens_webp_crush_it/pagamentos.webp" alt="Pagos Seguros" style="width: 100%; max-width: 600px; display: block; margin: 0 auto 15px;">
                     <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-                        <img src="imagens_webp_crush_it/ssl.webp" alt="SSL Seguro" style="height: 40px; object-fit: contain;">
-                        <img src="imagens_webp_crush_it/30d.webp" alt="Garantía 30 Días" style="height: 50px; object-fit: contain;">
+                        <img loading="lazy" decoding="async" src="imagens_webp_crush_it/ssl.webp" alt="SSL Seguro" style="height: 40px; object-fit: contain;">
+                        <img loading="lazy" decoding="async" src="imagens_webp_crush_it/30d.webp" alt="Garantía 30 Días" style="height: 50px; object-fit: contain;">
                     </div>
                 </div>
             </footer>
@@ -2291,3 +2308,4 @@
 </body>
 
 </html>
+
