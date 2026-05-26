@@ -1848,10 +1848,18 @@
                         </div>
                     </div>
 
-                    <button class="btn-offer-cta"
-                        onclick="window.location.href='https://pay.hotmart.com/YOUR_LINK_HERE'">
-                        LIBERAR MI ACCESO AL ÁREA DE MIEMBROS
-                    </button>
+                    <!-- Checkout Incorporado Hotmart -->
+                    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+
+                    <div id="meu_checkout_incorporado" style="margin-top: 20px; width: 100%;"></div>
+
+                    <script>
+                      const elements = checkoutElements.init('inlineCheckout', {
+                        offer: 'X105956920F' // Substitua pelo código da sua oferta
+                      });
+                      
+                      elements.mount('#meu_checkout_incorporado');
+                    </script>
 
                     <!-- SELOS DE CONFIANÇA MARCADOS -->
                     <div class="guarantee-badges-v2 anim-fade delay-1" style="margin-top: 20px;">
