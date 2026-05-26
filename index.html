@@ -1859,8 +1859,16 @@
 
                     <script>
                       function initHotmartCheckout() {
-                        const name = window.userProfile ? window.userProfile.name : '';
-                        const email = window.userProfile ? window.userProfile.email : '';
+                        let name = '';
+                        let email = '';
+                        try {
+                           const saved = localStorage.getItem('crushit_profile');
+                           if(saved) {
+                               const profile = JSON.parse(saved);
+                               name = profile.name || '';
+                               email = profile.email || '';
+                           }
+                        } catch(e) {}
                         
                         const elements = checkoutElements.init('inlineCheckout', {
                           offer: 'u17n0iuc',
