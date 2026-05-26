@@ -580,42 +580,23 @@
                     </div>
 
                     <div class="graph-visual-box">
-                        <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="bar-grad-fat" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#f97316;stop-opacity:1.0" />
-                                    <stop offset="70%" style="stop-color:#f97316;stop-opacity:0.7" />
-                                    <stop offset="100%" style="stop-color:#f97316;stop-opacity:0.1" />
-                                </linearGradient>
-                            </defs>
-
-                            <g id="graph-g-fat">
-                                <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
-                                    <!-- Horizontais -->
-                                    <line x1="0" y1="20" x2="400" y2="20" />
-                                    <line x1="0" y1="40" x2="400" y2="40" />
-                                    <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="80" x2="400" y2="80" />
-                                    <line x1="0" y1="100" x2="400" y2="100" />
-
-                                    <!-- Verticales -->
-                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
-                                    <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
-                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
-                                    <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
-                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
-                                    <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
-                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
-                                </g>
-
-                                <!-- Torres de Gordura -->
-                                <g id="fat-towers-group"></g>
-                                
-                                <!-- Máscara de Revelação -->
-                                <rect id="fat-mask-rect" x="0" y="0" width="400" height="120" fill="#090909" />
-                            </g>
-                        </svg>
+                        <div class="dom-graph-container">
+                            <div class="dom-grid-bg">
+                                <div class="dgrid-h" style="top: 16.6%"></div>
+                                <div class="dgrid-h" style="top: 33.3%"></div>
+                                <div class="dgrid-h" style="top: 50%"></div>
+                                <div class="dgrid-h" style="top: 66.6%"></div>
+                                <div class="dgrid-h" style="top: 83.3%"></div>
+                                <div class="dgrid-v" style="left: 12.5%"></div>
+                                <div class="dgrid-v" style="left: 25%"></div>
+                                <div class="dgrid-v" style="left: 37.5%"></div>
+                                <div class="dgrid-v" style="left: 50%"></div>
+                                <div class="dgrid-v" style="left: 62.5%"></div>
+                                <div class="dgrid-v" style="left: 75%"></div>
+                                <div class="dgrid-v" style="left: 87.5%"></div>
+                            </div>
+                            <div class="dom-towers-wrapper" id="fat-dom-towers"></div>
+                        </div>
 
                         <div class="graph-labels-v2">
                             <span>AHORA</span>
@@ -634,42 +615,23 @@
                     </div>
 
                     <div class="graph-visual-box">
-                        <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="bar-grad-muscle" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1.0" />
-                                    <stop offset="70%" style="stop-color:#22c55e;stop-opacity:0.7" />
-                                    <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.1" />
-                                </linearGradient>
-                            </defs>
-
-                            <g id="graph-g-muscle">
-                                <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
-                                    <!-- Horizontais -->
-                                    <line x1="0" y1="20" x2="400" y2="20" />
-                                    <line x1="0" y1="40" x2="400" y2="40" />
-                                    <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="80" x2="400" y2="80" />
-                                    <line x1="0" y1="100" x2="400" y2="100" />
-
-                                    <!-- Verticales -->
-                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
-                                    <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
-                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
-                                    <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
-                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
-                                    <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
-                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
-                                </g>
-
-                                <!-- Torres de Músculo -->
-                                <g id="muscle-towers-group"></g>
-                                
-                                <!-- Máscara de Revelação -->
-                                <rect id="muscle-mask-rect" x="0" y="0" width="400" height="120" fill="#090909" />
-                            </g>
-                        </svg>
+                        <div class="dom-graph-container">
+                            <div class="dom-grid-bg">
+                                <div class="dgrid-h" style="top: 16.6%"></div>
+                                <div class="dgrid-h" style="top: 33.3%"></div>
+                                <div class="dgrid-h" style="top: 50%"></div>
+                                <div class="dgrid-h" style="top: 66.6%"></div>
+                                <div class="dgrid-h" style="top: 83.3%"></div>
+                                <div class="dgrid-v" style="left: 12.5%"></div>
+                                <div class="dgrid-v" style="left: 25%"></div>
+                                <div class="dgrid-v" style="left: 37.5%"></div>
+                                <div class="dgrid-v" style="left: 50%"></div>
+                                <div class="dgrid-v" style="left: 62.5%"></div>
+                                <div class="dgrid-v" style="left: 75%"></div>
+                                <div class="dgrid-v" style="left: 87.5%"></div>
+                            </div>
+                            <div class="dom-towers-wrapper" id="muscle-dom-towers"></div>
+                        </div>
 
                         <div class="graph-labels-v2">
                             <span>AHORA</span>
@@ -835,39 +797,24 @@
                     </div>
 
                     <div class="graph-visual-box">
-                        <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="bar-grad-cortisol" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1.0" />
-                                    <stop offset="70%" style="stop-color:#ef4444;stop-opacity:0.7" />
-                                    <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.1" />
-                                </linearGradient>
-                            </defs>
-
-                            <g id="graph-g-cortisol">
-                                <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
-                                    <line x1="0" y1="20" x2="400" y2="20" />
-                                    <line x1="0" y1="40" x2="400" y2="40" />
-                                    <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="80" x2="400" y2="80" />
-                                    <line x1="0" y1="100" x2="400" y2="100" />
-                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
-                                    <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
-                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
-                                    <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
-                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
-                                    <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
-                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
-                                </g>
-
-                                <!-- Torres de Cortisol -->
-                                <g id="cortisol-towers-group"></g>
-                                
-                                <!-- Máscara de Revelação -->
-                                <rect id="cortisol-mask-rect" x="0" y="0" width="400" height="120" fill="#090909" />
-                            </g>
-                        </svg>
+                    <div class="graph-visual-box">
+                        <div class="dom-graph-container">
+                            <div class="dom-grid-bg">
+                                <div class="dgrid-h" style="top: 16.6%"></div>
+                                <div class="dgrid-h" style="top: 33.3%"></div>
+                                <div class="dgrid-h" style="top: 50%"></div>
+                                <div class="dgrid-h" style="top: 66.6%"></div>
+                                <div class="dgrid-h" style="top: 83.3%"></div>
+                                <div class="dgrid-v" style="left: 12.5%"></div>
+                                <div class="dgrid-v" style="left: 25%"></div>
+                                <div class="dgrid-v" style="left: 37.5%"></div>
+                                <div class="dgrid-v" style="left: 50%"></div>
+                                <div class="dgrid-v" style="left: 62.5%"></div>
+                                <div class="dgrid-v" style="left: 75%"></div>
+                                <div class="dgrid-v" style="left: 87.5%"></div>
+                            </div>
+                            <div class="dom-towers-wrapper" id="cortisol-dom-towers"></div>
+                        </div>
                         <div class="graph-labels-v2">
                             <span>AHORA</span>
                             <span>DÍA 7</span>
@@ -885,39 +832,24 @@
                     </div>
 
                     <div class="graph-visual-box">
-                        <svg width="100%" height="120" viewBox="0 0 400 120" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="bar-grad-testo-v2" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1.0" />
-                                    <stop offset="70%" style="stop-color:#22c55e;stop-opacity:0.7" />
-                                    <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.1" />
-                                </linearGradient>
-                            </defs>
-
-                            <g id="graph-g-testo">
-                                <!-- Grade Técnica (Fundo) -->
-                                <g stroke="rgba(255,255,255,0.07)" stroke-width="0.5">
-                                    <line x1="0" y1="20" x2="400" y2="20" />
-                                    <line x1="0" y1="40" x2="400" y2="40" />
-                                    <line x1="0" y1="60" x2="400" y2="60" />
-                                    <line x1="0" y1="80" x2="400" y2="80" />
-                                    <line x1="0" y1="100" x2="400" y2="100" />
-                                    <line x1="50" y1="0" x2="50" y2="120" stroke-dasharray="2" />
-                                    <line x1="100" y1="0" x2="100" y2="120" stroke-dasharray="2" />
-                                    <line x1="150" y1="0" x2="150" y2="120" stroke-dasharray="2" />
-                                    <line x1="200" y1="0" x2="200" y2="120" stroke-dasharray="2" />
-                                    <line x1="250" y1="0" x2="250" y2="120" stroke-dasharray="2" />
-                                    <line x1="300" y1="0" x2="300" y2="120" stroke-dasharray="2" />
-                                    <line x1="350" y1="0" x2="350" y2="120" stroke-dasharray="2" />
-                                </g>
-
-                                <!-- Torres de Testo -->
-                                <g id="testo-towers-group"></g>
-                                
-                                <!-- Máscara de Revelação -->
-                                <rect id="testo-mask-rect" x="0" y="0" width="400" height="120" fill="#090909" />
-                            </g>
-                        </svg>
+                    <div class="graph-visual-box">
+                        <div class="dom-graph-container">
+                            <div class="dom-grid-bg">
+                                <div class="dgrid-h" style="top: 16.6%"></div>
+                                <div class="dgrid-h" style="top: 33.3%"></div>
+                                <div class="dgrid-h" style="top: 50%"></div>
+                                <div class="dgrid-h" style="top: 66.6%"></div>
+                                <div class="dgrid-h" style="top: 83.3%"></div>
+                                <div class="dgrid-v" style="left: 12.5%"></div>
+                                <div class="dgrid-v" style="left: 25%"></div>
+                                <div class="dgrid-v" style="left: 37.5%"></div>
+                                <div class="dgrid-v" style="left: 50%"></div>
+                                <div class="dgrid-v" style="left: 62.5%"></div>
+                                <div class="dgrid-v" style="left: 75%"></div>
+                                <div class="dgrid-v" style="left: 87.5%"></div>
+                            </div>
+                            <div class="dom-towers-wrapper" id="testo-dom-towers"></div>
+                        </div>
                         <div class="graph-labels-v2">
                             <span>AHORA</span>
                             <span>DÍA 7</span>

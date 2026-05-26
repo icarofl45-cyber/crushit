@@ -756,32 +756,22 @@ function getBezierY(t, p0, p1, p2, p3) {
 }
 
 function generateFatTowers() {
-    const group = document.getElementById('fat-towers-group');
+    const group = document.getElementById('fat-dom-towers');
     if (!group) return;
     group.innerHTML = '';
+    const towerCount = 60;
 
-    const numTowers = 50;
-    const width = 400;
-    const barWidth = 6;
-    const gap = (width / numTowers);
-
-
-
-    for (let i = 0; i < numTowers; i++) {
-        const t = i / (numTowers - 1);
-        const x = i * gap;
-        const y = getBezierY(t, 10, 15, 105, 115);
-        const height = 120 - y;
-
-        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        rect.setAttribute("x", x);
-        rect.setAttribute("y", y);
-        rect.setAttribute("width", barWidth);
-        rect.setAttribute("height", height);
-        rect.setAttribute("fill", "url(#bar-grad-fat)");
-        rect.setAttribute("opacity", "0.4");
-        rect.classList.add("tower-bar");
-        group.appendChild(rect);
+    for (let i = 0; i < towerCount; i++) {
+        const t = i / (towerCount - 1);
+        const y = getBezierY(t, 105, 115, 15, 20);
+        const h = 120 - y;
+        const pct = (h / 120) * 100;
+        
+        const div = document.createElement('div');
+        div.className = 'dom-tower fat';
+        div.dataset.h = pct + '%';
+        div.style.transitionDelay = (i * 0.05) + 's';
+        group.appendChild(div);
     }
 
     const fatNow = document.getElementById('pred-fat-now');
@@ -791,42 +781,29 @@ function generateFatTowers() {
         fatNow.innerText = ranges[val - 1] || '20%';
     }
 }
-
 function generateMuscleTowers() {
-    const group = document.getElementById('muscle-towers-group');
+    const group = document.getElementById('muscle-dom-towers');
     if (!group) return;
     group.innerHTML = '';
+    const towerCount = 60;
 
-    const numTowers = 50;
-    const width = 400;
-    const barWidth = 6;
-    const gap = (width / numTowers);
-
-
-
-    for (let i = 0; i < numTowers; i++) {
-        const t = i / (numTowers - 1);
-        const x = i * gap;
-        const y = getBezierY(t, 110, 100, 25, 15);
-        const height = 120 - y;
-
-        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        rect.setAttribute("x", x);
-        rect.setAttribute("y", y);
-        rect.setAttribute("width", barWidth);
-        rect.setAttribute("height", height);
-        rect.setAttribute("fill", "url(#bar-grad-muscle)");
-        rect.setAttribute("opacity", "0.4");
-        rect.classList.add("tower-bar");
-        group.appendChild(rect);
+    for (let i = 0; i < towerCount; i++) {
+        const t = i / (towerCount - 1);
+        const y = getBezierY(t, 25, 15, 105, 115);
+        const h = 120 - y;
+        const pct = (h / 120) * 100;
+        
+        const div = document.createElement('div');
+        div.className = 'dom-tower testo';
+        div.dataset.h = pct + '%';
+        div.style.transitionDelay = (i * 0.05) + 's';
+        group.appendChild(div);
     }
 }
 
 function startPredictionTimer() {
     const fill = document.getElementById('pred-loading-fill');
-    const gFat = document.getElementById('graph-g-fat');
-    const gMuscle = document.getElementById('graph-g-muscle');
-
+    
     // Ajuste dinâmico da tela de Flexões/Agachamentos baseado no gênero
     const gender = userProfile.gender || 'Masculino';
     const exerciseName = document.getElementById('perf-exercise-name');
@@ -837,15 +814,16 @@ function startPredictionTimer() {
     if (!fill) return;
 
     fill.style.width = '0%';
-    const fatMask = document.getElementById('fat-mask-rect');
-    const muscleMask = document.getElementById('muscle-mask-rect');
-    if (fatMask) fatMask.setAttribute('x', '0');
-    if (muscleMask) muscleMask.setAttribute('x', '0');
-
     let progress = 0;
     const duration = 5000;
     const intervalTime = 50;
     const step = 100 / (duration / intervalTime);
+
+    // Trigger DOM bar heights after a short delay
+    setTimeout(() => {
+        document.querySelectorAll('#fat-dom-towers .dom-tower').forEach(t => t.style.height = t.dataset.h);
+        document.querySelectorAll('#muscle-dom-towers .dom-tower').forEach(t => t.style.height = t.dataset.h);
+    }, 100);
 
     const interval = setInterval(() => {
         progress += step;
@@ -858,12 +836,6 @@ function startPredictionTimer() {
         }
 
         fill.style.width = progress + '%';
-        if (fatMask) {
-            fatMask.setAttribute('x', (progress * 4).toString());
-        }
-        if (muscleMask) {
-            muscleMask.setAttribute('x', (progress * 4).toString());
-        }
     }, intervalTime);
 }
 
@@ -890,15 +862,17 @@ function startHormonesTimer() {
 
     if (!fill) return;
     fill.style.width = '0%';
-    const cortisolMask = document.getElementById('cortisol-mask-rect');
-    const testoMask = document.getElementById('testo-mask-rect');
-    if (cortisolMask) cortisolMask.setAttribute('x', '0');
-    if (testoMask) testoMask.setAttribute('x', '0');
-
     let progress = 0;
+
     const duration = 5000;
     const intervalTime = 50;
     const step = 100 / (duration / intervalTime);
+
+    // Trigger DOM bar heights after a short delay to allow DOM to render initial 0% height
+    setTimeout(() => {
+        document.querySelectorAll('#cortisol-dom-towers .dom-tower').forEach(t => t.style.height = t.dataset.h);
+        document.querySelectorAll('#testo-dom-towers .dom-tower').forEach(t => t.style.height = t.dataset.h);
+    }, 100);
 
     const interval = setInterval(() => {
         progress += step;
@@ -910,54 +884,46 @@ function startHormonesTimer() {
             }, 500);
         }
         fill.style.width = progress + '%';
-        if (cortisolMask) {
-            cortisolMask.setAttribute('x', (progress * 4).toString());
-        }
-        if (testoMask) {
-            testoMask.setAttribute('x', (progress * 4).toString());
-        }
     }, intervalTime);
 }
 
 
 function generateCortisolTowers() {
-    const group = document.getElementById('cortisol-towers-group');
+    const group = document.getElementById('cortisol-dom-towers');
     if (!group) return;
     group.innerHTML = '';
     const towerCount = 60;
-    const width = 400 / towerCount;
 
     for (let i = 0; i < towerCount; i++) {
         const t = i / (towerCount - 1);
         const y = getBezierY(t, 10, 15, 105, 115);
         const h = 120 - y;
-        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        rect.setAttribute('x', i * width + 1);
-        rect.setAttribute('y', y);
-        rect.setAttribute('width', width - 2);
-        rect.setAttribute('height', h);
-        rect.setAttribute('fill', 'url(#bar-grad-cortisol)');
-        group.appendChild(rect);
+        const pct = (h / 120) * 100;
+        
+        const div = document.createElement('div');
+        div.className = 'dom-tower';
+        div.dataset.h = pct + '%';
+        div.style.transitionDelay = (i * 0.05) + 's';
+        group.appendChild(div);
     }
 }
 function generateTestoTowers() {
-    const group = document.getElementById('testo-towers-group');
+    const group = document.getElementById('testo-dom-towers');
     if (!group) return;
     group.innerHTML = '';
     const towerCount = 60;
-    const width = 400 / towerCount;
 
     for (let i = 0; i < towerCount; i++) {
         const t = i / (towerCount - 1);
         const y = getBezierY(t, 110, 100, 25, 15);
         const h = 120 - y;
-        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        rect.setAttribute('x', i * width + 1);
-        rect.setAttribute('y', y);
-        rect.setAttribute('width', width - 2);
-        rect.setAttribute('height', h);
-        rect.setAttribute('fill', 'url(#bar-grad-testo-v2)');
-        group.appendChild(rect);
+        const pct = (h / 120) * 100;
+        
+        const div = document.createElement('div');
+        div.className = 'dom-tower testo';
+        div.dataset.h = pct + '%';
+        div.style.transitionDelay = (i * 0.05) + 's';
+        group.appendChild(div);
     }
 }
 
