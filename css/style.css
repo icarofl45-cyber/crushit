@@ -6435,4 +6435,6 @@ body.gender-female .tag-muscle {
 .spin-animation {
     /* 3600deg = 10 voltas. + Ajuste fino para parar no 65% (dependendo da imagem) */
     transform: rotate(3645deg); 
-}
+}
+.graph-reveal-overlay { position: absolute; top: 0; right: 0; width: 100%; height: 120px; background: #090909; z-index: 10; transform-origin: right; transform: scaleX(1); will-change: transform; pointer-events: none; }
+

@@ -837,8 +837,10 @@ function startPredictionTimer() {
     if (!fill) return;
 
     fill.style.width = '0%';
-    if (gFat) { gFat.style.clipPath = 'inset(0 100% 0 0)'; gFat.style.webkitClipPath = 'inset(0 100% 0 0)'; }
-    if (gMuscle) { gMuscle.style.clipPath = 'inset(0 100% 0 0)'; gMuscle.style.webkitClipPath = 'inset(0 100% 0 0)'; }
+    const fatOverlay = document.getElementById('fat-overlay');
+    const muscleOverlay = document.getElementById('muscle-overlay');
+    if (fatOverlay) fatOverlay.style.transform = 'scaleX(1)';
+    if (muscleOverlay) muscleOverlay.style.transform = 'scaleX(1)';
 
     let progress = 0;
     const duration = 5000;
@@ -856,13 +858,11 @@ function startPredictionTimer() {
         }
 
         fill.style.width = progress + '%';
-        if (gFat) {
-            gFat.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
-            gFat.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        if (fatOverlay) {
+            fatOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
         }
-        if (gMuscle) {
-            gMuscle.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
-            gMuscle.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        if (muscleOverlay) {
+            muscleOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
         }
     }, intervalTime);
 }
@@ -890,8 +890,10 @@ function startHormonesTimer() {
 
     if (!fill) return;
     fill.style.width = '0%';
-    if (gCortisol) { gCortisol.style.clipPath = 'inset(0 100% 0 0)'; gCortisol.style.webkitClipPath = 'inset(0 100% 0 0)'; }
-    if (gTesto) { gTesto.style.clipPath = 'inset(0 100% 0 0)'; gTesto.style.webkitClipPath = 'inset(0 100% 0 0)'; }
+    const cortisolOverlay = document.getElementById('cortisol-overlay');
+    const testoOverlay = document.getElementById('testo-overlay');
+    if (cortisolOverlay) cortisolOverlay.style.transform = 'scaleX(1)';
+    if (testoOverlay) testoOverlay.style.transform = 'scaleX(1)';
 
     let progress = 0;
     const duration = 5000;
@@ -908,13 +910,11 @@ function startHormonesTimer() {
             }, 500);
         }
         fill.style.width = progress + '%';
-        if (gCortisol) {
-            gCortisol.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
-            gCortisol.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        if (cortisolOverlay) {
+            cortisolOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
         }
-        if (gTesto) {
-            gTesto.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
-            gTesto.style.webkitClipPath = `inset(0 ${100 - progress}% 0 0)`;
+        if (testoOverlay) {
+            testoOverlay.style.transform = `scaleX(${1 - (progress / 100)})`;
         }
     }, intervalTime);
 }
