@@ -39,7 +39,7 @@
         .logo-img { width: 120px; height: auto; }
         .screen { display: none; padding: 20px 20px 40px; }
         .screen.active { display: block; }
-        .headline { text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; margin-top: 10px; margin-bottom: 5px; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; }
+        .headline { text-align: center; font-size: 32px; font-weight: 900; margin-top: 10px; margin-bottom: 5px; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; }
         .subheadline { text-align: center; font-size: 14px; font-weight: 400; color: #a1a1aa; margin-bottom: 25px; max-width: 90%; margin-left: auto; margin-right: auto; line-height: 1.4; }
         .grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 380px; margin: 0 auto; }
         .card { background: #111111; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; align-items: center; position: relative; }
@@ -48,14 +48,14 @@
         .age-button { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 700; font-size: 13px; padding: 8px 16px; color: #fff; white-space: nowrap; backdrop-filter: blur(4px); }
     </style>
 
-    <!-- Google Fonts Async -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap">
-    </noscript>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;700;800&family=Outfit:wght@300;600;800;900&display=swap" rel="stylesheet">
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css?v=8.6">
+    <!-- Main CSS Async -->
+    <link rel="preload" href="css/style.css?v=8.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/style.css?v=8.6">
+    </noscript>
 </head>
 
 <body>
