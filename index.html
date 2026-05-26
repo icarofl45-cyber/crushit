@@ -938,13 +938,17 @@
         <h1 class="headline anim-fade">ÚLTIMO PASO</h1>
         <p class="subheadline anim-fade delay-1">¿A quién debemos liberar el acceso al área de miembros?</p>
 
-        <div class="step-counter anim-fade delay-2" style="margin-top: 20px; color: var(--cta-green);">TU PRIMER NOMBRE
+        <div class="step-counter anim-fade delay-2" style="margin-top: 20px; color: var(--cta-green);">TUS DATOS
         </div>
 
         <div class="name-input-card anim-up delay-3">
             <div class="name-field-wrap">
                 <input type="text" id="input-name" class="name-input-field" placeholder="Ej: Dani"
-                    oninput="validateName(this.value)">
+                    oninput="validateName()">
+            </div>
+            <div class="name-field-wrap" style="margin-top: 15px;">
+                <input type="email" id="input-email" class="name-input-field" placeholder="Tu Mejor E-mail"
+                    oninput="validateName()">
             </div>
 
             <button id="btn-final-continue" class="btn-final-step cta-pulse-v4" onclick="finishQuiz()" disabled>
@@ -1854,11 +1858,20 @@
                     <div id="meu_checkout_incorporado" style="margin-top: 20px; width: 100%;"></div>
 
                     <script>
-                      const elements = checkoutElements.init('inlineCheckout', {
-                        offer: 'u17n0iuc' // Substitua pelo código da sua oferta
-                      });
-                      
-                      elements.mount('#meu_checkout_incorporado');
+                      function initHotmartCheckout() {
+                        const name = window.userProfile ? window.userProfile.name : '';
+                        const email = window.userProfile ? window.userProfile.email : '';
+                        
+                        const elements = checkoutElements.init('inlineCheckout', {
+                          offer: 'u17n0iuc',
+                          prefilledInfo: {
+                            name: name,
+                            email: email
+                          }
+                        });
+                        
+                        elements.mount('#meu_checkout_incorporado');
+                      }
                     </script>
 
                     <!-- SELOS DE CONFIANÇA MARCADOS -->

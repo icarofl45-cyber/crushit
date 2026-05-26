@@ -992,12 +992,18 @@ function handleStartDate(choice) {
 /* ==========================================
    TELA 16 - TU NOMBRE / FINISH
    ========================================== */
-function validateName(val) {
-    document.getElementById('btn-final-continue').disabled = val.length < 2;
+function validateName() {
+    const nameVal = document.getElementById('input-name').value;
+    const emailVal = document.getElementById('input-email') ? document.getElementById('input-email').value : '';
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+    document.getElementById('btn-final-continue').disabled = (nameVal.length < 2 || !emailValid);
 }
 
 function finishQuiz() {
     userProfile.name = document.getElementById('input-name').value;
+    if(document.getElementById('input-email')) {
+        userProfile.email = document.getElementById('input-email').value;
+    }
     saveProfile();
 
     // Ativa o modo limpo no header (centraliza logo e remove nav)
@@ -1380,6 +1386,7 @@ function populateOfferScreen() {
         if (typeof startSocialProofCarousel === 'function') startSocialProofCarousel();
         if (typeof startTestimonialsCarousel === 'function') startTestimonialsCarousel();
         if (typeof startPeopleCounter === 'function') startPeopleCounter();
+        if (typeof initHotmartCheckout === 'function') initHotmartCheckout();
     }
 }
 
