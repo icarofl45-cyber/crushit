@@ -132,13 +132,10 @@ function goToStep(stepId, value) {
         window.location.hash = stepId;
     }
 
-    // Dispara o tracking de Funil e Initiate Checkout
+    // Dispara o tracking de Funil
     try {
         if (typeof fbq === 'function') {
             fbq('trackCustom', 'StepView', { step: stepId });
-            if (stepId === 'offer') {
-                fbq('track', 'InitiateCheckout');
-            }
         }
     } catch (e) {
         console.warn('Facebook Pixel não carregado');
@@ -985,6 +982,13 @@ function finishQuiz() {
         userProfile.email = document.getElementById('input-email').value;
     }
     saveProfile();
+
+    // Dispara o Initiate Checkout no clique do botão (mais blindado contra eventos automáticos)
+    try {
+        if (typeof fbq === 'function') {
+            fbq('track', 'InitiateCheckout');
+        }
+    } catch(e) {}
 
     // Ativa o modo limpo no header (centraliza logo e remove nav)
     const header = document.querySelector('.main-header');
