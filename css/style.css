@@ -6539,3 +6539,14 @@ body.gender-female .tag-muscle {
     transform: scale(1.05);
     box-shadow: 0 0 15px var(--accent);
 }
+
+/* Hide physical scrollbar on Android to prevent layout squeeze */
+html.is-android::-webkit-scrollbar,
+html.is-android body::-webkit-scrollbar,
+.is-android .screen::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+}
+.is-android, .is-android body {
+    scrollbar-width: none;
+}

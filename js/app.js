@@ -1499,6 +1499,11 @@ function startPeopleCounter() {
 window.addEventListener('DOMContentLoaded', () => {
     loadProfile();
 
+    // Detect Android to hide physical scrollbar and avoid layout squeeze
+    if (/android/i.test(navigator.userAgent)) {
+        document.documentElement.classList.add('is-android');
+    }
+
     // Lógica do Banner de Cookies
     const cookieBanner = document.getElementById('cookie-banner');
     const btnAcceptCookies = document.getElementById('btn-accept-cookies');
