@@ -1829,35 +1829,41 @@
                         </div>
                     </div>
 
-                    <!-- Checkout Incorporado Hotmart -->
-                    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js" defer></script>
-
+                    <!-- Checkout Incorporado Hotmart (Carregamento Dinâmico) -->
                     <div style="margin: 20px -20px 0; width: calc(100% + 40px); overflow: hidden; box-sizing: border-box;">
                         <div id="meu_checkout_incorporado" style="width: 100%; box-sizing: border-box;"></div>
                     </div>
 
                     <script>
                       function initHotmartCheckout() {
-                        let name = '';
-                        let email = '';
-                        try {
-                           const saved = localStorage.getItem('crushit_profile');
-                           if(saved) {
-                               const profile = JSON.parse(saved);
-                               name = profile.name || '';
-                               email = profile.email || '';
-                           }
-                        } catch(e) {}
-                        
-                        const elements = checkoutElements.init('inlineCheckout', {
-                          offer: 'u17n0iuc',
-                          prefilledInfo: {
-                            name: name,
-                            email: email
-                          }
-                        });
-                        
-                        elements.mount('#meu_checkout_incorporado');
+                        if (window.hotmartCheckoutLoaded) return;
+                        window.hotmartCheckoutLoaded = true;
+
+                        const script = document.createElement('script');
+                        script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
+                        script.onload = function() {
+                            let name = '';
+                            let email = '';
+                            try {
+                               const saved = localStorage.getItem('crushit_profile');
+                               if(saved) {
+                                   const profile = JSON.parse(saved);
+                                   name = profile.name || '';
+                                   email = profile.email || '';
+                               }
+                            } catch(e) {}
+                            
+                            const elements = checkoutElements.init('inlineCheckout', {
+                              offer: 'u17n0iuc',
+                              prefilledInfo: {
+                                name: name,
+                                email: email
+                              }
+                            });
+                            
+                            elements.mount('#meu_checkout_incorporado');
+                        };
+                        document.body.appendChild(script);
                       }
                     </script>
 
