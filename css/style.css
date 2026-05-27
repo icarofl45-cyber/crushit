@@ -53,381 +53,6 @@
     position: relative;
 }
 
-/* Responsivo Tela 1 */
-@media (max-width: 480px) {
-    .age-button {
-        font-size: 15px;
-    }
-
-    .gender-label {
-        font-size: 14px;
-    }
-
-    .hex-grid {
-        gap: 10px;
-    }
-
-    .hex-label {
-        font-size: 14px;
-        padding: 4px 12px;
-    }
-
-    .goal-title {
-        font-size: 18px;
-    }
-
-    .goal-subtitle {
-        font-size: 13px;
-    }
-
-    .horizontal-label {
-        font-size: 18px;
-    }
-
-    .horizontal-card {
-        padding: 0 15px;
-        min-height: 100px;
-    }
-
-    .fat-image-display {
-        height: 320px;
-    }
-
-    .slider-labels {
-        font-size: 8px;
-    }
-
-    .area-option {
-        padding: 10px 12px;
-        gap: 10px;
-    }
-
-    .area-option-label {
-        font-size: 13px;
-    }
-
-    .prediction-dual-dashboard {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 0 15px;
-    }
-
-    .prediction-headline {
-        font-size: 22px;
-    }
-
-    .prediction-date {
-        font-size: 28px;
-    }
-
-    #screen-training .training-card-v2 {
-        padding: 18px 15px;
-        gap: 15px;
-    }
-
-    #screen-training .training-icon-v2 {
-        width: 50px;
-        height: 50px;
-        font-size: 26px;
-    }
-
-    #screen-training .training-title-v2 {
-        font-size: 14px;
-    }
-
-    #screen-training .training-subtitle-v2 {
-        font-size: 12px;
-    }
-
-    .summary-row {
-        flex-direction: column;
-    }
-
-    .card-value-large {
-        font-size: 32px;
-    }
-
-    .card-main-val {
-        font-size: 24px;
-    }
-
-    .comparison-card {
-        padding: 10px;
-    }
-
-    .comparison-card-label {
-        font-size: 9px;
-    }
-
-    .pricing-card-v2 {
-        padding: 15px;
-    }
-
-    .testimonials-count {
-        font-size: 32px;
-    }
-
-    .headline {
-        font-size: 24px;
-        line-height: 1.2;
-    }
-
-    .subheadline {
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
-
-    .areas-headline {
-        font-size: 26px;
-    }
-
-    .balloon-item p {
-        font-size: 11px;
-    }
-}
-
-@media (max-width: 375px) {
-    .age-button {
-        font-size: 13px;
-        padding: 8px 16px;
-    }
-
-    .horizontal-card {
-        min-height: 90px;
-    }
-
-    .horizontal-label {
-        font-size: 16px;
-    }
-
-    .fat-image-display {
-        height: 260px;
-    }
-
-    .offer-container {
-        padding: 0 5px;
-    }
-
-    .stat-val {
-        font-size: 16px;
-    }
-
-    .comp-imc-val {
-        font-size: 18px;
-    }
-
-    body {
-        padding: 0 10px;
-    }
-
-    .headline {
-        font-size: 26px;
-    }
-
-    .subheadline {
-        font-size: 13px;
-    }
-
-    .fat-value-bubble {
-        font-size: 14px;
-        padding: 6px 14px;
-    }
-
-    .btn-continue {
-        font-size: 14px;
-        padding: 14px;
-    }
-}
-
-@media (max-width: 340px) {
-    .quiz-grid {
-        gap: 8px;
-    }
-
-    .age-button {
-        font-size: 12px;
-        padding: 8px 0;
-    }
-
-    .gender-img-wrap {
-        height: 150px;
-    }
-
-    .gender-label {
-        font-size: 12px;
-        padding: 8px 6px;
-    }
-
-    .hex-grid {
-        gap: 8px;
-    }
-
-    .hex-image-wrap {
-        max-width: 130px;
-    }
-
-    .hex-label {
-        font-size: 12px;
-        padding: 4px 10px;
-    }
-
-    .goal-card {
-        padding: 14px;
-        gap: 12px;
-    }
-
-    .goal-img-box {
-        width: 65px;
-        height: 85px;
-    }
-
-    .goal-title {
-        font-size: 15px;
-    }
-
-    .goal-subtitle {
-        font-size: 11px;
-    }
-
-    .horizontal-card {
-        min-height: 85px;
-        padding: 0 10px;
-    }
-
-    .horizontal-label {
-        font-size: 15px;
-    }
-
-    .horizontal-img-box {
-        width: 90px;
-        height: 100px;
-    }
-
-    .fat-image-display {
-        height: 220px;
-    }
-
-    .fat-avatar-box {
-        width: 220px;
-        height: 300px;
-    }
-
-    .fat-slider-container {
-        margin-top: 15px;
-    }
-
-    .bio-field input {
-        font-size: 16px;
-    }
-
-    .imc-box {
-        padding: 10px;
-    }
-
-    .prediction-headline {
-        font-size: 20px;
-    }
-
-    .prediction-dual-dashboard {
-        margin-top: 10px;
-    }
-
-    .graph-tag {
-        font-size: 9px;
-        padding: 3px 8px;
-    }
-
-    .graph-val-now {
-        font-size: 10px;
-    }
-
-    .graph-labels-v2 span {
-        font-size: 8px;
-    }
-
-    .pushups-grid {
-        gap: 8px;
-    }
-
-    .pushup-hex-card {
-        padding: 16px 8px;
-    }
-
-    .pushup-hex-wrap {
-        font-size: 22px;
-    }
-
-    .pushup-label {
-        font-size: 8px;
-    }
-
-    .chk-headline-v3 {
-        font-size: 18px;
-    }
-
-    .chk-row-v3 {
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .chk-label-v3 {
-        font-size: 9px;
-    }
-
-    .chk-ring-wrap-v3 {
-        width: 32px;
-        height: 32px;
-    }
-
-    .chk-ring-v3 {
-        width: 32px;
-        height: 32px;
-    }
-
-    .offer-container {
-        padding: 0 4px;
-    }
-
-    .stat-val {
-        font-size: 14px;
-    }
-
-    .comp-imc-val {
-        font-size: 16px;
-    }
-
-    .pricing-card-v2 {
-        padding: 12px;
-    }
-
-    body {
-        padding: 0 8px 30px;
-    }
-
-    .screen {
-        max-width: 100%;
-    }
-
-    .headline {
-        font-size: 22px;
-        letter-spacing: -0.5px;
-    }
-
-    .subheadline {
-        font-size: 12px;
-        margin-bottom: 15px;
-    }
-
-    .logo-img {
-        max-width: 120px;
-    }
-
-    .btn-continue {
-        font-size: 13px;
-        padding: 12px;
-    }
-}
-
 /*
 ============================================================
    TELA 2 - GENERO
@@ -6550,4 +6175,381 @@ body::-webkit-scrollbar,
 html, body, .screen {
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+
+
+/* ================= RESPONSIVO GLOBAL MOBILE ================= */
+/* Responsivo Tela 1 */
+@media (max-width: 480px) {
+    .age-button {
+        font-size: 15px;
+    }
+
+    .gender-label {
+        font-size: 14px;
+    }
+
+    .hex-grid {
+        gap: 10px;
+    }
+
+    .hex-label {
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+
+    .goal-title {
+        font-size: 18px;
+    }
+
+    .goal-subtitle {
+        font-size: 13px;
+    }
+
+    .horizontal-label {
+        font-size: 18px;
+    }
+
+    .horizontal-card {
+        padding: 0 15px;
+        min-height: 100px;
+    }
+
+    .fat-image-display {
+        height: 320px;
+    }
+
+    .slider-labels {
+        font-size: 8px;
+    }
+
+    .area-option {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .area-option-label {
+        font-size: 13px;
+    }
+
+    .prediction-dual-dashboard {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .prediction-headline {
+        font-size: 22px;
+    }
+
+    .prediction-date {
+        font-size: 28px;
+    }
+
+    #screen-training .training-card-v2 {
+        padding: 18px 15px;
+        gap: 15px;
+    }
+
+    #screen-training .training-icon-v2 {
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
+    }
+
+    #screen-training .training-title-v2 {
+        font-size: 14px;
+    }
+
+    #screen-training .training-subtitle-v2 {
+        font-size: 12px;
+    }
+
+    .summary-row {
+        flex-direction: column;
+    }
+
+    .card-value-large {
+        font-size: 32px;
+    }
+
+    .card-main-val {
+        font-size: 24px;
+    }
+
+    .comparison-card {
+        padding: 10px;
+    }
+
+    .comparison-card-label {
+        font-size: 9px;
+    }
+
+    .pricing-card-v2 {
+        padding: 15px;
+    }
+
+    .testimonials-count {
+        font-size: 32px;
+    }
+
+    .headline {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
+    .subheadline {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .areas-headline {
+        font-size: 26px;
+    }
+
+    .balloon-item p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 375px) {
+    .age-button {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .horizontal-card {
+        min-height: 90px;
+    }
+
+    .horizontal-label {
+        font-size: 16px;
+    }
+
+    .fat-image-display {
+        height: 260px;
+    }
+
+    .offer-container {
+        padding: 0 5px;
+    }
+
+    .stat-val {
+        font-size: 16px;
+    }
+
+    .comp-imc-val {
+        font-size: 18px;
+    }
+
+    body {
+        padding: 0 10px;
+    }
+
+    .headline {
+        font-size: 26px;
+    }
+
+    .subheadline {
+        font-size: 13px;
+    }
+
+    .fat-value-bubble {
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+
+    .btn-continue {
+        font-size: 14px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 340px) {
+    .quiz-grid {
+        gap: 8px;
+    }
+
+    .age-button {
+        font-size: 12px;
+        padding: 8px 0;
+    }
+
+    .gender-img-wrap {
+        height: 150px;
+    }
+
+    .gender-label {
+        font-size: 12px;
+        padding: 8px 6px;
+    }
+
+    .hex-grid {
+        gap: 8px;
+    }
+
+    .hex-image-wrap {
+        max-width: 130px;
+    }
+
+    .hex-label {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .goal-card {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .goal-img-box {
+        width: 65px;
+        height: 85px;
+    }
+
+    .goal-title {
+        font-size: 15px;
+    }
+
+    .goal-subtitle {
+        font-size: 11px;
+    }
+
+    .horizontal-card {
+        min-height: 85px;
+        padding: 0 10px;
+    }
+
+    .horizontal-label {
+        font-size: 15px;
+    }
+
+    .horizontal-img-box {
+        width: 90px;
+        height: 100px;
+    }
+
+    .fat-image-display {
+        height: 220px;
+    }
+
+    .fat-avatar-box {
+        width: 220px;
+        height: 300px;
+    }
+
+    .fat-slider-container {
+        margin-top: 15px;
+    }
+
+    .bio-field input {
+        font-size: 16px;
+    }
+
+    .imc-box {
+        padding: 10px;
+    }
+
+    .prediction-headline {
+        font-size: 20px;
+    }
+
+    .prediction-dual-dashboard {
+        margin-top: 10px;
+    }
+
+    .graph-tag {
+        font-size: 9px;
+        padding: 3px 8px;
+    }
+
+    .graph-val-now {
+        font-size: 10px;
+    }
+
+    .graph-labels-v2 span {
+        font-size: 8px;
+    }
+
+    .pushups-grid {
+        gap: 8px;
+    }
+
+    .pushup-hex-card {
+        padding: 16px 8px;
+    }
+
+    .pushup-hex-wrap {
+        font-size: 22px;
+    }
+
+    .pushup-label {
+        font-size: 8px;
+    }
+
+    .chk-headline-v3 {
+        font-size: 18px;
+    }
+
+    .chk-row-v3 {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .chk-label-v3 {
+        font-size: 9px;
+    }
+
+    .chk-ring-wrap-v3 {
+        width: 32px;
+        height: 32px;
+    }
+
+    .chk-ring-v3 {
+        width: 32px;
+        height: 32px;
+    }
+
+    .offer-container {
+        padding: 0 4px;
+    }
+
+    .stat-val {
+        font-size: 14px;
+    }
+
+    .comp-imc-val {
+        font-size: 16px;
+    }
+
+    .pricing-card-v2 {
+        padding: 12px;
+    }
+
+    body {
+        padding: 0 8px 30px;
+    }
+
+    .screen {
+        max-width: 100%;
+    }
+
+    .headline {
+        font-size: 22px;
+        letter-spacing: -0.5px;
+    }
+
+    .subheadline {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .logo-img {
+        max-width: 120px;
+    }
+
+    .btn-continue {
+        font-size: 13px;
+        padding: 12px;
+    }
 }
