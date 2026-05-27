@@ -974,14 +974,12 @@ function finishQuiz() {
     }
     saveProfile();
 
-    // Dispara o Initiate Checkout com Advanced Matching (Passando E-mail)
+    // Inicializa o Pixel com Advanced Matching (Passando E-mail), mas sem disparar evento de IC manual.
     try {
         if (typeof fbq === 'function' && userProfile.email) {
-            // Inicializa com o e-mail para Advanced Matching (Fura o bloqueio do iOS 14)
             fbq('init', '898379032876377', {
                 em: userProfile.email.toLowerCase().trim()
             });
-            fbq('track', 'InitiateCheckout');
         }
     } catch(e) {}
 
