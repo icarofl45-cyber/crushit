@@ -132,6 +132,18 @@ function goToStep(stepId, value) {
         window.location.hash = stepId;
     }
 
+    // Dispara o tracking de Funil e Initiate Checkout
+    try {
+        if (typeof fbq === 'function') {
+            fbq('trackCustom', 'StepView', { step: stepId });
+            if (stepId === 'offer') {
+                fbq('track', 'InitiateCheckout');
+            }
+        }
+    } catch (e) {
+        console.warn('Facebook Pixel não carregado');
+    }
+
     updateBackBtnVisibility();
     saveProfile();
 
