@@ -6540,13 +6540,14 @@ body.gender-female .tag-muscle {
     box-shadow: 0 0 15px var(--accent);
 }
 
-/* Hide physical scrollbar on Android to prevent layout squeeze */
-html.is-android::-webkit-scrollbar,
-html.is-android body::-webkit-scrollbar,
-.is-android .screen::-webkit-scrollbar {
+/* Hide physical scrollbar globally to prevent layout squeeze */
+::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.screen::-webkit-scrollbar {
     width: 0px;
     display: none;
 }
-.is-android, .is-android body {
+html, body, .screen {
     scrollbar-width: none;
+    -ms-overflow-style: none;
 }
