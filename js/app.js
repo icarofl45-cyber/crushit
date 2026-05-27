@@ -974,6 +974,17 @@ function finishQuiz() {
     }
     saveProfile();
 
+    // Dispara o Initiate Checkout com Advanced Matching (Passando E-mail)
+    try {
+        if (typeof fbq === 'function' && userProfile.email) {
+            // Inicializa com o e-mail para Advanced Matching (Fura o bloqueio do iOS 14)
+            fbq('init', '898379032876377', {
+                em: userProfile.email.toLowerCase().trim()
+            });
+            fbq('track', 'InitiateCheckout');
+        }
+    } catch(e) {}
+
     // Ativa o modo limpo no header (centraliza logo e remove nav)
     const header = document.querySelector('.main-header');
     if (header) header.classList.add('clean-header');
@@ -1489,6 +1500,27 @@ function startPeopleCounter() {
 // Recupera a etapa da URL ao carregar a página
 window.addEventListener('DOMContentLoaded', () => {
     loadProfile();
+
+    // Lógica do Banner de Cookies
+    const cookieBanner = document.getElementById('cookie-banner');
+    const btnAcceptCookies = document.getElementById('btn-accept-cookies');
+    if (!localStorage.getItem('crushit_cookies_accepted')) {
+        // Mostra o banner com um leve atraso
+        setTimeout(() => {
+            if (cookieBanner) cookieBanner.classList.add('show');
+        }, 1500);
+    } else {
+        // Se já aceitou antes, concede a permissão no FB
+        try { if(typeof fbq === 'function') fbq('consent', 'grant'); } catch(e){}
+    }
+
+    if (btnAcceptCookies) {
+        btnAcceptCookies.addEventListener('click', () => {
+            localStorage.setItem('crushit_cookies_accepted', 'true');
+            if (cookieBanner) cookieBanner.classList.remove('show');
+            try { if(typeof fbq === 'function') fbq('consent', 'grant'); } catch(e){}
+        });
+    }
 
     // Testimonials Slider Logic
     const track = document.querySelector('.testimonials-track');
