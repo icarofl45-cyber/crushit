@@ -36,7 +36,7 @@
     fbq('init', '898379032876377');
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
+    <noscript><img loading="lazy" height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=898379032876377&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
@@ -77,6 +77,8 @@
     <noscript>
         <link rel="stylesheet" href="css/style.css?v=8.7">
     </noscript>
+    <link rel="preload" href="js/app.js?v=2" as="script">
+    <link rel="preload" href="imagens_webp_crush_it/logo.png" as="image">
 </head>
 
 <body>
@@ -85,7 +87,7 @@
 
     <header class="main-header" id="main-header">
         <div class="logo-container">
-            <img src="imagens_webp_crush_it/logo.png" alt="Crush It - Logotipo Oficial" class="logo-img"
+            <img loading="lazy" src="imagens_webp_crush_it/logo.png" alt="Crush It - Logotipo Oficial" class="logo-img"
                 fetchpriority="high" decoding="sync" width="120" height="40">
         </div>
 
@@ -118,20 +120,20 @@
 
         <div class="quiz-grid">
             <div class="age-card delay-1" onclick="goToStep('gender', '18-29')">
-                <img src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29" fetchpriority="high" decoding="sync" width="160"
+                <img loading="lazy" src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29" fetchpriority="high" decoding="sync" width="160"
                     height="240">
                 <div class="age-button">Edad: 18-29</div>
             </div>
             <div class="age-card delay-2" onclick="goToStep('gender', '30-39')">
-                <img src="imagens_webp_crush_it/edad-30-39.webp" alt="Edad 30-39" fetchpriority="high" decoding="sync" width="160" height="240">
+                <img loading="lazy" src="imagens_webp_crush_it/edad-30-39.webp" alt="Edad 30-39" fetchpriority="high" decoding="sync" width="160" height="240">
                 <div class="age-button">Edad: 30-39</div>
             </div>
             <div class="age-card delay-3" onclick="goToStep('gender', '40-49')">
-                <img src="imagens_webp_crush_it/edad-40-49.webp" alt="Edad 40-49" fetchpriority="high" decoding="sync" width="160" height="240">
+                <img loading="lazy" src="imagens_webp_crush_it/edad-40-49.webp" alt="Edad 40-49" fetchpriority="high" decoding="sync" width="160" height="240">
                 <div class="age-button">Edad: 40-49</div>
             </div>
             <div class="age-card delay-4" onclick="goToStep('gender', '50+')">
-                <img src="imagens_webp_crush_it/edad-mas-de-50.webp" alt="Edad más de 50" fetchpriority="high" decoding="sync" width="160" height="240">
+                <img loading="lazy" src="imagens_webp_crush_it/edad-mas-de-50.webp" alt="Edad más de 50" fetchpriority="high" decoding="sync" width="160" height="240">
                 <div class="age-button">Edad: más de 50</div>
             </div>
         </div>
@@ -169,7 +171,7 @@
         <div class="hex-grid">
             <div class="hex-card anim-down delay-2" onclick="goToStep('goal', 'Delgado')">
                 <div class="hex-image-wrap">
-                    <img src="imagens_webp_crush_it/delgado.webp" id="img-delgado" alt="DELGADO" fetchpriority="high">
+                    <img loading="lazy" src="imagens_webp_crush_it/delgado.webp" id="img-delgado" alt="DELGADO" fetchpriority="high">
                 </div>
                 <div class="hex-label">DELGADO</div>
             </div>
@@ -1830,6 +1832,12 @@
                                 <span class="pricing-currency">USD</span>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- TRUST BADGE TOP -->
+                    <div class="checkout-trust-top">
+                        <div class="trust-item"><span class="trust-icon">🔒</span> Pago 100% Seguro</div>
+                        <div class="trust-item"><span class="trust-icon">🛡️</span> Privacidad Garantizada</div>
                     </div>
 
                     <!-- Checkout Incorporado Hotmart (Carregamento Dinâmico) -->

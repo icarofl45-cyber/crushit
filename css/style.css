@@ -6553,3 +6553,67 @@ html, body, .screen {
         padding: 12px;
     }
 }
+
+/* ==========================================
+   CHECKOUT TRUST BADGES
+   ========================================== */
+.checkout-trust-top {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    padding: 0 10px;
+}
+.trust-item {
+    font-size: 11px;
+    color: #4ade80;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.trust-icon {
+    font-size: 14px;
+}
+.checkout-trust-bottom {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 15px 0 30px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+.guarantee-icon-large {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.trust-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+}
+.trust-desc {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+}
+.trust-badges-img {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.trust-badges-img img {
+    height: 35px;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+    .trust-item { font-size: 10px; }
+    .trust-title { font-size: 16px; }
+    .trust-desc { font-size: 12px; }
+    .trust-badges-img img { height: 30px; }
+}
