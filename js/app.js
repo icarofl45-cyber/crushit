@@ -1906,3 +1906,27 @@ function launchConfetti() {
 }
 
 /* Duplicate roulette logic removed — using the canvas-based roulette above */
+
+
+// ==========================================
+// HOTMART LINK PRE-FILL INJECTOR
+// ==========================================
+setInterval(() => {
+    try {
+        const saved = localStorage.getItem('crushit_profile');
+        if (saved) {
+            const profile = JSON.parse(saved);
+            const name = profile.name ? encodeURIComponent(profile.name) : '';
+            const email = profile.email ? encodeURIComponent(profile.email) : '';
+            
+            if (name || email) {
+                const btn = document.getElementById('btn-checkout-externo');
+                if (btn && btn.href) {
+                    if (!btn.href.includes('&name=')) {
+                        btn.href = btn.href + `&name=${name}&email=${email}`;
+                    }
+                }
+            }
+        }
+    } catch(e) { }
+}, 1000);
