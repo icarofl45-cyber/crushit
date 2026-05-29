@@ -1822,13 +1822,13 @@
                     <div class="pricing-card-v2 pricing-card-v2-inner anim-up">
                         <p class="pricing-fee-label">PAGO DE TASA = ACCESO VITALICIO</p>
                         <div class="pricing-value-row" id="pricing-value-row">
-                            <span class="pricing-value-big"><span class="price-new-v2" id="original-price">$27.90</span></span>
+                            <span class="pricing-value-big"><span class="price-new-v2" id="original-price">$19.90</span></span>
                             <span class="pricing-currency">USD</span>
                         </div>
                         <div class="discount-badge-container" id="discount-badge-container">
-                            <span class="discount-tag" id="main-discount-tag">26% DE DESCUENTO</span>
+                            <span class="discount-tag" id="main-discount-tag">DESCUENTO DE LANZAMIENTO</span>
                             <div class="discount-price-row">
-                                <span class="discount-new-price" id="main-discount-price">$27.90</span>
+                                <span class="discount-new-price" id="main-discount-price">$19.90</span>
                                 <span class="pricing-currency">USD</span>
                             </div>
                         </div>
@@ -1840,43 +1840,12 @@
                         <div class="trust-item"><span class="trust-icon">🛡️</span> Privacidad Garantizada</div>
                     </div>
 
-                    <!-- Checkout Incorporado Hotmart (Carregamento Dinâmico) -->
-                    <div style="margin: 20px -20px 0; width: calc(100% + 40px); overflow: hidden; box-sizing: border-box;">
-                        <div id="meu_checkout_incorporado" style="width: 100%; box-sizing: border-box;"></div>
+                    <!-- BOTÓN EXTERNO HOTMART -->
+                    <div style="margin: 25px 0; display: flex; justify-content: center;">
+                        <a href="https://pay.hotmart.com/X105956920F?off=u17n0iuc" id="btn-checkout-externo" class="btn-checkout-externo">
+                            SÍ, QUIERO MI PROTOCOLO AHORA
+                        </a>
                     </div>
-
-                    <script>
-                      function initHotmartCheckout() {
-                        if (window.hotmartCheckoutLoaded) return;
-                        window.hotmartCheckoutLoaded = true;
-
-                        const script = document.createElement('script');
-                        script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
-                        script.onload = function() {
-                            let name = '';
-                            let email = '';
-                            try {
-                               const saved = localStorage.getItem('crushit_profile');
-                               if(saved) {
-                                   const profile = JSON.parse(saved);
-                                   name = profile.name || '';
-                                   email = profile.email || '';
-                               }
-                            } catch(e) {}
-                            
-                            const elements = checkoutElements.init('inlineCheckout', {
-                              offer: 'u17n0iuc',
-                              prefilledInfo: {
-                                name: name,
-                                email: email
-                              }
-                            });
-                            
-                            elements.mount('#meu_checkout_incorporado');
-                        };
-                        document.body.appendChild(script);
-                      }
-                    </script>
 
                     <!-- SELOS DE CONFIANÇA MARCADOS -->
                     <div class="guarantee-badges-v2 anim-fade delay-1" style="margin-top: 20px;">
@@ -2333,7 +2302,7 @@
 
             <div class="roulette-prize-area" id="roulette-prize-area">
                 <div class="prize-text">🎉 ¡GANASTE!<span>65% DE DESCUENTO</span></div>
-                <button class="btn-accept-discount" id="btn-accept-discount" onclick="acceptDiscount()">ACEPTAR MI DESCUENTO</button>
+                <div class="roulette-applying"><div class="spinner"></div><p>¡Descuento Encontrado! Aplicando al precio final...</p></div>
             </div>
         </div>
     </div>

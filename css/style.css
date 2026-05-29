@@ -6617,3 +6617,44 @@ html, body, .screen {
     .trust-desc { font-size: 12px; }
     .trust-badges-img img { height: 30px; }
 }
+
+/* ==========================================
+   EXTERNAL CHECKOUT BUTTON
+   ========================================== */
+.btn-checkout-externo {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    background: #00E676; /* Verde Hotmart/Alta conversão */
+    color: #000;
+    text-align: center;
+    padding: 22px 20px;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
+    transition: all 0.3s ease;
+    animation: pulseCheckout 2s infinite;
+}
+
+.btn-checkout-externo:hover {
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0, 230, 118, 0.6);
+}
+
+@keyframes pulseCheckout {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+    70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(0, 230, 118, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+}
+
+.roulette-applying {
+    text-align: center;
+    color: #00e676;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    animation: pulse 1s infinite;
+}

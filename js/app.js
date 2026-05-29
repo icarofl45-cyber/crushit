@@ -1790,6 +1790,11 @@ function spinWheel() {
 
         // Hide spin button
         btnSpin.style.display = 'none';
+
+        // Auto close after 3 seconds
+        setTimeout(() => {
+            acceptDiscount();
+        }, 3000);
     }, 4200);
 }
 
@@ -1812,15 +1817,21 @@ function applyDiscountVisuals() {
     const priceRow = document.getElementById('pricing-value-row');
     if (priceRow) priceRow.classList.add('discounted');
 
-    // 2. Update the price values for 65% discount
+    // 2. Update the price values for the 9.90 discount
     const origPrice = document.getElementById('original-price');
-    if (origPrice) origPrice.innerText = '$27.90';
+    if (origPrice) origPrice.innerText = '$19.90';
 
     const tag = document.getElementById('main-discount-tag');
-    if (tag) tag.innerText = '65% DE DESCUENTO';
+    if (tag) tag.innerText = 'MEGA DESCUENTO';
 
     const newPrice = document.getElementById('main-discount-price');
     if (newPrice) newPrice.innerText = '$9.90';
+
+    // Update the Checkout Button URL
+    const checkoutBtn = document.getElementById('btn-checkout-externo');
+    if (checkoutBtn) {
+        checkoutBtn.href = "https://pay.hotmart.com/X105956920F?off=doz9sumg";
+    }
 
     // 3. Show discount badge container
     const discountContainer = document.getElementById('discount-badge-container');
