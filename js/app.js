@@ -1374,7 +1374,12 @@ function toggleFAQ(el) {
 }
 
 function scrollToPrice() {
-    document.getElementById('price-section').scrollIntoView({ behavior: 'smooth' });
+    const btn = document.getElementById('btn-checkout-externo');
+    if (btn && btn.href) {
+        window.location.href = btn.href;
+    } else {
+        document.getElementById('price-section').scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 
