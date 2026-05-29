@@ -1830,7 +1830,7 @@ function applyDiscountVisuals() {
     // Update the Checkout Button URL
     const checkoutBtn = document.getElementById('btn-checkout-externo');
     if (checkoutBtn) {
-        checkoutBtn.href = "https://pay.hotmart.com/X105956920F?off=doz9sumg";
+        checkoutBtn.href = "https://pay.hotmart.com/X105956920F?off=doz9sumg&checkoutMode=10";
     }
 
     // 3. Show discount badge container
