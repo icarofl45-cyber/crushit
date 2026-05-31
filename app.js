@@ -1185,3 +1185,33 @@ function acceptCookies() {
     const banner = document.getElementById('cookie-banner');
     if(banner) banner.style.display = 'none';
 }
+
+
+// --- Ghost Image Preloader (Idle Time) ---
+window.addEventListener('load', () => {
+    // Wait an extra 1.5s after page load to ensure zero impact on initial render metrics
+    setTimeout(() => {
+        const imagesToPreload = [
+            'imagens_webp_crush_it/2.webp',
+            'imagens_webp_crush_it/3.webp',
+            'imagens_webp_crush_it/4.webp',
+            'imagens_webp_crush_it/5.webp',
+            'imagens_webp_crush_it/6.webp',
+            'imagens_webp_crush_it/10-14-w.webp'
+        ];
+        
+        // Find any other images with loading="lazy" in the DOM to preload them silently
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        lazyImages.forEach(img => {
+            if (img.src && !imagesToPreload.includes(img.getAttribute('src'))) {
+                imagesToPreload.push(img.getAttribute('src'));
+            }
+        });
+
+        imagesToPreload.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+        console.log('Ghost preloader finished caching hidden images.');
+    }, 1500);
+});
