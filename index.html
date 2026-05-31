@@ -7,6 +7,12 @@
     <meta property="og:title" content="Crush It | Protocolo Oficial">
     <meta property="og:description" content="Descubre tu protocolo táctico personalizado y transforma tu físico.">
     <meta property="og:image" content="https://crushit-protocolo.vercel.app/imagens_webp_crush_it/logo.webp">
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="imagens_webp_crush_it/logo.webp" as="image">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Meta Pixel Code -->
@@ -39,7 +45,7 @@
     </div>
 
     <div id="app">
-        <img src="imagens_webp_crush_it/logo.png" alt="Logo" class="top-logo">
+        <img src="imagens_webp_crush_it/logo.png" alt="Logo" class="top-logo" loading="lazy">
         <button id="global-back-btn" class="global-back-btn" onclick="goBack()" style="display: none;">
             &larr; VOLVER
         </button>
@@ -56,19 +62,19 @@
 
             <div class="options-grid">
                 <div class="option-card" onclick="selectOption('age', '18-29')">
-                    <img src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29">
+                    <img src="imagens_webp_crush_it/edad-18-29.webp" alt="Edad 18-29" loading="lazy">
                     <div class="btn-green">Edad: 18-29</div>
                 </div>
                 <div class="option-card" onclick="selectOption('age', '30-39')">
-                    <img src="imagens_webp_crush_it/edad-30-39.webp" alt="Edad 30-39">
+                    <img src="imagens_webp_crush_it/edad-30-39.webp" alt="Edad 30-39" loading="lazy">
                     <div class="btn-green">Edad: 30-39</div>
                 </div>
                 <div class="option-card" onclick="selectOption('age', '40-49')">
-                    <img src="imagens_webp_crush_it/edad-40-49.webp" alt="Edad 40-49">
+                    <img src="imagens_webp_crush_it/edad-40-49.webp" alt="Edad 40-49" loading="lazy">
                     <div class="btn-green">Edad: 40-49</div>
                 </div>
                 <div class="option-card" onclick="selectOption('age', '50+')">
-                    <img src="imagens_webp_crush_it/edad-mas-de-50.webp" alt="Edad más de 50">
+                    <img src="imagens_webp_crush_it/edad-mas-de-50.webp" alt="Edad más de 50" loading="lazy">
                     <div class="btn-green">Edad: más de 50</div>
                 </div>
                 </div>
@@ -87,25 +93,25 @@
             <div class="options-grid">
                 <div class="option-container" onclick="selectOption('body', 'delgado')">
                     <div class="image-card">
-                        <img src="imagens_webp_crush_it/delgado.webp" alt="Delgado">
+                        <img src="imagens_webp_crush_it/delgado.webp" alt="Delgado" loading="lazy">
                     </div>
                     <div class="btn-dark">DELGADO</div>
                 </div>
                 <div class="option-container" onclick="selectOption('body', 'promedio')">
                     <div class="image-card">
-                        <img src="imagens_webp_crush_it/promedio.webp" alt="Promedio">
+                        <img src="imagens_webp_crush_it/promedio.webp" alt="Promedio" loading="lazy">
                     </div>
                     <div class="btn-dark">PROMEDIO</div>
                 </div>
                 <div class="option-container" onclick="selectOption('body', 'grande')">
                     <div class="image-card">
-                        <img src="imagens_webp_crush_it/grande.webp" alt="Grande">
+                        <img src="imagens_webp_crush_it/grande.webp" alt="Grande" loading="lazy">
                     </div>
                     <div class="btn-dark">GRANDE</div>
                 </div>
                 <div class="option-container" onclick="selectOption('body', 'pesado')">
                     <div class="image-card">
-                        <img src="imagens_webp_crush_it/pesado.webp" alt="Pesado">
+                        <img src="imagens_webp_crush_it/pesado.webp" alt="Pesado" loading="lazy">
                     </div>
                     <div class="btn-dark">PESADO</div>
                 </div>
@@ -123,21 +129,21 @@
 
             <div class="options-list">
                 <div class="list-card" onclick="selectOption('goal', 'perder-grasa')">
-                    <img src="imagens_webp_crush_it/perder-peso.webp" alt="Perder Grasa">
+                    <img src="imagens_webp_crush_it/perder-peso.webp" alt="Perder Grasa" loading="lazy">
                     <div class="list-card-content">
                         <h3>PERDER GRASA</h3>
                         <p>Dejar de sentir vergüenza al mirarme al espejo</p>
                     </div>
                 </div>
                 <div class="list-card" onclick="selectOption('goal', 'ganar-musculo')">
-                    <img src="imagens_webp_crush_it/ganar-musculo.webp" alt="Ganar Músculo">
+                    <img src="imagens_webp_crush_it/ganar-musculo.webp" alt="Ganar Músculo" loading="lazy">
                     <div class="list-card-content">
                         <h3>GANAR MÚSCULO</h3>
                         <p>Ser el hombre más respetado e imponente de la sala</p>
                     </div>
                 </div>
                 <div class="list-card" onclick="selectOption('goal', 'definir-cuerpo')">
-                    <img src="imagens_webp_crush_it/definir-tu-cuerpo.webp" alt="Definir tu Cuerpo">
+                    <img src="imagens_webp_crush_it/definir-tu-cuerpo.webp" alt="Definir tu Cuerpo" loading="lazy">
                     <div class="list-card-content">
                         <h3>DEFINIR TU CUERPO</h3>
                         <p>Tengo el músculo, me falta la definición</p>
@@ -162,13 +168,13 @@
                     <div class="list-card-content-reverse">
                         <h3>DELGADO</h3>
                     </div>
-                    <img src="imagens_webp_crush_it/delgado-pergunta-4.webp" alt="Delgado">
+                    <img src="imagens_webp_crush_it/delgado-pergunta-4.webp" alt="Delgado" loading="lazy">
                 </div>
                 <div class="list-card-reverse" onclick="selectOption('destination', 'delgado-y-tonificado')">
                     <div class="list-card-content-reverse">
                         <h3>DELGADO Y TONIFICADO</h3>
                     </div>
-                    <img src="imagens_webp_crush_it/delgado-y-tonificado-pergunta-4.webp" alt="Delgado y Tonificado">
+                    <img src="imagens_webp_crush_it/delgado-y-tonificado-pergunta-4.webp" alt="Delgado y Tonificado" loading="lazy">
                 </div>
             </div>
 
@@ -178,13 +184,13 @@
                     <div class="list-card-content-reverse">
                         <h3>ATLETA</h3>
                     </div>
-                    <img src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Atleta">
+                    <img src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Atleta" loading="lazy">
                 </div>
                 <div class="list-card-reverse" onclick="selectOption('destination', 'culturista')">
                     <div class="list-card-content-reverse">
                         <h3>CULTURISTA</h3>
                     </div>
-                    <img src="imagens_webp_crush_it/culturista-pergunta-4.webp" alt="Culturista">
+                    <img src="imagens_webp_crush_it/culturista-pergunta-4.webp" alt="Culturista" loading="lazy">
                 </div>
             </div>
 
@@ -194,19 +200,19 @@
                     <div class="list-card-content-reverse">
                         <h3>DE PLAYA</h3>
                     </div>
-                    <img src="imagens_webp_crush_it/de-playa-pergunta-4.webp" alt="De Playa">
+                    <img src="imagens_webp_crush_it/de-playa-pergunta-4.webp" alt="De Playa" loading="lazy">
                 </div>
                 <div class="list-card-reverse" onclick="selectOption('destination', 'de-crossfit')">
                     <div class="list-card-content-reverse">
                         <h3>DE CROSSFIT</h3>
                     </div>
-                    <img src="imagens_webp_crush_it/de-crossfit-pergunta-4.webp" alt="De Crossfit">
+                    <img src="imagens_webp_crush_it/de-crossfit-pergunta-4.webp" alt="De Crossfit" loading="lazy">
                 </div>
                 <div class="list-card-reverse" onclick="selectOption('destination', 'heroe')">
                     <div class="list-card-content-reverse">
                         <h3>HÉROE</h3>
                     </div>
-                    <img src="imagens_webp_crush_it/heroe-pergunta-4.webp" alt="Héroe">
+                    <img src="imagens_webp_crush_it/heroe-pergunta-4.webp" alt="Héroe" loading="lazy">
                 </div>
                 </div>
         </section>
@@ -227,7 +233,7 @@
                     <div class="scanner-corner bottom-left"></div>
                     <div class="scanner-corner bottom-right"></div>
                     
-                    <img id="fat-image" src="imagens_webp_crush_it/20-24.webp" alt="Body Fat Percentage">
+                    <img id="fat-image" src="imagens_webp_crush_it/20-24.webp" alt="Body Fat Percentage" loading="lazy">
                 </div>
 
                 <div class="slider-controls">
@@ -253,7 +259,7 @@
             </header>
 
             <div class="anatomy-container">
-                <img src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Atleta" class="anatomy-center">
+                <img src="imagens_webp_crush_it/atleta-pergunta-4.webp" alt="Atleta" class="anatomy-center" loading="lazy">
                 <svg class="anatomy-lines" width="100%" height="100%">
                     <line id="line-brazos" class="area-line" x1="25%" y1="30%" x2="40%" y2="28%" />
                     <line id="line-piernas" class="area-line" x1="25%" y1="60%" x2="43%" y2="52%" />
@@ -264,14 +270,14 @@
                 <!-- Left Options -->
                 <div class="anatomy-option left-opt pos-1" onclick="toggleArea(this, 'brazos')">
                     <div class="hex-wrapper">
-                        <img src="imagens_webp_crush_it/area-brazos.webp" alt="Brazos">
+                        <img src="imagens_webp_crush_it/area-brazos.webp" alt="Brazos" loading="lazy">
                     </div>
                     <span>BRAZOS</span>
                 </div>
                 
                 <div class="anatomy-option left-opt pos-2" onclick="toggleArea(this, 'piernas')">
                     <div class="hex-wrapper">
-                        <img src="imagens_webp_crush_it/area-piernas.webp" alt="Piernas">
+                        <img src="imagens_webp_crush_it/area-piernas.webp" alt="Piernas" loading="lazy">
                     </div>
                     <span>PIERNAS</span>
                 </div>
@@ -279,14 +285,14 @@
                 <!-- Right Options -->
                 <div class="anatomy-option right-opt pos-3" onclick="toggleArea(this, 'pecho')">
                     <div class="hex-wrapper">
-                        <img src="imagens_webp_crush_it/pectoral.webp" alt="Pecho">
+                        <img src="imagens_webp_crush_it/pectoral.webp" alt="Pecho" loading="lazy">
                     </div>
                     <span>PECHO</span>
                 </div>
 
                 <div class="anatomy-option right-opt pos-4" onclick="toggleArea(this, 'abdomen')">
                     <div class="hex-wrapper">
-                        <img src="imagens_webp_crush_it/area-abs.webp" alt="Abdomen">
+                        <img src="imagens_webp_crush_it/area-abs.webp" alt="Abdomen" loading="lazy">
                     </div>
                     <span>ABDOMEN</span>
                 </div>
@@ -294,7 +300,7 @@
                 <!-- Todo el cuerpo / lower right -->
                 <div class="anatomy-option right-opt pos-5" onclick="toggleArea(this, 'todo')">
                     <div class="hex-wrapper">
-                        <img src="imagens_webp_crush_it/cuerpo.webp" alt="Todo el cuerpo">
+                        <img src="imagens_webp_crush_it/cuerpo.webp" alt="Todo el cuerpo" loading="lazy">
                     </div>
                     <span>TODO<br>EL CUERPO</span>
                 </div>
@@ -789,13 +795,13 @@
                 <div style="background-color: #1a1a1a; border: 1px solid #aaa; border-radius: 16px; padding: 12px 25px; display: flex; justify-content: space-around; width: 100%; max-width: 600px; align-items: center;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                         <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Vitalicio" style="width: 55px; height: auto; filter: brightness(1.2);">
+                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Vitalicio" style="width: 55px; height: auto; filter: brightness(1.2);" loading="lazy">
                         </div>
                         <span style="color: #fff; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">ACCESO VITALICIO</span>
                     </div>
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                         <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <img src="imagens_webp_crush_it/30d.webp" alt="30 Dias" style="width: 45px; height: auto; filter: brightness(1.2);">
+                            <img src="imagens_webp_crush_it/30d.webp" alt="30 Dias" style="width: 45px; height: auto; filter: brightness(1.2);" loading="lazy">
                         </div>
                         <span style="color: #fff; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">30 DÍAS DE GARANTÍA</span>
                     </div>
@@ -873,13 +879,13 @@
                 <div style="background-color: #1a1a1a; border: 1px solid #aaa; border-radius: 16px; padding: 12px 25px; display: flex; justify-content: space-around; width: 100%; max-width: 600px; align-items: center;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                         <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Vitalicio" style="width: 55px; height: auto; filter: brightness(1.2);">
+                            <img src="imagens_webp_crush_it/vitalicio.webp" alt="Vitalicio" style="width: 55px; height: auto; filter: brightness(1.2);" loading="lazy">
                         </div>
                         <span style="color: #fff; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">ACCESO VITALICIO</span>
                     </div>
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                         <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <img src="imagens_webp_crush_it/30d.webp" alt="30 Dias" style="width: 45px; height: auto; filter: brightness(1.2);">
+                            <img src="imagens_webp_crush_it/30d.webp" alt="30 Dias" style="width: 45px; height: auto; filter: brightness(1.2);" loading="lazy">
                         </div>
                         <span style="color: #fff; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">30 DÍAS DE GARANTÍA</span>
                     </div>
@@ -890,7 +896,7 @@
         <!-- Tela 17: Oferta -->
         <section id="step-offer" class="funnel-step">
             <header style="margin-bottom: 25px; text-align: center; margin-top: 10px;">
-                <img src="imagens_webp_crush_it/logo.png" alt="Logo" style="height: 35px; margin: 0 auto 30px auto; display: block;">
+                <img src="imagens_webp_crush_it/logo.png" alt="Logo" style="height: 35px; margin: 0 auto 30px auto; display: block;" loading="lazy">
                 
                 <h1 class="title" style="font-size: 18px; font-weight: 500; margin-bottom: 5px; color: #fff; line-height: 1.4;">
                     Continúa con tu análisis aquí abajo, <span id="offer-name" style="color: #22c55e; font-weight: 800;">ICARO</span>
@@ -948,7 +954,7 @@
                     <div style="color: #666; font-size: 10px; font-weight: 800; letter-spacing: 1px; margin-bottom: 15px;">AHORA</div>
                     
                     <div style="position: relative; height: 210px; display: flex; justify-content: center; overflow: hidden; margin-bottom: 15px;">
-                        <img id="offer-img-ahora" src="imagens_webp_crush_it/promedio.webp" alt="Ahora" style="width: 100%; height: 100%; object-fit: cover; object-position: top; position: relative; z-index: 1;">
+                        <img id="offer-img-ahora" src="imagens_webp_crush_it/promedio.webp" alt="Ahora" style="width: 100%; height: 100%; object-fit: cover; object-position: top; position: relative; z-index: 1;" loading="lazy">
                         <!-- Gradient Overlay -->
                         <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 70px; background: linear-gradient(to top, #111 10%, transparent); z-index: 2;"></div>
                     </div>
@@ -976,7 +982,7 @@
                     <div style="color: #ccc; font-size: 10px; font-weight: 800; letter-spacing: 1px; margin-bottom: 15px;">TU OBJETIVO</div>
                     
                     <div style="position: relative; height: 210px; display: flex; justify-content: center; overflow: hidden; margin-bottom: 15px;">
-                        <img id="offer-img-objetivo" src="imagens_webp_crush_it/de-playa-pergunta-4.webp" alt="Objetivo" style="width: 100%; height: 100%; object-fit: cover; object-position: top; position: relative; z-index: 1;">
+                        <img id="offer-img-objetivo" src="imagens_webp_crush_it/de-playa-pergunta-4.webp" alt="Objetivo" style="width: 100%; height: 100%; object-fit: cover; object-position: top; position: relative; z-index: 1;" loading="lazy">
                         <!-- Gradient Overlay -->
                         <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 70px; background: linear-gradient(to top, #111 10%, transparent); z-index: 2;"></div>
                     </div>
@@ -1148,7 +1154,7 @@
                 </div>
 
                 <div style="margin-top: 35px; width: 100%; display: flex; justify-content: center;">
-                    <a href="https://pay.hotmart.com/X105956920F?off=u17n0iuc&checkoutMode=10&bid=1780159873191" style="display: block; width: 100%;"><img src="imagens_webp_crush_it/oferta-1.webp" alt="En 21 Días" style="width: 100%; max-width: 100%; border-radius: 16px;"></a>
+                    <a href="https://pay.hotmart.com/X105956920F?off=u17n0iuc&checkoutMode=10&bid=1780159873191" style="display: block; width: 100%;"><img src="imagens_webp_crush_it/oferta-1.webp" alt="En 21 Días" style="width: 100%; max-width: 100%; border-radius: 16px;" loading="lazy"></a>
                 </div>
             </div>
 
@@ -1175,7 +1181,7 @@
                 </h3>
 
                 <div style="width: 100%; display: flex; justify-content: center;">
-                    <a href="https://pay.hotmart.com/X105956920F?off=u17n0iuc&checkoutMode=10&bid=1780159873191" style="display: block; width: 100%;"><img src="imagens_webp_crush_it/oferta-2.webp" alt="Plan Imprimible" style="width: 100%; max-width: 100%; border-radius: 12px;"></a>
+                    <a href="https://pay.hotmart.com/X105956920F?off=u17n0iuc&checkoutMode=10&bid=1780159873191" style="display: block; width: 100%;"><img src="imagens_webp_crush_it/oferta-2.webp" alt="Plan Imprimible" style="width: 100%; max-width: 100%; border-radius: 12px;" loading="lazy"></a>
                 </div>
             </div>
 
@@ -1649,13 +1655,13 @@
                     <div style="border: 1px solid #333; border-radius: 16px; padding: 10px 15px; display: flex; justify-content: space-around; align-items: center;">
                         <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
                             <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
-                                <img src="imagens_webp_crush_it/vitalicio.webp" alt="Vitalicio" style="width: 55px; height: auto; filter: brightness(1.2);">
+                                <img src="imagens_webp_crush_it/vitalicio.webp" alt="Vitalicio" style="width: 55px; height: auto; filter: brightness(1.2);" loading="lazy">
                             </div>
                             <span style="color: #aaa; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">ACCESO VITALICIO</span>
                         </div>
                         <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
                             <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
-                                <img src="imagens_webp_crush_it/30d.webp" alt="30 Dias" style="width: 45px; height: auto; filter: brightness(1.2);">
+                                <img src="imagens_webp_crush_it/30d.webp" alt="30 Dias" style="width: 45px; height: auto; filter: brightness(1.2);" loading="lazy">
                             </div>
                             <span style="color: #aaa; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">30 DÍAS DE GARANTÍA</span>
                         </div>
@@ -1718,7 +1724,7 @@
             <div style="background-color: #1a1a1a; border-radius: 16px; border: 1px solid #2a2a2a; padding: 40px 25px; text-align: center; margin-top: 0px; margin-bottom: 50px;">
                 
                 <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
-                    <img src="imagens_webp_crush_it/reembolso.webp" alt="30 Days Guarantee" style="width: 100px; height: auto;">
+                    <img src="imagens_webp_crush_it/reembolso.webp" alt="30 Days Guarantee" style="width: 100px; height: auto;" loading="lazy">
                     <h3 style="color: #fff; font-size: 22px; font-weight: 900; text-transform: uppercase; line-height: 1.2; text-align: left; max-width: 200px; margin: 0;">
                         GARANTÍA DE SATISFACCIÓN
                     </h3>
@@ -1750,7 +1756,7 @@
                     
                     <!-- Left Laurel -->
                     <div style="flex: 1; display: flex; justify-content: flex-end; padding-right: 15px;">
-                        <img src="imagens_webp_crush_it/ramo-esquerdo.webp" alt="Laurel Left" style="height: 100px; width: auto; opacity: 0.6;">
+                        <img src="imagens_webp_crush_it/ramo-esquerdo.webp" alt="Laurel Left" style="height: 100px; width: auto; opacity: 0.6;" loading="lazy">
                     </div>
                     
                     <!-- Center Stars Content -->
@@ -1768,7 +1774,7 @@
                     
                     <!-- Right Laurel -->
                     <div style="flex: 1; display: flex; justify-content: flex-start; padding-left: 15px;">
-                        <img src="imagens_webp_crush_it/ramo-direito.webp" alt="Laurel Right" style="height: 100px; width: auto; opacity: 0.6;">
+                        <img src="imagens_webp_crush_it/ramo-direito.webp" alt="Laurel Right" style="height: 100px; width: auto; opacity: 0.6;" loading="lazy">
                     </div>
                 </div>
 
@@ -1828,7 +1834,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Roberto V.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps1m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps1m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             La tecnología hormonal de Crush It es de otro planeta. 21 días exactos para esculpir una versión de mí que no creía posible. Es pura supremacía física.
         </p>
@@ -1841,7 +1847,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Marcos T.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps2m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps2m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             He probado todo, pero nada se compara a la superioridad de Crush It. Resultados definitivos y radicales en el ciclo de 21 días. No hay competencia.
         </p>
@@ -1854,7 +1860,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Miguel R.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps3m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps3m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Crush It no solo cambia tu cuerpo, redefine tu destino. 21 días de enfoque y el resultado es una obra de arte física. Es la élite absoluta.
         </p>
@@ -1867,7 +1873,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Diego S.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps4m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps4m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Increíble cómo mi cuerpo reaccionó al protocolo. Energía al máximo y grasa desapareciendo día a día. Totalmente recomendado.
         </p>
@@ -1880,7 +1886,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Carlos M.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps5m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps5m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             La mejor decisión que tomé. El sistema paso a paso es infalible y los resultados hablan por sí solos.
         </p>
@@ -1893,7 +1899,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Javier P.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps6m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps6m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Un cambio radical no solo físico, sino mental. La disciplina que construí aquí no tiene precio.
         </p>
@@ -1906,7 +1912,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Roberto V.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps1m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps1m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             La tecnología hormonal de Crush It es de otro planeta. 21 días exactos para esculpir una versión de mí que no creía posible. Es pura supremacía física.
         </p>
@@ -1919,7 +1925,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Marcos T.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps2m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps2m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             He probado todo, pero nada se compara a la superioridad de Crush It. Resultados definitivos y radicales en el ciclo de 21 días. No hay competencia.
         </p>
@@ -1932,7 +1938,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Miguel R.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps3m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps3m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Crush It no solo cambia tu cuerpo, redefine tu destino. 21 días de enfoque y el resultado es una obra de arte física. Es la élite absoluta.
         </p>
@@ -1945,7 +1951,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Diego S.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps4m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps4m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Increíble cómo mi cuerpo reaccionó al protocolo. Energía al máximo y grasa desapareciendo día a día. Totalmente recomendado.
         </p>
@@ -1958,7 +1964,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Carlos M.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps5m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps5m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             La mejor decisión que tomé. El sistema paso a paso es infalible y los resultados hablan por sí solos.
         </p>
@@ -1971,7 +1977,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Javier P.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps6m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps6m.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Un cambio radical no solo físico, sino mental. La disciplina que construí aquí no tiene precio.
         </p>
@@ -1989,7 +1995,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Elena R.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps1.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps1.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             No es un plan más, es EL PLAN definitivo. Literalmente en 21 días logré lo que no pude en años. Crush It es el estándar de oro del fitness moderno.
         </p>
@@ -2002,7 +2008,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Sofía L.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps2.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps2.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Transformación total. Nunca pensé que mi cuerpo pudiera cambiar tan rápido y de forma tan saludable.
         </p>
@@ -2015,7 +2021,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Valentina C.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps3.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps3.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             El mejor protocolo de la historia. Me siento con más energía que en mis veintes. Resultados reales.
         </p>
@@ -2028,7 +2034,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Laura M.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps4.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps4.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Al principio dudaba, pero la ciencia detrás del protocolo me convenció. Hoy tengo el mejor cuerpo de mi vida.
         </p>
@@ -2041,7 +2047,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Camila G.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps5.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps5.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Adiós grasa rebelde, hola confianza. Mi ropa me queda increíble y mi autoestima está por las nubes.
         </p>
@@ -2054,7 +2060,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Isabella T.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps6.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps6.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Fácil de seguir, recetas deliciosas y resultados que se notan desde la primera semana. 10/10.
         </p>
@@ -2067,7 +2073,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Elena R.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps1.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps1.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             No es un plan más, es EL PLAN definitivo. Literalmente en 21 días logré lo que no pude en años. Crush It es el estándar de oro del fitness moderno.
         </p>
@@ -2080,7 +2086,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Sofía L.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps2.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps2.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Transformación total. Nunca pensé que mi cuerpo pudiera cambiar tan rápido y de forma tan saludable.
         </p>
@@ -2093,7 +2099,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Valentina C.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps3.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps3.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             El mejor protocolo de la historia. Me siento con más energía que en mis veintes. Resultados reales.
         </p>
@@ -2106,7 +2112,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Laura M.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps4.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps4.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Al principio dudaba, pero la ciencia detrás del protocolo me convenció. Hoy tengo el mejor cuerpo de mi vida.
         </p>
@@ -2119,7 +2125,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Camila G.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps5.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps5.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Adiós grasa rebelde, hola confianza. Mi ropa me queda increíble y mi autoestima está por las nubes.
         </p>
@@ -2132,7 +2138,7 @@
             <span style="color: #fff; font-weight: 900; font-size: 11px;">Isabella T.</span>
             <span style="color: #eab308; font-size: 8px;">⭐ ⭐ ⭐ ⭐ ⭐</span>
         </div>
-        <img src="imagens_webp_crush_it/ps6.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;">
+        <img src="imagens_webp_crush_it/ps6.webp" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" loading="lazy">
         <p style="color: #aaa; font-size: 9px; line-height: 1.3; margin-bottom: 8px;">
             Fácil de seguir, recetas deliciosas y resultados que se notan desde la primera semana. 10/10.
         </p>
@@ -2278,7 +2284,7 @@
 <!-- Footer Section -->
 <footer style="padding: 15px 20px; background-color: transparent; text-align: center; font-size: 13px; color: #aaa; margin-top: 0px;">
     <!-- Logo -->
-    <img src="imagens_webp_crush_it/logo.png" alt="Crush It" style="width: 180px; margin: 0 auto 30px auto; display: block;">
+    <img src="imagens_webp_crush_it/logo.png" alt="Crush It" style="width: 180px; margin: 0 auto 30px auto; display: block;" loading="lazy">
 
     <!-- Links 1 -->
     <div style="margin-bottom: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; color: #ccc;">
@@ -2305,18 +2311,18 @@
     </p>
 
     <!-- Payment Methods -->
-    <img src="imagens_webp_crush_it/pagamentos.webp" alt="Métodos de Pago" style="width: 100%; max-width: 500px; margin: 0 auto 40px auto; display: block;">
+    <img src="imagens_webp_crush_it/pagamentos.webp" alt="Métodos de Pago" style="width: 100%; max-width: 500px; margin: 0 auto 40px auto; display: block;" loading="lazy">
 
     <!-- Security Seals -->
     <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-        <img src="imagens_webp_crush_it/ssl.webp" alt="SSL Seguro" style="height: 60px; object-fit: contain;">
-        <img src="imagens_webp_crush_it/30d.webp" alt="30 Días Garantía" style="height: 60px; object-fit: contain;">
+        <img src="imagens_webp_crush_it/ssl.webp" alt="SSL Seguro" style="height: 60px; object-fit: contain;" loading="lazy">
+        <img src="imagens_webp_crush_it/30d.webp" alt="30 Días Garantía" style="height: 60px; object-fit: contain;" loading="lazy">
     </div>
 </footer>
         </section>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 
     <!-- Wheel Popup -->
     
