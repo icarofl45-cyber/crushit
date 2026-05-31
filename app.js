@@ -703,14 +703,17 @@ function initOfferScreen() {
             
             document.addEventListener('mouseleave', handleExitIntent);
             
-            let lastScrollTop = window.scrollY;
-            window.addEventListener('scroll', () => {
-                let st = window.scrollY;
-                if (lastScrollTop - st > 150) {
-                    showWheelPopup();
-                }
-                lastScrollTop = st;
-            });
+            // Wait 2 seconds before arming the scroll listener to avoid triggering on the initial scrollTo(0,0) transition
+            setTimeout(() => {
+                let lastScrollTop = window.scrollY;
+                window.addEventListener('scroll', () => {
+                    let st = window.scrollY;
+                    if (lastScrollTop - st > 150) {
+                        showWheelPopup();
+                    }
+                    lastScrollTop = st;
+                });
+            }, 2000);
         }
     }
 
