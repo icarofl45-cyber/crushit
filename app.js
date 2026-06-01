@@ -954,7 +954,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nameElement.style.opacity = '0';
             setTimeout(() => {
                 const randomName = latinNames[Math.floor(Math.random() * latinNames.length)];
-                nameElement.innerHTML = randomName + ' ValidÃ³ Su Acceso Al Protocolo';
+                nameElement.innerHTML = randomName + ' Validó Su Acceso Al Protocolo';
                 nameElement.style.opacity = '1';
             }, 300);
         }, 4000);
