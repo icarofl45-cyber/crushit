@@ -1,4 +1,4 @@
-﻿// User answers store
+// User answers store
 let userAnswers = JSON.parse(localStorage.getItem('crushItUserAnswers')) || {};
 
 function saveAnswers() {
@@ -692,11 +692,7 @@ function initSuccessScreen() {
 
 // Logic for Screen 17 (Offer)
 function initOfferScreen() {
-    if (localStorage.getItem('discountApplied') === 'true') {
-        applyDiscountToOffer();
-    } else {
-        // Wheel triggers removed for $9.90 direct offer
-    }
+    // Discount logic has been removed for direct $9.90 offer
 
     // Set name
     const offerNameEl = document.getElementById('offer-name');
