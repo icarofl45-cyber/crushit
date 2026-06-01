@@ -695,9 +695,7 @@ function initOfferScreen() {
     if (localStorage.getItem('discountApplied') === 'true') {
         applyDiscountToOffer();
     } else {
-        // Start 90 sec timer for wheel popup
-        // Wheel triggers removed for $9.90 direct offer, 2000);
-        }
+        // Wheel triggers removed for $9.90 direct offer
     }
 
     // Set name
