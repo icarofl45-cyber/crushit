@@ -700,6 +700,27 @@ function initOfferScreen() {
         offerNameEl.innerText = userAnswers['name'].toUpperCase();
     }
 
+    // Pre-fill Hotmart checkout with lead data
+    let qs = '';
+    if (userAnswers['name']) qs += '&name=' + encodeURIComponent(userAnswers['name']);
+    if (userAnswers['email']) qs += '&email=' + encodeURIComponent(userAnswers['email']);
+    
+    if (qs) {
+        const links = document.querySelectorAll("a[href*='pay.hotmart.com']");
+        links.forEach(l => {
+            if (!l.href.includes('&name=')) l.href += qs;
+        });
+        
+        const buttons = document.querySelectorAll("button[onclick*='pay.hotmart.com']");
+        buttons.forEach(b => {
+            let currentOnClick = b.getAttribute('onclick');
+            if (!currentOnClick.includes('&name=')) {
+                currentOnClick = currentOnClick.replace(/'$/, qs + "'");
+                b.setAttribute('onclick', currentOnClick);
+            }
+        });
+    }
+
     // Set weights
     const pesoActualEl = document.getElementById('offer-peso-actual');
     const pesoObjetivoEl = document.getElementById('offer-peso-objetivo');
