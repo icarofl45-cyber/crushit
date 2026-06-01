@@ -1,4 +1,4 @@
-// User answers store
+﻿// User answers store
 let userAnswers = JSON.parse(localStorage.getItem('crushItUserAnswers')) || {};
 
 function saveAnswers() {
@@ -958,7 +958,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nameElement.style.opacity = '0';
             setTimeout(() => {
                 const randomName = latinNames[Math.floor(Math.random() * latinNames.length)];
-                nameElement.innerHTML = randomName + ' Validó Su Acceso Al Protocolo';
+                nameElement.innerHTML = randomName + ' ValidÃ³ Su Acceso Al Protocolo';
                 nameElement.style.opacity = '1';
             }, 300);
         }, 4000);
@@ -1181,239 +1181,17 @@ window.localPricing = {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const priceMap = {
-        'MX': { orig: '199.00', curr: 'MXN', pre: '~ 
-    try {
-        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
-        if(!response.ok) return;
-        const data = await response.json();
-        const c = data.country;
-        if(priceMap[c]) {
-            window.localPricing.detected = true;
-            window.localPricing.orig = priceMap[c].orig;
-            window.localPricing.disc = priceMap[c].disc;
-            window.localPricing.curr = priceMap[c].curr;
-            window.localPricing.prefix = priceMap[c].pre;
-            
-            // Check if DOM is already loaded enough to have the offer-price elements
-            const updatePriceDOM = () => {
-                const m = document.getElementById('offer-price-main');
-                const cu = document.getElementById('offer-price-currency');
-                if(m && cu && !window.discountAlreadyApplied) {
-                    m.innerText = window.localPricing.prefix + window.localPricing.orig;
-                    cu.innerText = window.localPricing.curr;
-                }
-            };
-            
-            // Try updating immediately (if the step is already in the DOM)
-            updatePriceDOM();
-            
-            // Re-run on hash change just in case the offer screen is rendered later
-            window.addEventListener('hashchange', () => {
-                if(window.location.hash === '#step-offer') {
-                    updatePriceDOM();
-                }
-            });
-        }
-    } catch(e) {
-        console.error('GeoJS error', e);
-    }
-});
- },
-        'CO': { orig: '39.900', curr: 'COP', pre: '~ 
-    try {
-        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
-        if(!response.ok) return;
-        const data = await response.json();
-        const c = data.country;
-        if(priceMap[c]) {
-            window.localPricing.detected = true;
-            window.localPricing.orig = priceMap[c].orig;
-            window.localPricing.disc = priceMap[c].disc;
-            window.localPricing.curr = priceMap[c].curr;
-            window.localPricing.prefix = priceMap[c].pre;
-            
-            // Check if DOM is already loaded enough to have the offer-price elements
-            const updatePriceDOM = () => {
-                const m = document.getElementById('offer-price-main');
-                const cu = document.getElementById('offer-price-currency');
-                if(m && cu && !window.discountAlreadyApplied) {
-                    m.innerText = window.localPricing.prefix + window.localPricing.orig;
-                    cu.innerText = window.localPricing.curr;
-                }
-            };
-            
-            // Try updating immediately (if the step is already in the DOM)
-            updatePriceDOM();
-            
-            // Re-run on hash change just in case the offer screen is rendered later
-            window.addEventListener('hashchange', () => {
-                if(window.location.hash === '#step-offer') {
-                    updatePriceDOM();
-                }
-            });
-        }
-    } catch(e) {
-        console.error('GeoJS error', e);
-    }
-});
- },
-        'CL': { orig: '9.500', curr: 'CLP', pre: '~ 
-    try {
-        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
-        if(!response.ok) return;
-        const data = await response.json();
-        const c = data.country;
-        if(priceMap[c]) {
-            window.localPricing.detected = true;
-            window.localPricing.orig = priceMap[c].orig;
-            window.localPricing.disc = priceMap[c].disc;
-            window.localPricing.curr = priceMap[c].curr;
-            window.localPricing.prefix = priceMap[c].pre;
-            
-            // Check if DOM is already loaded enough to have the offer-price elements
-            const updatePriceDOM = () => {
-                const m = document.getElementById('offer-price-main');
-                const cu = document.getElementById('offer-price-currency');
-                if(m && cu && !window.discountAlreadyApplied) {
-                    m.innerText = window.localPricing.prefix + window.localPricing.orig;
-                    cu.innerText = window.localPricing.curr;
-                }
-            };
-            
-            // Try updating immediately (if the step is already in the DOM)
-            updatePriceDOM();
-            
-            // Re-run on hash change just in case the offer screen is rendered later
-            window.addEventListener('hashchange', () => {
-                if(window.location.hash === '#step-offer') {
-                    updatePriceDOM();
-                }
-            });
-        }
-    } catch(e) {
-        console.error('GeoJS error', e);
-    }
-});
- },
+        'MX': { orig: '199.00', curr: 'MXN', pre: '~ $' },
+        'CO': { orig: '39.900', curr: 'COP', pre: '~ $' },
+        'CL': { orig: '9.500', curr: 'CLP', pre: '~ $' },
         'PE': { orig: '39.00', curr: 'PEN', pre: '~ S/ ' },
-        'AR': { orig: '16.500', curr: 'ARS', pre: '~ 
-    try {
-        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
-        if(!response.ok) return;
-        const data = await response.json();
-        const c = data.country;
-        if(priceMap[c]) {
-            window.localPricing.detected = true;
-            window.localPricing.orig = priceMap[c].orig;
-            window.localPricing.disc = priceMap[c].disc;
-            window.localPricing.curr = priceMap[c].curr;
-            window.localPricing.prefix = priceMap[c].pre;
-            
-            // Check if DOM is already loaded enough to have the offer-price elements
-            const updatePriceDOM = () => {
-                const m = document.getElementById('offer-price-main');
-                const cu = document.getElementById('offer-price-currency');
-                if(m && cu && !window.discountAlreadyApplied) {
-                    m.innerText = window.localPricing.prefix + window.localPricing.orig;
-                    cu.innerText = window.localPricing.curr;
-                }
-            };
-            
-            // Try updating immediately (if the step is already in the DOM)
-            updatePriceDOM();
-            
-            // Re-run on hash change just in case the offer screen is rendered later
-            window.addEventListener('hashchange', () => {
-                if(window.location.hash === '#step-offer') {
-                    updatePriceDOM();
-                }
-            });
-        }
-    } catch(e) {
-        console.error('GeoJS error', e);
-    }
-});
- },
+        'AR': { orig: '16.500', curr: 'ARS', pre: '~ $' },
         'DO': { orig: '590.00', curr: 'DOP', pre: '~ RD$ ' },
         'GT': { orig: '78.00', curr: 'GTQ', pre: '~ Q ' },
         'BO': { orig: '69.00', curr: 'BOB', pre: '~ Bs. ' },
         'HN': { orig: '245.00', curr: 'HNL', pre: '~ L ' },
-        'SV': { orig: '9.90', curr: 'USD', pre: '~ 
-    try {
-        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
-        if(!response.ok) return;
-        const data = await response.json();
-        const c = data.country;
-        if(priceMap[c]) {
-            window.localPricing.detected = true;
-            window.localPricing.orig = priceMap[c].orig;
-            window.localPricing.disc = priceMap[c].disc;
-            window.localPricing.curr = priceMap[c].curr;
-            window.localPricing.prefix = priceMap[c].pre;
-            
-            // Check if DOM is already loaded enough to have the offer-price elements
-            const updatePriceDOM = () => {
-                const m = document.getElementById('offer-price-main');
-                const cu = document.getElementById('offer-price-currency');
-                if(m && cu && !window.discountAlreadyApplied) {
-                    m.innerText = window.localPricing.prefix + window.localPricing.orig;
-                    cu.innerText = window.localPricing.curr;
-                }
-            };
-            
-            // Try updating immediately (if the step is already in the DOM)
-            updatePriceDOM();
-            
-            // Re-run on hash change just in case the offer screen is rendered later
-            window.addEventListener('hashchange', () => {
-                if(window.location.hash === '#step-offer') {
-                    updatePriceDOM();
-                }
-            });
-        }
-    } catch(e) {
-        console.error('GeoJS error', e);
-    }
-});
- },
-        'EC': { orig: '9.90', curr: 'USD', pre: '~ 
-    try {
-        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
-        if(!response.ok) return;
-        const data = await response.json();
-        const c = data.country;
-        if(priceMap[c]) {
-            window.localPricing.detected = true;
-            window.localPricing.orig = priceMap[c].orig;
-            window.localPricing.disc = priceMap[c].disc;
-            window.localPricing.curr = priceMap[c].curr;
-            window.localPricing.prefix = priceMap[c].pre;
-            
-            // Check if DOM is already loaded enough to have the offer-price elements
-            const updatePriceDOM = () => {
-                const m = document.getElementById('offer-price-main');
-                const cu = document.getElementById('offer-price-currency');
-                if(m && cu && !window.discountAlreadyApplied) {
-                    m.innerText = window.localPricing.prefix + window.localPricing.orig;
-                    cu.innerText = window.localPricing.curr;
-                }
-            };
-            
-            // Try updating immediately (if the step is already in the DOM)
-            updatePriceDOM();
-            
-            // Re-run on hash change just in case the offer screen is rendered later
-            window.addEventListener('hashchange', () => {
-                if(window.location.hash === '#step-offer') {
-                    updatePriceDOM();
-                }
-            });
-        }
-    } catch(e) {
-        console.error('GeoJS error', e);
-    }
-});
- }
+        'SV': { orig: '9.90', curr: 'USD', pre: '~ $' },
+        'EC': { orig: '9.90', curr: 'USD', pre: '~ $' }
     };
     try {
         const response = await fetch('https://get.geojs.io/v1/ip/country.json');
