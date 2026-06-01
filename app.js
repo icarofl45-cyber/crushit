@@ -1193,7 +1193,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('https://get.geojs.io/v1/ip/country.json');
         if(!response.ok) return;
         const data = await response.json();
-        const c = data.country;
+        
+        // TEST MODE: Allow overriding the country via URL (e.g. ?test_country=MX)
+        const urlParams = new URLSearchParams(window.location.search);
+        const overrideCountry = urlParams.get('test_country');
+        
+        const c = overrideCountry || data.country;
+        
         if(priceMap[c]) {
             window.localPricing.detected = true;
             window.localPricing.orig = priceMap[c].orig;
