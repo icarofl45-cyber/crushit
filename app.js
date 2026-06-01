@@ -1074,7 +1074,11 @@ function applyDiscountToOffer() {
     newPriceWrapper.style.marginTop = "10px";
 
     let newPriceMain = document.createElement('span');
-    newPriceMain.innerText = "$9.90";
+    if (window.localPricing && window.localPricing.detected) {
+        newPriceMain.innerText = window.localPricing.prefix + window.localPricing.disc;
+    } else {
+        newPriceMain.innerText = "$9.90";
+    }
     newPriceMain.style.color = "#22c55e";
     newPriceMain.style.fontSize = "65px";
     newPriceMain.style.fontWeight = "900";
@@ -1083,7 +1087,11 @@ function applyDiscountToOffer() {
     newPriceMain.style.textShadow = "0 0 20px rgba(34,197,94,0.4)";
 
     let newPriceCurrency = document.createElement('span');
-    newPriceCurrency.innerText = "USD";
+    if (window.localPricing && window.localPricing.detected) {
+        newPriceCurrency.innerText = window.localPricing.curr;
+    } else {
+        newPriceCurrency.innerText = "USD";
+    }
     newPriceCurrency.style.color = "#aaa";
     newPriceCurrency.style.fontSize = "20px";
     newPriceCurrency.style.fontWeight = "800";
@@ -1217,4 +1225,64 @@ window.addEventListener('load', () => {
         });
         console.log('Ghost preloader finished caching hidden images.');
     }, 1500);
+});
+
+// --- Localized Pricing System ---
+window.localPricing = {
+    detected: false,
+    orig: '19.90',
+    disc: '9.90',
+    curr: 'USD',
+    prefix: ''
+};
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const priceMap = {
+        'MX': { orig: '399.00', disc: '199.00', curr: 'MXN', pre: '~ $' },
+        'CO': { orig: '79.900', disc: '39.900', curr: 'COP', pre: '~ $' },
+        'CL': { orig: '18.900', disc: '9.500', curr: 'CLP', pre: '~ $' },
+        'PE': { orig: '79.00', disc: '39.00', curr: 'PEN', pre: '~ S/ ' },
+        'AR': { orig: '24.900', disc: '12.500', curr: 'ARS', pre: '~ $' },
+        'DO': { orig: '1185', disc: '590', curr: 'DOP', pre: '~ RD$ ' },
+        'GT': { orig: '155.00', disc: '78.00', curr: 'GTQ', pre: '~ Q ' },
+        'BO': { orig: '138.00', disc: '69.00', curr: 'BOB', pre: '~ Bs. ' },
+        'HN': { orig: '495.00', disc: '245.00', curr: 'HNL', pre: '~ L ' },
+        'SV': { orig: '19.90', disc: '9.90', curr: 'USD', pre: '~ $' },
+        'EC': { orig: '19.90', disc: '9.90', curr: 'USD', pre: '~ $' }
+    };
+    try {
+        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
+        if(!response.ok) return;
+        const data = await response.json();
+        const c = data.country;
+        if(priceMap[c]) {
+            window.localPricing.detected = true;
+            window.localPricing.orig = priceMap[c].orig;
+            window.localPricing.disc = priceMap[c].disc;
+            window.localPricing.curr = priceMap[c].curr;
+            window.localPricing.prefix = priceMap[c].pre;
+            
+            // Check if DOM is already loaded enough to have the offer-price elements
+            const updatePriceDOM = () => {
+                const m = document.getElementById('offer-price-main');
+                const cu = document.getElementById('offer-price-currency');
+                if(m && cu && !window.discountAlreadyApplied) {
+                    m.innerText = window.localPricing.prefix + window.localPricing.orig;
+                    cu.innerText = window.localPricing.curr;
+                }
+            };
+            
+            // Try updating immediately (if the step is already in the DOM)
+            updatePriceDOM();
+            
+            // Re-run on hash change just in case the offer screen is rendered later
+            window.addEventListener('hashchange', () => {
+                if(window.location.hash === '#step-offer') {
+                    updatePriceDOM();
+                }
+            });
+        }
+    } catch(e) {
+        console.error('GeoJS error', e);
+    }
 });
