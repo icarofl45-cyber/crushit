@@ -1220,11 +1220,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 
                 // Update checkout links dynamically
                 if (window.localPricing.link) {
+                    let finalLink = window.localPricing.link;
+                    // Append lead data if available
+                    if (typeof userAnswers !== 'undefined') {
+                        if (userAnswers['name']) finalLink += '&name=' + encodeURIComponent(userAnswers['name']);
+                        if (userAnswers['email']) finalLink += '&email=' + encodeURIComponent(userAnswers['email']);
+                    }
+
                     const links = document.querySelectorAll("a[href*='pay.hotmart.com']");
-                    links.forEach(l => l.href = window.localPricing.link);
+                    links.forEach(l => l.href = finalLink);
                     
                     const buttons = document.querySelectorAll("button[onclick*='pay.hotmart.com']");
-                    buttons.forEach(b => b.setAttribute('onclick', "window.location.href='" + window.localPricing.link + "'"));
+                    buttons.forEach(b => b.setAttribute('onclick', "window.location.href='" + finalLink + "'"));
                 }
             };
             
