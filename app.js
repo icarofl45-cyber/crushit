@@ -1,8 +1,8 @@
 // User answers store
-let userAnswers = JSON.parse(localStorage.getItem('crushItUserAnswers')) || {};
+let userAnswers = JSON.parse(localStorage.getItem('militarUserAnswers')) || {};
 
 function saveAnswers() {
-    localStorage.setItem('crushItUserAnswers', JSON.stringify(userAnswers));
+    localStorage.setItem('militarUserAnswers', JSON.stringify(userAnswers));
 }
 
 // Handle option selection
@@ -279,8 +279,8 @@ function updateIMCUI(imc) {
         percentage = (imc / 18.5) * 25; // 0 to 25%
     } else if (imc < 25) {
         document.getElementById('cat-normal').classList.add('active');
-        cardImc.style.borderColor = '#22c55e';
-        cardImc.style.boxShadow = '0 0 15px rgba(34, 197, 94, 0.2)';
+        cardImc.style.borderColor = '#a3e635';
+        cardImc.style.boxShadow = '0 0 15px rgba(163, 230, 53, 0.2)';
         percentage = 25 + ((imc - 18.5) / 6.5) * 25; // 25 to 50%
     } else if (imc < 30) {
         document.getElementById('cat-sobrepeso').classList.add('active');
@@ -332,9 +332,9 @@ function initGoalScreen() {
         valElement.innerText = Math.round(imcActual);
         
         // Set color for Actual IMC based on value
-        let color = '#22c55e';
+        let color = '#a3e635';
         if (imcActual < 18.5) color = '#3b82f6';
-        else if (imcActual < 25) color = '#22c55e';
+        else if (imcActual < 25) color = '#a3e635';
         else if (imcActual < 30) color = '#f97316';
         else color = '#ef4444';
         valElement.style.color = color;
@@ -692,6 +692,7 @@ function initSuccessScreen() {
 
 // Logic for Screen 17 (Offer)
 function initOfferScreen() {
+    startOfferTimer(600);
     // Discount logic has been removed for direct $9.90 offer
 
     // Set name
@@ -752,10 +753,10 @@ function initOfferScreen() {
                 badge.innerText = 'BAJO PESO';
             } else if (imc >= 18.5 && imc <= 24.9) {
                 // Normal (Green)
-                card.style.borderColor = '#22c55e';
-                badge.style.backgroundColor = 'rgba(34, 197, 94, 0.1)';
-                badge.style.borderColor = 'rgba(34, 197, 94, 0.5)';
-                badge.style.color = '#22c55e';
+                card.style.borderColor = '#a3e635';
+                badge.style.backgroundColor = 'rgba(163, 230, 53, 0.1)';
+                badge.style.borderColor = 'rgba(163, 230, 53, 0.5)';
+                badge.style.color = '#a3e635';
                 badge.innerText = 'NORMAL';
             } else if (imc >= 25 && imc <= 29.9) {
                 // Sobrepeso (Orange)
@@ -779,7 +780,7 @@ function initOfferScreen() {
         if (imcActualEl) {
             imcActualEl.innerText = imc.toFixed(1);
             if (imc < 18.5) imcActualEl.style.color = '#3b82f6';
-            else if (imc <= 24.9) imcActualEl.style.color = '#22c55e';
+            else if (imc <= 24.9) imcActualEl.style.color = '#a3e635';
             else if (imc <= 29.9) imcActualEl.style.color = '#f97316';
             else imcActualEl.style.color = '#ef4444';
             
@@ -803,7 +804,7 @@ function initOfferScreen() {
             if (imcObjEl) {
                 imcObjEl.innerText = imcObj.toFixed(1);
                 // Target IMC is generally healthy
-                imcObjEl.style.color = '#22c55e';
+                imcObjEl.style.color = '#a3e635';
             }
         }
     }
@@ -832,7 +833,7 @@ function initOfferScreen() {
         
         // Dynamic border for the box
         if (imc < 18.5) resumenImcBox.style.borderColor = '#3b82f6';
-        else if (imc <= 24.9) resumenImcBox.style.borderColor = '#22c55e';
+        else if (imc <= 24.9) resumenImcBox.style.borderColor = '#a3e635';
         else if (imc <= 29.9) resumenImcBox.style.borderColor = '#f97316';
         else resumenImcBox.style.borderColor = '#ef4444';
 
@@ -962,12 +963,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Flash effect only for the number
             const numberEl = document.getElementById('live-users-number');
             if (numberEl) {
-                numberEl.style.textShadow = '0 0 15px #22c55e, 0 0 25px #22c55e';
+                numberEl.style.textShadow = '0 0 15px #a3e635, 0 0 25px #a3e635';
                 numberEl.style.color = '#fff';
                 setTimeout(() => {
                     if (document.getElementById('live-users-number')) {
                         document.getElementById('live-users-number').style.textShadow = 'none';
-                        document.getElementById('live-users-number').style.color = '#22c55e';
+                        document.getElementById('live-users-number').style.color = '#a3e635';
                     }
                 }, 600);
             }
@@ -989,6 +990,34 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- Discount Wheel Logic ---
 let wheelTriggered = false;
 let offerTimer = null;
+let offerTimerInterval = null;
+
+function startOfferTimer(durationSeconds) {
+    if (offerTimerInterval) clearInterval(offerTimerInterval);
+    
+    let timer = durationSeconds;
+    const display = document.getElementById('offer-timer-countdown');
+    if (!display) return;
+    
+    const updateDisplay = () => {
+        let minutes = Math.floor(timer / 60);
+        let seconds = timer % 60;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        display.innerText = `${minutes}:${seconds}`;
+    };
+    
+    updateDisplay();
+    
+    offerTimerInterval = setInterval(() => {
+        if (--timer < 0) {
+            clearInterval(offerTimerInterval);
+            display.innerText = '00:00';
+        } else {
+            updateDisplay();
+        }
+    }, 1000);
+}
 
 function showWheelPopup() {}
 
@@ -1039,12 +1068,12 @@ function applyDiscountToOffer() {
     } else {
         newPriceMain.innerText = "$9.90";
     }
-    newPriceMain.style.color = "#22c55e";
+    newPriceMain.style.color = "#a3e635";
     newPriceMain.style.fontSize = "65px";
     newPriceMain.style.fontWeight = "900";
     newPriceMain.style.lineHeight = "1";
     newPriceMain.style.letterSpacing = "-2px";
-    newPriceMain.style.textShadow = "0 0 20px rgba(34,197,94,0.4)";
+    newPriceMain.style.textShadow = "0 0 20px rgba(163, 230, 53,0.4)";
 
     let newPriceCurrency = document.createElement('span');
     if (window.localPricing && window.localPricing.detected) {
@@ -1270,3 +1299,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('GeoJS error', e);
     }
 });
+
+// Bulletproof sticky timer logic bypassing mobile scroll events and CSS transform bugs
+setInterval(() => {
+    if (window.location.hash !== '#step-offer') return;
+    
+    const placeholder = document.getElementById('offer-timer-placeholder');
+    // We get banner by ID. It could be inside placeholder or inside body.
+    const banner = document.getElementById('offer-timer-banner');
+    
+    if (placeholder && banner) {
+        const rect = placeholder.getBoundingClientRect();
+        if (rect.top < 15) {
+            // Fix it: move to body if not already there to escape parent transforms
+            if (banner.parentNode !== document.body) {
+                document.body.appendChild(banner);
+                banner.classList.add('timer-fixed');
+            }
+        } else {
+            // Unfix it: move back to placeholder
+            if (banner.parentNode !== placeholder) {
+                placeholder.appendChild(banner);
+                banner.classList.remove('timer-fixed');
+            }
+        }
+    }
+}, 50);
