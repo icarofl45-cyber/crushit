@@ -13,8 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="imagens_webp_crush_it/logo_opt.webp" as="image">
 
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap">
     <style>
 * {
     margin: 0;
@@ -1900,7 +1899,7 @@ input[type=range]::-webkit-slider-runnable-track {
     </div>
 
     <div id="app">
-        <img src="imagens_webp_crush_it/logo_opt.webp" alt="Logo" class="top-logo">
+        <img src="imagens_webp_crush_it/logo_opt.webp" alt="Logo" class="top-logo" fetchpriority="high">
         <button id="global-back-btn" class="global-back-btn" onclick="goBack()" style="display: none;">
             &larr; VOLVER
         </button>

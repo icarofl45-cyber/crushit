@@ -103,9 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
         } else {
             // Default step
-            history.replaceState(null, null, '#step-age');
-            document.querySelectorAll('.funnel-step').forEach(step => step.classList.remove('active'));
-            document.getElementById('step-age').classList.add('active');
+            if (window.location.hash !== '#step-age') {
+                history.replaceState(null, null, '#step-age');
+            }
+            if (!document.getElementById('step-age').classList.contains('active')) {
+                document.querySelectorAll('.funnel-step').forEach(step => step.classList.remove('active'));
+                document.getElementById('step-age').classList.add('active');
+            }
         }
         
         // Handle Back button visibility
