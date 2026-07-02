@@ -71,7 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (hash && document.getElementById(hash)) {
             document.querySelectorAll('.funnel-step').forEach(step => step.classList.remove('active'));
-            document.getElementById(hash).classList.add('active');
+            const nextEl = document.getElementById(hash);
+            nextEl.style.animation = 'fadeIn 0.3s ease-out forwards';
+            nextEl.classList.add('active');
             
             // Re-run init functions if jumping to specific steps
             if (hash === 'step-destination' && userAnswers['goal']) {
@@ -915,6 +917,7 @@ function goToNextStep(currentId, nextId) {
             fbq('trackCustom', 'View_' + nextId);
         }
         setTimeout(() => {
+            nextStep.style.animation = 'fadeIn 0.3s ease-out forwards';
             nextStep.classList.add('active');
             window.scrollTo(0,0);
             
